@@ -42,11 +42,6 @@ void MCP41010_Write(uint8 value, uint8 fnGenerator)
 */
 
 
-void SPI_FNG0_WriteData(uint8 val) {
-    SPI_FNG0_WriteTxData(0b00010001); // tells the POT we want to change its resistance
-    SPI_FNG0_WriteTxData(val);        // sets the new resistance
-}
-
 volatile int scope0State; // reading/writing state for Scope 0
 
 float find_freq(char *array, int numSamples)

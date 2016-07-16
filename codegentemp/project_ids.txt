@@ -1,6 +1,0 @@
-C:\Users\jthem\Documents\PSoC Creator\PWMExample01\EasyBoard_5LP.cydsn\EasyBoard_5LP.cyprj|77ebd91d-9bc9-4c43-8115-71e7ccd255e8
-C:\Program Files (x86)\Cypress\PSoC Creator\3.3\PSoC Creator\psoc\content\default\CyAnnotationLibrary\CyAnnotationLibrary.cylib\CyAnnotationLibrary.cyprj|4fc19c4b-478e-41eb-a6e1-3a34ab75703e
-C:\Program Files (x86)\Cypress\PSoC Creator\3.3\PSoC Creator\psoc\content\default\CyReferenceLibrary\CyReferenceLibrary.cylib\CyReferenceLibrary.cyprj|b96a9a98-6fc5-4bf2-929c-28f5ae506453
-C:\Program Files (x86)\Cypress\PSoC Creator\3.3\PSoC Creator\psoc\content\cycomponentlibraryupdates\CyComponentLibraryUpdates.cylib\CyComponentLibraryUpdates.cyprj|04d9a683-b03c-465a-aa6d-535fd17a7af2
-C:\Program Files (x86)\Cypress\PSoC Creator\3.3\PSoC Creator\psoc\content\cycomponentlibrary\CyComponentLibrary.cylib\CyComponentLibrary.cyprj|5ed4a9a0-1207-448d-9d69-97c3779cef72
-C:\Program Files (x86)\Cypress\PSoC Creator\3.3\PSoC Creator\psoc\content\cyprimitives\CyPrimitives.cylib\CyPrimitives.cyprj|c36f2c5e-6152-4e5a-babf-b15128b82ad9

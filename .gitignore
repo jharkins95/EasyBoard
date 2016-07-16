@@ -1,4 +1,8 @@
 .DS_Store
+ARM_GCC_493
+autoseltemp
+codegentemp
+Generated_Source
 *.cywrk.*
 *.cyprj.*
 *.cycdx
@@ -7,6 +11,3 @@
 *.uvopt
 *.uvproj
 *_timing.html
-*.cydsn/codegentemp
-*.cydsn/DP8051
-*.cydsn/Generated_Source

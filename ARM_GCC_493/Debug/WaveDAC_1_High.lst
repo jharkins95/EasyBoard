@@ -1,0 +1,1794 @@
+ARM GAS  C:\Users\jthem\AppData\Local\Temp\ccXA9CAQ.s 			page 1
+
+
+   1              		.syntax unified
+   2              		.cpu cortex-m3
+   3              		.fpu softvfp
+   4              		.eabi_attribute 20, 1
+   5              		.eabi_attribute 21, 1
+   6              		.eabi_attribute 23, 3
+   7              		.eabi_attribute 24, 1
+   8              		.eabi_attribute 25, 1
+   9              		.eabi_attribute 26, 1
+  10              		.eabi_attribute 30, 6
+  11              		.eabi_attribute 34, 1
+  12              		.eabi_attribute 18, 4
+  13              		.thumb
+  14              		.file	"WaveDAC_1_High.c"
+  15              		.text
+  16              	.Ltext0:
+  17              		.cfi_sections	.debug_frame
+  18              		.global	WaveDAC_1_High_initVar
+  19              		.bss
+  20              		.type	WaveDAC_1_High_initVar, %object
+  21              		.size	WaveDAC_1_High_initVar, 1
+  22              	WaveDAC_1_High_initVar:
+  23 0000 00       		.space	1
+  24              		.global	WaveDAC_1_High_wave1
+  25              		.section	.rodata
+  26              		.align	2
+  27              		.type	WaveDAC_1_High_wave1, %object
+  28              		.size	WaveDAC_1_High_wave1, 100
+  29              	WaveDAC_1_High_wave1:
+  30 0000 80       		.byte	-128
+  31 0001 87       		.byte	-121
+  32 0002 8F       		.byte	-113
+  33 0003 97       		.byte	-105
+  34 0004 9F       		.byte	-97
+  35 0005 A6       		.byte	-90
+  36 0006 AE       		.byte	-82
+  37 0007 B5       		.byte	-75
+  38 0008 BC       		.byte	-68
+  39 0009 C2       		.byte	-62
+  40 000a C9       		.byte	-55
+  41 000b CF       		.byte	-49
+  42 000c D5       		.byte	-43
+  43 000d DB       		.byte	-37
+  44 000e E0       		.byte	-32
+  45 000f E5       		.byte	-27
+  46 0010 E9       		.byte	-23
+  47 0011 ED       		.byte	-19
+  48 0012 F1       		.byte	-15
+  49 0013 F4       		.byte	-12
+  50 0014 F6       		.byte	-10
+  51 0015 F9       		.byte	-7
+  52 0016 FA       		.byte	-6
+  53 0017 FC       		.byte	-4
+  54 0018 FC       		.byte	-4
+  55 0019 FC       		.byte	-4
+  56 001a FC       		.byte	-4
+  57 001b FC       		.byte	-4
+ARM GAS  C:\Users\jthem\AppData\Local\Temp\ccXA9CAQ.s 			page 2
+
+
+  58 001c FA       		.byte	-6
+  59 001d F9       		.byte	-7
+  60 001e F6       		.byte	-10
+  61 001f F4       		.byte	-12
+  62 0020 F1       		.byte	-15
+  63 0021 ED       		.byte	-19
+  64 0022 E9       		.byte	-23
+  65 0023 E5       		.byte	-27
+  66 0024 E0       		.byte	-32
+  67 0025 DB       		.byte	-37
+  68 0026 D5       		.byte	-43
+  69 0027 CF       		.byte	-49
+  70 0028 C9       		.byte	-55
+  71 0029 C2       		.byte	-62
+  72 002a BC       		.byte	-68
+  73 002b B5       		.byte	-75
+  74 002c AE       		.byte	-82
+  75 002d A6       		.byte	-90
+  76 002e 9F       		.byte	-97
+  77 002f 97       		.byte	-105
+  78 0030 8F       		.byte	-113
+  79 0031 87       		.byte	-121
+  80 0032 80       		.byte	-128
+  81 0033 78       		.byte	120
+  82 0034 70       		.byte	112
+  83 0035 68       		.byte	104
+  84 0036 60       		.byte	96
+  85 0037 59       		.byte	89
+  86 0038 51       		.byte	81
+  87 0039 4A       		.byte	74
+  88 003a 43       		.byte	67
+  89 003b 3D       		.byte	61
+  90 003c 36       		.byte	54
+  91 003d 30       		.byte	48
+  92 003e 2A       		.byte	42
+  93 003f 24       		.byte	36
+  94 0040 1F       		.byte	31
+  95 0041 1A       		.byte	26
+  96 0042 16       		.byte	22
+  97 0043 12       		.byte	18
+  98 0044 0E       		.byte	14
+  99 0045 0B       		.byte	11
+ 100 0046 09       		.byte	9
+ 101 0047 06       		.byte	6
+ 102 0048 05       		.byte	5
+ 103 0049 03       		.byte	3
+ 104 004a 03       		.byte	3
+ 105 004b 02       		.byte	2
+ 106 004c 03       		.byte	3
+ 107 004d 03       		.byte	3
+ 108 004e 05       		.byte	5
+ 109 004f 06       		.byte	6
+ 110 0050 09       		.byte	9
+ 111 0051 0B       		.byte	11
+ 112 0052 0E       		.byte	14
+ 113 0053 12       		.byte	18
+ 114 0054 16       		.byte	22
+ARM GAS  C:\Users\jthem\AppData\Local\Temp\ccXA9CAQ.s 			page 3
+
+
+ 115 0055 1A       		.byte	26
+ 116 0056 1F       		.byte	31
+ 117 0057 24       		.byte	36
+ 118 0058 2A       		.byte	42
+ 119 0059 30       		.byte	48
+ 120 005a 36       		.byte	54
+ 121 005b 3D       		.byte	61
+ 122 005c 43       		.byte	67
+ 123 005d 4A       		.byte	74
+ 124 005e 51       		.byte	81
+ 125 005f 59       		.byte	89
+ 126 0060 60       		.byte	96
+ 127 0061 68       		.byte	104
+ 128 0062 70       		.byte	112
+ 129 0063 78       		.byte	120
+ 130              		.global	WaveDAC_1_High_wave2
+ 131              		.align	2
+ 132              		.type	WaveDAC_1_High_wave2, %object
+ 133              		.size	WaveDAC_1_High_wave2, 100
+ 134              	WaveDAC_1_High_wave2:
+ 135 0064 80       		.byte	-128
+ 136 0065 84       		.byte	-124
+ 137 0066 8A       		.byte	-118
+ 138 0067 8E       		.byte	-114
+ 139 0068 94       		.byte	-108
+ 140 0069 98       		.byte	-104
+ 141 006a 9E       		.byte	-98
+ 142 006b A2       		.byte	-94
+ 143 006c A8       		.byte	-88
+ 144 006d AC       		.byte	-84
+ 145 006e B2       		.byte	-78
+ 146 006f B6       		.byte	-74
+ 147 0070 BC       		.byte	-68
+ 148 0071 C0       		.byte	-64
+ 149 0072 C6       		.byte	-58
+ 150 0073 CA       		.byte	-54
+ 151 0074 D0       		.byte	-48
+ 152 0075 D4       		.byte	-44
+ 153 0076 DA       		.byte	-38
+ 154 0077 DE       		.byte	-34
+ 155 0078 E4       		.byte	-28
+ 156 0079 E8       		.byte	-24
+ 157 007a EE       		.byte	-18
+ 158 007b F2       		.byte	-14
+ 159 007c F8       		.byte	-8
+ 160 007d FC       		.byte	-4
+ 161 007e F8       		.byte	-8
+ 162 007f F2       		.byte	-14
+ 163 0080 EE       		.byte	-18
+ 164 0081 E8       		.byte	-24
+ 165 0082 E4       		.byte	-28
+ 166 0083 DE       		.byte	-34
+ 167 0084 DA       		.byte	-38
+ 168 0085 D4       		.byte	-44
+ 169 0086 D0       		.byte	-48
+ 170 0087 CA       		.byte	-54
+ 171 0088 C6       		.byte	-58
+ARM GAS  C:\Users\jthem\AppData\Local\Temp\ccXA9CAQ.s 			page 4
+
+
+ 172 0089 C0       		.byte	-64
+ 173 008a BC       		.byte	-68
+ 174 008b B6       		.byte	-74
+ 175 008c B2       		.byte	-78
+ 176 008d AC       		.byte	-84
+ 177 008e A8       		.byte	-88
+ 178 008f A2       		.byte	-94
+ 179 0090 9E       		.byte	-98
+ 180 0091 98       		.byte	-104
+ 181 0092 94       		.byte	-108
+ 182 0093 8E       		.byte	-114
+ 183 0094 8A       		.byte	-118
+ 184 0095 84       		.byte	-124
+ 185 0096 80       		.byte	-128
+ 186 0097 7A       		.byte	122
+ 187 0098 76       		.byte	118
+ 188 0099 70       		.byte	112
+ 189 009a 6B       		.byte	107
+ 190 009b 66       		.byte	102
+ 191 009c 61       		.byte	97
+ 192 009d 5D       		.byte	93
+ 193 009e 58       		.byte	88
+ 194 009f 53       		.byte	83
+ 195 00a0 4E       		.byte	78
+ 196 00a1 48       		.byte	72
+ 197 00a2 44       		.byte	68
+ 198 00a3 3E       		.byte	62
+ 199 00a4 3A       		.byte	58
+ 200 00a5 34       		.byte	52
+ 201 00a6 2F       		.byte	47
+ 202 00a7 2A       		.byte	42
+ 203 00a8 25       		.byte	37
+ 204 00a9 21       		.byte	33
+ 205 00aa 1C       		.byte	28
+ 206 00ab 17       		.byte	23
+ 207 00ac 12       		.byte	18
+ 208 00ad 0C       		.byte	12
+ 209 00ae 08       		.byte	8
+ 210 00af 02       		.byte	2
+ 211 00b0 08       		.byte	8
+ 212 00b1 0D       		.byte	13
+ 213 00b2 12       		.byte	18
+ 214 00b3 17       		.byte	23
+ 215 00b4 1C       		.byte	28
+ 216 00b5 21       		.byte	33
+ 217 00b6 25       		.byte	37
+ 218 00b7 2A       		.byte	42
+ 219 00b8 2F       		.byte	47
+ 220 00b9 34       		.byte	52
+ 221 00ba 3A       		.byte	58
+ 222 00bb 3E       		.byte	62
+ 223 00bc 44       		.byte	68
+ 224 00bd 48       		.byte	72
+ 225 00be 4E       		.byte	78
+ 226 00bf 53       		.byte	83
+ 227 00c0 58       		.byte	88
+ 228 00c1 5D       		.byte	93
+ARM GAS  C:\Users\jthem\AppData\Local\Temp\ccXA9CAQ.s 			page 5
+
+
+ 229 00c2 61       		.byte	97
+ 230 00c3 66       		.byte	102
+ 231 00c4 6B       		.byte	107
+ 232 00c5 70       		.byte	112
+ 233 00c6 75       		.byte	117
+ 234 00c7 7A       		.byte	122
+ 235              		.bss
+ 236              	WaveDAC_1_High_Wave1Chan:
+ 237 0001 00       		.space	1
+ 238              	WaveDAC_1_High_Wave2Chan:
+ 239 0002 00       		.space	1
+ 240              	WaveDAC_1_High_Wave1TD:
+ 241 0003 00       		.space	1
+ 242              	WaveDAC_1_High_Wave2TD:
+ 243 0004 00       		.space	1
+ 244              		.section	.text.WaveDAC_1_High_Init,"ax",%progbits
+ 245              		.align	2
+ 246              		.global	WaveDAC_1_High_Init
+ 247              		.thumb
+ 248              		.thumb_func
+ 249              		.type	WaveDAC_1_High_Init, %function
+ 250              	WaveDAC_1_High_Init:
+ 251              	.LFB0:
+ 252              		.file 1 ".\\Generated_Source\\PSoC5\\WaveDAC_1_High.c"
+   1:.\Generated_Source\PSoC5/WaveDAC_1_High.c **** /*******************************************************************************
+   2:.\Generated_Source\PSoC5/WaveDAC_1_High.c **** * File Name: WaveDAC_1_High.c
+   3:.\Generated_Source\PSoC5/WaveDAC_1_High.c **** * Version 2.10
+   4:.\Generated_Source\PSoC5/WaveDAC_1_High.c **** *
+   5:.\Generated_Source\PSoC5/WaveDAC_1_High.c **** * Description:
+   6:.\Generated_Source\PSoC5/WaveDAC_1_High.c **** *  This file provides the source code for the 8-bit Waveform DAC 
+   7:.\Generated_Source\PSoC5/WaveDAC_1_High.c **** *  (WaveDAC8) Component.
+   8:.\Generated_Source\PSoC5/WaveDAC_1_High.c **** *
+   9:.\Generated_Source\PSoC5/WaveDAC_1_High.c **** ********************************************************************************
+  10:.\Generated_Source\PSoC5/WaveDAC_1_High.c **** * Copyright 2013, Cypress Semiconductor Corporation.  All rights reserved.
+  11:.\Generated_Source\PSoC5/WaveDAC_1_High.c **** * You may use this file only in accordance with the license, terms, conditions,
+  12:.\Generated_Source\PSoC5/WaveDAC_1_High.c **** * disclaimers, and limitations in the end user license agreement accompanying
+  13:.\Generated_Source\PSoC5/WaveDAC_1_High.c **** * the software package with which this file was provided.
+  14:.\Generated_Source\PSoC5/WaveDAC_1_High.c **** *******************************************************************************/
+  15:.\Generated_Source\PSoC5/WaveDAC_1_High.c **** 
+  16:.\Generated_Source\PSoC5/WaveDAC_1_High.c **** #include "WaveDAC_1_High.h"
+  17:.\Generated_Source\PSoC5/WaveDAC_1_High.c **** 
+  18:.\Generated_Source\PSoC5/WaveDAC_1_High.c **** uint8  WaveDAC_1_High_initVar = 0u;
+  19:.\Generated_Source\PSoC5/WaveDAC_1_High.c **** 
+  20:.\Generated_Source\PSoC5/WaveDAC_1_High.c **** const uint8 CYCODE WaveDAC_1_High_wave1[WaveDAC_1_High_WAVE1_LENGTH] = { 128u,135u,143u,151u,159u,1
+  21:.\Generated_Source\PSoC5/WaveDAC_1_High.c **** const uint8 CYCODE WaveDAC_1_High_wave2[WaveDAC_1_High_WAVE2_LENGTH] = { 128u,132u,138u,142u,148u,1
+  22:.\Generated_Source\PSoC5/WaveDAC_1_High.c **** 
+  23:.\Generated_Source\PSoC5/WaveDAC_1_High.c **** static uint8  WaveDAC_1_High_Wave1Chan;
+  24:.\Generated_Source\PSoC5/WaveDAC_1_High.c **** static uint8  WaveDAC_1_High_Wave2Chan;
+  25:.\Generated_Source\PSoC5/WaveDAC_1_High.c **** static uint8  WaveDAC_1_High_Wave1TD;
+  26:.\Generated_Source\PSoC5/WaveDAC_1_High.c **** static uint8  WaveDAC_1_High_Wave2TD;
+  27:.\Generated_Source\PSoC5/WaveDAC_1_High.c **** 
+  28:.\Generated_Source\PSoC5/WaveDAC_1_High.c **** 
+  29:.\Generated_Source\PSoC5/WaveDAC_1_High.c **** /*******************************************************************************
+  30:.\Generated_Source\PSoC5/WaveDAC_1_High.c **** * Function Name: WaveDAC_1_High_Init
+  31:.\Generated_Source\PSoC5/WaveDAC_1_High.c **** ********************************************************************************
+  32:.\Generated_Source\PSoC5/WaveDAC_1_High.c **** *
+  33:.\Generated_Source\PSoC5/WaveDAC_1_High.c **** * Summary:
+ARM GAS  C:\Users\jthem\AppData\Local\Temp\ccXA9CAQ.s 			page 6
+
+
+  34:.\Generated_Source\PSoC5/WaveDAC_1_High.c **** *  Initializes component with parameters set in the customizer.
+  35:.\Generated_Source\PSoC5/WaveDAC_1_High.c **** *
+  36:.\Generated_Source\PSoC5/WaveDAC_1_High.c **** * Parameters:  
+  37:.\Generated_Source\PSoC5/WaveDAC_1_High.c **** *  None
+  38:.\Generated_Source\PSoC5/WaveDAC_1_High.c **** *
+  39:.\Generated_Source\PSoC5/WaveDAC_1_High.c **** * Return: 
+  40:.\Generated_Source\PSoC5/WaveDAC_1_High.c **** *  None
+  41:.\Generated_Source\PSoC5/WaveDAC_1_High.c **** *
+  42:.\Generated_Source\PSoC5/WaveDAC_1_High.c **** *******************************************************************************/
+  43:.\Generated_Source\PSoC5/WaveDAC_1_High.c **** void WaveDAC_1_High_Init(void) 
+  44:.\Generated_Source\PSoC5/WaveDAC_1_High.c **** {
+ 253              		.loc 1 44 0
+ 254              		.cfi_startproc
+ 255              		@ args = 0, pretend = 0, frame = 0
+ 256              		@ frame_needed = 1, uses_anonymous_args = 0
+ 257 0000 80B5     		push	{r7, lr}
+ 258              		.cfi_def_cfa_offset 8
+ 259              		.cfi_offset 7, -8
+ 260              		.cfi_offset 14, -4
+ 261 0002 00AF     		add	r7, sp, #0
+ 262              		.cfi_def_cfa_register 7
+  45:.\Generated_Source\PSoC5/WaveDAC_1_High.c **** 	WaveDAC_1_High_IDAC8_Init();
+ 263              		.loc 1 45 0
+ 264 0004 FFF7FEFF 		bl	WaveDAC_1_High_IDAC8_Init
+  46:.\Generated_Source\PSoC5/WaveDAC_1_High.c **** 	WaveDAC_1_High_IDAC8_SetSpeed(WaveDAC_1_High_HIGHSPEED);
+ 265              		.loc 1 46 0
+ 266 0008 0220     		movs	r0, #2
+ 267 000a FFF7FEFF 		bl	WaveDAC_1_High_IDAC8_SetSpeed
+  47:.\Generated_Source\PSoC5/WaveDAC_1_High.c **** 	WaveDAC_1_High_IDAC8_SetRange(WaveDAC_1_High_DAC_RANGE);
+ 268              		.loc 1 47 0
+ 269 000e 0420     		movs	r0, #4
+ 270 0010 FFF7FEFF 		bl	WaveDAC_1_High_IDAC8_SetRange
+  48:.\Generated_Source\PSoC5/WaveDAC_1_High.c **** 
+  49:.\Generated_Source\PSoC5/WaveDAC_1_High.c **** 	#if(WaveDAC_1_High_DAC_MODE == WaveDAC_1_High_CURRENT_MODE)
+  50:.\Generated_Source\PSoC5/WaveDAC_1_High.c **** 		WaveDAC_1_High_IDAC8_SetPolarity(WaveDAC_1_High_DAC_POL);
+ 271              		.loc 1 50 0
+ 272 0014 0020     		movs	r0, #0
+ 273 0016 FFF7FEFF 		bl	WaveDAC_1_High_IDAC8_SetPolarity
+  51:.\Generated_Source\PSoC5/WaveDAC_1_High.c **** 	#endif /* WaveDAC_1_High_DAC_MODE == WaveDAC_1_High_CURRENT_MODE */
+  52:.\Generated_Source\PSoC5/WaveDAC_1_High.c **** 
+  53:.\Generated_Source\PSoC5/WaveDAC_1_High.c **** 	#if(WaveDAC_1_High_OUT_MODE == WaveDAC_1_High_BUFFER_MODE)
+  54:.\Generated_Source\PSoC5/WaveDAC_1_High.c **** 	   WaveDAC_1_High_BuffAmp_Init();
+  55:.\Generated_Source\PSoC5/WaveDAC_1_High.c **** 	#endif /* WaveDAC_1_High_OUT_MODE == WaveDAC_1_High_BUFFER_MODE */
+  56:.\Generated_Source\PSoC5/WaveDAC_1_High.c **** 
+  57:.\Generated_Source\PSoC5/WaveDAC_1_High.c **** 	/* Get the TD Number for the DMA channel 1 and 2   */
+  58:.\Generated_Source\PSoC5/WaveDAC_1_High.c **** 	WaveDAC_1_High_Wave1TD = CyDmaTdAllocate();
+ 274              		.loc 1 58 0
+ 275 001a FFF7FEFF 		bl	CyDmaTdAllocate
+ 276 001e 0346     		mov	r3, r0
+ 277 0020 1A46     		mov	r2, r3
+ 278 0022 084B     		ldr	r3, .L2
+ 279 0024 1A70     		strb	r2, [r3]
+  59:.\Generated_Source\PSoC5/WaveDAC_1_High.c **** 	WaveDAC_1_High_Wave2TD = CyDmaTdAllocate();
+ 280              		.loc 1 59 0
+ 281 0026 FFF7FEFF 		bl	CyDmaTdAllocate
+ 282 002a 0346     		mov	r3, r0
+ 283 002c 1A46     		mov	r2, r3
+ARM GAS  C:\Users\jthem\AppData\Local\Temp\ccXA9CAQ.s 			page 7
+
+
+ 284 002e 064B     		ldr	r3, .L2+4
+ 285 0030 1A70     		strb	r2, [r3]
+  60:.\Generated_Source\PSoC5/WaveDAC_1_High.c **** 	
+  61:.\Generated_Source\PSoC5/WaveDAC_1_High.c **** 	/* Initialize waveform pointers  */
+  62:.\Generated_Source\PSoC5/WaveDAC_1_High.c **** 	WaveDAC_1_High_Wave1Setup(WaveDAC_1_High_wave1, WaveDAC_1_High_WAVE1_LENGTH) ;
+ 286              		.loc 1 62 0
+ 287 0032 0648     		ldr	r0, .L2+8
+ 288 0034 6421     		movs	r1, #100
+ 289 0036 FFF7FEFF 		bl	WaveDAC_1_High_Wave1Setup
+  63:.\Generated_Source\PSoC5/WaveDAC_1_High.c **** 	WaveDAC_1_High_Wave2Setup(WaveDAC_1_High_wave2, WaveDAC_1_High_WAVE2_LENGTH) ;
+ 290              		.loc 1 63 0
+ 291 003a 0548     		ldr	r0, .L2+12
+ 292 003c 6421     		movs	r1, #100
+ 293 003e FFF7FEFF 		bl	WaveDAC_1_High_Wave2Setup
+  64:.\Generated_Source\PSoC5/WaveDAC_1_High.c **** 	
+  65:.\Generated_Source\PSoC5/WaveDAC_1_High.c **** 	/* Initialize the internal clock if one present  */
+  66:.\Generated_Source\PSoC5/WaveDAC_1_High.c **** 	#if defined(WaveDAC_1_High_DacClk_PHASE)
+  67:.\Generated_Source\PSoC5/WaveDAC_1_High.c **** 	   WaveDAC_1_High_DacClk_SetPhase(WaveDAC_1_High_CLK_PHASE_0nS);
+  68:.\Generated_Source\PSoC5/WaveDAC_1_High.c **** 	#endif /* defined(WaveDAC_1_High_DacClk_PHASE) */
+  69:.\Generated_Source\PSoC5/WaveDAC_1_High.c **** }
+ 294              		.loc 1 69 0
+ 295 0042 80BD     		pop	{r7, pc}
+ 296              	.L3:
+ 297              		.align	2
+ 298              	.L2:
+ 299 0044 03000000 		.word	WaveDAC_1_High_Wave1TD
+ 300 0048 04000000 		.word	WaveDAC_1_High_Wave2TD
+ 301 004c 00000000 		.word	WaveDAC_1_High_wave1
+ 302 0050 00000000 		.word	WaveDAC_1_High_wave2
+ 303              		.cfi_endproc
+ 304              	.LFE0:
+ 305              		.size	WaveDAC_1_High_Init, .-WaveDAC_1_High_Init
+ 306              		.section	.text.WaveDAC_1_High_Enable,"ax",%progbits
+ 307              		.align	2
+ 308              		.global	WaveDAC_1_High_Enable
+ 309              		.thumb
+ 310              		.thumb_func
+ 311              		.type	WaveDAC_1_High_Enable, %function
+ 312              	WaveDAC_1_High_Enable:
+ 313              	.LFB1:
+  70:.\Generated_Source\PSoC5/WaveDAC_1_High.c **** 
+  71:.\Generated_Source\PSoC5/WaveDAC_1_High.c **** 
+  72:.\Generated_Source\PSoC5/WaveDAC_1_High.c **** /*******************************************************************************
+  73:.\Generated_Source\PSoC5/WaveDAC_1_High.c **** * Function Name: WaveDAC_1_High_Enable
+  74:.\Generated_Source\PSoC5/WaveDAC_1_High.c **** ********************************************************************************
+  75:.\Generated_Source\PSoC5/WaveDAC_1_High.c **** *  
+  76:.\Generated_Source\PSoC5/WaveDAC_1_High.c **** * Summary: 
+  77:.\Generated_Source\PSoC5/WaveDAC_1_High.c **** *  Enables the DAC block and DMA operation.
+  78:.\Generated_Source\PSoC5/WaveDAC_1_High.c **** *
+  79:.\Generated_Source\PSoC5/WaveDAC_1_High.c **** * Parameters:  
+  80:.\Generated_Source\PSoC5/WaveDAC_1_High.c **** *  None
+  81:.\Generated_Source\PSoC5/WaveDAC_1_High.c **** *
+  82:.\Generated_Source\PSoC5/WaveDAC_1_High.c **** * Return: 
+  83:.\Generated_Source\PSoC5/WaveDAC_1_High.c **** *  None
+  84:.\Generated_Source\PSoC5/WaveDAC_1_High.c **** *
+  85:.\Generated_Source\PSoC5/WaveDAC_1_High.c **** *******************************************************************************/
+  86:.\Generated_Source\PSoC5/WaveDAC_1_High.c **** void WaveDAC_1_High_Enable(void) 
+ARM GAS  C:\Users\jthem\AppData\Local\Temp\ccXA9CAQ.s 			page 8
+
+
+  87:.\Generated_Source\PSoC5/WaveDAC_1_High.c **** {
+ 314              		.loc 1 87 0
+ 315              		.cfi_startproc
+ 316              		@ args = 0, pretend = 0, frame = 0
+ 317              		@ frame_needed = 1, uses_anonymous_args = 0
+ 318 0000 80B5     		push	{r7, lr}
+ 319              		.cfi_def_cfa_offset 8
+ 320              		.cfi_offset 7, -8
+ 321              		.cfi_offset 14, -4
+ 322 0002 00AF     		add	r7, sp, #0
+ 323              		.cfi_def_cfa_register 7
+  88:.\Generated_Source\PSoC5/WaveDAC_1_High.c **** 	WaveDAC_1_High_IDAC8_Enable();
+ 324              		.loc 1 88 0
+ 325 0004 FFF7FEFF 		bl	WaveDAC_1_High_IDAC8_Enable
+  89:.\Generated_Source\PSoC5/WaveDAC_1_High.c **** 
+  90:.\Generated_Source\PSoC5/WaveDAC_1_High.c **** 	#if(WaveDAC_1_High_OUT_MODE == WaveDAC_1_High_BUFFER_MODE)
+  91:.\Generated_Source\PSoC5/WaveDAC_1_High.c **** 	   WaveDAC_1_High_BuffAmp_Enable();
+  92:.\Generated_Source\PSoC5/WaveDAC_1_High.c **** 	#endif /* WaveDAC_1_High_OUT_MODE == WaveDAC_1_High_BUFFER_MODE */
+  93:.\Generated_Source\PSoC5/WaveDAC_1_High.c **** 
+  94:.\Generated_Source\PSoC5/WaveDAC_1_High.c **** 	/* 
+  95:.\Generated_Source\PSoC5/WaveDAC_1_High.c **** 	* Enable the channel. It is configured to remember the TD value so that
+  96:.\Generated_Source\PSoC5/WaveDAC_1_High.c **** 	* it can be restored from the place where it has been stopped.
+  97:.\Generated_Source\PSoC5/WaveDAC_1_High.c **** 	*/
+  98:.\Generated_Source\PSoC5/WaveDAC_1_High.c **** 	(void)CyDmaChEnable(WaveDAC_1_High_Wave1Chan, 1u);
+ 326              		.loc 1 98 0
+ 327 0008 074B     		ldr	r3, .L5
+ 328 000a 1B78     		ldrb	r3, [r3]	@ zero_extendqisi2
+ 329 000c 1846     		mov	r0, r3
+ 330 000e 0121     		movs	r1, #1
+ 331 0010 FFF7FEFF 		bl	CyDmaChEnable
+  99:.\Generated_Source\PSoC5/WaveDAC_1_High.c **** 	(void)CyDmaChEnable(WaveDAC_1_High_Wave2Chan, 1u);
+ 332              		.loc 1 99 0
+ 333 0014 054B     		ldr	r3, .L5+4
+ 334 0016 1B78     		ldrb	r3, [r3]	@ zero_extendqisi2
+ 335 0018 1846     		mov	r0, r3
+ 336 001a 0121     		movs	r1, #1
+ 337 001c FFF7FEFF 		bl	CyDmaChEnable
+ 100:.\Generated_Source\PSoC5/WaveDAC_1_High.c **** 	
+ 101:.\Generated_Source\PSoC5/WaveDAC_1_High.c **** 	/* set the initial value */
+ 102:.\Generated_Source\PSoC5/WaveDAC_1_High.c **** 	WaveDAC_1_High_SetValue(0u);
+ 338              		.loc 1 102 0
+ 339 0020 0020     		movs	r0, #0
+ 340 0022 FFF7FEFF 		bl	WaveDAC_1_High_IDAC8_SetValue
+ 103:.\Generated_Source\PSoC5/WaveDAC_1_High.c **** 	
+ 104:.\Generated_Source\PSoC5/WaveDAC_1_High.c **** 	#if(WaveDAC_1_High_CLOCK_SRC == WaveDAC_1_High_CLOCK_INT)  	
+ 105:.\Generated_Source\PSoC5/WaveDAC_1_High.c **** 	   WaveDAC_1_High_DacClk_Start();
+ 106:.\Generated_Source\PSoC5/WaveDAC_1_High.c **** 	#endif /* WaveDAC_1_High_CLOCK_SRC == WaveDAC_1_High_CLOCK_INT */
+ 107:.\Generated_Source\PSoC5/WaveDAC_1_High.c **** }
+ 341              		.loc 1 107 0
+ 342 0026 80BD     		pop	{r7, pc}
+ 343              	.L6:
+ 344              		.align	2
+ 345              	.L5:
+ 346 0028 01000000 		.word	WaveDAC_1_High_Wave1Chan
+ 347 002c 02000000 		.word	WaveDAC_1_High_Wave2Chan
+ 348              		.cfi_endproc
+ 349              	.LFE1:
+ARM GAS  C:\Users\jthem\AppData\Local\Temp\ccXA9CAQ.s 			page 9
+
+
+ 350              		.size	WaveDAC_1_High_Enable, .-WaveDAC_1_High_Enable
+ 351              		.section	.text.WaveDAC_1_High_Start,"ax",%progbits
+ 352              		.align	2
+ 353              		.global	WaveDAC_1_High_Start
+ 354              		.thumb
+ 355              		.thumb_func
+ 356              		.type	WaveDAC_1_High_Start, %function
+ 357              	WaveDAC_1_High_Start:
+ 358              	.LFB2:
+ 108:.\Generated_Source\PSoC5/WaveDAC_1_High.c **** 
+ 109:.\Generated_Source\PSoC5/WaveDAC_1_High.c **** 
+ 110:.\Generated_Source\PSoC5/WaveDAC_1_High.c **** /*******************************************************************************
+ 111:.\Generated_Source\PSoC5/WaveDAC_1_High.c **** * Function Name: WaveDAC_1_High_Start
+ 112:.\Generated_Source\PSoC5/WaveDAC_1_High.c **** ********************************************************************************
+ 113:.\Generated_Source\PSoC5/WaveDAC_1_High.c **** *
+ 114:.\Generated_Source\PSoC5/WaveDAC_1_High.c **** * Summary:
+ 115:.\Generated_Source\PSoC5/WaveDAC_1_High.c **** *  The start function initializes the voltage DAC with the default values, 
+ 116:.\Generated_Source\PSoC5/WaveDAC_1_High.c **** *  and sets the power to the given level.  A power level of 0, is the same as 
+ 117:.\Generated_Source\PSoC5/WaveDAC_1_High.c **** *  executing the stop function.
+ 118:.\Generated_Source\PSoC5/WaveDAC_1_High.c **** *
+ 119:.\Generated_Source\PSoC5/WaveDAC_1_High.c **** * Parameters:  
+ 120:.\Generated_Source\PSoC5/WaveDAC_1_High.c **** *  None
+ 121:.\Generated_Source\PSoC5/WaveDAC_1_High.c **** *
+ 122:.\Generated_Source\PSoC5/WaveDAC_1_High.c **** * Return: 
+ 123:.\Generated_Source\PSoC5/WaveDAC_1_High.c **** *  None
+ 124:.\Generated_Source\PSoC5/WaveDAC_1_High.c **** *
+ 125:.\Generated_Source\PSoC5/WaveDAC_1_High.c **** * Reentrant:
+ 126:.\Generated_Source\PSoC5/WaveDAC_1_High.c **** *  No
+ 127:.\Generated_Source\PSoC5/WaveDAC_1_High.c **** *
+ 128:.\Generated_Source\PSoC5/WaveDAC_1_High.c **** *******************************************************************************/
+ 129:.\Generated_Source\PSoC5/WaveDAC_1_High.c **** void WaveDAC_1_High_Start(void) 
+ 130:.\Generated_Source\PSoC5/WaveDAC_1_High.c **** {
+ 359              		.loc 1 130 0
+ 360              		.cfi_startproc
+ 361              		@ args = 0, pretend = 0, frame = 0
+ 362              		@ frame_needed = 1, uses_anonymous_args = 0
+ 363 0000 80B5     		push	{r7, lr}
+ 364              		.cfi_def_cfa_offset 8
+ 365              		.cfi_offset 7, -8
+ 366              		.cfi_offset 14, -4
+ 367 0002 00AF     		add	r7, sp, #0
+ 368              		.cfi_def_cfa_register 7
+ 131:.\Generated_Source\PSoC5/WaveDAC_1_High.c **** 	/* If not Initialized then initialize all required hardware and software */
+ 132:.\Generated_Source\PSoC5/WaveDAC_1_High.c **** 	if(WaveDAC_1_High_initVar == 0u)
+ 369              		.loc 1 132 0
+ 370 0004 054B     		ldr	r3, .L9
+ 371 0006 1B78     		ldrb	r3, [r3]	@ zero_extendqisi2
+ 372 0008 002B     		cmp	r3, #0
+ 373 000a 04D1     		bne	.L8
+ 133:.\Generated_Source\PSoC5/WaveDAC_1_High.c **** 	{
+ 134:.\Generated_Source\PSoC5/WaveDAC_1_High.c **** 		WaveDAC_1_High_Init();
+ 374              		.loc 1 134 0
+ 375 000c FFF7FEFF 		bl	WaveDAC_1_High_Init
+ 135:.\Generated_Source\PSoC5/WaveDAC_1_High.c **** 		WaveDAC_1_High_initVar = 1u;
+ 376              		.loc 1 135 0
+ 377 0010 024B     		ldr	r3, .L9
+ 378 0012 0122     		movs	r2, #1
+ARM GAS  C:\Users\jthem\AppData\Local\Temp\ccXA9CAQ.s 			page 10
+
+
+ 379 0014 1A70     		strb	r2, [r3]
+ 380              	.L8:
+ 136:.\Generated_Source\PSoC5/WaveDAC_1_High.c **** 	}
+ 137:.\Generated_Source\PSoC5/WaveDAC_1_High.c **** 	
+ 138:.\Generated_Source\PSoC5/WaveDAC_1_High.c **** 	WaveDAC_1_High_Enable();
+ 381              		.loc 1 138 0
+ 382 0016 FFF7FEFF 		bl	WaveDAC_1_High_Enable
+ 139:.\Generated_Source\PSoC5/WaveDAC_1_High.c **** }
+ 383              		.loc 1 139 0
+ 384 001a 80BD     		pop	{r7, pc}
+ 385              	.L10:
+ 386              		.align	2
+ 387              	.L9:
+ 388 001c 00000000 		.word	WaveDAC_1_High_initVar
+ 389              		.cfi_endproc
+ 390              	.LFE2:
+ 391              		.size	WaveDAC_1_High_Start, .-WaveDAC_1_High_Start
+ 392              		.section	.text.WaveDAC_1_High_StartEx,"ax",%progbits
+ 393              		.align	2
+ 394              		.global	WaveDAC_1_High_StartEx
+ 395              		.thumb
+ 396              		.thumb_func
+ 397              		.type	WaveDAC_1_High_StartEx, %function
+ 398              	WaveDAC_1_High_StartEx:
+ 399              	.LFB3:
+ 140:.\Generated_Source\PSoC5/WaveDAC_1_High.c **** 
+ 141:.\Generated_Source\PSoC5/WaveDAC_1_High.c **** 
+ 142:.\Generated_Source\PSoC5/WaveDAC_1_High.c **** /*******************************************************************************
+ 143:.\Generated_Source\PSoC5/WaveDAC_1_High.c **** * Function Name: WaveDAC_1_High_StartEx
+ 144:.\Generated_Source\PSoC5/WaveDAC_1_High.c **** ********************************************************************************
+ 145:.\Generated_Source\PSoC5/WaveDAC_1_High.c **** *
+ 146:.\Generated_Source\PSoC5/WaveDAC_1_High.c **** * Summary:
+ 147:.\Generated_Source\PSoC5/WaveDAC_1_High.c **** *  The StartEx function sets pointers and sizes for both waveforms
+ 148:.\Generated_Source\PSoC5/WaveDAC_1_High.c **** *  and then starts the component.
+ 149:.\Generated_Source\PSoC5/WaveDAC_1_High.c **** *
+ 150:.\Generated_Source\PSoC5/WaveDAC_1_High.c **** * Parameters:  
+ 151:.\Generated_Source\PSoC5/WaveDAC_1_High.c **** *   uint8 * wavePtr1:     Pointer to the waveform 1 array.
+ 152:.\Generated_Source\PSoC5/WaveDAC_1_High.c **** *   uint16  sampleSize1:  The amount of samples in the waveform 1.
+ 153:.\Generated_Source\PSoC5/WaveDAC_1_High.c **** *   uint8 * wavePtr2:     Pointer to the waveform 2 array.
+ 154:.\Generated_Source\PSoC5/WaveDAC_1_High.c **** *   uint16  sampleSize2:  The amount of samples in the waveform 2.
+ 155:.\Generated_Source\PSoC5/WaveDAC_1_High.c **** *
+ 156:.\Generated_Source\PSoC5/WaveDAC_1_High.c **** * Return: 
+ 157:.\Generated_Source\PSoC5/WaveDAC_1_High.c **** *  None
+ 158:.\Generated_Source\PSoC5/WaveDAC_1_High.c **** *
+ 159:.\Generated_Source\PSoC5/WaveDAC_1_High.c **** * Reentrant:
+ 160:.\Generated_Source\PSoC5/WaveDAC_1_High.c **** *  No
+ 161:.\Generated_Source\PSoC5/WaveDAC_1_High.c **** *
+ 162:.\Generated_Source\PSoC5/WaveDAC_1_High.c **** *******************************************************************************/
+ 163:.\Generated_Source\PSoC5/WaveDAC_1_High.c **** void WaveDAC_1_High_StartEx(const uint8 * wavePtr1, uint16 sampleSize1, const uint8 * wavePtr2, uin
+ 164:.\Generated_Source\PSoC5/WaveDAC_1_High.c **** 
+ 165:.\Generated_Source\PSoC5/WaveDAC_1_High.c **** {
+ 400              		.loc 1 165 0
+ 401              		.cfi_startproc
+ 402              		@ args = 0, pretend = 0, frame = 16
+ 403              		@ frame_needed = 1, uses_anonymous_args = 0
+ 404 0000 80B5     		push	{r7, lr}
+ 405              		.cfi_def_cfa_offset 8
+ARM GAS  C:\Users\jthem\AppData\Local\Temp\ccXA9CAQ.s 			page 11
+
+
+ 406              		.cfi_offset 7, -8
+ 407              		.cfi_offset 14, -4
+ 408 0002 84B0     		sub	sp, sp, #16
+ 409              		.cfi_def_cfa_offset 24
+ 410 0004 00AF     		add	r7, sp, #0
+ 411              		.cfi_def_cfa_register 7
+ 412 0006 F860     		str	r0, [r7, #12]
+ 413 0008 7A60     		str	r2, [r7, #4]
+ 414 000a 1A46     		mov	r2, r3
+ 415 000c 0B46     		mov	r3, r1	@ movhi
+ 416 000e 7B81     		strh	r3, [r7, #10]	@ movhi
+ 417 0010 1346     		mov	r3, r2	@ movhi
+ 418 0012 3B81     		strh	r3, [r7, #8]	@ movhi
+ 166:.\Generated_Source\PSoC5/WaveDAC_1_High.c **** 	WaveDAC_1_High_Wave1Setup(wavePtr1, sampleSize1);
+ 419              		.loc 1 166 0
+ 420 0014 7B89     		ldrh	r3, [r7, #10]
+ 421 0016 F868     		ldr	r0, [r7, #12]
+ 422 0018 1946     		mov	r1, r3
+ 423 001a FFF7FEFF 		bl	WaveDAC_1_High_Wave1Setup
+ 167:.\Generated_Source\PSoC5/WaveDAC_1_High.c **** 	WaveDAC_1_High_Wave2Setup(wavePtr2, sampleSize2);
+ 424              		.loc 1 167 0
+ 425 001e 3B89     		ldrh	r3, [r7, #8]
+ 426 0020 7868     		ldr	r0, [r7, #4]
+ 427 0022 1946     		mov	r1, r3
+ 428 0024 FFF7FEFF 		bl	WaveDAC_1_High_Wave2Setup
+ 168:.\Generated_Source\PSoC5/WaveDAC_1_High.c **** 	WaveDAC_1_High_Start();
+ 429              		.loc 1 168 0
+ 430 0028 FFF7FEFF 		bl	WaveDAC_1_High_Start
+ 169:.\Generated_Source\PSoC5/WaveDAC_1_High.c **** }
+ 431              		.loc 1 169 0
+ 432 002c 1037     		adds	r7, r7, #16
+ 433              		.cfi_def_cfa_offset 8
+ 434 002e BD46     		mov	sp, r7
+ 435              		.cfi_def_cfa_register 13
+ 436              		@ sp needed
+ 437 0030 80BD     		pop	{r7, pc}
+ 438              		.cfi_endproc
+ 439              	.LFE3:
+ 440              		.size	WaveDAC_1_High_StartEx, .-WaveDAC_1_High_StartEx
+ 441 0032 00BF     		.section	.text.WaveDAC_1_High_Stop,"ax",%progbits
+ 442              		.align	2
+ 443              		.global	WaveDAC_1_High_Stop
+ 444              		.thumb
+ 445              		.thumb_func
+ 446              		.type	WaveDAC_1_High_Stop, %function
+ 447              	WaveDAC_1_High_Stop:
+ 448              	.LFB4:
+ 170:.\Generated_Source\PSoC5/WaveDAC_1_High.c **** 
+ 171:.\Generated_Source\PSoC5/WaveDAC_1_High.c **** 
+ 172:.\Generated_Source\PSoC5/WaveDAC_1_High.c **** /*******************************************************************************
+ 173:.\Generated_Source\PSoC5/WaveDAC_1_High.c **** * Function Name: WaveDAC_1_High_Stop
+ 174:.\Generated_Source\PSoC5/WaveDAC_1_High.c **** ********************************************************************************
+ 175:.\Generated_Source\PSoC5/WaveDAC_1_High.c **** *
+ 176:.\Generated_Source\PSoC5/WaveDAC_1_High.c **** * Summary:
+ 177:.\Generated_Source\PSoC5/WaveDAC_1_High.c **** *  Stops the clock (if internal), disables the DMA channels
+ 178:.\Generated_Source\PSoC5/WaveDAC_1_High.c **** *  and powers down the DAC.
+ 179:.\Generated_Source\PSoC5/WaveDAC_1_High.c **** *
+ARM GAS  C:\Users\jthem\AppData\Local\Temp\ccXA9CAQ.s 			page 12
+
+
+ 180:.\Generated_Source\PSoC5/WaveDAC_1_High.c **** * Parameters:  
+ 181:.\Generated_Source\PSoC5/WaveDAC_1_High.c **** *  None  
+ 182:.\Generated_Source\PSoC5/WaveDAC_1_High.c **** *
+ 183:.\Generated_Source\PSoC5/WaveDAC_1_High.c **** * Return: 
+ 184:.\Generated_Source\PSoC5/WaveDAC_1_High.c **** *  None
+ 185:.\Generated_Source\PSoC5/WaveDAC_1_High.c **** *
+ 186:.\Generated_Source\PSoC5/WaveDAC_1_High.c **** *******************************************************************************/
+ 187:.\Generated_Source\PSoC5/WaveDAC_1_High.c **** void WaveDAC_1_High_Stop(void) 
+ 188:.\Generated_Source\PSoC5/WaveDAC_1_High.c **** {
+ 449              		.loc 1 188 0
+ 450              		.cfi_startproc
+ 451              		@ args = 0, pretend = 0, frame = 0
+ 452              		@ frame_needed = 1, uses_anonymous_args = 0
+ 453 0000 80B5     		push	{r7, lr}
+ 454              		.cfi_def_cfa_offset 8
+ 455              		.cfi_offset 7, -8
+ 456              		.cfi_offset 14, -4
+ 457 0002 00AF     		add	r7, sp, #0
+ 458              		.cfi_def_cfa_register 7
+ 189:.\Generated_Source\PSoC5/WaveDAC_1_High.c **** 	/* Turn off internal clock, if one present */
+ 190:.\Generated_Source\PSoC5/WaveDAC_1_High.c **** 	#if(WaveDAC_1_High_CLOCK_SRC == WaveDAC_1_High_CLOCK_INT)  	
+ 191:.\Generated_Source\PSoC5/WaveDAC_1_High.c **** 	   WaveDAC_1_High_DacClk_Stop();
+ 192:.\Generated_Source\PSoC5/WaveDAC_1_High.c **** 	#endif /* WaveDAC_1_High_CLOCK_SRC == WaveDAC_1_High_CLOCK_INT */
+ 193:.\Generated_Source\PSoC5/WaveDAC_1_High.c **** 	
+ 194:.\Generated_Source\PSoC5/WaveDAC_1_High.c **** 	/* Disble DMA channels */
+ 195:.\Generated_Source\PSoC5/WaveDAC_1_High.c **** 	(void)CyDmaChDisable(WaveDAC_1_High_Wave1Chan);
+ 459              		.loc 1 195 0
+ 460 0004 064B     		ldr	r3, .L13
+ 461 0006 1B78     		ldrb	r3, [r3]	@ zero_extendqisi2
+ 462 0008 1846     		mov	r0, r3
+ 463 000a FFF7FEFF 		bl	CyDmaChDisable
+ 196:.\Generated_Source\PSoC5/WaveDAC_1_High.c **** 	(void)CyDmaChDisable(WaveDAC_1_High_Wave2Chan);
+ 464              		.loc 1 196 0
+ 465 000e 054B     		ldr	r3, .L13+4
+ 466 0010 1B78     		ldrb	r3, [r3]	@ zero_extendqisi2
+ 467 0012 1846     		mov	r0, r3
+ 468 0014 FFF7FEFF 		bl	CyDmaChDisable
+ 197:.\Generated_Source\PSoC5/WaveDAC_1_High.c **** 
+ 198:.\Generated_Source\PSoC5/WaveDAC_1_High.c **** 	/* Disable power to DAC */
+ 199:.\Generated_Source\PSoC5/WaveDAC_1_High.c **** 	WaveDAC_1_High_IDAC8_Stop();
+ 469              		.loc 1 199 0
+ 470 0018 FFF7FEFF 		bl	WaveDAC_1_High_IDAC8_Stop
+ 200:.\Generated_Source\PSoC5/WaveDAC_1_High.c **** }
+ 471              		.loc 1 200 0
+ 472 001c 80BD     		pop	{r7, pc}
+ 473              	.L14:
+ 474 001e 00BF     		.align	2
+ 475              	.L13:
+ 476 0020 01000000 		.word	WaveDAC_1_High_Wave1Chan
+ 477 0024 02000000 		.word	WaveDAC_1_High_Wave2Chan
+ 478              		.cfi_endproc
+ 479              	.LFE4:
+ 480              		.size	WaveDAC_1_High_Stop, .-WaveDAC_1_High_Stop
+ 481              		.section	.text.WaveDAC_1_High_Wave1Setup,"ax",%progbits
+ 482              		.align	2
+ 483              		.global	WaveDAC_1_High_Wave1Setup
+ 484              		.thumb
+ARM GAS  C:\Users\jthem\AppData\Local\Temp\ccXA9CAQ.s 			page 13
+
+
+ 485              		.thumb_func
+ 486              		.type	WaveDAC_1_High_Wave1Setup, %function
+ 487              	WaveDAC_1_High_Wave1Setup:
+ 488              	.LFB5:
+ 201:.\Generated_Source\PSoC5/WaveDAC_1_High.c **** 
+ 202:.\Generated_Source\PSoC5/WaveDAC_1_High.c **** 
+ 203:.\Generated_Source\PSoC5/WaveDAC_1_High.c **** /*******************************************************************************
+ 204:.\Generated_Source\PSoC5/WaveDAC_1_High.c **** * Function Name: WaveDAC_1_High_Wave1Setup
+ 205:.\Generated_Source\PSoC5/WaveDAC_1_High.c **** ********************************************************************************
+ 206:.\Generated_Source\PSoC5/WaveDAC_1_High.c **** *
+ 207:.\Generated_Source\PSoC5/WaveDAC_1_High.c **** * Summary:
+ 208:.\Generated_Source\PSoC5/WaveDAC_1_High.c **** *  Sets pointer and size for waveform 1.                                    
+ 209:.\Generated_Source\PSoC5/WaveDAC_1_High.c **** *
+ 210:.\Generated_Source\PSoC5/WaveDAC_1_High.c **** * Parameters:  
+ 211:.\Generated_Source\PSoC5/WaveDAC_1_High.c **** *  uint8 * WavePtr:     Pointer to the waveform array.
+ 212:.\Generated_Source\PSoC5/WaveDAC_1_High.c **** *  uint16  SampleSize:  The amount of samples in the waveform.
+ 213:.\Generated_Source\PSoC5/WaveDAC_1_High.c **** *
+ 214:.\Generated_Source\PSoC5/WaveDAC_1_High.c **** * Return: 
+ 215:.\Generated_Source\PSoC5/WaveDAC_1_High.c **** *  None 
+ 216:.\Generated_Source\PSoC5/WaveDAC_1_High.c **** *
+ 217:.\Generated_Source\PSoC5/WaveDAC_1_High.c **** *******************************************************************************/
+ 218:.\Generated_Source\PSoC5/WaveDAC_1_High.c **** void WaveDAC_1_High_Wave1Setup(const uint8 * wavePtr, uint16 sampleSize)
+ 219:.\Generated_Source\PSoC5/WaveDAC_1_High.c **** 
+ 220:.\Generated_Source\PSoC5/WaveDAC_1_High.c **** {
+ 489              		.loc 1 220 0
+ 490              		.cfi_startproc
+ 491              		@ args = 0, pretend = 0, frame = 8
+ 492              		@ frame_needed = 1, uses_anonymous_args = 0
+ 493 0000 80B5     		push	{r7, lr}
+ 494              		.cfi_def_cfa_offset 8
+ 495              		.cfi_offset 7, -8
+ 496              		.cfi_offset 14, -4
+ 497 0002 82B0     		sub	sp, sp, #8
+ 498              		.cfi_def_cfa_offset 16
+ 499 0004 00AF     		add	r7, sp, #0
+ 500              		.cfi_def_cfa_register 7
+ 501 0006 7860     		str	r0, [r7, #4]
+ 502 0008 0B46     		mov	r3, r1
+ 503 000a 7B80     		strh	r3, [r7, #2]	@ movhi
+ 221:.\Generated_Source\PSoC5/WaveDAC_1_High.c **** 	#if (CY_PSOC3)
+ 222:.\Generated_Source\PSoC5/WaveDAC_1_High.c **** 		uint16 memoryType; /* determining the source memory type */
+ 223:.\Generated_Source\PSoC5/WaveDAC_1_High.c **** 		memoryType = (WaveDAC_1_High_HI16FLASHPTR == HI16(wavePtr)) ? HI16(CYDEV_FLS_BASE) : HI16(CYDEV_S
+ 224:.\Generated_Source\PSoC5/WaveDAC_1_High.c **** 		
+ 225:.\Generated_Source\PSoC5/WaveDAC_1_High.c **** 		WaveDAC_1_High_Wave1Chan = WaveDAC_1_High_Wave1_DMA_DmaInitialize(
+ 226:.\Generated_Source\PSoC5/WaveDAC_1_High.c **** 		WaveDAC_1_High_Wave1_DMA_BYTES_PER_BURST, WaveDAC_1_High_Wave1_DMA_REQUEST_PER_BURST,
+ 227:.\Generated_Source\PSoC5/WaveDAC_1_High.c **** 		memoryType, HI16(CYDEV_PERIPH_BASE));
+ 228:.\Generated_Source\PSoC5/WaveDAC_1_High.c **** 	#else /* PSoC 5 */
+ 229:.\Generated_Source\PSoC5/WaveDAC_1_High.c **** 		WaveDAC_1_High_Wave1Chan = WaveDAC_1_High_Wave1_DMA_DmaInitialize(
+ 230:.\Generated_Source\PSoC5/WaveDAC_1_High.c **** 		WaveDAC_1_High_Wave1_DMA_BYTES_PER_BURST, WaveDAC_1_High_Wave1_DMA_REQUEST_PER_BURST,
+ 231:.\Generated_Source\PSoC5/WaveDAC_1_High.c **** 		HI16(wavePtr), HI16(WaveDAC_1_High_DAC8__D));
+ 504              		.loc 1 231 0
+ 505 000c 7B68     		ldr	r3, [r7, #4]
+ 506 000e 1B0C     		lsrs	r3, r3, #16
+ 229:.\Generated_Source\PSoC5/WaveDAC_1_High.c **** 		WaveDAC_1_High_Wave1_DMA_BYTES_PER_BURST, WaveDAC_1_High_Wave1_DMA_REQUEST_PER_BURST,
+ 507              		.loc 1 229 0
+ 508 0010 9BB2     		uxth	r3, r3
+ 509 0012 0120     		movs	r0, #1
+ARM GAS  C:\Users\jthem\AppData\Local\Temp\ccXA9CAQ.s 			page 14
+
+
+ 510 0014 0121     		movs	r1, #1
+ 511 0016 1A46     		mov	r2, r3
+ 512 0018 4FF48043 		mov	r3, #16384
+ 513 001c FFF7FEFF 		bl	WaveDAC_1_High_Wave1_DMA_DmaInitialize
+ 514 0020 0346     		mov	r3, r0
+ 515 0022 1A46     		mov	r2, r3
+ 516 0024 104B     		ldr	r3, .L16
+ 517 0026 1A70     		strb	r2, [r3]
+ 232:.\Generated_Source\PSoC5/WaveDAC_1_High.c **** 	#endif /* CY_PSOC3 */
+ 233:.\Generated_Source\PSoC5/WaveDAC_1_High.c **** 	
+ 234:.\Generated_Source\PSoC5/WaveDAC_1_High.c **** 	/*
+ 235:.\Generated_Source\PSoC5/WaveDAC_1_High.c **** 	* TD is looping on itself. 
+ 236:.\Generated_Source\PSoC5/WaveDAC_1_High.c ****     * Increment the source address, but not the destination address. 
+ 237:.\Generated_Source\PSoC5/WaveDAC_1_High.c **** 	*/
+ 238:.\Generated_Source\PSoC5/WaveDAC_1_High.c **** 	(void)CyDmaTdSetConfiguration(WaveDAC_1_High_Wave1TD, sampleSize, WaveDAC_1_High_Wave1TD, 
+ 518              		.loc 1 238 0
+ 519 0028 104B     		ldr	r3, .L16+4
+ 520 002a 1978     		ldrb	r1, [r3]	@ zero_extendqisi2
+ 521 002c 0F4B     		ldr	r3, .L16+4
+ 522 002e 1B78     		ldrb	r3, [r3]	@ zero_extendqisi2
+ 523 0030 7A88     		ldrh	r2, [r7, #2]
+ 524 0032 0846     		mov	r0, r1
+ 525 0034 1146     		mov	r1, r2
+ 526 0036 1A46     		mov	r2, r3
+ 527 0038 0123     		movs	r3, #1
+ 528 003a FFF7FEFF 		bl	CyDmaTdSetConfiguration
+ 239:.\Generated_Source\PSoC5/WaveDAC_1_High.c ****                                     (uint8)CY_DMA_TD_INC_SRC_ADR | (uint8)WaveDAC_1_High_Wave1_DMA_
+ 240:.\Generated_Source\PSoC5/WaveDAC_1_High.c **** 	
+ 241:.\Generated_Source\PSoC5/WaveDAC_1_High.c **** 	/* Set the TD source and destination address */
+ 242:.\Generated_Source\PSoC5/WaveDAC_1_High.c **** 	(void)CyDmaTdSetAddress(WaveDAC_1_High_Wave1TD, LO16((uint32)wavePtr), LO16(WaveDAC_1_High_DAC8__D
+ 529              		.loc 1 242 0
+ 530 003e 0B4B     		ldr	r3, .L16+4
+ 531 0040 1A78     		ldrb	r2, [r3]	@ zero_extendqisi2
+ 532 0042 7B68     		ldr	r3, [r7, #4]
+ 533 0044 9BB2     		uxth	r3, r3
+ 534 0046 1046     		mov	r0, r2
+ 535 0048 1946     		mov	r1, r3
+ 536 004a 4FF4B742 		mov	r2, #23424
+ 537 004e FFF7FEFF 		bl	CyDmaTdSetAddress
+ 243:.\Generated_Source\PSoC5/WaveDAC_1_High.c **** 	
+ 244:.\Generated_Source\PSoC5/WaveDAC_1_High.c **** 	/* Associate the TD with the channel */
+ 245:.\Generated_Source\PSoC5/WaveDAC_1_High.c **** 	(void)CyDmaChSetInitialTd(WaveDAC_1_High_Wave1Chan, WaveDAC_1_High_Wave1TD);
+ 538              		.loc 1 245 0
+ 539 0052 054B     		ldr	r3, .L16
+ 540 0054 1A78     		ldrb	r2, [r3]	@ zero_extendqisi2
+ 541 0056 054B     		ldr	r3, .L16+4
+ 542 0058 1B78     		ldrb	r3, [r3]	@ zero_extendqisi2
+ 543 005a 1046     		mov	r0, r2
+ 544 005c 1946     		mov	r1, r3
+ 545 005e FFF7FEFF 		bl	CyDmaChSetInitialTd
+ 246:.\Generated_Source\PSoC5/WaveDAC_1_High.c **** }
+ 546              		.loc 1 246 0
+ 547 0062 0837     		adds	r7, r7, #8
+ 548              		.cfi_def_cfa_offset 8
+ 549 0064 BD46     		mov	sp, r7
+ 550              		.cfi_def_cfa_register 13
+ 551              		@ sp needed
+ARM GAS  C:\Users\jthem\AppData\Local\Temp\ccXA9CAQ.s 			page 15
+
+
+ 552 0066 80BD     		pop	{r7, pc}
+ 553              	.L17:
+ 554              		.align	2
+ 555              	.L16:
+ 556 0068 01000000 		.word	WaveDAC_1_High_Wave1Chan
+ 557 006c 03000000 		.word	WaveDAC_1_High_Wave1TD
+ 558              		.cfi_endproc
+ 559              	.LFE5:
+ 560              		.size	WaveDAC_1_High_Wave1Setup, .-WaveDAC_1_High_Wave1Setup
+ 561              		.section	.text.WaveDAC_1_High_Wave2Setup,"ax",%progbits
+ 562              		.align	2
+ 563              		.global	WaveDAC_1_High_Wave2Setup
+ 564              		.thumb
+ 565              		.thumb_func
+ 566              		.type	WaveDAC_1_High_Wave2Setup, %function
+ 567              	WaveDAC_1_High_Wave2Setup:
+ 568              	.LFB6:
+ 247:.\Generated_Source\PSoC5/WaveDAC_1_High.c **** 
+ 248:.\Generated_Source\PSoC5/WaveDAC_1_High.c **** 
+ 249:.\Generated_Source\PSoC5/WaveDAC_1_High.c **** /*******************************************************************************
+ 250:.\Generated_Source\PSoC5/WaveDAC_1_High.c **** * Function Name: WaveDAC_1_High_Wave2Setup
+ 251:.\Generated_Source\PSoC5/WaveDAC_1_High.c **** ********************************************************************************
+ 252:.\Generated_Source\PSoC5/WaveDAC_1_High.c **** *
+ 253:.\Generated_Source\PSoC5/WaveDAC_1_High.c **** * Summary:
+ 254:.\Generated_Source\PSoC5/WaveDAC_1_High.c **** *  Sets pointer and size for waveform 2.                                    
+ 255:.\Generated_Source\PSoC5/WaveDAC_1_High.c **** *
+ 256:.\Generated_Source\PSoC5/WaveDAC_1_High.c **** * Parameters:  
+ 257:.\Generated_Source\PSoC5/WaveDAC_1_High.c **** *  uint8 * WavePtr:     Pointer to the waveform array.
+ 258:.\Generated_Source\PSoC5/WaveDAC_1_High.c **** *  uint16  SampleSize:  The amount of samples in the waveform.
+ 259:.\Generated_Source\PSoC5/WaveDAC_1_High.c **** *
+ 260:.\Generated_Source\PSoC5/WaveDAC_1_High.c **** * Return: 
+ 261:.\Generated_Source\PSoC5/WaveDAC_1_High.c **** *  None
+ 262:.\Generated_Source\PSoC5/WaveDAC_1_High.c **** *
+ 263:.\Generated_Source\PSoC5/WaveDAC_1_High.c **** *******************************************************************************/
+ 264:.\Generated_Source\PSoC5/WaveDAC_1_High.c **** void WaveDAC_1_High_Wave2Setup(const uint8 * wavePtr, uint16 sampleSize)
+ 265:.\Generated_Source\PSoC5/WaveDAC_1_High.c ****  
+ 266:.\Generated_Source\PSoC5/WaveDAC_1_High.c **** {
+ 569              		.loc 1 266 0
+ 570              		.cfi_startproc
+ 571              		@ args = 0, pretend = 0, frame = 8
+ 572              		@ frame_needed = 1, uses_anonymous_args = 0
+ 573 0000 80B5     		push	{r7, lr}
+ 574              		.cfi_def_cfa_offset 8
+ 575              		.cfi_offset 7, -8
+ 576              		.cfi_offset 14, -4
+ 577 0002 82B0     		sub	sp, sp, #8
+ 578              		.cfi_def_cfa_offset 16
+ 579 0004 00AF     		add	r7, sp, #0
+ 580              		.cfi_def_cfa_register 7
+ 581 0006 7860     		str	r0, [r7, #4]
+ 582 0008 0B46     		mov	r3, r1
+ 583 000a 7B80     		strh	r3, [r7, #2]	@ movhi
+ 267:.\Generated_Source\PSoC5/WaveDAC_1_High.c **** 	#if (CY_PSOC3)
+ 268:.\Generated_Source\PSoC5/WaveDAC_1_High.c **** 		uint16 memoryType; /* determining the source memory type */
+ 269:.\Generated_Source\PSoC5/WaveDAC_1_High.c **** 		memoryType = (WaveDAC_1_High_HI16FLASHPTR == HI16(wavePtr)) ? HI16(CYDEV_FLS_BASE) : HI16(CYDEV_S
+ 270:.\Generated_Source\PSoC5/WaveDAC_1_High.c **** 			
+ 271:.\Generated_Source\PSoC5/WaveDAC_1_High.c **** 		WaveDAC_1_High_Wave2Chan = WaveDAC_1_High_Wave2_DMA_DmaInitialize(
+ARM GAS  C:\Users\jthem\AppData\Local\Temp\ccXA9CAQ.s 			page 16
+
+
+ 272:.\Generated_Source\PSoC5/WaveDAC_1_High.c **** 		WaveDAC_1_High_Wave2_DMA_BYTES_PER_BURST, WaveDAC_1_High_Wave2_DMA_REQUEST_PER_BURST,
+ 273:.\Generated_Source\PSoC5/WaveDAC_1_High.c **** 		memoryType, HI16(CYDEV_PERIPH_BASE));
+ 274:.\Generated_Source\PSoC5/WaveDAC_1_High.c **** 	#else /* PSoC 5 */
+ 275:.\Generated_Source\PSoC5/WaveDAC_1_High.c **** 		WaveDAC_1_High_Wave2Chan = WaveDAC_1_High_Wave2_DMA_DmaInitialize(
+ 276:.\Generated_Source\PSoC5/WaveDAC_1_High.c **** 		WaveDAC_1_High_Wave2_DMA_BYTES_PER_BURST, WaveDAC_1_High_Wave2_DMA_REQUEST_PER_BURST,
+ 277:.\Generated_Source\PSoC5/WaveDAC_1_High.c **** 		HI16(wavePtr), HI16(WaveDAC_1_High_DAC8__D));
+ 584              		.loc 1 277 0
+ 585 000c 7B68     		ldr	r3, [r7, #4]
+ 586 000e 1B0C     		lsrs	r3, r3, #16
+ 275:.\Generated_Source\PSoC5/WaveDAC_1_High.c **** 		WaveDAC_1_High_Wave2_DMA_BYTES_PER_BURST, WaveDAC_1_High_Wave2_DMA_REQUEST_PER_BURST,
+ 587              		.loc 1 275 0
+ 588 0010 9BB2     		uxth	r3, r3
+ 589 0012 0120     		movs	r0, #1
+ 590 0014 0121     		movs	r1, #1
+ 591 0016 1A46     		mov	r2, r3
+ 592 0018 4FF48043 		mov	r3, #16384
+ 593 001c FFF7FEFF 		bl	WaveDAC_1_High_Wave2_DMA_DmaInitialize
+ 594 0020 0346     		mov	r3, r0
+ 595 0022 1A46     		mov	r2, r3
+ 596 0024 104B     		ldr	r3, .L19
+ 597 0026 1A70     		strb	r2, [r3]
+ 278:.\Generated_Source\PSoC5/WaveDAC_1_High.c **** 	#endif /* CY_PSOC3 */
+ 279:.\Generated_Source\PSoC5/WaveDAC_1_High.c **** 	
+ 280:.\Generated_Source\PSoC5/WaveDAC_1_High.c **** 	/*
+ 281:.\Generated_Source\PSoC5/WaveDAC_1_High.c **** 	* TD is looping on itself. 
+ 282:.\Generated_Source\PSoC5/WaveDAC_1_High.c **** 	* Increment the source address, but not the destination address. 
+ 283:.\Generated_Source\PSoC5/WaveDAC_1_High.c **** 	*/
+ 284:.\Generated_Source\PSoC5/WaveDAC_1_High.c **** 	(void)CyDmaTdSetConfiguration(WaveDAC_1_High_Wave2TD, sampleSize, WaveDAC_1_High_Wave2TD, 
+ 598              		.loc 1 284 0
+ 599 0028 104B     		ldr	r3, .L19+4
+ 600 002a 1978     		ldrb	r1, [r3]	@ zero_extendqisi2
+ 601 002c 0F4B     		ldr	r3, .L19+4
+ 602 002e 1B78     		ldrb	r3, [r3]	@ zero_extendqisi2
+ 603 0030 7A88     		ldrh	r2, [r7, #2]
+ 604 0032 0846     		mov	r0, r1
+ 605 0034 1146     		mov	r1, r2
+ 606 0036 1A46     		mov	r2, r3
+ 607 0038 0123     		movs	r3, #1
+ 608 003a FFF7FEFF 		bl	CyDmaTdSetConfiguration
+ 285:.\Generated_Source\PSoC5/WaveDAC_1_High.c ****                                     (uint8)CY_DMA_TD_INC_SRC_ADR | (uint8)WaveDAC_1_High_Wave2_DMA_
+ 286:.\Generated_Source\PSoC5/WaveDAC_1_High.c **** 	
+ 287:.\Generated_Source\PSoC5/WaveDAC_1_High.c **** 	/* Set the TD source and destination address */
+ 288:.\Generated_Source\PSoC5/WaveDAC_1_High.c **** 	(void)CyDmaTdSetAddress(WaveDAC_1_High_Wave2TD, LO16((uint32)wavePtr), LO16(WaveDAC_1_High_DAC8__D
+ 609              		.loc 1 288 0
+ 610 003e 0B4B     		ldr	r3, .L19+4
+ 611 0040 1A78     		ldrb	r2, [r3]	@ zero_extendqisi2
+ 612 0042 7B68     		ldr	r3, [r7, #4]
+ 613 0044 9BB2     		uxth	r3, r3
+ 614 0046 1046     		mov	r0, r2
+ 615 0048 1946     		mov	r1, r3
+ 616 004a 4FF4B742 		mov	r2, #23424
+ 617 004e FFF7FEFF 		bl	CyDmaTdSetAddress
+ 289:.\Generated_Source\PSoC5/WaveDAC_1_High.c **** 	
+ 290:.\Generated_Source\PSoC5/WaveDAC_1_High.c **** 	/* Associate the TD with the channel */
+ 291:.\Generated_Source\PSoC5/WaveDAC_1_High.c **** 	(void)CyDmaChSetInitialTd(WaveDAC_1_High_Wave2Chan, WaveDAC_1_High_Wave2TD);
+ 618              		.loc 1 291 0
+ 619 0052 054B     		ldr	r3, .L19
+ARM GAS  C:\Users\jthem\AppData\Local\Temp\ccXA9CAQ.s 			page 17
+
+
+ 620 0054 1A78     		ldrb	r2, [r3]	@ zero_extendqisi2
+ 621 0056 054B     		ldr	r3, .L19+4
+ 622 0058 1B78     		ldrb	r3, [r3]	@ zero_extendqisi2
+ 623 005a 1046     		mov	r0, r2
+ 624 005c 1946     		mov	r1, r3
+ 625 005e FFF7FEFF 		bl	CyDmaChSetInitialTd
+ 292:.\Generated_Source\PSoC5/WaveDAC_1_High.c **** }
+ 626              		.loc 1 292 0
+ 627 0062 0837     		adds	r7, r7, #8
+ 628              		.cfi_def_cfa_offset 8
+ 629 0064 BD46     		mov	sp, r7
+ 630              		.cfi_def_cfa_register 13
+ 631              		@ sp needed
+ 632 0066 80BD     		pop	{r7, pc}
+ 633              	.L20:
+ 634              		.align	2
+ 635              	.L19:
+ 636 0068 02000000 		.word	WaveDAC_1_High_Wave2Chan
+ 637 006c 04000000 		.word	WaveDAC_1_High_Wave2TD
+ 638              		.cfi_endproc
+ 639              	.LFE6:
+ 640              		.size	WaveDAC_1_High_Wave2Setup, .-WaveDAC_1_High_Wave2Setup
+ 641              		.text
+ 642              	.Letext0:
+ 643              		.file 2 ".\\Generated_Source\\PSoC5\\cytypes.h"
+ 644              		.section	.debug_info,"",%progbits
+ 645              	.Ldebug_info0:
+ 646 0000 3D020000 		.4byte	0x23d
+ 647 0004 0400     		.2byte	0x4
+ 648 0006 00000000 		.4byte	.Ldebug_abbrev0
+ 649 000a 04       		.byte	0x4
+ 650 000b 01       		.uleb128 0x1
+ 651 000c 09010000 		.4byte	.LASF36
+ 652 0010 01       		.byte	0x1
+ 653 0011 00030000 		.4byte	.LASF37
+ 654 0015 9E010000 		.4byte	.LASF38
+ 655 0019 00000000 		.4byte	.Ldebug_ranges0+0
+ 656 001d 00000000 		.4byte	0
+ 657 0021 00000000 		.4byte	.Ldebug_line0
+ 658 0025 02       		.uleb128 0x2
+ 659 0026 01       		.byte	0x1
+ 660 0027 06       		.byte	0x6
+ 661 0028 F4020000 		.4byte	.LASF0
+ 662 002c 02       		.uleb128 0x2
+ 663 002d 01       		.byte	0x1
+ 664 002e 08       		.byte	0x8
+ 665 002f FB000000 		.4byte	.LASF1
+ 666 0033 02       		.uleb128 0x2
+ 667 0034 02       		.byte	0x2
+ 668 0035 05       		.byte	0x5
+ 669 0036 CA020000 		.4byte	.LASF2
+ 670 003a 02       		.uleb128 0x2
+ 671 003b 02       		.byte	0x2
+ 672 003c 07       		.byte	0x7
+ 673 003d 2C000000 		.4byte	.LASF3
+ 674 0041 02       		.uleb128 0x2
+ 675 0042 04       		.byte	0x4
+ARM GAS  C:\Users\jthem\AppData\Local\Temp\ccXA9CAQ.s 			page 18
+
+
+ 676 0043 05       		.byte	0x5
+ 677 0044 EB020000 		.4byte	.LASF4
+ 678 0048 02       		.uleb128 0x2
+ 679 0049 04       		.byte	0x4
+ 680 004a 07       		.byte	0x7
+ 681 004b 8F000000 		.4byte	.LASF5
+ 682 004f 02       		.uleb128 0x2
+ 683 0050 08       		.byte	0x8
+ 684 0051 05       		.byte	0x5
+ 685 0052 A0020000 		.4byte	.LASF6
+ 686 0056 02       		.uleb128 0x2
+ 687 0057 08       		.byte	0x8
+ 688 0058 07       		.byte	0x7
+ 689 0059 42020000 		.4byte	.LASF7
+ 690 005d 03       		.uleb128 0x3
+ 691 005e 04       		.byte	0x4
+ 692 005f 05       		.byte	0x5
+ 693 0060 696E7400 		.ascii	"int\000"
+ 694 0064 02       		.uleb128 0x2
+ 695 0065 04       		.byte	0x4
+ 696 0066 07       		.byte	0x7
+ 697 0067 1F020000 		.4byte	.LASF8
+ 698 006b 04       		.uleb128 0x4
+ 699 006c BB000000 		.4byte	.LASF9
+ 700 0070 02       		.byte	0x2
+ 701 0071 3801     		.2byte	0x138
+ 702 0073 2C000000 		.4byte	0x2c
+ 703 0077 04       		.uleb128 0x4
+ 704 0078 E1010000 		.4byte	.LASF10
+ 705 007c 02       		.byte	0x2
+ 706 007d 3901     		.2byte	0x139
+ 707 007f 3A000000 		.4byte	0x3a
+ 708 0083 04       		.uleb128 0x4
+ 709 0084 FF010000 		.4byte	.LASF11
+ 710 0088 02       		.byte	0x2
+ 711 0089 3A01     		.2byte	0x13a
+ 712 008b 48000000 		.4byte	0x48
+ 713 008f 02       		.uleb128 0x2
+ 714 0090 04       		.byte	0x4
+ 715 0091 04       		.byte	0x4
+ 716 0092 51000000 		.4byte	.LASF12
+ 717 0096 02       		.uleb128 0x2
+ 718 0097 08       		.byte	0x8
+ 719 0098 04       		.byte	0x4
+ 720 0099 97010000 		.4byte	.LASF13
+ 721 009d 02       		.uleb128 0x2
+ 722 009e 01       		.byte	0x1
+ 723 009f 08       		.byte	0x8
+ 724 00a0 AE020000 		.4byte	.LASF14
+ 725 00a4 02       		.uleb128 0x2
+ 726 00a5 04       		.byte	0x4
+ 727 00a6 07       		.byte	0x7
+ 728 00a7 97020000 		.4byte	.LASF15
+ 729 00ab 05       		.uleb128 0x5
+ 730 00ac 57000000 		.4byte	.LASF16
+ 731 00b0 01       		.byte	0x1
+ 732 00b1 2B       		.byte	0x2b
+ARM GAS  C:\Users\jthem\AppData\Local\Temp\ccXA9CAQ.s 			page 19
+
+
+ 733 00b2 00000000 		.4byte	.LFB0
+ 734 00b6 54000000 		.4byte	.LFE0-.LFB0
+ 735 00ba 01       		.uleb128 0x1
+ 736 00bb 9C       		.byte	0x9c
+ 737 00bc 05       		.uleb128 0x5
+ 738 00bd 2C020000 		.4byte	.LASF17
+ 739 00c1 01       		.byte	0x1
+ 740 00c2 56       		.byte	0x56
+ 741 00c3 00000000 		.4byte	.LFB1
+ 742 00c7 30000000 		.4byte	.LFE1-.LFB1
+ 743 00cb 01       		.uleb128 0x1
+ 744 00cc 9C       		.byte	0x9c
+ 745 00cd 05       		.uleb128 0x5
+ 746 00ce 00000000 		.4byte	.LASF18
+ 747 00d2 01       		.byte	0x1
+ 748 00d3 81       		.byte	0x81
+ 749 00d4 00000000 		.4byte	.LFB2
+ 750 00d8 20000000 		.4byte	.LFE2-.LFB2
+ 751 00dc 01       		.uleb128 0x1
+ 752 00dd 9C       		.byte	0x9c
+ 753 00de 06       		.uleb128 0x6
+ 754 00df D4020000 		.4byte	.LASF24
+ 755 00e3 01       		.byte	0x1
+ 756 00e4 A3       		.byte	0xa3
+ 757 00e5 00000000 		.4byte	.LFB3
+ 758 00e9 32000000 		.4byte	.LFE3-.LFB3
+ 759 00ed 01       		.uleb128 0x1
+ 760 00ee 9C       		.byte	0x9c
+ 761 00ef 2C010000 		.4byte	0x12c
+ 762 00f3 07       		.uleb128 0x7
+ 763 00f4 3F000000 		.4byte	.LASF19
+ 764 00f8 01       		.byte	0x1
+ 765 00f9 A3       		.byte	0xa3
+ 766 00fa 2C010000 		.4byte	0x12c
+ 767 00fe 02       		.uleb128 0x2
+ 768 00ff 91       		.byte	0x91
+ 769 0100 74       		.sleb128 -12
+ 770 0101 07       		.uleb128 0x7
+ 771 0102 E3000000 		.4byte	.LASF20
+ 772 0106 01       		.byte	0x1
+ 773 0107 A3       		.byte	0xa3
+ 774 0108 77000000 		.4byte	0x77
+ 775 010c 02       		.uleb128 0x2
+ 776 010d 91       		.byte	0x91
+ 777 010e 72       		.sleb128 -14
+ 778 010f 07       		.uleb128 0x7
+ 779 0110 48000000 		.4byte	.LASF21
+ 780 0114 01       		.byte	0x1
+ 781 0115 A3       		.byte	0xa3
+ 782 0116 2C010000 		.4byte	0x12c
+ 783 011a 02       		.uleb128 0x2
+ 784 011b 91       		.byte	0x91
+ 785 011c 6C       		.sleb128 -20
+ 786 011d 07       		.uleb128 0x7
+ 787 011e EF000000 		.4byte	.LASF22
+ 788 0122 01       		.byte	0x1
+ 789 0123 A3       		.byte	0xa3
+ARM GAS  C:\Users\jthem\AppData\Local\Temp\ccXA9CAQ.s 			page 20
+
+
+ 790 0124 77000000 		.4byte	0x77
+ 791 0128 02       		.uleb128 0x2
+ 792 0129 91       		.byte	0x91
+ 793 012a 70       		.sleb128 -16
+ 794 012b 00       		.byte	0
+ 795 012c 08       		.uleb128 0x8
+ 796 012d 04       		.byte	0x4
+ 797 012e 32010000 		.4byte	0x132
+ 798 0132 09       		.uleb128 0x9
+ 799 0133 6B000000 		.4byte	0x6b
+ 800 0137 05       		.uleb128 0x5
+ 801 0138 59020000 		.4byte	.LASF23
+ 802 013c 01       		.byte	0x1
+ 803 013d BB       		.byte	0xbb
+ 804 013e 00000000 		.4byte	.LFB4
+ 805 0142 28000000 		.4byte	.LFE4-.LFB4
+ 806 0146 01       		.uleb128 0x1
+ 807 0147 9C       		.byte	0x9c
+ 808 0148 06       		.uleb128 0x6
+ 809 0149 C9000000 		.4byte	.LASF25
+ 810 014d 01       		.byte	0x1
+ 811 014e DA       		.byte	0xda
+ 812 014f 00000000 		.4byte	.LFB5
+ 813 0153 70000000 		.4byte	.LFE5-.LFB5
+ 814 0157 01       		.uleb128 0x1
+ 815 0158 9C       		.byte	0x9c
+ 816 0159 7A010000 		.4byte	0x17a
+ 817 015d 07       		.uleb128 0x7
+ 818 015e C1000000 		.4byte	.LASF26
+ 819 0162 01       		.byte	0x1
+ 820 0163 DA       		.byte	0xda
+ 821 0164 2C010000 		.4byte	0x12c
+ 822 0168 02       		.uleb128 0x2
+ 823 0169 91       		.byte	0x91
+ 824 016a 74       		.sleb128 -12
+ 825 016b 07       		.uleb128 0x7
+ 826 016c 6B000000 		.4byte	.LASF27
+ 827 0170 01       		.byte	0x1
+ 828 0171 DA       		.byte	0xda
+ 829 0172 77000000 		.4byte	0x77
+ 830 0176 02       		.uleb128 0x2
+ 831 0177 91       		.byte	0x91
+ 832 0178 72       		.sleb128 -14
+ 833 0179 00       		.byte	0
+ 834 017a 0A       		.uleb128 0xa
+ 835 017b A1000000 		.4byte	.LASF28
+ 836 017f 01       		.byte	0x1
+ 837 0180 0801     		.2byte	0x108
+ 838 0182 00000000 		.4byte	.LFB6
+ 839 0186 70000000 		.4byte	.LFE6-.LFB6
+ 840 018a 01       		.uleb128 0x1
+ 841 018b 9C       		.byte	0x9c
+ 842 018c AF010000 		.4byte	0x1af
+ 843 0190 0B       		.uleb128 0xb
+ 844 0191 C1000000 		.4byte	.LASF26
+ 845 0195 01       		.byte	0x1
+ 846 0196 0801     		.2byte	0x108
+ARM GAS  C:\Users\jthem\AppData\Local\Temp\ccXA9CAQ.s 			page 21
+
+
+ 847 0198 2C010000 		.4byte	0x12c
+ 848 019c 02       		.uleb128 0x2
+ 849 019d 91       		.byte	0x91
+ 850 019e 74       		.sleb128 -12
+ 851 019f 0B       		.uleb128 0xb
+ 852 01a0 6B000000 		.4byte	.LASF27
+ 853 01a4 01       		.byte	0x1
+ 854 01a5 0801     		.2byte	0x108
+ 855 01a7 77000000 		.4byte	0x77
+ 856 01ab 02       		.uleb128 0x2
+ 857 01ac 91       		.byte	0x91
+ 858 01ad 72       		.sleb128 -14
+ 859 01ae 00       		.byte	0
+ 860 01af 0C       		.uleb128 0xc
+ 861 01b0 76000000 		.4byte	.LASF29
+ 862 01b4 01       		.byte	0x1
+ 863 01b5 17       		.byte	0x17
+ 864 01b6 6B000000 		.4byte	0x6b
+ 865 01ba 05       		.uleb128 0x5
+ 866 01bb 03       		.byte	0x3
+ 867 01bc 01000000 		.4byte	WaveDAC_1_High_Wave1Chan
+ 868 01c0 0C       		.uleb128 0xc
+ 869 01c1 06020000 		.4byte	.LASF30
+ 870 01c5 01       		.byte	0x1
+ 871 01c6 18       		.byte	0x18
+ 872 01c7 6B000000 		.4byte	0x6b
+ 873 01cb 05       		.uleb128 0x5
+ 874 01cc 03       		.byte	0x3
+ 875 01cd 02000000 		.4byte	WaveDAC_1_High_Wave2Chan
+ 876 01d1 0C       		.uleb128 0xc
+ 877 01d2 B3020000 		.4byte	.LASF31
+ 878 01d6 01       		.byte	0x1
+ 879 01d7 19       		.byte	0x19
+ 880 01d8 6B000000 		.4byte	0x6b
+ 881 01dc 05       		.uleb128 0x5
+ 882 01dd 03       		.byte	0x3
+ 883 01de 03000000 		.4byte	WaveDAC_1_High_Wave1TD
+ 884 01e2 0C       		.uleb128 0xc
+ 885 01e3 15000000 		.4byte	.LASF32
+ 886 01e7 01       		.byte	0x1
+ 887 01e8 1A       		.byte	0x1a
+ 888 01e9 6B000000 		.4byte	0x6b
+ 889 01ed 05       		.uleb128 0x5
+ 890 01ee 03       		.byte	0x3
+ 891 01ef 04000000 		.4byte	WaveDAC_1_High_Wave2TD
+ 892 01f3 0D       		.uleb128 0xd
+ 893 01f4 E8010000 		.4byte	.LASF33
+ 894 01f8 01       		.byte	0x1
+ 895 01f9 12       		.byte	0x12
+ 896 01fa 6B000000 		.4byte	0x6b
+ 897 01fe 05       		.uleb128 0x5
+ 898 01ff 03       		.byte	0x3
+ 899 0200 00000000 		.4byte	WaveDAC_1_High_initVar
+ 900 0204 0E       		.uleb128 0xe
+ 901 0205 6B000000 		.4byte	0x6b
+ 902 0209 14020000 		.4byte	0x214
+ 903 020d 0F       		.uleb128 0xf
+ARM GAS  C:\Users\jthem\AppData\Local\Temp\ccXA9CAQ.s 			page 22
+
+
+ 904 020e A4000000 		.4byte	0xa4
+ 905 0212 63       		.byte	0x63
+ 906 0213 00       		.byte	0
+ 907 0214 0D       		.uleb128 0xd
+ 908 0215 6D020000 		.4byte	.LASF34
+ 909 0219 01       		.byte	0x1
+ 910 021a 14       		.byte	0x14
+ 911 021b 25020000 		.4byte	0x225
+ 912 021f 05       		.uleb128 0x5
+ 913 0220 03       		.byte	0x3
+ 914 0221 00000000 		.4byte	WaveDAC_1_High_wave1
+ 915 0225 09       		.uleb128 0x9
+ 916 0226 04020000 		.4byte	0x204
+ 917 022a 0D       		.uleb128 0xd
+ 918 022b 82020000 		.4byte	.LASF35
+ 919 022f 01       		.byte	0x1
+ 920 0230 15       		.byte	0x15
+ 921 0231 3B020000 		.4byte	0x23b
+ 922 0235 05       		.uleb128 0x5
+ 923 0236 03       		.byte	0x3
+ 924 0237 00000000 		.4byte	WaveDAC_1_High_wave2
+ 925 023b 09       		.uleb128 0x9
+ 926 023c 04020000 		.4byte	0x204
+ 927 0240 00       		.byte	0
+ 928              		.section	.debug_abbrev,"",%progbits
+ 929              	.Ldebug_abbrev0:
+ 930 0000 01       		.uleb128 0x1
+ 931 0001 11       		.uleb128 0x11
+ 932 0002 01       		.byte	0x1
+ 933 0003 25       		.uleb128 0x25
+ 934 0004 0E       		.uleb128 0xe
+ 935 0005 13       		.uleb128 0x13
+ 936 0006 0B       		.uleb128 0xb
+ 937 0007 03       		.uleb128 0x3
+ 938 0008 0E       		.uleb128 0xe
+ 939 0009 1B       		.uleb128 0x1b
+ 940 000a 0E       		.uleb128 0xe
+ 941 000b 55       		.uleb128 0x55
+ 942 000c 17       		.uleb128 0x17
+ 943 000d 11       		.uleb128 0x11
+ 944 000e 01       		.uleb128 0x1
+ 945 000f 10       		.uleb128 0x10
+ 946 0010 17       		.uleb128 0x17
+ 947 0011 00       		.byte	0
+ 948 0012 00       		.byte	0
+ 949 0013 02       		.uleb128 0x2
+ 950 0014 24       		.uleb128 0x24
+ 951 0015 00       		.byte	0
+ 952 0016 0B       		.uleb128 0xb
+ 953 0017 0B       		.uleb128 0xb
+ 954 0018 3E       		.uleb128 0x3e
+ 955 0019 0B       		.uleb128 0xb
+ 956 001a 03       		.uleb128 0x3
+ 957 001b 0E       		.uleb128 0xe
+ 958 001c 00       		.byte	0
+ 959 001d 00       		.byte	0
+ 960 001e 03       		.uleb128 0x3
+ARM GAS  C:\Users\jthem\AppData\Local\Temp\ccXA9CAQ.s 			page 23
+
+
+ 961 001f 24       		.uleb128 0x24
+ 962 0020 00       		.byte	0
+ 963 0021 0B       		.uleb128 0xb
+ 964 0022 0B       		.uleb128 0xb
+ 965 0023 3E       		.uleb128 0x3e
+ 966 0024 0B       		.uleb128 0xb
+ 967 0025 03       		.uleb128 0x3
+ 968 0026 08       		.uleb128 0x8
+ 969 0027 00       		.byte	0
+ 970 0028 00       		.byte	0
+ 971 0029 04       		.uleb128 0x4
+ 972 002a 16       		.uleb128 0x16
+ 973 002b 00       		.byte	0
+ 974 002c 03       		.uleb128 0x3
+ 975 002d 0E       		.uleb128 0xe
+ 976 002e 3A       		.uleb128 0x3a
+ 977 002f 0B       		.uleb128 0xb
+ 978 0030 3B       		.uleb128 0x3b
+ 979 0031 05       		.uleb128 0x5
+ 980 0032 49       		.uleb128 0x49
+ 981 0033 13       		.uleb128 0x13
+ 982 0034 00       		.byte	0
+ 983 0035 00       		.byte	0
+ 984 0036 05       		.uleb128 0x5
+ 985 0037 2E       		.uleb128 0x2e
+ 986 0038 00       		.byte	0
+ 987 0039 3F       		.uleb128 0x3f
+ 988 003a 19       		.uleb128 0x19
+ 989 003b 03       		.uleb128 0x3
+ 990 003c 0E       		.uleb128 0xe
+ 991 003d 3A       		.uleb128 0x3a
+ 992 003e 0B       		.uleb128 0xb
+ 993 003f 3B       		.uleb128 0x3b
+ 994 0040 0B       		.uleb128 0xb
+ 995 0041 27       		.uleb128 0x27
+ 996 0042 19       		.uleb128 0x19
+ 997 0043 11       		.uleb128 0x11
+ 998 0044 01       		.uleb128 0x1
+ 999 0045 12       		.uleb128 0x12
+ 1000 0046 06       		.uleb128 0x6
+ 1001 0047 40       		.uleb128 0x40
+ 1002 0048 18       		.uleb128 0x18
+ 1003 0049 9642     		.uleb128 0x2116
+ 1004 004b 19       		.uleb128 0x19
+ 1005 004c 00       		.byte	0
+ 1006 004d 00       		.byte	0
+ 1007 004e 06       		.uleb128 0x6
+ 1008 004f 2E       		.uleb128 0x2e
+ 1009 0050 01       		.byte	0x1
+ 1010 0051 3F       		.uleb128 0x3f
+ 1011 0052 19       		.uleb128 0x19
+ 1012 0053 03       		.uleb128 0x3
+ 1013 0054 0E       		.uleb128 0xe
+ 1014 0055 3A       		.uleb128 0x3a
+ 1015 0056 0B       		.uleb128 0xb
+ 1016 0057 3B       		.uleb128 0x3b
+ 1017 0058 0B       		.uleb128 0xb
+ARM GAS  C:\Users\jthem\AppData\Local\Temp\ccXA9CAQ.s 			page 24
+
+
+ 1018 0059 27       		.uleb128 0x27
+ 1019 005a 19       		.uleb128 0x19
+ 1020 005b 11       		.uleb128 0x11
+ 1021 005c 01       		.uleb128 0x1
+ 1022 005d 12       		.uleb128 0x12
+ 1023 005e 06       		.uleb128 0x6
+ 1024 005f 40       		.uleb128 0x40
+ 1025 0060 18       		.uleb128 0x18
+ 1026 0061 9642     		.uleb128 0x2116
+ 1027 0063 19       		.uleb128 0x19
+ 1028 0064 01       		.uleb128 0x1
+ 1029 0065 13       		.uleb128 0x13
+ 1030 0066 00       		.byte	0
+ 1031 0067 00       		.byte	0
+ 1032 0068 07       		.uleb128 0x7
+ 1033 0069 05       		.uleb128 0x5
+ 1034 006a 00       		.byte	0
+ 1035 006b 03       		.uleb128 0x3
+ 1036 006c 0E       		.uleb128 0xe
+ 1037 006d 3A       		.uleb128 0x3a
+ 1038 006e 0B       		.uleb128 0xb
+ 1039 006f 3B       		.uleb128 0x3b
+ 1040 0070 0B       		.uleb128 0xb
+ 1041 0071 49       		.uleb128 0x49
+ 1042 0072 13       		.uleb128 0x13
+ 1043 0073 02       		.uleb128 0x2
+ 1044 0074 18       		.uleb128 0x18
+ 1045 0075 00       		.byte	0
+ 1046 0076 00       		.byte	0
+ 1047 0077 08       		.uleb128 0x8
+ 1048 0078 0F       		.uleb128 0xf
+ 1049 0079 00       		.byte	0
+ 1050 007a 0B       		.uleb128 0xb
+ 1051 007b 0B       		.uleb128 0xb
+ 1052 007c 49       		.uleb128 0x49
+ 1053 007d 13       		.uleb128 0x13
+ 1054 007e 00       		.byte	0
+ 1055 007f 00       		.byte	0
+ 1056 0080 09       		.uleb128 0x9
+ 1057 0081 26       		.uleb128 0x26
+ 1058 0082 00       		.byte	0
+ 1059 0083 49       		.uleb128 0x49
+ 1060 0084 13       		.uleb128 0x13
+ 1061 0085 00       		.byte	0
+ 1062 0086 00       		.byte	0
+ 1063 0087 0A       		.uleb128 0xa
+ 1064 0088 2E       		.uleb128 0x2e
+ 1065 0089 01       		.byte	0x1
+ 1066 008a 3F       		.uleb128 0x3f
+ 1067 008b 19       		.uleb128 0x19
+ 1068 008c 03       		.uleb128 0x3
+ 1069 008d 0E       		.uleb128 0xe
+ 1070 008e 3A       		.uleb128 0x3a
+ 1071 008f 0B       		.uleb128 0xb
+ 1072 0090 3B       		.uleb128 0x3b
+ 1073 0091 05       		.uleb128 0x5
+ 1074 0092 27       		.uleb128 0x27
+ARM GAS  C:\Users\jthem\AppData\Local\Temp\ccXA9CAQ.s 			page 25
+
+
+ 1075 0093 19       		.uleb128 0x19
+ 1076 0094 11       		.uleb128 0x11
+ 1077 0095 01       		.uleb128 0x1
+ 1078 0096 12       		.uleb128 0x12
+ 1079 0097 06       		.uleb128 0x6
+ 1080 0098 40       		.uleb128 0x40
+ 1081 0099 18       		.uleb128 0x18
+ 1082 009a 9642     		.uleb128 0x2116
+ 1083 009c 19       		.uleb128 0x19
+ 1084 009d 01       		.uleb128 0x1
+ 1085 009e 13       		.uleb128 0x13
+ 1086 009f 00       		.byte	0
+ 1087 00a0 00       		.byte	0
+ 1088 00a1 0B       		.uleb128 0xb
+ 1089 00a2 05       		.uleb128 0x5
+ 1090 00a3 00       		.byte	0
+ 1091 00a4 03       		.uleb128 0x3
+ 1092 00a5 0E       		.uleb128 0xe
+ 1093 00a6 3A       		.uleb128 0x3a
+ 1094 00a7 0B       		.uleb128 0xb
+ 1095 00a8 3B       		.uleb128 0x3b
+ 1096 00a9 05       		.uleb128 0x5
+ 1097 00aa 49       		.uleb128 0x49
+ 1098 00ab 13       		.uleb128 0x13
+ 1099 00ac 02       		.uleb128 0x2
+ 1100 00ad 18       		.uleb128 0x18
+ 1101 00ae 00       		.byte	0
+ 1102 00af 00       		.byte	0
+ 1103 00b0 0C       		.uleb128 0xc
+ 1104 00b1 34       		.uleb128 0x34
+ 1105 00b2 00       		.byte	0
+ 1106 00b3 03       		.uleb128 0x3
+ 1107 00b4 0E       		.uleb128 0xe
+ 1108 00b5 3A       		.uleb128 0x3a
+ 1109 00b6 0B       		.uleb128 0xb
+ 1110 00b7 3B       		.uleb128 0x3b
+ 1111 00b8 0B       		.uleb128 0xb
+ 1112 00b9 49       		.uleb128 0x49
+ 1113 00ba 13       		.uleb128 0x13
+ 1114 00bb 02       		.uleb128 0x2
+ 1115 00bc 18       		.uleb128 0x18
+ 1116 00bd 00       		.byte	0
+ 1117 00be 00       		.byte	0
+ 1118 00bf 0D       		.uleb128 0xd
+ 1119 00c0 34       		.uleb128 0x34
+ 1120 00c1 00       		.byte	0
+ 1121 00c2 03       		.uleb128 0x3
+ 1122 00c3 0E       		.uleb128 0xe
+ 1123 00c4 3A       		.uleb128 0x3a
+ 1124 00c5 0B       		.uleb128 0xb
+ 1125 00c6 3B       		.uleb128 0x3b
+ 1126 00c7 0B       		.uleb128 0xb
+ 1127 00c8 49       		.uleb128 0x49
+ 1128 00c9 13       		.uleb128 0x13
+ 1129 00ca 3F       		.uleb128 0x3f
+ 1130 00cb 19       		.uleb128 0x19
+ 1131 00cc 02       		.uleb128 0x2
+ARM GAS  C:\Users\jthem\AppData\Local\Temp\ccXA9CAQ.s 			page 26
+
+
+ 1132 00cd 18       		.uleb128 0x18
+ 1133 00ce 00       		.byte	0
+ 1134 00cf 00       		.byte	0
+ 1135 00d0 0E       		.uleb128 0xe
+ 1136 00d1 01       		.uleb128 0x1
+ 1137 00d2 01       		.byte	0x1
+ 1138 00d3 49       		.uleb128 0x49
+ 1139 00d4 13       		.uleb128 0x13
+ 1140 00d5 01       		.uleb128 0x1
+ 1141 00d6 13       		.uleb128 0x13
+ 1142 00d7 00       		.byte	0
+ 1143 00d8 00       		.byte	0
+ 1144 00d9 0F       		.uleb128 0xf
+ 1145 00da 21       		.uleb128 0x21
+ 1146 00db 00       		.byte	0
+ 1147 00dc 49       		.uleb128 0x49
+ 1148 00dd 13       		.uleb128 0x13
+ 1149 00de 2F       		.uleb128 0x2f
+ 1150 00df 0B       		.uleb128 0xb
+ 1151 00e0 00       		.byte	0
+ 1152 00e1 00       		.byte	0
+ 1153 00e2 00       		.byte	0
+ 1154              		.section	.debug_aranges,"",%progbits
+ 1155 0000 4C000000 		.4byte	0x4c
+ 1156 0004 0200     		.2byte	0x2
+ 1157 0006 00000000 		.4byte	.Ldebug_info0
+ 1158 000a 04       		.byte	0x4
+ 1159 000b 00       		.byte	0
+ 1160 000c 0000     		.2byte	0
+ 1161 000e 0000     		.2byte	0
+ 1162 0010 00000000 		.4byte	.LFB0
+ 1163 0014 54000000 		.4byte	.LFE0-.LFB0
+ 1164 0018 00000000 		.4byte	.LFB1
+ 1165 001c 30000000 		.4byte	.LFE1-.LFB1
+ 1166 0020 00000000 		.4byte	.LFB2
+ 1167 0024 20000000 		.4byte	.LFE2-.LFB2
+ 1168 0028 00000000 		.4byte	.LFB3
+ 1169 002c 32000000 		.4byte	.LFE3-.LFB3
+ 1170 0030 00000000 		.4byte	.LFB4
+ 1171 0034 28000000 		.4byte	.LFE4-.LFB4
+ 1172 0038 00000000 		.4byte	.LFB5
+ 1173 003c 70000000 		.4byte	.LFE5-.LFB5
+ 1174 0040 00000000 		.4byte	.LFB6
+ 1175 0044 70000000 		.4byte	.LFE6-.LFB6
+ 1176 0048 00000000 		.4byte	0
+ 1177 004c 00000000 		.4byte	0
+ 1178              		.section	.debug_ranges,"",%progbits
+ 1179              	.Ldebug_ranges0:
+ 1180 0000 00000000 		.4byte	.LFB0
+ 1181 0004 54000000 		.4byte	.LFE0
+ 1182 0008 00000000 		.4byte	.LFB1
+ 1183 000c 30000000 		.4byte	.LFE1
+ 1184 0010 00000000 		.4byte	.LFB2
+ 1185 0014 20000000 		.4byte	.LFE2
+ 1186 0018 00000000 		.4byte	.LFB3
+ 1187 001c 32000000 		.4byte	.LFE3
+ 1188 0020 00000000 		.4byte	.LFB4
+ARM GAS  C:\Users\jthem\AppData\Local\Temp\ccXA9CAQ.s 			page 27
+
+
+ 1189 0024 28000000 		.4byte	.LFE4
+ 1190 0028 00000000 		.4byte	.LFB5
+ 1191 002c 70000000 		.4byte	.LFE5
+ 1192 0030 00000000 		.4byte	.LFB6
+ 1193 0034 70000000 		.4byte	.LFE6
+ 1194 0038 00000000 		.4byte	0
+ 1195 003c 00000000 		.4byte	0
+ 1196              		.section	.debug_line,"",%progbits
+ 1197              	.Ldebug_line0:
+ 1198 0000 F3000000 		.section	.debug_str,"MS",%progbits,1
+ 1198      02004D00 
+ 1198      00000201 
+ 1198      FB0E0D00 
+ 1198      01010101 
+ 1199              	.LASF18:
+ 1200 0000 57617665 		.ascii	"WaveDAC_1_High_Start\000"
+ 1200      4441435F 
+ 1200      315F4869 
+ 1200      67685F53 
+ 1200      74617274 
+ 1201              	.LASF32:
+ 1202 0015 57617665 		.ascii	"WaveDAC_1_High_Wave2TD\000"
+ 1202      4441435F 
+ 1202      315F4869 
+ 1202      67685F57 
+ 1202      61766532 
+ 1203              	.LASF3:
+ 1204 002c 73686F72 		.ascii	"short unsigned int\000"
+ 1204      7420756E 
+ 1204      7369676E 
+ 1204      65642069 
+ 1204      6E7400
+ 1205              	.LASF19:
+ 1206 003f 77617665 		.ascii	"wavePtr1\000"
+ 1206      50747231 
+ 1206      00
+ 1207              	.LASF21:
+ 1208 0048 77617665 		.ascii	"wavePtr2\000"
+ 1208      50747232 
+ 1208      00
+ 1209              	.LASF12:
+ 1210 0051 666C6F61 		.ascii	"float\000"
+ 1210      7400
+ 1211              	.LASF16:
+ 1212 0057 57617665 		.ascii	"WaveDAC_1_High_Init\000"
+ 1212      4441435F 
+ 1212      315F4869 
+ 1212      67685F49 
+ 1212      6E697400 
+ 1213              	.LASF27:
+ 1214 006b 73616D70 		.ascii	"sampleSize\000"
+ 1214      6C655369 
+ 1214      7A6500
+ 1215              	.LASF29:
+ 1216 0076 57617665 		.ascii	"WaveDAC_1_High_Wave1Chan\000"
+ 1216      4441435F 
+ 1216      315F4869 
+ARM GAS  C:\Users\jthem\AppData\Local\Temp\ccXA9CAQ.s 			page 28
+
+
+ 1216      67685F57 
+ 1216      61766531 
+ 1217              	.LASF5:
+ 1218 008f 6C6F6E67 		.ascii	"long unsigned int\000"
+ 1218      20756E73 
+ 1218      69676E65 
+ 1218      6420696E 
+ 1218      7400
+ 1219              	.LASF28:
+ 1220 00a1 57617665 		.ascii	"WaveDAC_1_High_Wave2Setup\000"
+ 1220      4441435F 
+ 1220      315F4869 
+ 1220      67685F57 
+ 1220      61766532 
+ 1221              	.LASF9:
+ 1222 00bb 75696E74 		.ascii	"uint8\000"
+ 1222      3800
+ 1223              	.LASF26:
+ 1224 00c1 77617665 		.ascii	"wavePtr\000"
+ 1224      50747200 
+ 1225              	.LASF25:
+ 1226 00c9 57617665 		.ascii	"WaveDAC_1_High_Wave1Setup\000"
+ 1226      4441435F 
+ 1226      315F4869 
+ 1226      67685F57 
+ 1226      61766531 
+ 1227              	.LASF20:
+ 1228 00e3 73616D70 		.ascii	"sampleSize1\000"
+ 1228      6C655369 
+ 1228      7A653100 
+ 1229              	.LASF22:
+ 1230 00ef 73616D70 		.ascii	"sampleSize2\000"
+ 1230      6C655369 
+ 1230      7A653200 
+ 1231              	.LASF1:
+ 1232 00fb 756E7369 		.ascii	"unsigned char\000"
+ 1232      676E6564 
+ 1232      20636861 
+ 1232      7200
+ 1233              	.LASF36:
+ 1234 0109 474E5520 		.ascii	"GNU C 4.9.3 20150303 (release) [ARM/embedded-4_9-br"
+ 1234      4320342E 
+ 1234      392E3320 
+ 1234      32303135 
+ 1234      30333033 
+ 1235 013c 616E6368 		.ascii	"anch revision 221220] -mcpu=cortex-m3 -mthumb -g -O"
+ 1235      20726576 
+ 1235      6973696F 
+ 1235      6E203232 
+ 1235      31323230 
+ 1236 016f 30202D66 		.ascii	"0 -ffunction-sections -ffat-lto-objects\000"
+ 1236      66756E63 
+ 1236      74696F6E 
+ 1236      2D736563 
+ 1236      74696F6E 
+ 1237              	.LASF13:
+ 1238 0197 646F7562 		.ascii	"double\000"
+ARM GAS  C:\Users\jthem\AppData\Local\Temp\ccXA9CAQ.s 			page 29
+
+
+ 1238      6C6500
+ 1239              	.LASF38:
+ 1240 019e 433A5C55 		.ascii	"C:\\Users\\jthem\\Documents\\PSoC Creator\\PWMExamp"
+ 1240      73657273 
+ 1240      5C6A7468 
+ 1240      656D5C44 
+ 1240      6F63756D 
+ 1241 01cc 6C653031 		.ascii	"le01\\EasyBoard.cydsn\000"
+ 1241      5C456173 
+ 1241      79426F61 
+ 1241      72642E63 
+ 1241      7964736E 
+ 1242              	.LASF10:
+ 1243 01e1 75696E74 		.ascii	"uint16\000"
+ 1243      313600
+ 1244              	.LASF33:
+ 1245 01e8 57617665 		.ascii	"WaveDAC_1_High_initVar\000"
+ 1245      4441435F 
+ 1245      315F4869 
+ 1245      67685F69 
+ 1245      6E697456 
+ 1246              	.LASF11:
+ 1247 01ff 75696E74 		.ascii	"uint32\000"
+ 1247      333200
+ 1248              	.LASF30:
+ 1249 0206 57617665 		.ascii	"WaveDAC_1_High_Wave2Chan\000"
+ 1249      4441435F 
+ 1249      315F4869 
+ 1249      67685F57 
+ 1249      61766532 
+ 1250              	.LASF8:
+ 1251 021f 756E7369 		.ascii	"unsigned int\000"
+ 1251      676E6564 
+ 1251      20696E74 
+ 1251      00
+ 1252              	.LASF17:
+ 1253 022c 57617665 		.ascii	"WaveDAC_1_High_Enable\000"
+ 1253      4441435F 
+ 1253      315F4869 
+ 1253      67685F45 
+ 1253      6E61626C 
+ 1254              	.LASF7:
+ 1255 0242 6C6F6E67 		.ascii	"long long unsigned int\000"
+ 1255      206C6F6E 
+ 1255      6720756E 
+ 1255      7369676E 
+ 1255      65642069 
+ 1256              	.LASF23:
+ 1257 0259 57617665 		.ascii	"WaveDAC_1_High_Stop\000"
+ 1257      4441435F 
+ 1257      315F4869 
+ 1257      67685F53 
+ 1257      746F7000 
+ 1258              	.LASF34:
+ 1259 026d 57617665 		.ascii	"WaveDAC_1_High_wave1\000"
+ 1259      4441435F 
+ 1259      315F4869 
+ARM GAS  C:\Users\jthem\AppData\Local\Temp\ccXA9CAQ.s 			page 30
+
+
+ 1259      67685F77 
+ 1259      61766531 
+ 1260              	.LASF35:
+ 1261 0282 57617665 		.ascii	"WaveDAC_1_High_wave2\000"
+ 1261      4441435F 
+ 1261      315F4869 
+ 1261      67685F77 
+ 1261      61766532 
+ 1262              	.LASF15:
+ 1263 0297 73697A65 		.ascii	"sizetype\000"
+ 1263      74797065 
+ 1263      00
+ 1264              	.LASF6:
+ 1265 02a0 6C6F6E67 		.ascii	"long long int\000"
+ 1265      206C6F6E 
+ 1265      6720696E 
+ 1265      7400
+ 1266              	.LASF14:
+ 1267 02ae 63686172 		.ascii	"char\000"
+ 1267      00
+ 1268              	.LASF31:
+ 1269 02b3 57617665 		.ascii	"WaveDAC_1_High_Wave1TD\000"
+ 1269      4441435F 
+ 1269      315F4869 
+ 1269      67685F57 
+ 1269      61766531 
+ 1270              	.LASF2:
+ 1271 02ca 73686F72 		.ascii	"short int\000"
+ 1271      7420696E 
+ 1271      7400
+ 1272              	.LASF24:
+ 1273 02d4 57617665 		.ascii	"WaveDAC_1_High_StartEx\000"
+ 1273      4441435F 
+ 1273      315F4869 
+ 1273      67685F53 
+ 1273      74617274 
+ 1274              	.LASF4:
+ 1275 02eb 6C6F6E67 		.ascii	"long int\000"
+ 1275      20696E74 
+ 1275      00
+ 1276              	.LASF0:
+ 1277 02f4 7369676E 		.ascii	"signed char\000"
+ 1277      65642063 
+ 1277      68617200 
+ 1278              	.LASF37:
+ 1279 0300 2E5C4765 		.ascii	".\\Generated_Source\\PSoC5\\WaveDAC_1_High.c\000"
+ 1279      6E657261 
+ 1279      7465645F 
+ 1279      536F7572 
+ 1279      63655C50 
+ 1280              		.ident	"GCC: (GNU Tools for ARM Embedded Processors) 4.9.3 20150303 (release) [ARM/embedded-4_9-br

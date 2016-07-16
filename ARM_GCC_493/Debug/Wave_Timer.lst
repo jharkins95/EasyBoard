@@ -1,0 +1,2142 @@
+ARM GAS  C:\Users\jthem\AppData\Local\Temp\ccW790zp.s 			page 1
+
+
+   1              		.syntax unified
+   2              		.cpu cortex-m3
+   3              		.fpu softvfp
+   4              		.eabi_attribute 20, 1
+   5              		.eabi_attribute 21, 1
+   6              		.eabi_attribute 23, 3
+   7              		.eabi_attribute 24, 1
+   8              		.eabi_attribute 25, 1
+   9              		.eabi_attribute 26, 1
+  10              		.eabi_attribute 30, 6
+  11              		.eabi_attribute 34, 1
+  12              		.eabi_attribute 18, 4
+  13              		.thumb
+  14              		.file	"Wave_Timer.c"
+  15              		.text
+  16              	.Ltext0:
+  17              		.cfi_sections	.debug_frame
+  18              		.global	Wave_Timer_initVar
+  19              		.bss
+  20              		.type	Wave_Timer_initVar, %object
+  21              		.size	Wave_Timer_initVar, 1
+  22              	Wave_Timer_initVar:
+  23 0000 00       		.space	1
+  24              		.section	.text.Wave_Timer_Init,"ax",%progbits
+  25              		.align	2
+  26              		.global	Wave_Timer_Init
+  27              		.thumb
+  28              		.thumb_func
+  29              		.type	Wave_Timer_Init, %function
+  30              	Wave_Timer_Init:
+  31              	.LFB0:
+  32              		.file 1 ".\\Generated_Source\\PSoC5\\Wave_Timer.c"
+   1:.\Generated_Source\PSoC5/Wave_Timer.c **** /*******************************************************************************
+   2:.\Generated_Source\PSoC5/Wave_Timer.c **** * File Name: Wave_Timer.c
+   3:.\Generated_Source\PSoC5/Wave_Timer.c **** * Version 2.70
+   4:.\Generated_Source\PSoC5/Wave_Timer.c **** *
+   5:.\Generated_Source\PSoC5/Wave_Timer.c **** * Description:
+   6:.\Generated_Source\PSoC5/Wave_Timer.c **** *  The Timer component consists of a 8, 16, 24 or 32-bit timer with
+   7:.\Generated_Source\PSoC5/Wave_Timer.c **** *  a selectable period between 2 and 2^Width - 1.  The timer may free run
+   8:.\Generated_Source\PSoC5/Wave_Timer.c **** *  or be used as a capture timer as well.  The capture can be initiated
+   9:.\Generated_Source\PSoC5/Wave_Timer.c **** *  by a positive or negative edge signal as well as via software.
+  10:.\Generated_Source\PSoC5/Wave_Timer.c **** *  A trigger input can be programmed to enable the timer on rising edge
+  11:.\Generated_Source\PSoC5/Wave_Timer.c **** *  falling edge, either edge or continous run.
+  12:.\Generated_Source\PSoC5/Wave_Timer.c **** *  Interrupts may be generated due to a terminal count condition
+  13:.\Generated_Source\PSoC5/Wave_Timer.c **** *  or a capture event.
+  14:.\Generated_Source\PSoC5/Wave_Timer.c **** *
+  15:.\Generated_Source\PSoC5/Wave_Timer.c **** * Note:
+  16:.\Generated_Source\PSoC5/Wave_Timer.c **** *
+  17:.\Generated_Source\PSoC5/Wave_Timer.c **** ********************************************************************************
+  18:.\Generated_Source\PSoC5/Wave_Timer.c **** * Copyright 2008-2014, Cypress Semiconductor Corporation.  All rights reserved.
+  19:.\Generated_Source\PSoC5/Wave_Timer.c **** * You may use this file only in accordance with the license, terms, conditions,
+  20:.\Generated_Source\PSoC5/Wave_Timer.c **** * disclaimers, and limitations in the end user license agreement accompanying
+  21:.\Generated_Source\PSoC5/Wave_Timer.c **** * the software package with which this file was provided.
+  22:.\Generated_Source\PSoC5/Wave_Timer.c **** ********************************************************************************/
+  23:.\Generated_Source\PSoC5/Wave_Timer.c **** 
+  24:.\Generated_Source\PSoC5/Wave_Timer.c **** #include "Wave_Timer.h"
+  25:.\Generated_Source\PSoC5/Wave_Timer.c **** 
+ARM GAS  C:\Users\jthem\AppData\Local\Temp\ccW790zp.s 			page 2
+
+
+  26:.\Generated_Source\PSoC5/Wave_Timer.c **** uint8 Wave_Timer_initVar = 0u;
+  27:.\Generated_Source\PSoC5/Wave_Timer.c **** 
+  28:.\Generated_Source\PSoC5/Wave_Timer.c **** 
+  29:.\Generated_Source\PSoC5/Wave_Timer.c **** /*******************************************************************************
+  30:.\Generated_Source\PSoC5/Wave_Timer.c **** * Function Name: Wave_Timer_Init
+  31:.\Generated_Source\PSoC5/Wave_Timer.c **** ********************************************************************************
+  32:.\Generated_Source\PSoC5/Wave_Timer.c **** *
+  33:.\Generated_Source\PSoC5/Wave_Timer.c **** * Summary:
+  34:.\Generated_Source\PSoC5/Wave_Timer.c **** *  Initialize to the schematic state
+  35:.\Generated_Source\PSoC5/Wave_Timer.c **** *
+  36:.\Generated_Source\PSoC5/Wave_Timer.c **** * Parameters:
+  37:.\Generated_Source\PSoC5/Wave_Timer.c **** *  void
+  38:.\Generated_Source\PSoC5/Wave_Timer.c **** *
+  39:.\Generated_Source\PSoC5/Wave_Timer.c **** * Return:
+  40:.\Generated_Source\PSoC5/Wave_Timer.c **** *  void
+  41:.\Generated_Source\PSoC5/Wave_Timer.c **** *
+  42:.\Generated_Source\PSoC5/Wave_Timer.c **** *******************************************************************************/
+  43:.\Generated_Source\PSoC5/Wave_Timer.c **** void Wave_Timer_Init(void) 
+  44:.\Generated_Source\PSoC5/Wave_Timer.c **** {
+  33              		.loc 1 44 0
+  34              		.cfi_startproc
+  35              		@ args = 0, pretend = 0, frame = 0
+  36              		@ frame_needed = 1, uses_anonymous_args = 0
+  37 0000 80B5     		push	{r7, lr}
+  38              		.cfi_def_cfa_offset 8
+  39              		.cfi_offset 7, -8
+  40              		.cfi_offset 14, -4
+  41 0002 00AF     		add	r7, sp, #0
+  42              		.cfi_def_cfa_register 7
+  45:.\Generated_Source\PSoC5/Wave_Timer.c ****     #if(!Wave_Timer_UsingFixedFunction)
+  46:.\Generated_Source\PSoC5/Wave_Timer.c ****             /* Interrupt State Backup for Critical Region*/
+  47:.\Generated_Source\PSoC5/Wave_Timer.c ****             uint8 Wave_Timer_interruptState;
+  48:.\Generated_Source\PSoC5/Wave_Timer.c ****     #endif /* Interrupt state back up for Fixed Function only */
+  49:.\Generated_Source\PSoC5/Wave_Timer.c **** 
+  50:.\Generated_Source\PSoC5/Wave_Timer.c ****     #if (Wave_Timer_UsingFixedFunction)
+  51:.\Generated_Source\PSoC5/Wave_Timer.c ****         /* Clear all bits but the enable bit (if it's already set) for Timer operation */
+  52:.\Generated_Source\PSoC5/Wave_Timer.c ****         Wave_Timer_CONTROL &= Wave_Timer_CTRL_ENABLE;
+  43              		.loc 1 52 0
+  44 0004 344A     		ldr	r2, .L2
+  45 0006 344B     		ldr	r3, .L2
+  46 0008 1B78     		ldrb	r3, [r3]
+  47 000a DBB2     		uxtb	r3, r3
+  48 000c 03F00103 		and	r3, r3, #1
+  49 0010 DBB2     		uxtb	r3, r3
+  50 0012 1370     		strb	r3, [r2]
+  53:.\Generated_Source\PSoC5/Wave_Timer.c **** 
+  54:.\Generated_Source\PSoC5/Wave_Timer.c ****         /* Clear the mode bits for continuous run mode */
+  55:.\Generated_Source\PSoC5/Wave_Timer.c ****         #if (CY_PSOC5A)
+  56:.\Generated_Source\PSoC5/Wave_Timer.c ****             Wave_Timer_CONTROL2 &= ((uint8)(~Wave_Timer_CTRL_MODE_MASK));
+  57:.\Generated_Source\PSoC5/Wave_Timer.c ****         #endif /* Clear bits in CONTROL2 only in PSOC5A */
+  58:.\Generated_Source\PSoC5/Wave_Timer.c **** 
+  59:.\Generated_Source\PSoC5/Wave_Timer.c ****         #if (CY_PSOC3 || CY_PSOC5LP)
+  60:.\Generated_Source\PSoC5/Wave_Timer.c ****             Wave_Timer_CONTROL3 &= ((uint8)(~Wave_Timer_CTRL_MODE_MASK));
+  51              		.loc 1 60 0
+  52 0014 314A     		ldr	r2, .L2+4
+  53 0016 314B     		ldr	r3, .L2+4
+  54 0018 1B78     		ldrb	r3, [r3]
+ARM GAS  C:\Users\jthem\AppData\Local\Temp\ccW790zp.s 			page 3
+
+
+  55 001a DBB2     		uxtb	r3, r3
+  56 001c 23F00303 		bic	r3, r3, #3
+  57 0020 DBB2     		uxtb	r3, r3
+  58 0022 1370     		strb	r3, [r2]
+  61:.\Generated_Source\PSoC5/Wave_Timer.c ****         #endif /* CONTROL3 register exists only in PSoC3 OR PSoC5LP */
+  62:.\Generated_Source\PSoC5/Wave_Timer.c **** 
+  63:.\Generated_Source\PSoC5/Wave_Timer.c ****         /* Check if One Shot mode is enabled i.e. RunMode !=0*/
+  64:.\Generated_Source\PSoC5/Wave_Timer.c ****         #if (Wave_Timer_RunModeUsed != 0x0u)
+  65:.\Generated_Source\PSoC5/Wave_Timer.c ****             /* Set 3rd bit of Control register to enable one shot mode */
+  66:.\Generated_Source\PSoC5/Wave_Timer.c ****             Wave_Timer_CONTROL |= 0x04u;
+  67:.\Generated_Source\PSoC5/Wave_Timer.c ****         #endif /* One Shot enabled only when RunModeUsed is not Continuous*/
+  68:.\Generated_Source\PSoC5/Wave_Timer.c **** 
+  69:.\Generated_Source\PSoC5/Wave_Timer.c ****         #if (Wave_Timer_RunModeUsed == 2)
+  70:.\Generated_Source\PSoC5/Wave_Timer.c ****             #if (CY_PSOC5A)
+  71:.\Generated_Source\PSoC5/Wave_Timer.c ****                 /* Set last 2 bits of control2 register if one shot(halt on
+  72:.\Generated_Source\PSoC5/Wave_Timer.c ****                 interrupt) is enabled*/
+  73:.\Generated_Source\PSoC5/Wave_Timer.c ****                 Wave_Timer_CONTROL2 |= 0x03u;
+  74:.\Generated_Source\PSoC5/Wave_Timer.c ****             #endif /* Set One-Shot Halt on Interrupt bit in CONTROL2 for PSoC5A */
+  75:.\Generated_Source\PSoC5/Wave_Timer.c **** 
+  76:.\Generated_Source\PSoC5/Wave_Timer.c ****             #if (CY_PSOC3 || CY_PSOC5LP)
+  77:.\Generated_Source\PSoC5/Wave_Timer.c ****                 /* Set last 2 bits of control3 register if one shot(halt on
+  78:.\Generated_Source\PSoC5/Wave_Timer.c ****                 interrupt) is enabled*/
+  79:.\Generated_Source\PSoC5/Wave_Timer.c ****                 Wave_Timer_CONTROL3 |= 0x03u;
+  80:.\Generated_Source\PSoC5/Wave_Timer.c ****             #endif /* Set One-Shot Halt on Interrupt bit in CONTROL3 for PSoC3 or PSoC5LP */
+  81:.\Generated_Source\PSoC5/Wave_Timer.c **** 
+  82:.\Generated_Source\PSoC5/Wave_Timer.c ****         #endif /* Remove section if One Shot Halt on Interrupt is not enabled */
+  83:.\Generated_Source\PSoC5/Wave_Timer.c **** 
+  84:.\Generated_Source\PSoC5/Wave_Timer.c ****         #if (Wave_Timer_UsingHWEnable != 0)
+  85:.\Generated_Source\PSoC5/Wave_Timer.c ****             #if (CY_PSOC5A)
+  86:.\Generated_Source\PSoC5/Wave_Timer.c ****                 /* Set the default Run Mode of the Timer to Continuous */
+  87:.\Generated_Source\PSoC5/Wave_Timer.c ****                 Wave_Timer_CONTROL2 |= Wave_Timer_CTRL_MODE_PULSEWIDTH;
+  88:.\Generated_Source\PSoC5/Wave_Timer.c ****             #endif /* Set Continuous Run Mode in CONTROL2 for PSoC5A */
+  89:.\Generated_Source\PSoC5/Wave_Timer.c **** 
+  90:.\Generated_Source\PSoC5/Wave_Timer.c ****             #if (CY_PSOC3 || CY_PSOC5LP)
+  91:.\Generated_Source\PSoC5/Wave_Timer.c ****                 /* Clear and Set ROD and COD bits of CFG2 register */
+  92:.\Generated_Source\PSoC5/Wave_Timer.c ****                 Wave_Timer_CONTROL3 &= ((uint8)(~Wave_Timer_CTRL_RCOD_MASK));
+  59              		.loc 1 92 0
+  60 0024 2D4A     		ldr	r2, .L2+4
+  61 0026 2D4B     		ldr	r3, .L2+4
+  62 0028 1B78     		ldrb	r3, [r3]
+  63 002a DBB2     		uxtb	r3, r3
+  64 002c 23F00C03 		bic	r3, r3, #12
+  65 0030 DBB2     		uxtb	r3, r3
+  66 0032 1370     		strb	r3, [r2]
+  93:.\Generated_Source\PSoC5/Wave_Timer.c ****                 Wave_Timer_CONTROL3 |= Wave_Timer_CTRL_RCOD;
+  67              		.loc 1 93 0
+  68 0034 294A     		ldr	r2, .L2+4
+  69 0036 294B     		ldr	r3, .L2+4
+  70 0038 1B78     		ldrb	r3, [r3]
+  71 003a DBB2     		uxtb	r3, r3
+  72 003c 43F00C03 		orr	r3, r3, #12
+  73 0040 DBB2     		uxtb	r3, r3
+  74 0042 1370     		strb	r3, [r2]
+  94:.\Generated_Source\PSoC5/Wave_Timer.c **** 
+  95:.\Generated_Source\PSoC5/Wave_Timer.c ****                 /* Clear and Enable the HW enable bit in CFG2 register */
+  96:.\Generated_Source\PSoC5/Wave_Timer.c ****                 Wave_Timer_CONTROL3 &= ((uint8)(~Wave_Timer_CTRL_ENBL_MASK));
+  75              		.loc 1 96 0
+ARM GAS  C:\Users\jthem\AppData\Local\Temp\ccW790zp.s 			page 4
+
+
+  76 0044 254A     		ldr	r2, .L2+4
+  77 0046 254B     		ldr	r3, .L2+4
+  78 0048 1B78     		ldrb	r3, [r3]
+  79 004a DBB2     		uxtb	r3, r3
+  80 004c 03F07F03 		and	r3, r3, #127
+  81 0050 DBB2     		uxtb	r3, r3
+  82 0052 1370     		strb	r3, [r2]
+  97:.\Generated_Source\PSoC5/Wave_Timer.c ****                 Wave_Timer_CONTROL3 |= Wave_Timer_CTRL_ENBL;
+  83              		.loc 1 97 0
+  84 0054 214A     		ldr	r2, .L2+4
+  85 0056 214B     		ldr	r3, .L2+4
+  86 0058 1B78     		ldrb	r3, [r3]
+  87 005a DBB2     		uxtb	r3, r3
+  88 005c 63F07F03 		orn	r3, r3, #127
+  89 0060 DBB2     		uxtb	r3, r3
+  90 0062 1370     		strb	r3, [r2]
+  98:.\Generated_Source\PSoC5/Wave_Timer.c **** 
+  99:.\Generated_Source\PSoC5/Wave_Timer.c ****                 /* Set the default Run Mode of the Timer to Continuous */
+ 100:.\Generated_Source\PSoC5/Wave_Timer.c ****                 Wave_Timer_CONTROL3 |= Wave_Timer_CTRL_MODE_CONTINUOUS;
+  91              		.loc 1 100 0
+  92 0064 1D4B     		ldr	r3, .L2+4
+  93 0066 1D4A     		ldr	r2, .L2+4
+  94 0068 1278     		ldrb	r2, [r2]
+  95 006a D2B2     		uxtb	r2, r2
+  96 006c 1A70     		strb	r2, [r3]
+ 101:.\Generated_Source\PSoC5/Wave_Timer.c ****             #endif /* Set Continuous Run Mode in CONTROL3 for PSoC3ES3 or PSoC5A */
+ 102:.\Generated_Source\PSoC5/Wave_Timer.c **** 
+ 103:.\Generated_Source\PSoC5/Wave_Timer.c ****         #endif /* Configure Run Mode with hardware enable */
+ 104:.\Generated_Source\PSoC5/Wave_Timer.c **** 
+ 105:.\Generated_Source\PSoC5/Wave_Timer.c ****         /* Clear and Set SYNCTC and SYNCCMP bits of RT1 register */
+ 106:.\Generated_Source\PSoC5/Wave_Timer.c ****         Wave_Timer_RT1 &= ((uint8)(~Wave_Timer_RT1_MASK));
+  97              		.loc 1 106 0
+  98 006e 1C4A     		ldr	r2, .L2+8
+  99 0070 1B4B     		ldr	r3, .L2+8
+ 100 0072 1B78     		ldrb	r3, [r3]
+ 101 0074 DBB2     		uxtb	r3, r3
+ 102 0076 23F03003 		bic	r3, r3, #48
+ 103 007a DBB2     		uxtb	r3, r3
+ 104 007c 1370     		strb	r3, [r2]
+ 107:.\Generated_Source\PSoC5/Wave_Timer.c ****         Wave_Timer_RT1 |= Wave_Timer_SYNC;
+ 105              		.loc 1 107 0
+ 106 007e 184A     		ldr	r2, .L2+8
+ 107 0080 174B     		ldr	r3, .L2+8
+ 108 0082 1B78     		ldrb	r3, [r3]
+ 109 0084 DBB2     		uxtb	r3, r3
+ 110 0086 43F03003 		orr	r3, r3, #48
+ 111 008a DBB2     		uxtb	r3, r3
+ 112 008c 1370     		strb	r3, [r2]
+ 108:.\Generated_Source\PSoC5/Wave_Timer.c **** 
+ 109:.\Generated_Source\PSoC5/Wave_Timer.c ****         /*Enable DSI Sync all all inputs of the Timer*/
+ 110:.\Generated_Source\PSoC5/Wave_Timer.c ****         Wave_Timer_RT1 &= ((uint8)(~Wave_Timer_SYNCDSI_MASK));
+ 113              		.loc 1 110 0
+ 114 008e 144A     		ldr	r2, .L2+8
+ 115 0090 134B     		ldr	r3, .L2+8
+ 116 0092 1B78     		ldrb	r3, [r3]
+ 117 0094 DBB2     		uxtb	r3, r3
+ 118 0096 23F00F03 		bic	r3, r3, #15
+ARM GAS  C:\Users\jthem\AppData\Local\Temp\ccW790zp.s 			page 5
+
+
+ 119 009a DBB2     		uxtb	r3, r3
+ 120 009c 1370     		strb	r3, [r2]
+ 111:.\Generated_Source\PSoC5/Wave_Timer.c ****         Wave_Timer_RT1 |= Wave_Timer_SYNCDSI_EN;
+ 121              		.loc 1 111 0
+ 122 009e 104A     		ldr	r2, .L2+8
+ 123 00a0 0F4B     		ldr	r3, .L2+8
+ 124 00a2 1B78     		ldrb	r3, [r3]
+ 125 00a4 DBB2     		uxtb	r3, r3
+ 126 00a6 43F00F03 		orr	r3, r3, #15
+ 127 00aa DBB2     		uxtb	r3, r3
+ 128 00ac 1370     		strb	r3, [r2]
+ 112:.\Generated_Source\PSoC5/Wave_Timer.c **** 
+ 113:.\Generated_Source\PSoC5/Wave_Timer.c ****         /* Set the IRQ to use the status register interrupts */
+ 114:.\Generated_Source\PSoC5/Wave_Timer.c ****         Wave_Timer_CONTROL2 |= Wave_Timer_CTRL2_IRQ_SEL;
+ 129              		.loc 1 114 0
+ 130 00ae 0D4A     		ldr	r2, .L2+12
+ 131 00b0 0C4B     		ldr	r3, .L2+12
+ 132 00b2 1B78     		ldrb	r3, [r3]
+ 133 00b4 DBB2     		uxtb	r3, r3
+ 134 00b6 43F00103 		orr	r3, r3, #1
+ 135 00ba DBB2     		uxtb	r3, r3
+ 136 00bc 1370     		strb	r3, [r2]
+ 115:.\Generated_Source\PSoC5/Wave_Timer.c ****     #endif /* Configuring registers of fixed function implementation */
+ 116:.\Generated_Source\PSoC5/Wave_Timer.c **** 
+ 117:.\Generated_Source\PSoC5/Wave_Timer.c ****     /* Set Initial values from Configuration */
+ 118:.\Generated_Source\PSoC5/Wave_Timer.c ****     Wave_Timer_WritePeriod(Wave_Timer_INIT_PERIOD);
+ 137              		.loc 1 118 0
+ 138 00be 4FF6FF70 		movw	r0, #65535
+ 139 00c2 FFF7FEFF 		bl	Wave_Timer_WritePeriod
+ 119:.\Generated_Source\PSoC5/Wave_Timer.c ****     Wave_Timer_WriteCounter(Wave_Timer_INIT_PERIOD);
+ 140              		.loc 1 119 0
+ 141 00c6 4FF6FF70 		movw	r0, #65535
+ 142 00ca FFF7FEFF 		bl	Wave_Timer_WriteCounter
+ 120:.\Generated_Source\PSoC5/Wave_Timer.c **** 
+ 121:.\Generated_Source\PSoC5/Wave_Timer.c ****     #if (Wave_Timer_UsingHWCaptureCounter)/* Capture counter is enabled */
+ 122:.\Generated_Source\PSoC5/Wave_Timer.c ****         Wave_Timer_CAPTURE_COUNT_CTRL |= Wave_Timer_CNTR_ENABLE;
+ 123:.\Generated_Source\PSoC5/Wave_Timer.c ****         Wave_Timer_SetCaptureCount(Wave_Timer_INIT_CAPTURE_COUNT);
+ 124:.\Generated_Source\PSoC5/Wave_Timer.c ****     #endif /* Configure capture counter value */
+ 125:.\Generated_Source\PSoC5/Wave_Timer.c **** 
+ 126:.\Generated_Source\PSoC5/Wave_Timer.c ****     #if (!Wave_Timer_UsingFixedFunction)
+ 127:.\Generated_Source\PSoC5/Wave_Timer.c ****         #if (Wave_Timer_SoftwareCaptureMode)
+ 128:.\Generated_Source\PSoC5/Wave_Timer.c ****             Wave_Timer_SetCaptureMode(Wave_Timer_INIT_CAPTURE_MODE);
+ 129:.\Generated_Source\PSoC5/Wave_Timer.c ****         #endif /* Set Capture Mode for UDB implementation if capture mode is software controlled */
+ 130:.\Generated_Source\PSoC5/Wave_Timer.c **** 
+ 131:.\Generated_Source\PSoC5/Wave_Timer.c ****         #if (Wave_Timer_SoftwareTriggerMode)
+ 132:.\Generated_Source\PSoC5/Wave_Timer.c ****             #if (!Wave_Timer_UDB_CONTROL_REG_REMOVED)
+ 133:.\Generated_Source\PSoC5/Wave_Timer.c ****                 if (0u == (Wave_Timer_CONTROL & Wave_Timer__B_TIMER__TM_SOFTWARE))
+ 134:.\Generated_Source\PSoC5/Wave_Timer.c ****                 {
+ 135:.\Generated_Source\PSoC5/Wave_Timer.c ****                     Wave_Timer_SetTriggerMode(Wave_Timer_INIT_TRIGGER_MODE);
+ 136:.\Generated_Source\PSoC5/Wave_Timer.c ****                 }
+ 137:.\Generated_Source\PSoC5/Wave_Timer.c ****             #endif /* (!Wave_Timer_UDB_CONTROL_REG_REMOVED) */
+ 138:.\Generated_Source\PSoC5/Wave_Timer.c ****         #endif /* Set trigger mode for UDB Implementation if trigger mode is software controlled */
+ 139:.\Generated_Source\PSoC5/Wave_Timer.c **** 
+ 140:.\Generated_Source\PSoC5/Wave_Timer.c ****         /* CyEnterCriticalRegion and CyExitCriticalRegion are used to mark following region critica
+ 141:.\Generated_Source\PSoC5/Wave_Timer.c ****         /* Enter Critical Region*/
+ 142:.\Generated_Source\PSoC5/Wave_Timer.c ****         Wave_Timer_interruptState = CyEnterCriticalSection();
+ 143:.\Generated_Source\PSoC5/Wave_Timer.c **** 
+ARM GAS  C:\Users\jthem\AppData\Local\Temp\ccW790zp.s 			page 6
+
+
+ 144:.\Generated_Source\PSoC5/Wave_Timer.c ****         /* Use the interrupt output of the status register for IRQ output */
+ 145:.\Generated_Source\PSoC5/Wave_Timer.c ****         Wave_Timer_STATUS_AUX_CTRL |= Wave_Timer_STATUS_ACTL_INT_EN_MASK;
+ 146:.\Generated_Source\PSoC5/Wave_Timer.c **** 
+ 147:.\Generated_Source\PSoC5/Wave_Timer.c ****         /* Exit Critical Region*/
+ 148:.\Generated_Source\PSoC5/Wave_Timer.c ****         CyExitCriticalSection(Wave_Timer_interruptState);
+ 149:.\Generated_Source\PSoC5/Wave_Timer.c **** 
+ 150:.\Generated_Source\PSoC5/Wave_Timer.c ****         #if (Wave_Timer_EnableTriggerMode)
+ 151:.\Generated_Source\PSoC5/Wave_Timer.c ****             Wave_Timer_EnableTrigger();
+ 152:.\Generated_Source\PSoC5/Wave_Timer.c ****         #endif /* Set Trigger enable bit for UDB implementation in the control register*/
+ 153:.\Generated_Source\PSoC5/Wave_Timer.c **** 		
+ 154:.\Generated_Source\PSoC5/Wave_Timer.c **** 		
+ 155:.\Generated_Source\PSoC5/Wave_Timer.c ****         #if (Wave_Timer_InterruptOnCaptureCount && !Wave_Timer_UDB_CONTROL_REG_REMOVED)
+ 156:.\Generated_Source\PSoC5/Wave_Timer.c ****             Wave_Timer_SetInterruptCount(Wave_Timer_INIT_INT_CAPTURE_COUNT);
+ 157:.\Generated_Source\PSoC5/Wave_Timer.c ****         #endif /* Set interrupt count in UDB implementation if interrupt count feature is checked.*
+ 158:.\Generated_Source\PSoC5/Wave_Timer.c **** 
+ 159:.\Generated_Source\PSoC5/Wave_Timer.c ****         Wave_Timer_ClearFIFO();
+ 160:.\Generated_Source\PSoC5/Wave_Timer.c ****     #endif /* Configure additional features of UDB implementation */
+ 161:.\Generated_Source\PSoC5/Wave_Timer.c **** 
+ 162:.\Generated_Source\PSoC5/Wave_Timer.c ****     Wave_Timer_SetInterruptMode(Wave_Timer_INIT_INTERRUPT_MODE);
+ 143              		.loc 1 162 0
+ 144 00ce 0820     		movs	r0, #8
+ 145 00d0 FFF7FEFF 		bl	Wave_Timer_SetInterruptMode
+ 163:.\Generated_Source\PSoC5/Wave_Timer.c **** }
+ 146              		.loc 1 163 0
+ 147 00d4 80BD     		pop	{r7, pc}
+ 148              	.L3:
+ 149 00d6 00BF     		.align	2
+ 150              	.L2:
+ 151 00d8 0C4F0040 		.word	1073762060
+ 152 00dc 0E4F0040 		.word	1073762062
+ 153 00e0 174F0040 		.word	1073762071
+ 154 00e4 0D4F0040 		.word	1073762061
+ 155              		.cfi_endproc
+ 156              	.LFE0:
+ 157              		.size	Wave_Timer_Init, .-Wave_Timer_Init
+ 158              		.section	.text.Wave_Timer_Enable,"ax",%progbits
+ 159              		.align	2
+ 160              		.global	Wave_Timer_Enable
+ 161              		.thumb
+ 162              		.thumb_func
+ 163              		.type	Wave_Timer_Enable, %function
+ 164              	Wave_Timer_Enable:
+ 165              	.LFB1:
+ 164:.\Generated_Source\PSoC5/Wave_Timer.c **** 
+ 165:.\Generated_Source\PSoC5/Wave_Timer.c **** 
+ 166:.\Generated_Source\PSoC5/Wave_Timer.c **** /*******************************************************************************
+ 167:.\Generated_Source\PSoC5/Wave_Timer.c **** * Function Name: Wave_Timer_Enable
+ 168:.\Generated_Source\PSoC5/Wave_Timer.c **** ********************************************************************************
+ 169:.\Generated_Source\PSoC5/Wave_Timer.c **** *
+ 170:.\Generated_Source\PSoC5/Wave_Timer.c **** * Summary:
+ 171:.\Generated_Source\PSoC5/Wave_Timer.c **** *  Enable the Timer
+ 172:.\Generated_Source\PSoC5/Wave_Timer.c **** *
+ 173:.\Generated_Source\PSoC5/Wave_Timer.c **** * Parameters:
+ 174:.\Generated_Source\PSoC5/Wave_Timer.c **** *  void
+ 175:.\Generated_Source\PSoC5/Wave_Timer.c **** *
+ 176:.\Generated_Source\PSoC5/Wave_Timer.c **** * Return:
+ 177:.\Generated_Source\PSoC5/Wave_Timer.c **** *  void
+ARM GAS  C:\Users\jthem\AppData\Local\Temp\ccW790zp.s 			page 7
+
+
+ 178:.\Generated_Source\PSoC5/Wave_Timer.c **** *
+ 179:.\Generated_Source\PSoC5/Wave_Timer.c **** *******************************************************************************/
+ 180:.\Generated_Source\PSoC5/Wave_Timer.c **** void Wave_Timer_Enable(void) 
+ 181:.\Generated_Source\PSoC5/Wave_Timer.c **** {
+ 166              		.loc 1 181 0
+ 167              		.cfi_startproc
+ 168              		@ args = 0, pretend = 0, frame = 0
+ 169              		@ frame_needed = 1, uses_anonymous_args = 0
+ 170              		@ link register save eliminated.
+ 171 0000 80B4     		push	{r7}
+ 172              		.cfi_def_cfa_offset 4
+ 173              		.cfi_offset 7, -4
+ 174 0002 00AF     		add	r7, sp, #0
+ 175              		.cfi_def_cfa_register 7
+ 182:.\Generated_Source\PSoC5/Wave_Timer.c ****     /* Globally Enable the Fixed Function Block chosen */
+ 183:.\Generated_Source\PSoC5/Wave_Timer.c ****     #if (Wave_Timer_UsingFixedFunction)
+ 184:.\Generated_Source\PSoC5/Wave_Timer.c ****         Wave_Timer_GLOBAL_ENABLE |= Wave_Timer_BLOCK_EN_MASK;
+ 176              		.loc 1 184 0
+ 177 0004 0D4A     		ldr	r2, .L5
+ 178 0006 0D4B     		ldr	r3, .L5
+ 179 0008 1B78     		ldrb	r3, [r3]
+ 180 000a DBB2     		uxtb	r3, r3
+ 181 000c 43F00203 		orr	r3, r3, #2
+ 182 0010 DBB2     		uxtb	r3, r3
+ 183 0012 1370     		strb	r3, [r2]
+ 185:.\Generated_Source\PSoC5/Wave_Timer.c ****         Wave_Timer_GLOBAL_STBY_ENABLE |= Wave_Timer_BLOCK_STBY_EN_MASK;
+ 184              		.loc 1 185 0
+ 185 0014 0A4A     		ldr	r2, .L5+4
+ 186 0016 0A4B     		ldr	r3, .L5+4
+ 187 0018 1B78     		ldrb	r3, [r3]
+ 188 001a DBB2     		uxtb	r3, r3
+ 189 001c 43F00203 		orr	r3, r3, #2
+ 190 0020 DBB2     		uxtb	r3, r3
+ 191 0022 1370     		strb	r3, [r2]
+ 186:.\Generated_Source\PSoC5/Wave_Timer.c ****     #endif /* Set Enable bit for enabling Fixed function timer*/
+ 187:.\Generated_Source\PSoC5/Wave_Timer.c **** 
+ 188:.\Generated_Source\PSoC5/Wave_Timer.c ****     /* Remove assignment if control register is removed */
+ 189:.\Generated_Source\PSoC5/Wave_Timer.c ****     #if (!Wave_Timer_UDB_CONTROL_REG_REMOVED || Wave_Timer_UsingFixedFunction)
+ 190:.\Generated_Source\PSoC5/Wave_Timer.c ****         Wave_Timer_CONTROL |= Wave_Timer_CTRL_ENABLE;
+ 192              		.loc 1 190 0
+ 193 0024 074A     		ldr	r2, .L5+8
+ 194 0026 074B     		ldr	r3, .L5+8
+ 195 0028 1B78     		ldrb	r3, [r3]
+ 196 002a DBB2     		uxtb	r3, r3
+ 197 002c 43F00103 		orr	r3, r3, #1
+ 198 0030 DBB2     		uxtb	r3, r3
+ 199 0032 1370     		strb	r3, [r2]
+ 191:.\Generated_Source\PSoC5/Wave_Timer.c ****     #endif /* Remove assignment if control register is removed */
+ 192:.\Generated_Source\PSoC5/Wave_Timer.c **** }
+ 200              		.loc 1 192 0
+ 201 0034 BD46     		mov	sp, r7
+ 202              		.cfi_def_cfa_register 13
+ 203              		@ sp needed
+ 204 0036 5DF8047B 		ldr	r7, [sp], #4
+ 205              		.cfi_restore 7
+ 206              		.cfi_def_cfa_offset 0
+ 207 003a 7047     		bx	lr
+ARM GAS  C:\Users\jthem\AppData\Local\Temp\ccW790zp.s 			page 8
+
+
+ 208              	.L6:
+ 209              		.align	2
+ 210              	.L5:
+ 211 003c A3430040 		.word	1073759139
+ 212 0040 B3430040 		.word	1073759155
+ 213 0044 0C4F0040 		.word	1073762060
+ 214              		.cfi_endproc
+ 215              	.LFE1:
+ 216              		.size	Wave_Timer_Enable, .-Wave_Timer_Enable
+ 217              		.section	.text.Wave_Timer_Start,"ax",%progbits
+ 218              		.align	2
+ 219              		.global	Wave_Timer_Start
+ 220              		.thumb
+ 221              		.thumb_func
+ 222              		.type	Wave_Timer_Start, %function
+ 223              	Wave_Timer_Start:
+ 224              	.LFB2:
+ 193:.\Generated_Source\PSoC5/Wave_Timer.c **** 
+ 194:.\Generated_Source\PSoC5/Wave_Timer.c **** 
+ 195:.\Generated_Source\PSoC5/Wave_Timer.c **** /*******************************************************************************
+ 196:.\Generated_Source\PSoC5/Wave_Timer.c **** * Function Name: Wave_Timer_Start
+ 197:.\Generated_Source\PSoC5/Wave_Timer.c **** ********************************************************************************
+ 198:.\Generated_Source\PSoC5/Wave_Timer.c **** *
+ 199:.\Generated_Source\PSoC5/Wave_Timer.c **** * Summary:
+ 200:.\Generated_Source\PSoC5/Wave_Timer.c **** *  The start function initializes the timer with the default values, the
+ 201:.\Generated_Source\PSoC5/Wave_Timer.c **** *  enables the timerto begin counting.  It does not enable interrupts,
+ 202:.\Generated_Source\PSoC5/Wave_Timer.c **** *  the EnableInt command should be called if interrupt generation is required.
+ 203:.\Generated_Source\PSoC5/Wave_Timer.c **** *
+ 204:.\Generated_Source\PSoC5/Wave_Timer.c **** * Parameters:
+ 205:.\Generated_Source\PSoC5/Wave_Timer.c **** *  void
+ 206:.\Generated_Source\PSoC5/Wave_Timer.c **** *
+ 207:.\Generated_Source\PSoC5/Wave_Timer.c **** * Return:
+ 208:.\Generated_Source\PSoC5/Wave_Timer.c **** *  void
+ 209:.\Generated_Source\PSoC5/Wave_Timer.c **** *
+ 210:.\Generated_Source\PSoC5/Wave_Timer.c **** * Global variables:
+ 211:.\Generated_Source\PSoC5/Wave_Timer.c **** *  Wave_Timer_initVar: Is modified when this function is called for the
+ 212:.\Generated_Source\PSoC5/Wave_Timer.c **** *   first time. Is used to ensure that initialization happens only once.
+ 213:.\Generated_Source\PSoC5/Wave_Timer.c **** *
+ 214:.\Generated_Source\PSoC5/Wave_Timer.c **** *******************************************************************************/
+ 215:.\Generated_Source\PSoC5/Wave_Timer.c **** void Wave_Timer_Start(void) 
+ 216:.\Generated_Source\PSoC5/Wave_Timer.c **** {
+ 225              		.loc 1 216 0
+ 226              		.cfi_startproc
+ 227              		@ args = 0, pretend = 0, frame = 0
+ 228              		@ frame_needed = 1, uses_anonymous_args = 0
+ 229 0000 80B5     		push	{r7, lr}
+ 230              		.cfi_def_cfa_offset 8
+ 231              		.cfi_offset 7, -8
+ 232              		.cfi_offset 14, -4
+ 233 0002 00AF     		add	r7, sp, #0
+ 234              		.cfi_def_cfa_register 7
+ 217:.\Generated_Source\PSoC5/Wave_Timer.c ****     if(Wave_Timer_initVar == 0u)
+ 235              		.loc 1 217 0
+ 236 0004 054B     		ldr	r3, .L9
+ 237 0006 1B78     		ldrb	r3, [r3]	@ zero_extendqisi2
+ 238 0008 002B     		cmp	r3, #0
+ 239 000a 04D1     		bne	.L8
+ARM GAS  C:\Users\jthem\AppData\Local\Temp\ccW790zp.s 			page 9
+
+
+ 218:.\Generated_Source\PSoC5/Wave_Timer.c ****     {
+ 219:.\Generated_Source\PSoC5/Wave_Timer.c ****         Wave_Timer_Init();
+ 240              		.loc 1 219 0
+ 241 000c FFF7FEFF 		bl	Wave_Timer_Init
+ 220:.\Generated_Source\PSoC5/Wave_Timer.c **** 
+ 221:.\Generated_Source\PSoC5/Wave_Timer.c ****         Wave_Timer_initVar = 1u;   /* Clear this bit for Initialization */
+ 242              		.loc 1 221 0
+ 243 0010 024B     		ldr	r3, .L9
+ 244 0012 0122     		movs	r2, #1
+ 245 0014 1A70     		strb	r2, [r3]
+ 246              	.L8:
+ 222:.\Generated_Source\PSoC5/Wave_Timer.c ****     }
+ 223:.\Generated_Source\PSoC5/Wave_Timer.c **** 
+ 224:.\Generated_Source\PSoC5/Wave_Timer.c ****     /* Enable the Timer */
+ 225:.\Generated_Source\PSoC5/Wave_Timer.c ****     Wave_Timer_Enable();
+ 247              		.loc 1 225 0
+ 248 0016 FFF7FEFF 		bl	Wave_Timer_Enable
+ 226:.\Generated_Source\PSoC5/Wave_Timer.c **** }
+ 249              		.loc 1 226 0
+ 250 001a 80BD     		pop	{r7, pc}
+ 251              	.L10:
+ 252              		.align	2
+ 253              	.L9:
+ 254 001c 00000000 		.word	Wave_Timer_initVar
+ 255              		.cfi_endproc
+ 256              	.LFE2:
+ 257              		.size	Wave_Timer_Start, .-Wave_Timer_Start
+ 258              		.section	.text.Wave_Timer_Stop,"ax",%progbits
+ 259              		.align	2
+ 260              		.global	Wave_Timer_Stop
+ 261              		.thumb
+ 262              		.thumb_func
+ 263              		.type	Wave_Timer_Stop, %function
+ 264              	Wave_Timer_Stop:
+ 265              	.LFB3:
+ 227:.\Generated_Source\PSoC5/Wave_Timer.c **** 
+ 228:.\Generated_Source\PSoC5/Wave_Timer.c **** 
+ 229:.\Generated_Source\PSoC5/Wave_Timer.c **** /*******************************************************************************
+ 230:.\Generated_Source\PSoC5/Wave_Timer.c **** * Function Name: Wave_Timer_Stop
+ 231:.\Generated_Source\PSoC5/Wave_Timer.c **** ********************************************************************************
+ 232:.\Generated_Source\PSoC5/Wave_Timer.c **** *
+ 233:.\Generated_Source\PSoC5/Wave_Timer.c **** * Summary:
+ 234:.\Generated_Source\PSoC5/Wave_Timer.c **** *  The stop function halts the timer, but does not change any modes or disable
+ 235:.\Generated_Source\PSoC5/Wave_Timer.c **** *  interrupts.
+ 236:.\Generated_Source\PSoC5/Wave_Timer.c **** *
+ 237:.\Generated_Source\PSoC5/Wave_Timer.c **** * Parameters:
+ 238:.\Generated_Source\PSoC5/Wave_Timer.c **** *  void
+ 239:.\Generated_Source\PSoC5/Wave_Timer.c **** *
+ 240:.\Generated_Source\PSoC5/Wave_Timer.c **** * Return:
+ 241:.\Generated_Source\PSoC5/Wave_Timer.c **** *  void
+ 242:.\Generated_Source\PSoC5/Wave_Timer.c **** *
+ 243:.\Generated_Source\PSoC5/Wave_Timer.c **** * Side Effects: If the Enable mode is set to Hardware only then this function
+ 244:.\Generated_Source\PSoC5/Wave_Timer.c **** *               has no effect on the operation of the timer.
+ 245:.\Generated_Source\PSoC5/Wave_Timer.c **** *
+ 246:.\Generated_Source\PSoC5/Wave_Timer.c **** *******************************************************************************/
+ 247:.\Generated_Source\PSoC5/Wave_Timer.c **** void Wave_Timer_Stop(void) 
+ 248:.\Generated_Source\PSoC5/Wave_Timer.c **** {
+ARM GAS  C:\Users\jthem\AppData\Local\Temp\ccW790zp.s 			page 10
+
+
+ 266              		.loc 1 248 0
+ 267              		.cfi_startproc
+ 268              		@ args = 0, pretend = 0, frame = 0
+ 269              		@ frame_needed = 1, uses_anonymous_args = 0
+ 270              		@ link register save eliminated.
+ 271 0000 80B4     		push	{r7}
+ 272              		.cfi_def_cfa_offset 4
+ 273              		.cfi_offset 7, -4
+ 274 0002 00AF     		add	r7, sp, #0
+ 275              		.cfi_def_cfa_register 7
+ 249:.\Generated_Source\PSoC5/Wave_Timer.c ****     /* Disable Timer */
+ 250:.\Generated_Source\PSoC5/Wave_Timer.c ****     #if(!Wave_Timer_UDB_CONTROL_REG_REMOVED || Wave_Timer_UsingFixedFunction)
+ 251:.\Generated_Source\PSoC5/Wave_Timer.c ****         Wave_Timer_CONTROL &= ((uint8)(~Wave_Timer_CTRL_ENABLE));
+ 276              		.loc 1 251 0
+ 277 0004 0D4A     		ldr	r2, .L12
+ 278 0006 0D4B     		ldr	r3, .L12
+ 279 0008 1B78     		ldrb	r3, [r3]
+ 280 000a DBB2     		uxtb	r3, r3
+ 281 000c 23F00103 		bic	r3, r3, #1
+ 282 0010 DBB2     		uxtb	r3, r3
+ 283 0012 1370     		strb	r3, [r2]
+ 252:.\Generated_Source\PSoC5/Wave_Timer.c ****     #endif /* Remove assignment if control register is removed */
+ 253:.\Generated_Source\PSoC5/Wave_Timer.c **** 
+ 254:.\Generated_Source\PSoC5/Wave_Timer.c ****     /* Globally disable the Fixed Function Block chosen */
+ 255:.\Generated_Source\PSoC5/Wave_Timer.c ****     #if (Wave_Timer_UsingFixedFunction)
+ 256:.\Generated_Source\PSoC5/Wave_Timer.c ****         Wave_Timer_GLOBAL_ENABLE &= ((uint8)(~Wave_Timer_BLOCK_EN_MASK));
+ 284              		.loc 1 256 0
+ 285 0014 0A4A     		ldr	r2, .L12+4
+ 286 0016 0A4B     		ldr	r3, .L12+4
+ 287 0018 1B78     		ldrb	r3, [r3]
+ 288 001a DBB2     		uxtb	r3, r3
+ 289 001c 23F00203 		bic	r3, r3, #2
+ 290 0020 DBB2     		uxtb	r3, r3
+ 291 0022 1370     		strb	r3, [r2]
+ 257:.\Generated_Source\PSoC5/Wave_Timer.c ****         Wave_Timer_GLOBAL_STBY_ENABLE &= ((uint8)(~Wave_Timer_BLOCK_STBY_EN_MASK));
+ 292              		.loc 1 257 0
+ 293 0024 074A     		ldr	r2, .L12+8
+ 294 0026 074B     		ldr	r3, .L12+8
+ 295 0028 1B78     		ldrb	r3, [r3]
+ 296 002a DBB2     		uxtb	r3, r3
+ 297 002c 23F00203 		bic	r3, r3, #2
+ 298 0030 DBB2     		uxtb	r3, r3
+ 299 0032 1370     		strb	r3, [r2]
+ 258:.\Generated_Source\PSoC5/Wave_Timer.c ****     #endif /* Disable global enable for the Timer Fixed function block to stop the Timer*/
+ 259:.\Generated_Source\PSoC5/Wave_Timer.c **** }
+ 300              		.loc 1 259 0
+ 301 0034 BD46     		mov	sp, r7
+ 302              		.cfi_def_cfa_register 13
+ 303              		@ sp needed
+ 304 0036 5DF8047B 		ldr	r7, [sp], #4
+ 305              		.cfi_restore 7
+ 306              		.cfi_def_cfa_offset 0
+ 307 003a 7047     		bx	lr
+ 308              	.L13:
+ 309              		.align	2
+ 310              	.L12:
+ 311 003c 0C4F0040 		.word	1073762060
+ARM GAS  C:\Users\jthem\AppData\Local\Temp\ccW790zp.s 			page 11
+
+
+ 312 0040 A3430040 		.word	1073759139
+ 313 0044 B3430040 		.word	1073759155
+ 314              		.cfi_endproc
+ 315              	.LFE3:
+ 316              		.size	Wave_Timer_Stop, .-Wave_Timer_Stop
+ 317              		.section	.text.Wave_Timer_SetInterruptMode,"ax",%progbits
+ 318              		.align	2
+ 319              		.global	Wave_Timer_SetInterruptMode
+ 320              		.thumb
+ 321              		.thumb_func
+ 322              		.type	Wave_Timer_SetInterruptMode, %function
+ 323              	Wave_Timer_SetInterruptMode:
+ 324              	.LFB4:
+ 260:.\Generated_Source\PSoC5/Wave_Timer.c **** 
+ 261:.\Generated_Source\PSoC5/Wave_Timer.c **** 
+ 262:.\Generated_Source\PSoC5/Wave_Timer.c **** /*******************************************************************************
+ 263:.\Generated_Source\PSoC5/Wave_Timer.c **** * Function Name: Wave_Timer_SetInterruptMode
+ 264:.\Generated_Source\PSoC5/Wave_Timer.c **** ********************************************************************************
+ 265:.\Generated_Source\PSoC5/Wave_Timer.c **** *
+ 266:.\Generated_Source\PSoC5/Wave_Timer.c **** * Summary:
+ 267:.\Generated_Source\PSoC5/Wave_Timer.c **** *  This function selects which of the interrupt inputs may cause an interrupt.
+ 268:.\Generated_Source\PSoC5/Wave_Timer.c **** *  The twosources are caputure and terminal.  One, both or neither may
+ 269:.\Generated_Source\PSoC5/Wave_Timer.c **** *  be selected.
+ 270:.\Generated_Source\PSoC5/Wave_Timer.c **** *
+ 271:.\Generated_Source\PSoC5/Wave_Timer.c **** * Parameters:
+ 272:.\Generated_Source\PSoC5/Wave_Timer.c **** *  interruptMode:   This parameter is used to enable interrups on either/or
+ 273:.\Generated_Source\PSoC5/Wave_Timer.c **** *                   terminal count or capture.
+ 274:.\Generated_Source\PSoC5/Wave_Timer.c **** *
+ 275:.\Generated_Source\PSoC5/Wave_Timer.c **** * Return:
+ 276:.\Generated_Source\PSoC5/Wave_Timer.c **** *  void
+ 277:.\Generated_Source\PSoC5/Wave_Timer.c **** *
+ 278:.\Generated_Source\PSoC5/Wave_Timer.c **** *******************************************************************************/
+ 279:.\Generated_Source\PSoC5/Wave_Timer.c **** void Wave_Timer_SetInterruptMode(uint8 interruptMode) 
+ 280:.\Generated_Source\PSoC5/Wave_Timer.c **** {
+ 325              		.loc 1 280 0
+ 326              		.cfi_startproc
+ 327              		@ args = 0, pretend = 0, frame = 8
+ 328              		@ frame_needed = 1, uses_anonymous_args = 0
+ 329              		@ link register save eliminated.
+ 330 0000 80B4     		push	{r7}
+ 331              		.cfi_def_cfa_offset 4
+ 332              		.cfi_offset 7, -4
+ 333 0002 83B0     		sub	sp, sp, #12
+ 334              		.cfi_def_cfa_offset 16
+ 335 0004 00AF     		add	r7, sp, #0
+ 336              		.cfi_def_cfa_register 7
+ 337 0006 0346     		mov	r3, r0
+ 338 0008 FB71     		strb	r3, [r7, #7]
+ 281:.\Generated_Source\PSoC5/Wave_Timer.c ****     Wave_Timer_STATUS_MASK = interruptMode;
+ 339              		.loc 1 281 0
+ 340 000a 044A     		ldr	r2, .L15
+ 341 000c FB79     		ldrb	r3, [r7, #7]
+ 342 000e 1370     		strb	r3, [r2]
+ 282:.\Generated_Source\PSoC5/Wave_Timer.c **** }
+ 343              		.loc 1 282 0
+ 344 0010 0C37     		adds	r7, r7, #12
+ 345              		.cfi_def_cfa_offset 4
+ARM GAS  C:\Users\jthem\AppData\Local\Temp\ccW790zp.s 			page 12
+
+
+ 346 0012 BD46     		mov	sp, r7
+ 347              		.cfi_def_cfa_register 13
+ 348              		@ sp needed
+ 349 0014 5DF8047B 		ldr	r7, [sp], #4
+ 350              		.cfi_restore 7
+ 351              		.cfi_def_cfa_offset 0
+ 352 0018 7047     		bx	lr
+ 353              	.L16:
+ 354 001a 00BF     		.align	2
+ 355              	.L15:
+ 356 001c 0F4F0040 		.word	1073762063
+ 357              		.cfi_endproc
+ 358              	.LFE4:
+ 359              		.size	Wave_Timer_SetInterruptMode, .-Wave_Timer_SetInterruptMode
+ 360              		.section	.text.Wave_Timer_SoftwareCapture,"ax",%progbits
+ 361              		.align	2
+ 362              		.global	Wave_Timer_SoftwareCapture
+ 363              		.thumb
+ 364              		.thumb_func
+ 365              		.type	Wave_Timer_SoftwareCapture, %function
+ 366              	Wave_Timer_SoftwareCapture:
+ 367              	.LFB5:
+ 283:.\Generated_Source\PSoC5/Wave_Timer.c **** 
+ 284:.\Generated_Source\PSoC5/Wave_Timer.c **** 
+ 285:.\Generated_Source\PSoC5/Wave_Timer.c **** /*******************************************************************************
+ 286:.\Generated_Source\PSoC5/Wave_Timer.c **** * Function Name: Wave_Timer_SoftwareCapture
+ 287:.\Generated_Source\PSoC5/Wave_Timer.c **** ********************************************************************************
+ 288:.\Generated_Source\PSoC5/Wave_Timer.c **** *
+ 289:.\Generated_Source\PSoC5/Wave_Timer.c **** * Summary:
+ 290:.\Generated_Source\PSoC5/Wave_Timer.c **** *  This function forces a capture independent of the capture signal.
+ 291:.\Generated_Source\PSoC5/Wave_Timer.c **** *
+ 292:.\Generated_Source\PSoC5/Wave_Timer.c **** * Parameters:
+ 293:.\Generated_Source\PSoC5/Wave_Timer.c **** *  void
+ 294:.\Generated_Source\PSoC5/Wave_Timer.c **** *
+ 295:.\Generated_Source\PSoC5/Wave_Timer.c **** * Return:
+ 296:.\Generated_Source\PSoC5/Wave_Timer.c **** *  void
+ 297:.\Generated_Source\PSoC5/Wave_Timer.c **** *
+ 298:.\Generated_Source\PSoC5/Wave_Timer.c **** * Side Effects:
+ 299:.\Generated_Source\PSoC5/Wave_Timer.c **** *  An existing hardware capture could be overwritten.
+ 300:.\Generated_Source\PSoC5/Wave_Timer.c **** *
+ 301:.\Generated_Source\PSoC5/Wave_Timer.c **** *******************************************************************************/
+ 302:.\Generated_Source\PSoC5/Wave_Timer.c **** void Wave_Timer_SoftwareCapture(void) 
+ 303:.\Generated_Source\PSoC5/Wave_Timer.c **** {
+ 368              		.loc 1 303 0
+ 369              		.cfi_startproc
+ 370              		@ args = 0, pretend = 0, frame = 0
+ 371              		@ frame_needed = 1, uses_anonymous_args = 0
+ 372              		@ link register save eliminated.
+ 373 0000 80B4     		push	{r7}
+ 374              		.cfi_def_cfa_offset 4
+ 375              		.cfi_offset 7, -4
+ 376 0002 00AF     		add	r7, sp, #0
+ 377              		.cfi_def_cfa_register 7
+ 304:.\Generated_Source\PSoC5/Wave_Timer.c ****     /* Generate a software capture by reading the counter register */
+ 305:.\Generated_Source\PSoC5/Wave_Timer.c ****     #if(Wave_Timer_UsingFixedFunction)
+ 306:.\Generated_Source\PSoC5/Wave_Timer.c ****         (void)CY_GET_REG16(Wave_Timer_COUNTER_LSB_PTR);
+ 378              		.loc 1 306 0
+ARM GAS  C:\Users\jthem\AppData\Local\Temp\ccW790zp.s 			page 13
+
+
+ 379 0004 024B     		ldr	r3, .L18
+ 380 0006 1B88     		ldrh	r3, [r3]	@ movhi
+ 307:.\Generated_Source\PSoC5/Wave_Timer.c ****     #else
+ 308:.\Generated_Source\PSoC5/Wave_Timer.c ****         (void)CY_GET_REG8(Wave_Timer_COUNTER_LSB_PTR_8BIT);
+ 309:.\Generated_Source\PSoC5/Wave_Timer.c ****     #endif/* (Wave_Timer_UsingFixedFunction) */
+ 310:.\Generated_Source\PSoC5/Wave_Timer.c ****     /* Capture Data is now in the FIFO */
+ 311:.\Generated_Source\PSoC5/Wave_Timer.c **** }
+ 381              		.loc 1 311 0
+ 382 0008 BD46     		mov	sp, r7
+ 383              		.cfi_def_cfa_register 13
+ 384              		@ sp needed
+ 385 000a 5DF8047B 		ldr	r7, [sp], #4
+ 386              		.cfi_restore 7
+ 387              		.cfi_def_cfa_offset 0
+ 388 000e 7047     		bx	lr
+ 389              	.L19:
+ 390              		.align	2
+ 391              	.L18:
+ 392 0010 124F0040 		.word	1073762066
+ 393              		.cfi_endproc
+ 394              	.LFE5:
+ 395              		.size	Wave_Timer_SoftwareCapture, .-Wave_Timer_SoftwareCapture
+ 396              		.section	.text.Wave_Timer_ReadStatusRegister,"ax",%progbits
+ 397              		.align	2
+ 398              		.global	Wave_Timer_ReadStatusRegister
+ 399              		.thumb
+ 400              		.thumb_func
+ 401              		.type	Wave_Timer_ReadStatusRegister, %function
+ 402              	Wave_Timer_ReadStatusRegister:
+ 403              	.LFB6:
+ 312:.\Generated_Source\PSoC5/Wave_Timer.c **** 
+ 313:.\Generated_Source\PSoC5/Wave_Timer.c **** 
+ 314:.\Generated_Source\PSoC5/Wave_Timer.c **** /*******************************************************************************
+ 315:.\Generated_Source\PSoC5/Wave_Timer.c **** * Function Name: Wave_Timer_ReadStatusRegister
+ 316:.\Generated_Source\PSoC5/Wave_Timer.c **** ********************************************************************************
+ 317:.\Generated_Source\PSoC5/Wave_Timer.c **** *
+ 318:.\Generated_Source\PSoC5/Wave_Timer.c **** * Summary:
+ 319:.\Generated_Source\PSoC5/Wave_Timer.c **** *  Reads the status register and returns it's state. This function should use
+ 320:.\Generated_Source\PSoC5/Wave_Timer.c **** *  defined types for the bit-field information as the bits in this register may
+ 321:.\Generated_Source\PSoC5/Wave_Timer.c **** *  be permuteable.
+ 322:.\Generated_Source\PSoC5/Wave_Timer.c **** *
+ 323:.\Generated_Source\PSoC5/Wave_Timer.c **** * Parameters:
+ 324:.\Generated_Source\PSoC5/Wave_Timer.c **** *  void
+ 325:.\Generated_Source\PSoC5/Wave_Timer.c **** *
+ 326:.\Generated_Source\PSoC5/Wave_Timer.c **** * Return:
+ 327:.\Generated_Source\PSoC5/Wave_Timer.c **** *  The contents of the status register
+ 328:.\Generated_Source\PSoC5/Wave_Timer.c **** *
+ 329:.\Generated_Source\PSoC5/Wave_Timer.c **** * Side Effects:
+ 330:.\Generated_Source\PSoC5/Wave_Timer.c **** *  Status register bits may be clear on read.
+ 331:.\Generated_Source\PSoC5/Wave_Timer.c **** *
+ 332:.\Generated_Source\PSoC5/Wave_Timer.c **** *******************************************************************************/
+ 333:.\Generated_Source\PSoC5/Wave_Timer.c **** uint8   Wave_Timer_ReadStatusRegister(void) 
+ 334:.\Generated_Source\PSoC5/Wave_Timer.c **** {
+ 404              		.loc 1 334 0
+ 405              		.cfi_startproc
+ 406              		@ args = 0, pretend = 0, frame = 0
+ 407              		@ frame_needed = 1, uses_anonymous_args = 0
+ARM GAS  C:\Users\jthem\AppData\Local\Temp\ccW790zp.s 			page 14
+
+
+ 408              		@ link register save eliminated.
+ 409 0000 80B4     		push	{r7}
+ 410              		.cfi_def_cfa_offset 4
+ 411              		.cfi_offset 7, -4
+ 412 0002 00AF     		add	r7, sp, #0
+ 413              		.cfi_def_cfa_register 7
+ 335:.\Generated_Source\PSoC5/Wave_Timer.c ****     return (Wave_Timer_STATUS);
+ 414              		.loc 1 335 0
+ 415 0004 034B     		ldr	r3, .L22
+ 416 0006 1B78     		ldrb	r3, [r3]
+ 417 0008 DBB2     		uxtb	r3, r3
+ 336:.\Generated_Source\PSoC5/Wave_Timer.c **** }
+ 418              		.loc 1 336 0
+ 419 000a 1846     		mov	r0, r3
+ 420 000c BD46     		mov	sp, r7
+ 421              		.cfi_def_cfa_register 13
+ 422              		@ sp needed
+ 423 000e 5DF8047B 		ldr	r7, [sp], #4
+ 424              		.cfi_restore 7
+ 425              		.cfi_def_cfa_offset 0
+ 426 0012 7047     		bx	lr
+ 427              	.L23:
+ 428              		.align	2
+ 429              	.L22:
+ 430 0014 0F4F0040 		.word	1073762063
+ 431              		.cfi_endproc
+ 432              	.LFE6:
+ 433              		.size	Wave_Timer_ReadStatusRegister, .-Wave_Timer_ReadStatusRegister
+ 434              		.section	.text.Wave_Timer_ReadControlRegister,"ax",%progbits
+ 435              		.align	2
+ 436              		.global	Wave_Timer_ReadControlRegister
+ 437              		.thumb
+ 438              		.thumb_func
+ 439              		.type	Wave_Timer_ReadControlRegister, %function
+ 440              	Wave_Timer_ReadControlRegister:
+ 441              	.LFB7:
+ 337:.\Generated_Source\PSoC5/Wave_Timer.c **** 
+ 338:.\Generated_Source\PSoC5/Wave_Timer.c **** 
+ 339:.\Generated_Source\PSoC5/Wave_Timer.c **** #if (!Wave_Timer_UDB_CONTROL_REG_REMOVED) /* Remove API if control register is unused */
+ 340:.\Generated_Source\PSoC5/Wave_Timer.c **** 
+ 341:.\Generated_Source\PSoC5/Wave_Timer.c **** 
+ 342:.\Generated_Source\PSoC5/Wave_Timer.c **** /*******************************************************************************
+ 343:.\Generated_Source\PSoC5/Wave_Timer.c **** * Function Name: Wave_Timer_ReadControlRegister
+ 344:.\Generated_Source\PSoC5/Wave_Timer.c **** ********************************************************************************
+ 345:.\Generated_Source\PSoC5/Wave_Timer.c **** *
+ 346:.\Generated_Source\PSoC5/Wave_Timer.c **** * Summary:
+ 347:.\Generated_Source\PSoC5/Wave_Timer.c **** *  Reads the control register and returns it's value.
+ 348:.\Generated_Source\PSoC5/Wave_Timer.c **** *
+ 349:.\Generated_Source\PSoC5/Wave_Timer.c **** * Parameters:
+ 350:.\Generated_Source\PSoC5/Wave_Timer.c **** *  void
+ 351:.\Generated_Source\PSoC5/Wave_Timer.c **** *
+ 352:.\Generated_Source\PSoC5/Wave_Timer.c **** * Return:
+ 353:.\Generated_Source\PSoC5/Wave_Timer.c **** *  The contents of the control register
+ 354:.\Generated_Source\PSoC5/Wave_Timer.c **** *
+ 355:.\Generated_Source\PSoC5/Wave_Timer.c **** *******************************************************************************/
+ 356:.\Generated_Source\PSoC5/Wave_Timer.c **** uint8 Wave_Timer_ReadControlRegister(void) 
+ 357:.\Generated_Source\PSoC5/Wave_Timer.c **** {
+ARM GAS  C:\Users\jthem\AppData\Local\Temp\ccW790zp.s 			page 15
+
+
+ 442              		.loc 1 357 0
+ 443              		.cfi_startproc
+ 444              		@ args = 0, pretend = 0, frame = 0
+ 445              		@ frame_needed = 1, uses_anonymous_args = 0
+ 446              		@ link register save eliminated.
+ 447 0000 80B4     		push	{r7}
+ 448              		.cfi_def_cfa_offset 4
+ 449              		.cfi_offset 7, -4
+ 450 0002 00AF     		add	r7, sp, #0
+ 451              		.cfi_def_cfa_register 7
+ 358:.\Generated_Source\PSoC5/Wave_Timer.c ****     #if (!Wave_Timer_UDB_CONTROL_REG_REMOVED) 
+ 359:.\Generated_Source\PSoC5/Wave_Timer.c ****         return ((uint8)Wave_Timer_CONTROL);
+ 452              		.loc 1 359 0
+ 453 0004 034B     		ldr	r3, .L26
+ 454 0006 1B78     		ldrb	r3, [r3]
+ 455 0008 DBB2     		uxtb	r3, r3
+ 360:.\Generated_Source\PSoC5/Wave_Timer.c ****     #else
+ 361:.\Generated_Source\PSoC5/Wave_Timer.c ****         return (0);
+ 362:.\Generated_Source\PSoC5/Wave_Timer.c ****     #endif /* (!Wave_Timer_UDB_CONTROL_REG_REMOVED) */
+ 363:.\Generated_Source\PSoC5/Wave_Timer.c **** }
+ 456              		.loc 1 363 0
+ 457 000a 1846     		mov	r0, r3
+ 458 000c BD46     		mov	sp, r7
+ 459              		.cfi_def_cfa_register 13
+ 460              		@ sp needed
+ 461 000e 5DF8047B 		ldr	r7, [sp], #4
+ 462              		.cfi_restore 7
+ 463              		.cfi_def_cfa_offset 0
+ 464 0012 7047     		bx	lr
+ 465              	.L27:
+ 466              		.align	2
+ 467              	.L26:
+ 468 0014 0C4F0040 		.word	1073762060
+ 469              		.cfi_endproc
+ 470              	.LFE7:
+ 471              		.size	Wave_Timer_ReadControlRegister, .-Wave_Timer_ReadControlRegister
+ 472              		.section	.text.Wave_Timer_WriteControlRegister,"ax",%progbits
+ 473              		.align	2
+ 474              		.global	Wave_Timer_WriteControlRegister
+ 475              		.thumb
+ 476              		.thumb_func
+ 477              		.type	Wave_Timer_WriteControlRegister, %function
+ 478              	Wave_Timer_WriteControlRegister:
+ 479              	.LFB8:
+ 364:.\Generated_Source\PSoC5/Wave_Timer.c **** 
+ 365:.\Generated_Source\PSoC5/Wave_Timer.c **** 
+ 366:.\Generated_Source\PSoC5/Wave_Timer.c **** /*******************************************************************************
+ 367:.\Generated_Source\PSoC5/Wave_Timer.c **** * Function Name: Wave_Timer_WriteControlRegister
+ 368:.\Generated_Source\PSoC5/Wave_Timer.c **** ********************************************************************************
+ 369:.\Generated_Source\PSoC5/Wave_Timer.c **** *
+ 370:.\Generated_Source\PSoC5/Wave_Timer.c **** * Summary:
+ 371:.\Generated_Source\PSoC5/Wave_Timer.c **** *  Sets the bit-field of the control register.
+ 372:.\Generated_Source\PSoC5/Wave_Timer.c **** *
+ 373:.\Generated_Source\PSoC5/Wave_Timer.c **** * Parameters:
+ 374:.\Generated_Source\PSoC5/Wave_Timer.c **** *  control: The contents of the control register
+ 375:.\Generated_Source\PSoC5/Wave_Timer.c **** *
+ 376:.\Generated_Source\PSoC5/Wave_Timer.c **** * Return:
+ARM GAS  C:\Users\jthem\AppData\Local\Temp\ccW790zp.s 			page 16
+
+
+ 377:.\Generated_Source\PSoC5/Wave_Timer.c **** *
+ 378:.\Generated_Source\PSoC5/Wave_Timer.c **** *******************************************************************************/
+ 379:.\Generated_Source\PSoC5/Wave_Timer.c **** void Wave_Timer_WriteControlRegister(uint8 control) 
+ 380:.\Generated_Source\PSoC5/Wave_Timer.c **** {
+ 480              		.loc 1 380 0
+ 481              		.cfi_startproc
+ 482              		@ args = 0, pretend = 0, frame = 8
+ 483              		@ frame_needed = 1, uses_anonymous_args = 0
+ 484              		@ link register save eliminated.
+ 485 0000 80B4     		push	{r7}
+ 486              		.cfi_def_cfa_offset 4
+ 487              		.cfi_offset 7, -4
+ 488 0002 83B0     		sub	sp, sp, #12
+ 489              		.cfi_def_cfa_offset 16
+ 490 0004 00AF     		add	r7, sp, #0
+ 491              		.cfi_def_cfa_register 7
+ 492 0006 0346     		mov	r3, r0
+ 493 0008 FB71     		strb	r3, [r7, #7]
+ 381:.\Generated_Source\PSoC5/Wave_Timer.c ****     #if (!Wave_Timer_UDB_CONTROL_REG_REMOVED) 
+ 382:.\Generated_Source\PSoC5/Wave_Timer.c ****         Wave_Timer_CONTROL = control;
+ 494              		.loc 1 382 0
+ 495 000a 044A     		ldr	r2, .L29
+ 496 000c FB79     		ldrb	r3, [r7, #7]
+ 497 000e 1370     		strb	r3, [r2]
+ 383:.\Generated_Source\PSoC5/Wave_Timer.c ****     #else
+ 384:.\Generated_Source\PSoC5/Wave_Timer.c ****         control = 0u;
+ 385:.\Generated_Source\PSoC5/Wave_Timer.c ****     #endif /* (!Wave_Timer_UDB_CONTROL_REG_REMOVED) */
+ 386:.\Generated_Source\PSoC5/Wave_Timer.c **** }
+ 498              		.loc 1 386 0
+ 499 0010 0C37     		adds	r7, r7, #12
+ 500              		.cfi_def_cfa_offset 4
+ 501 0012 BD46     		mov	sp, r7
+ 502              		.cfi_def_cfa_register 13
+ 503              		@ sp needed
+ 504 0014 5DF8047B 		ldr	r7, [sp], #4
+ 505              		.cfi_restore 7
+ 506              		.cfi_def_cfa_offset 0
+ 507 0018 7047     		bx	lr
+ 508              	.L30:
+ 509 001a 00BF     		.align	2
+ 510              	.L29:
+ 511 001c 0C4F0040 		.word	1073762060
+ 512              		.cfi_endproc
+ 513              	.LFE8:
+ 514              		.size	Wave_Timer_WriteControlRegister, .-Wave_Timer_WriteControlRegister
+ 515              		.section	.text.Wave_Timer_ReadPeriod,"ax",%progbits
+ 516              		.align	2
+ 517              		.global	Wave_Timer_ReadPeriod
+ 518              		.thumb
+ 519              		.thumb_func
+ 520              		.type	Wave_Timer_ReadPeriod, %function
+ 521              	Wave_Timer_ReadPeriod:
+ 522              	.LFB9:
+ 387:.\Generated_Source\PSoC5/Wave_Timer.c **** 
+ 388:.\Generated_Source\PSoC5/Wave_Timer.c **** #endif /* Remove API if control register is unused */
+ 389:.\Generated_Source\PSoC5/Wave_Timer.c **** 
+ 390:.\Generated_Source\PSoC5/Wave_Timer.c **** 
+ARM GAS  C:\Users\jthem\AppData\Local\Temp\ccW790zp.s 			page 17
+
+
+ 391:.\Generated_Source\PSoC5/Wave_Timer.c **** /*******************************************************************************
+ 392:.\Generated_Source\PSoC5/Wave_Timer.c **** * Function Name: Wave_Timer_ReadPeriod
+ 393:.\Generated_Source\PSoC5/Wave_Timer.c **** ********************************************************************************
+ 394:.\Generated_Source\PSoC5/Wave_Timer.c **** *
+ 395:.\Generated_Source\PSoC5/Wave_Timer.c **** * Summary:
+ 396:.\Generated_Source\PSoC5/Wave_Timer.c **** *  This function returns the current value of the Period.
+ 397:.\Generated_Source\PSoC5/Wave_Timer.c **** *
+ 398:.\Generated_Source\PSoC5/Wave_Timer.c **** * Parameters:
+ 399:.\Generated_Source\PSoC5/Wave_Timer.c **** *  void
+ 400:.\Generated_Source\PSoC5/Wave_Timer.c **** *
+ 401:.\Generated_Source\PSoC5/Wave_Timer.c **** * Return:
+ 402:.\Generated_Source\PSoC5/Wave_Timer.c **** *  The present value of the counter.
+ 403:.\Generated_Source\PSoC5/Wave_Timer.c **** *
+ 404:.\Generated_Source\PSoC5/Wave_Timer.c **** *******************************************************************************/
+ 405:.\Generated_Source\PSoC5/Wave_Timer.c **** uint16 Wave_Timer_ReadPeriod(void) 
+ 406:.\Generated_Source\PSoC5/Wave_Timer.c **** {
+ 523              		.loc 1 406 0
+ 524              		.cfi_startproc
+ 525              		@ args = 0, pretend = 0, frame = 0
+ 526              		@ frame_needed = 1, uses_anonymous_args = 0
+ 527              		@ link register save eliminated.
+ 528 0000 80B4     		push	{r7}
+ 529              		.cfi_def_cfa_offset 4
+ 530              		.cfi_offset 7, -4
+ 531 0002 00AF     		add	r7, sp, #0
+ 532              		.cfi_def_cfa_register 7
+ 407:.\Generated_Source\PSoC5/Wave_Timer.c ****    #if(Wave_Timer_UsingFixedFunction)
+ 408:.\Generated_Source\PSoC5/Wave_Timer.c ****        return ((uint16)CY_GET_REG16(Wave_Timer_PERIOD_LSB_PTR));
+ 533              		.loc 1 408 0
+ 534 0004 034B     		ldr	r3, .L33
+ 535 0006 1B88     		ldrh	r3, [r3]	@ movhi
+ 536 0008 9BB2     		uxth	r3, r3
+ 409:.\Generated_Source\PSoC5/Wave_Timer.c ****    #else
+ 410:.\Generated_Source\PSoC5/Wave_Timer.c ****        return (CY_GET_REG16(Wave_Timer_PERIOD_LSB_PTR));
+ 411:.\Generated_Source\PSoC5/Wave_Timer.c ****    #endif /* (Wave_Timer_UsingFixedFunction) */
+ 412:.\Generated_Source\PSoC5/Wave_Timer.c **** }
+ 537              		.loc 1 412 0
+ 538 000a 1846     		mov	r0, r3
+ 539 000c BD46     		mov	sp, r7
+ 540              		.cfi_def_cfa_register 13
+ 541              		@ sp needed
+ 542 000e 5DF8047B 		ldr	r7, [sp], #4
+ 543              		.cfi_restore 7
+ 544              		.cfi_def_cfa_offset 0
+ 545 0012 7047     		bx	lr
+ 546              	.L34:
+ 547              		.align	2
+ 548              	.L33:
+ 549 0014 104F0040 		.word	1073762064
+ 550              		.cfi_endproc
+ 551              	.LFE9:
+ 552              		.size	Wave_Timer_ReadPeriod, .-Wave_Timer_ReadPeriod
+ 553              		.section	.text.Wave_Timer_WritePeriod,"ax",%progbits
+ 554              		.align	2
+ 555              		.global	Wave_Timer_WritePeriod
+ 556              		.thumb
+ 557              		.thumb_func
+ARM GAS  C:\Users\jthem\AppData\Local\Temp\ccW790zp.s 			page 18
+
+
+ 558              		.type	Wave_Timer_WritePeriod, %function
+ 559              	Wave_Timer_WritePeriod:
+ 560              	.LFB10:
+ 413:.\Generated_Source\PSoC5/Wave_Timer.c **** 
+ 414:.\Generated_Source\PSoC5/Wave_Timer.c **** 
+ 415:.\Generated_Source\PSoC5/Wave_Timer.c **** /*******************************************************************************
+ 416:.\Generated_Source\PSoC5/Wave_Timer.c **** * Function Name: Wave_Timer_WritePeriod
+ 417:.\Generated_Source\PSoC5/Wave_Timer.c **** ********************************************************************************
+ 418:.\Generated_Source\PSoC5/Wave_Timer.c **** *
+ 419:.\Generated_Source\PSoC5/Wave_Timer.c **** * Summary:
+ 420:.\Generated_Source\PSoC5/Wave_Timer.c **** *  This function is used to change the period of the counter.  The new period
+ 421:.\Generated_Source\PSoC5/Wave_Timer.c **** *  will be loaded the next time terminal count is detected.
+ 422:.\Generated_Source\PSoC5/Wave_Timer.c **** *
+ 423:.\Generated_Source\PSoC5/Wave_Timer.c **** * Parameters:
+ 424:.\Generated_Source\PSoC5/Wave_Timer.c **** *  period: This value may be between 1 and (2^Resolution)-1.  A value of 0 will
+ 425:.\Generated_Source\PSoC5/Wave_Timer.c **** *          result in the counter remaining at zero.
+ 426:.\Generated_Source\PSoC5/Wave_Timer.c **** *
+ 427:.\Generated_Source\PSoC5/Wave_Timer.c **** * Return:
+ 428:.\Generated_Source\PSoC5/Wave_Timer.c **** *  void
+ 429:.\Generated_Source\PSoC5/Wave_Timer.c **** *
+ 430:.\Generated_Source\PSoC5/Wave_Timer.c **** *******************************************************************************/
+ 431:.\Generated_Source\PSoC5/Wave_Timer.c **** void Wave_Timer_WritePeriod(uint16 period) 
+ 432:.\Generated_Source\PSoC5/Wave_Timer.c **** {
+ 561              		.loc 1 432 0
+ 562              		.cfi_startproc
+ 563              		@ args = 0, pretend = 0, frame = 16
+ 564              		@ frame_needed = 1, uses_anonymous_args = 0
+ 565              		@ link register save eliminated.
+ 566 0000 80B4     		push	{r7}
+ 567              		.cfi_def_cfa_offset 4
+ 568              		.cfi_offset 7, -4
+ 569 0002 85B0     		sub	sp, sp, #20
+ 570              		.cfi_def_cfa_offset 24
+ 571 0004 00AF     		add	r7, sp, #0
+ 572              		.cfi_def_cfa_register 7
+ 573 0006 0346     		mov	r3, r0
+ 574 0008 FB80     		strh	r3, [r7, #6]	@ movhi
+ 433:.\Generated_Source\PSoC5/Wave_Timer.c ****     #if(Wave_Timer_UsingFixedFunction)
+ 434:.\Generated_Source\PSoC5/Wave_Timer.c ****         uint16 period_temp = (uint16)period;
+ 575              		.loc 1 434 0
+ 576 000a FB88     		ldrh	r3, [r7, #6]	@ movhi
+ 577 000c FB81     		strh	r3, [r7, #14]	@ movhi
+ 435:.\Generated_Source\PSoC5/Wave_Timer.c ****         CY_SET_REG16(Wave_Timer_PERIOD_LSB_PTR, period_temp);
+ 578              		.loc 1 435 0
+ 579 000e 044A     		ldr	r2, .L36
+ 580 0010 FB89     		ldrh	r3, [r7, #14]	@ movhi
+ 581 0012 1380     		strh	r3, [r2]	@ movhi
+ 436:.\Generated_Source\PSoC5/Wave_Timer.c ****     #else
+ 437:.\Generated_Source\PSoC5/Wave_Timer.c ****         CY_SET_REG16(Wave_Timer_PERIOD_LSB_PTR, period);
+ 438:.\Generated_Source\PSoC5/Wave_Timer.c ****     #endif /*Write Period value with appropriate resolution suffix depending on UDB or fixed functi
+ 439:.\Generated_Source\PSoC5/Wave_Timer.c **** }
+ 582              		.loc 1 439 0
+ 583 0014 1437     		adds	r7, r7, #20
+ 584              		.cfi_def_cfa_offset 4
+ 585 0016 BD46     		mov	sp, r7
+ 586              		.cfi_def_cfa_register 13
+ 587              		@ sp needed
+ARM GAS  C:\Users\jthem\AppData\Local\Temp\ccW790zp.s 			page 19
+
+
+ 588 0018 5DF8047B 		ldr	r7, [sp], #4
+ 589              		.cfi_restore 7
+ 590              		.cfi_def_cfa_offset 0
+ 591 001c 7047     		bx	lr
+ 592              	.L37:
+ 593 001e 00BF     		.align	2
+ 594              	.L36:
+ 595 0020 104F0040 		.word	1073762064
+ 596              		.cfi_endproc
+ 597              	.LFE10:
+ 598              		.size	Wave_Timer_WritePeriod, .-Wave_Timer_WritePeriod
+ 599              		.section	.text.Wave_Timer_ReadCapture,"ax",%progbits
+ 600              		.align	2
+ 601              		.global	Wave_Timer_ReadCapture
+ 602              		.thumb
+ 603              		.thumb_func
+ 604              		.type	Wave_Timer_ReadCapture, %function
+ 605              	Wave_Timer_ReadCapture:
+ 606              	.LFB11:
+ 440:.\Generated_Source\PSoC5/Wave_Timer.c **** 
+ 441:.\Generated_Source\PSoC5/Wave_Timer.c **** 
+ 442:.\Generated_Source\PSoC5/Wave_Timer.c **** /*******************************************************************************
+ 443:.\Generated_Source\PSoC5/Wave_Timer.c **** * Function Name: Wave_Timer_ReadCapture
+ 444:.\Generated_Source\PSoC5/Wave_Timer.c **** ********************************************************************************
+ 445:.\Generated_Source\PSoC5/Wave_Timer.c **** *
+ 446:.\Generated_Source\PSoC5/Wave_Timer.c **** * Summary:
+ 447:.\Generated_Source\PSoC5/Wave_Timer.c **** *  This function returns the last value captured.
+ 448:.\Generated_Source\PSoC5/Wave_Timer.c **** *
+ 449:.\Generated_Source\PSoC5/Wave_Timer.c **** * Parameters:
+ 450:.\Generated_Source\PSoC5/Wave_Timer.c **** *  void
+ 451:.\Generated_Source\PSoC5/Wave_Timer.c **** *
+ 452:.\Generated_Source\PSoC5/Wave_Timer.c **** * Return:
+ 453:.\Generated_Source\PSoC5/Wave_Timer.c **** *  Present Capture value.
+ 454:.\Generated_Source\PSoC5/Wave_Timer.c **** *
+ 455:.\Generated_Source\PSoC5/Wave_Timer.c **** *******************************************************************************/
+ 456:.\Generated_Source\PSoC5/Wave_Timer.c **** uint16 Wave_Timer_ReadCapture(void) 
+ 457:.\Generated_Source\PSoC5/Wave_Timer.c **** {
+ 607              		.loc 1 457 0
+ 608              		.cfi_startproc
+ 609              		@ args = 0, pretend = 0, frame = 0
+ 610              		@ frame_needed = 1, uses_anonymous_args = 0
+ 611              		@ link register save eliminated.
+ 612 0000 80B4     		push	{r7}
+ 613              		.cfi_def_cfa_offset 4
+ 614              		.cfi_offset 7, -4
+ 615 0002 00AF     		add	r7, sp, #0
+ 616              		.cfi_def_cfa_register 7
+ 458:.\Generated_Source\PSoC5/Wave_Timer.c ****    #if(Wave_Timer_UsingFixedFunction)
+ 459:.\Generated_Source\PSoC5/Wave_Timer.c ****        return ((uint16)CY_GET_REG16(Wave_Timer_CAPTURE_LSB_PTR));
+ 617              		.loc 1 459 0
+ 618 0004 034B     		ldr	r3, .L40
+ 619 0006 1B88     		ldrh	r3, [r3]	@ movhi
+ 620 0008 9BB2     		uxth	r3, r3
+ 460:.\Generated_Source\PSoC5/Wave_Timer.c ****    #else
+ 461:.\Generated_Source\PSoC5/Wave_Timer.c ****        return (CY_GET_REG16(Wave_Timer_CAPTURE_LSB_PTR));
+ 462:.\Generated_Source\PSoC5/Wave_Timer.c ****    #endif /* (Wave_Timer_UsingFixedFunction) */
+ 463:.\Generated_Source\PSoC5/Wave_Timer.c **** }
+ARM GAS  C:\Users\jthem\AppData\Local\Temp\ccW790zp.s 			page 20
+
+
+ 621              		.loc 1 463 0
+ 622 000a 1846     		mov	r0, r3
+ 623 000c BD46     		mov	sp, r7
+ 624              		.cfi_def_cfa_register 13
+ 625              		@ sp needed
+ 626 000e 5DF8047B 		ldr	r7, [sp], #4
+ 627              		.cfi_restore 7
+ 628              		.cfi_def_cfa_offset 0
+ 629 0012 7047     		bx	lr
+ 630              	.L41:
+ 631              		.align	2
+ 632              	.L40:
+ 633 0014 144F0040 		.word	1073762068
+ 634              		.cfi_endproc
+ 635              	.LFE11:
+ 636              		.size	Wave_Timer_ReadCapture, .-Wave_Timer_ReadCapture
+ 637              		.section	.text.Wave_Timer_WriteCounter,"ax",%progbits
+ 638              		.align	2
+ 639              		.global	Wave_Timer_WriteCounter
+ 640              		.thumb
+ 641              		.thumb_func
+ 642              		.type	Wave_Timer_WriteCounter, %function
+ 643              	Wave_Timer_WriteCounter:
+ 644              	.LFB12:
+ 464:.\Generated_Source\PSoC5/Wave_Timer.c **** 
+ 465:.\Generated_Source\PSoC5/Wave_Timer.c **** 
+ 466:.\Generated_Source\PSoC5/Wave_Timer.c **** /*******************************************************************************
+ 467:.\Generated_Source\PSoC5/Wave_Timer.c **** * Function Name: Wave_Timer_WriteCounter
+ 468:.\Generated_Source\PSoC5/Wave_Timer.c **** ********************************************************************************
+ 469:.\Generated_Source\PSoC5/Wave_Timer.c **** *
+ 470:.\Generated_Source\PSoC5/Wave_Timer.c **** * Summary:
+ 471:.\Generated_Source\PSoC5/Wave_Timer.c **** *  This funtion is used to set the counter to a specific value
+ 472:.\Generated_Source\PSoC5/Wave_Timer.c **** *
+ 473:.\Generated_Source\PSoC5/Wave_Timer.c **** * Parameters:
+ 474:.\Generated_Source\PSoC5/Wave_Timer.c **** *  counter:  New counter value.
+ 475:.\Generated_Source\PSoC5/Wave_Timer.c **** *
+ 476:.\Generated_Source\PSoC5/Wave_Timer.c **** * Return:
+ 477:.\Generated_Source\PSoC5/Wave_Timer.c **** *  void
+ 478:.\Generated_Source\PSoC5/Wave_Timer.c **** *
+ 479:.\Generated_Source\PSoC5/Wave_Timer.c **** *******************************************************************************/
+ 480:.\Generated_Source\PSoC5/Wave_Timer.c **** void Wave_Timer_WriteCounter(uint16 counter) 
+ 481:.\Generated_Source\PSoC5/Wave_Timer.c **** {
+ 645              		.loc 1 481 0
+ 646              		.cfi_startproc
+ 647              		@ args = 0, pretend = 0, frame = 8
+ 648              		@ frame_needed = 1, uses_anonymous_args = 0
+ 649              		@ link register save eliminated.
+ 650 0000 80B4     		push	{r7}
+ 651              		.cfi_def_cfa_offset 4
+ 652              		.cfi_offset 7, -4
+ 653 0002 83B0     		sub	sp, sp, #12
+ 654              		.cfi_def_cfa_offset 16
+ 655 0004 00AF     		add	r7, sp, #0
+ 656              		.cfi_def_cfa_register 7
+ 657 0006 0346     		mov	r3, r0
+ 658 0008 FB80     		strh	r3, [r7, #6]	@ movhi
+ 482:.\Generated_Source\PSoC5/Wave_Timer.c ****    #if(Wave_Timer_UsingFixedFunction)
+ARM GAS  C:\Users\jthem\AppData\Local\Temp\ccW790zp.s 			page 21
+
+
+ 483:.\Generated_Source\PSoC5/Wave_Timer.c ****         /* This functionality is removed until a FixedFunction HW update to
+ 484:.\Generated_Source\PSoC5/Wave_Timer.c ****          * allow this register to be written
+ 485:.\Generated_Source\PSoC5/Wave_Timer.c ****          */
+ 486:.\Generated_Source\PSoC5/Wave_Timer.c ****         CY_SET_REG16(Wave_Timer_COUNTER_LSB_PTR, (uint16)counter);
+ 659              		.loc 1 486 0
+ 660 000a 044A     		ldr	r2, .L43
+ 661 000c FB88     		ldrh	r3, [r7, #6]	@ movhi
+ 662 000e 1380     		strh	r3, [r2]	@ movhi
+ 487:.\Generated_Source\PSoC5/Wave_Timer.c ****         
+ 488:.\Generated_Source\PSoC5/Wave_Timer.c ****     #else
+ 489:.\Generated_Source\PSoC5/Wave_Timer.c ****         CY_SET_REG16(Wave_Timer_COUNTER_LSB_PTR, counter);
+ 490:.\Generated_Source\PSoC5/Wave_Timer.c ****     #endif /* Set Write Counter only for the UDB implementation (Write Counter not available in fix
+ 491:.\Generated_Source\PSoC5/Wave_Timer.c **** }
+ 663              		.loc 1 491 0
+ 664 0010 0C37     		adds	r7, r7, #12
+ 665              		.cfi_def_cfa_offset 4
+ 666 0012 BD46     		mov	sp, r7
+ 667              		.cfi_def_cfa_register 13
+ 668              		@ sp needed
+ 669 0014 5DF8047B 		ldr	r7, [sp], #4
+ 670              		.cfi_restore 7
+ 671              		.cfi_def_cfa_offset 0
+ 672 0018 7047     		bx	lr
+ 673              	.L44:
+ 674 001a 00BF     		.align	2
+ 675              	.L43:
+ 676 001c 124F0040 		.word	1073762066
+ 677              		.cfi_endproc
+ 678              	.LFE12:
+ 679              		.size	Wave_Timer_WriteCounter, .-Wave_Timer_WriteCounter
+ 680              		.section	.text.Wave_Timer_ReadCounter,"ax",%progbits
+ 681              		.align	2
+ 682              		.global	Wave_Timer_ReadCounter
+ 683              		.thumb
+ 684              		.thumb_func
+ 685              		.type	Wave_Timer_ReadCounter, %function
+ 686              	Wave_Timer_ReadCounter:
+ 687              	.LFB13:
+ 492:.\Generated_Source\PSoC5/Wave_Timer.c **** 
+ 493:.\Generated_Source\PSoC5/Wave_Timer.c **** 
+ 494:.\Generated_Source\PSoC5/Wave_Timer.c **** /*******************************************************************************
+ 495:.\Generated_Source\PSoC5/Wave_Timer.c **** * Function Name: Wave_Timer_ReadCounter
+ 496:.\Generated_Source\PSoC5/Wave_Timer.c **** ********************************************************************************
+ 497:.\Generated_Source\PSoC5/Wave_Timer.c **** *
+ 498:.\Generated_Source\PSoC5/Wave_Timer.c **** * Summary:
+ 499:.\Generated_Source\PSoC5/Wave_Timer.c **** *  This function returns the current counter value.
+ 500:.\Generated_Source\PSoC5/Wave_Timer.c **** *
+ 501:.\Generated_Source\PSoC5/Wave_Timer.c **** * Parameters:
+ 502:.\Generated_Source\PSoC5/Wave_Timer.c **** *  void
+ 503:.\Generated_Source\PSoC5/Wave_Timer.c **** *
+ 504:.\Generated_Source\PSoC5/Wave_Timer.c **** * Return:
+ 505:.\Generated_Source\PSoC5/Wave_Timer.c **** *  Present compare value.
+ 506:.\Generated_Source\PSoC5/Wave_Timer.c **** *
+ 507:.\Generated_Source\PSoC5/Wave_Timer.c **** *******************************************************************************/
+ 508:.\Generated_Source\PSoC5/Wave_Timer.c **** uint16 Wave_Timer_ReadCounter(void) 
+ 509:.\Generated_Source\PSoC5/Wave_Timer.c **** {
+ 688              		.loc 1 509 0
+ARM GAS  C:\Users\jthem\AppData\Local\Temp\ccW790zp.s 			page 22
+
+
+ 689              		.cfi_startproc
+ 690              		@ args = 0, pretend = 0, frame = 0
+ 691              		@ frame_needed = 1, uses_anonymous_args = 0
+ 692              		@ link register save eliminated.
+ 693 0000 80B4     		push	{r7}
+ 694              		.cfi_def_cfa_offset 4
+ 695              		.cfi_offset 7, -4
+ 696 0002 00AF     		add	r7, sp, #0
+ 697              		.cfi_def_cfa_register 7
+ 510:.\Generated_Source\PSoC5/Wave_Timer.c ****     /* Force capture by reading Accumulator */
+ 511:.\Generated_Source\PSoC5/Wave_Timer.c ****     /* Must first do a software capture to be able to read the counter */
+ 512:.\Generated_Source\PSoC5/Wave_Timer.c ****     /* It is up to the user code to make sure there isn't already captured data in the FIFO */
+ 513:.\Generated_Source\PSoC5/Wave_Timer.c ****     #if(Wave_Timer_UsingFixedFunction)
+ 514:.\Generated_Source\PSoC5/Wave_Timer.c ****         (void)CY_GET_REG16(Wave_Timer_COUNTER_LSB_PTR);
+ 698              		.loc 1 514 0
+ 699 0004 044B     		ldr	r3, .L47
+ 700 0006 1B88     		ldrh	r3, [r3]	@ movhi
+ 515:.\Generated_Source\PSoC5/Wave_Timer.c ****     #else
+ 516:.\Generated_Source\PSoC5/Wave_Timer.c ****         (void)CY_GET_REG8(Wave_Timer_COUNTER_LSB_PTR_8BIT);
+ 517:.\Generated_Source\PSoC5/Wave_Timer.c ****     #endif/* (Wave_Timer_UsingFixedFunction) */
+ 518:.\Generated_Source\PSoC5/Wave_Timer.c **** 
+ 519:.\Generated_Source\PSoC5/Wave_Timer.c ****     /* Read the data from the FIFO (or capture register for Fixed Function)*/
+ 520:.\Generated_Source\PSoC5/Wave_Timer.c ****     #if(Wave_Timer_UsingFixedFunction)
+ 521:.\Generated_Source\PSoC5/Wave_Timer.c ****         return ((uint16)CY_GET_REG16(Wave_Timer_CAPTURE_LSB_PTR));
+ 701              		.loc 1 521 0
+ 702 0008 044B     		ldr	r3, .L47+4
+ 703 000a 1B88     		ldrh	r3, [r3]	@ movhi
+ 704 000c 9BB2     		uxth	r3, r3
+ 522:.\Generated_Source\PSoC5/Wave_Timer.c ****     #else
+ 523:.\Generated_Source\PSoC5/Wave_Timer.c ****         return (CY_GET_REG16(Wave_Timer_CAPTURE_LSB_PTR));
+ 524:.\Generated_Source\PSoC5/Wave_Timer.c ****     #endif /* (Wave_Timer_UsingFixedFunction) */
+ 525:.\Generated_Source\PSoC5/Wave_Timer.c **** }
+ 705              		.loc 1 525 0
+ 706 000e 1846     		mov	r0, r3
+ 707 0010 BD46     		mov	sp, r7
+ 708              		.cfi_def_cfa_register 13
+ 709              		@ sp needed
+ 710 0012 5DF8047B 		ldr	r7, [sp], #4
+ 711              		.cfi_restore 7
+ 712              		.cfi_def_cfa_offset 0
+ 713 0016 7047     		bx	lr
+ 714              	.L48:
+ 715              		.align	2
+ 716              	.L47:
+ 717 0018 124F0040 		.word	1073762066
+ 718 001c 144F0040 		.word	1073762068
+ 719              		.cfi_endproc
+ 720              	.LFE13:
+ 721              		.size	Wave_Timer_ReadCounter, .-Wave_Timer_ReadCounter
+ 722              		.text
+ 723              	.Letext0:
+ 724              		.file 2 ".\\Generated_Source\\PSoC5\\cytypes.h"
+ 725              		.section	.debug_info,"",%progbits
+ 726              	.Ldebug_info0:
+ 727 0000 3A020000 		.4byte	0x23a
+ 728 0004 0400     		.2byte	0x4
+ 729 0006 00000000 		.4byte	.Ldebug_abbrev0
+ARM GAS  C:\Users\jthem\AppData\Local\Temp\ccW790zp.s 			page 23
+
+
+ 730 000a 04       		.byte	0x4
+ 731 000b 01       		.uleb128 0x1
+ 732 000c FF000000 		.4byte	.LASF35
+ 733 0010 01       		.byte	0x1
+ 734 0011 05030000 		.4byte	.LASF36
+ 735 0015 C6010000 		.4byte	.LASF37
+ 736 0019 00000000 		.4byte	.Ldebug_ranges0+0
+ 737 001d 00000000 		.4byte	0
+ 738 0021 00000000 		.4byte	.Ldebug_line0
+ 739 0025 02       		.uleb128 0x2
+ 740 0026 01       		.byte	0x1
+ 741 0027 06       		.byte	0x6
+ 742 0028 F9020000 		.4byte	.LASF0
+ 743 002c 02       		.uleb128 0x2
+ 744 002d 01       		.byte	0x1
+ 745 002e 08       		.byte	0x8
+ 746 002f 7D000000 		.4byte	.LASF1
+ 747 0033 02       		.uleb128 0x2
+ 748 0034 02       		.byte	0x2
+ 749 0035 05       		.byte	0x5
+ 750 0036 A0020000 		.4byte	.LASF2
+ 751 003a 02       		.uleb128 0x2
+ 752 003b 02       		.byte	0x2
+ 753 003c 07       		.byte	0x7
+ 754 003d 2B000000 		.4byte	.LASF3
+ 755 0041 02       		.uleb128 0x2
+ 756 0042 04       		.byte	0x4
+ 757 0043 05       		.byte	0x5
+ 758 0044 EB020000 		.4byte	.LASF4
+ 759 0048 02       		.uleb128 0x2
+ 760 0049 04       		.byte	0x4
+ 761 004a 07       		.byte	0x7
+ 762 004b A7000000 		.4byte	.LASF5
+ 763 004f 02       		.uleb128 0x2
+ 764 0050 08       		.byte	0x8
+ 765 0051 05       		.byte	0x5
+ 766 0052 68020000 		.4byte	.LASF6
+ 767 0056 02       		.uleb128 0x2
+ 768 0057 08       		.byte	0x8
+ 769 0058 07       		.byte	0x7
+ 770 0059 1D020000 		.4byte	.LASF7
+ 771 005d 03       		.uleb128 0x3
+ 772 005e 04       		.byte	0x4
+ 773 005f 05       		.byte	0x5
+ 774 0060 696E7400 		.ascii	"int\000"
+ 775 0064 02       		.uleb128 0x2
+ 776 0065 04       		.byte	0x4
+ 777 0066 07       		.byte	0x7
+ 778 0067 10020000 		.4byte	.LASF8
+ 779 006b 04       		.uleb128 0x4
+ 780 006c B9000000 		.4byte	.LASF9
+ 781 0070 02       		.byte	0x2
+ 782 0071 3801     		.2byte	0x138
+ 783 0073 2C000000 		.4byte	0x2c
+ 784 0077 04       		.uleb128 0x4
+ 785 0078 09020000 		.4byte	.LASF10
+ 786 007c 02       		.byte	0x2
+ARM GAS  C:\Users\jthem\AppData\Local\Temp\ccW790zp.s 			page 24
+
+
+ 787 007d 3901     		.2byte	0x139
+ 788 007f 3A000000 		.4byte	0x3a
+ 789 0083 02       		.uleb128 0x2
+ 790 0084 04       		.byte	0x4
+ 791 0085 04       		.byte	0x4
+ 792 0086 61000000 		.4byte	.LASF11
+ 793 008a 02       		.uleb128 0x2
+ 794 008b 08       		.byte	0x8
+ 795 008c 04       		.byte	0x4
+ 796 008d 8D010000 		.4byte	.LASF12
+ 797 0091 02       		.uleb128 0x2
+ 798 0092 01       		.byte	0x1
+ 799 0093 08       		.byte	0x8
+ 800 0094 F4020000 		.4byte	.LASF13
+ 801 0098 04       		.uleb128 0x4
+ 802 0099 A2000000 		.4byte	.LASF14
+ 803 009d 02       		.byte	0x2
+ 804 009e E201     		.2byte	0x1e2
+ 805 00a0 A4000000 		.4byte	0xa4
+ 806 00a4 05       		.uleb128 0x5
+ 807 00a5 6B000000 		.4byte	0x6b
+ 808 00a9 04       		.uleb128 0x4
+ 809 00aa 00000000 		.4byte	.LASF15
+ 810 00ae 02       		.byte	0x2
+ 811 00af E301     		.2byte	0x1e3
+ 812 00b1 B5000000 		.4byte	0xb5
+ 813 00b5 05       		.uleb128 0x5
+ 814 00b6 77000000 		.4byte	0x77
+ 815 00ba 02       		.uleb128 0x2
+ 816 00bb 04       		.byte	0x4
+ 817 00bc 07       		.byte	0x7
+ 818 00bd 5F020000 		.4byte	.LASF16
+ 819 00c1 06       		.uleb128 0x6
+ 820 00c2 BC020000 		.4byte	.LASF17
+ 821 00c6 01       		.byte	0x1
+ 822 00c7 2B       		.byte	0x2b
+ 823 00c8 00000000 		.4byte	.LFB0
+ 824 00cc E8000000 		.4byte	.LFE0-.LFB0
+ 825 00d0 01       		.uleb128 0x1
+ 826 00d1 9C       		.byte	0x9c
+ 827 00d2 07       		.uleb128 0x7
+ 828 00d3 AA020000 		.4byte	.LASF18
+ 829 00d7 01       		.byte	0x1
+ 830 00d8 B4       		.byte	0xb4
+ 831 00d9 00000000 		.4byte	.LFB1
+ 832 00dd 48000000 		.4byte	.LFE1-.LFB1
+ 833 00e1 01       		.uleb128 0x1
+ 834 00e2 9C       		.byte	0x9c
+ 835 00e3 06       		.uleb128 0x6
+ 836 00e4 2B030000 		.4byte	.LASF19
+ 837 00e8 01       		.byte	0x1
+ 838 00e9 D7       		.byte	0xd7
+ 839 00ea 00000000 		.4byte	.LFB2
+ 840 00ee 20000000 		.4byte	.LFE2-.LFB2
+ 841 00f2 01       		.uleb128 0x1
+ 842 00f3 9C       		.byte	0x9c
+ 843 00f4 07       		.uleb128 0x7
+ARM GAS  C:\Users\jthem\AppData\Local\Temp\ccW790zp.s 			page 25
+
+
+ 844 00f5 3E000000 		.4byte	.LASF20
+ 845 00f9 01       		.byte	0x1
+ 846 00fa F7       		.byte	0xf7
+ 847 00fb 00000000 		.4byte	.LFB3
+ 848 00ff 48000000 		.4byte	.LFE3-.LFB3
+ 849 0103 01       		.uleb128 0x1
+ 850 0104 9C       		.byte	0x9c
+ 851 0105 08       		.uleb128 0x8
+ 852 0106 84020000 		.4byte	.LASF24
+ 853 010a 01       		.byte	0x1
+ 854 010b 1701     		.2byte	0x117
+ 855 010d 00000000 		.4byte	.LFB4
+ 856 0111 20000000 		.4byte	.LFE4-.LFB4
+ 857 0115 01       		.uleb128 0x1
+ 858 0116 9C       		.byte	0x9c
+ 859 0117 2B010000 		.4byte	0x12b
+ 860 011b 09       		.uleb128 0x9
+ 861 011c 76020000 		.4byte	.LASF26
+ 862 0120 01       		.byte	0x1
+ 863 0121 1701     		.2byte	0x117
+ 864 0123 6B000000 		.4byte	0x6b
+ 865 0127 02       		.uleb128 0x2
+ 866 0128 91       		.byte	0x91
+ 867 0129 77       		.sleb128 -9
+ 868 012a 00       		.byte	0
+ 869 012b 0A       		.uleb128 0xa
+ 870 012c 94010000 		.4byte	.LASF21
+ 871 0130 01       		.byte	0x1
+ 872 0131 2E01     		.2byte	0x12e
+ 873 0133 00000000 		.4byte	.LFB5
+ 874 0137 14000000 		.4byte	.LFE5-.LFB5
+ 875 013b 01       		.uleb128 0x1
+ 876 013c 9C       		.byte	0x9c
+ 877 013d 0B       		.uleb128 0xb
+ 878 013e 06000000 		.4byte	.LASF22
+ 879 0142 01       		.byte	0x1
+ 880 0143 4D01     		.2byte	0x14d
+ 881 0145 6B000000 		.4byte	0x6b
+ 882 0149 00000000 		.4byte	.LFB6
+ 883 014d 18000000 		.4byte	.LFE6-.LFB6
+ 884 0151 01       		.uleb128 0x1
+ 885 0152 9C       		.byte	0x9c
+ 886 0153 0B       		.uleb128 0xb
+ 887 0154 CC020000 		.4byte	.LASF23
+ 888 0158 01       		.byte	0x1
+ 889 0159 6401     		.2byte	0x164
+ 890 015b 6B000000 		.4byte	0x6b
+ 891 015f 00000000 		.4byte	.LFB7
+ 892 0163 18000000 		.4byte	.LFE7-.LFB7
+ 893 0167 01       		.uleb128 0x1
+ 894 0168 9C       		.byte	0x9c
+ 895 0169 08       		.uleb128 0x8
+ 896 016a C7000000 		.4byte	.LASF25
+ 897 016e 01       		.byte	0x1
+ 898 016f 7B01     		.2byte	0x17b
+ 899 0171 00000000 		.4byte	.LFB8
+ 900 0175 20000000 		.4byte	.LFE8-.LFB8
+ARM GAS  C:\Users\jthem\AppData\Local\Temp\ccW790zp.s 			page 26
+
+
+ 901 0179 01       		.uleb128 0x1
+ 902 017a 9C       		.byte	0x9c
+ 903 017b 8F010000 		.4byte	0x18f
+ 904 017f 09       		.uleb128 0x9
+ 905 0180 BF000000 		.4byte	.LASF27
+ 906 0184 01       		.byte	0x1
+ 907 0185 7B01     		.2byte	0x17b
+ 908 0187 6B000000 		.4byte	0x6b
+ 909 018b 02       		.uleb128 0x2
+ 910 018c 91       		.byte	0x91
+ 911 018d 77       		.sleb128 -9
+ 912 018e 00       		.byte	0
+ 913 018f 0B       		.uleb128 0xb
+ 914 0190 67000000 		.4byte	.LASF28
+ 915 0194 01       		.byte	0x1
+ 916 0195 9501     		.2byte	0x195
+ 917 0197 77000000 		.4byte	0x77
+ 918 019b 00000000 		.4byte	.LFB9
+ 919 019f 18000000 		.4byte	.LFE9-.LFB9
+ 920 01a3 01       		.uleb128 0x1
+ 921 01a4 9C       		.byte	0x9c
+ 922 01a5 08       		.uleb128 0x8
+ 923 01a6 8B000000 		.4byte	.LASF29
+ 924 01aa 01       		.byte	0x1
+ 925 01ab AF01     		.2byte	0x1af
+ 926 01ad 00000000 		.4byte	.LFB10
+ 927 01b1 24000000 		.4byte	.LFE10-.LFB10
+ 928 01b5 01       		.uleb128 0x1
+ 929 01b6 9C       		.byte	0x9c
+ 930 01b7 DA010000 		.4byte	0x1da
+ 931 01bb 09       		.uleb128 0x9
+ 932 01bc 24000000 		.4byte	.LASF30
+ 933 01c0 01       		.byte	0x1
+ 934 01c1 AF01     		.2byte	0x1af
+ 935 01c3 77000000 		.4byte	0x77
+ 936 01c7 02       		.uleb128 0x2
+ 937 01c8 91       		.byte	0x91
+ 938 01c9 6E       		.sleb128 -18
+ 939 01ca 0C       		.uleb128 0xc
+ 940 01cb 3C020000 		.4byte	.LASF38
+ 941 01cf 01       		.byte	0x1
+ 942 01d0 B201     		.2byte	0x1b2
+ 943 01d2 77000000 		.4byte	0x77
+ 944 01d6 02       		.uleb128 0x2
+ 945 01d7 91       		.byte	0x91
+ 946 01d8 76       		.sleb128 -10
+ 947 01d9 00       		.byte	0
+ 948 01da 0B       		.uleb128 0xb
+ 949 01db AF010000 		.4byte	.LASF31
+ 950 01df 01       		.byte	0x1
+ 951 01e0 C801     		.2byte	0x1c8
+ 952 01e2 77000000 		.4byte	0x77
+ 953 01e6 00000000 		.4byte	.LFB11
+ 954 01ea 18000000 		.4byte	.LFE11-.LFB11
+ 955 01ee 01       		.uleb128 0x1
+ 956 01ef 9C       		.byte	0x9c
+ 957 01f0 08       		.uleb128 0x8
+ARM GAS  C:\Users\jthem\AppData\Local\Temp\ccW790zp.s 			page 27
+
+
+ 958 01f1 E7000000 		.4byte	.LASF32
+ 959 01f5 01       		.byte	0x1
+ 960 01f6 E001     		.2byte	0x1e0
+ 961 01f8 00000000 		.4byte	.LFB12
+ 962 01fc 20000000 		.4byte	.LFE12-.LFB12
+ 963 0200 01       		.uleb128 0x1
+ 964 0201 9C       		.byte	0x9c
+ 965 0202 16020000 		.4byte	0x216
+ 966 0206 09       		.uleb128 0x9
+ 967 0207 34020000 		.4byte	.LASF33
+ 968 020b 01       		.byte	0x1
+ 969 020c E001     		.2byte	0x1e0
+ 970 020e 77000000 		.4byte	0x77
+ 971 0212 02       		.uleb128 0x2
+ 972 0213 91       		.byte	0x91
+ 973 0214 76       		.sleb128 -10
+ 974 0215 00       		.byte	0
+ 975 0216 0B       		.uleb128 0xb
+ 976 0217 48020000 		.4byte	.LASF34
+ 977 021b 01       		.byte	0x1
+ 978 021c FC01     		.2byte	0x1fc
+ 979 021e 77000000 		.4byte	0x77
+ 980 0222 00000000 		.4byte	.LFB13
+ 981 0226 20000000 		.4byte	.LFE13-.LFB13
+ 982 022a 01       		.uleb128 0x1
+ 983 022b 9C       		.byte	0x9c
+ 984 022c 0D       		.uleb128 0xd
+ 985 022d 4E000000 		.4byte	.LASF39
+ 986 0231 01       		.byte	0x1
+ 987 0232 1A       		.byte	0x1a
+ 988 0233 6B000000 		.4byte	0x6b
+ 989 0237 05       		.uleb128 0x5
+ 990 0238 03       		.byte	0x3
+ 991 0239 00000000 		.4byte	Wave_Timer_initVar
+ 992 023d 00       		.byte	0
+ 993              		.section	.debug_abbrev,"",%progbits
+ 994              	.Ldebug_abbrev0:
+ 995 0000 01       		.uleb128 0x1
+ 996 0001 11       		.uleb128 0x11
+ 997 0002 01       		.byte	0x1
+ 998 0003 25       		.uleb128 0x25
+ 999 0004 0E       		.uleb128 0xe
+ 1000 0005 13       		.uleb128 0x13
+ 1001 0006 0B       		.uleb128 0xb
+ 1002 0007 03       		.uleb128 0x3
+ 1003 0008 0E       		.uleb128 0xe
+ 1004 0009 1B       		.uleb128 0x1b
+ 1005 000a 0E       		.uleb128 0xe
+ 1006 000b 55       		.uleb128 0x55
+ 1007 000c 17       		.uleb128 0x17
+ 1008 000d 11       		.uleb128 0x11
+ 1009 000e 01       		.uleb128 0x1
+ 1010 000f 10       		.uleb128 0x10
+ 1011 0010 17       		.uleb128 0x17
+ 1012 0011 00       		.byte	0
+ 1013 0012 00       		.byte	0
+ 1014 0013 02       		.uleb128 0x2
+ARM GAS  C:\Users\jthem\AppData\Local\Temp\ccW790zp.s 			page 28
+
+
+ 1015 0014 24       		.uleb128 0x24
+ 1016 0015 00       		.byte	0
+ 1017 0016 0B       		.uleb128 0xb
+ 1018 0017 0B       		.uleb128 0xb
+ 1019 0018 3E       		.uleb128 0x3e
+ 1020 0019 0B       		.uleb128 0xb
+ 1021 001a 03       		.uleb128 0x3
+ 1022 001b 0E       		.uleb128 0xe
+ 1023 001c 00       		.byte	0
+ 1024 001d 00       		.byte	0
+ 1025 001e 03       		.uleb128 0x3
+ 1026 001f 24       		.uleb128 0x24
+ 1027 0020 00       		.byte	0
+ 1028 0021 0B       		.uleb128 0xb
+ 1029 0022 0B       		.uleb128 0xb
+ 1030 0023 3E       		.uleb128 0x3e
+ 1031 0024 0B       		.uleb128 0xb
+ 1032 0025 03       		.uleb128 0x3
+ 1033 0026 08       		.uleb128 0x8
+ 1034 0027 00       		.byte	0
+ 1035 0028 00       		.byte	0
+ 1036 0029 04       		.uleb128 0x4
+ 1037 002a 16       		.uleb128 0x16
+ 1038 002b 00       		.byte	0
+ 1039 002c 03       		.uleb128 0x3
+ 1040 002d 0E       		.uleb128 0xe
+ 1041 002e 3A       		.uleb128 0x3a
+ 1042 002f 0B       		.uleb128 0xb
+ 1043 0030 3B       		.uleb128 0x3b
+ 1044 0031 05       		.uleb128 0x5
+ 1045 0032 49       		.uleb128 0x49
+ 1046 0033 13       		.uleb128 0x13
+ 1047 0034 00       		.byte	0
+ 1048 0035 00       		.byte	0
+ 1049 0036 05       		.uleb128 0x5
+ 1050 0037 35       		.uleb128 0x35
+ 1051 0038 00       		.byte	0
+ 1052 0039 49       		.uleb128 0x49
+ 1053 003a 13       		.uleb128 0x13
+ 1054 003b 00       		.byte	0
+ 1055 003c 00       		.byte	0
+ 1056 003d 06       		.uleb128 0x6
+ 1057 003e 2E       		.uleb128 0x2e
+ 1058 003f 00       		.byte	0
+ 1059 0040 3F       		.uleb128 0x3f
+ 1060 0041 19       		.uleb128 0x19
+ 1061 0042 03       		.uleb128 0x3
+ 1062 0043 0E       		.uleb128 0xe
+ 1063 0044 3A       		.uleb128 0x3a
+ 1064 0045 0B       		.uleb128 0xb
+ 1065 0046 3B       		.uleb128 0x3b
+ 1066 0047 0B       		.uleb128 0xb
+ 1067 0048 27       		.uleb128 0x27
+ 1068 0049 19       		.uleb128 0x19
+ 1069 004a 11       		.uleb128 0x11
+ 1070 004b 01       		.uleb128 0x1
+ 1071 004c 12       		.uleb128 0x12
+ARM GAS  C:\Users\jthem\AppData\Local\Temp\ccW790zp.s 			page 29
+
+
+ 1072 004d 06       		.uleb128 0x6
+ 1073 004e 40       		.uleb128 0x40
+ 1074 004f 18       		.uleb128 0x18
+ 1075 0050 9642     		.uleb128 0x2116
+ 1076 0052 19       		.uleb128 0x19
+ 1077 0053 00       		.byte	0
+ 1078 0054 00       		.byte	0
+ 1079 0055 07       		.uleb128 0x7
+ 1080 0056 2E       		.uleb128 0x2e
+ 1081 0057 00       		.byte	0
+ 1082 0058 3F       		.uleb128 0x3f
+ 1083 0059 19       		.uleb128 0x19
+ 1084 005a 03       		.uleb128 0x3
+ 1085 005b 0E       		.uleb128 0xe
+ 1086 005c 3A       		.uleb128 0x3a
+ 1087 005d 0B       		.uleb128 0xb
+ 1088 005e 3B       		.uleb128 0x3b
+ 1089 005f 0B       		.uleb128 0xb
+ 1090 0060 27       		.uleb128 0x27
+ 1091 0061 19       		.uleb128 0x19
+ 1092 0062 11       		.uleb128 0x11
+ 1093 0063 01       		.uleb128 0x1
+ 1094 0064 12       		.uleb128 0x12
+ 1095 0065 06       		.uleb128 0x6
+ 1096 0066 40       		.uleb128 0x40
+ 1097 0067 18       		.uleb128 0x18
+ 1098 0068 9742     		.uleb128 0x2117
+ 1099 006a 19       		.uleb128 0x19
+ 1100 006b 00       		.byte	0
+ 1101 006c 00       		.byte	0
+ 1102 006d 08       		.uleb128 0x8
+ 1103 006e 2E       		.uleb128 0x2e
+ 1104 006f 01       		.byte	0x1
+ 1105 0070 3F       		.uleb128 0x3f
+ 1106 0071 19       		.uleb128 0x19
+ 1107 0072 03       		.uleb128 0x3
+ 1108 0073 0E       		.uleb128 0xe
+ 1109 0074 3A       		.uleb128 0x3a
+ 1110 0075 0B       		.uleb128 0xb
+ 1111 0076 3B       		.uleb128 0x3b
+ 1112 0077 05       		.uleb128 0x5
+ 1113 0078 27       		.uleb128 0x27
+ 1114 0079 19       		.uleb128 0x19
+ 1115 007a 11       		.uleb128 0x11
+ 1116 007b 01       		.uleb128 0x1
+ 1117 007c 12       		.uleb128 0x12
+ 1118 007d 06       		.uleb128 0x6
+ 1119 007e 40       		.uleb128 0x40
+ 1120 007f 18       		.uleb128 0x18
+ 1121 0080 9742     		.uleb128 0x2117
+ 1122 0082 19       		.uleb128 0x19
+ 1123 0083 01       		.uleb128 0x1
+ 1124 0084 13       		.uleb128 0x13
+ 1125 0085 00       		.byte	0
+ 1126 0086 00       		.byte	0
+ 1127 0087 09       		.uleb128 0x9
+ 1128 0088 05       		.uleb128 0x5
+ARM GAS  C:\Users\jthem\AppData\Local\Temp\ccW790zp.s 			page 30
+
+
+ 1129 0089 00       		.byte	0
+ 1130 008a 03       		.uleb128 0x3
+ 1131 008b 0E       		.uleb128 0xe
+ 1132 008c 3A       		.uleb128 0x3a
+ 1133 008d 0B       		.uleb128 0xb
+ 1134 008e 3B       		.uleb128 0x3b
+ 1135 008f 05       		.uleb128 0x5
+ 1136 0090 49       		.uleb128 0x49
+ 1137 0091 13       		.uleb128 0x13
+ 1138 0092 02       		.uleb128 0x2
+ 1139 0093 18       		.uleb128 0x18
+ 1140 0094 00       		.byte	0
+ 1141 0095 00       		.byte	0
+ 1142 0096 0A       		.uleb128 0xa
+ 1143 0097 2E       		.uleb128 0x2e
+ 1144 0098 00       		.byte	0
+ 1145 0099 3F       		.uleb128 0x3f
+ 1146 009a 19       		.uleb128 0x19
+ 1147 009b 03       		.uleb128 0x3
+ 1148 009c 0E       		.uleb128 0xe
+ 1149 009d 3A       		.uleb128 0x3a
+ 1150 009e 0B       		.uleb128 0xb
+ 1151 009f 3B       		.uleb128 0x3b
+ 1152 00a0 05       		.uleb128 0x5
+ 1153 00a1 27       		.uleb128 0x27
+ 1154 00a2 19       		.uleb128 0x19
+ 1155 00a3 11       		.uleb128 0x11
+ 1156 00a4 01       		.uleb128 0x1
+ 1157 00a5 12       		.uleb128 0x12
+ 1158 00a6 06       		.uleb128 0x6
+ 1159 00a7 40       		.uleb128 0x40
+ 1160 00a8 18       		.uleb128 0x18
+ 1161 00a9 9742     		.uleb128 0x2117
+ 1162 00ab 19       		.uleb128 0x19
+ 1163 00ac 00       		.byte	0
+ 1164 00ad 00       		.byte	0
+ 1165 00ae 0B       		.uleb128 0xb
+ 1166 00af 2E       		.uleb128 0x2e
+ 1167 00b0 00       		.byte	0
+ 1168 00b1 3F       		.uleb128 0x3f
+ 1169 00b2 19       		.uleb128 0x19
+ 1170 00b3 03       		.uleb128 0x3
+ 1171 00b4 0E       		.uleb128 0xe
+ 1172 00b5 3A       		.uleb128 0x3a
+ 1173 00b6 0B       		.uleb128 0xb
+ 1174 00b7 3B       		.uleb128 0x3b
+ 1175 00b8 05       		.uleb128 0x5
+ 1176 00b9 27       		.uleb128 0x27
+ 1177 00ba 19       		.uleb128 0x19
+ 1178 00bb 49       		.uleb128 0x49
+ 1179 00bc 13       		.uleb128 0x13
+ 1180 00bd 11       		.uleb128 0x11
+ 1181 00be 01       		.uleb128 0x1
+ 1182 00bf 12       		.uleb128 0x12
+ 1183 00c0 06       		.uleb128 0x6
+ 1184 00c1 40       		.uleb128 0x40
+ 1185 00c2 18       		.uleb128 0x18
+ARM GAS  C:\Users\jthem\AppData\Local\Temp\ccW790zp.s 			page 31
+
+
+ 1186 00c3 9742     		.uleb128 0x2117
+ 1187 00c5 19       		.uleb128 0x19
+ 1188 00c6 00       		.byte	0
+ 1189 00c7 00       		.byte	0
+ 1190 00c8 0C       		.uleb128 0xc
+ 1191 00c9 34       		.uleb128 0x34
+ 1192 00ca 00       		.byte	0
+ 1193 00cb 03       		.uleb128 0x3
+ 1194 00cc 0E       		.uleb128 0xe
+ 1195 00cd 3A       		.uleb128 0x3a
+ 1196 00ce 0B       		.uleb128 0xb
+ 1197 00cf 3B       		.uleb128 0x3b
+ 1198 00d0 05       		.uleb128 0x5
+ 1199 00d1 49       		.uleb128 0x49
+ 1200 00d2 13       		.uleb128 0x13
+ 1201 00d3 02       		.uleb128 0x2
+ 1202 00d4 18       		.uleb128 0x18
+ 1203 00d5 00       		.byte	0
+ 1204 00d6 00       		.byte	0
+ 1205 00d7 0D       		.uleb128 0xd
+ 1206 00d8 34       		.uleb128 0x34
+ 1207 00d9 00       		.byte	0
+ 1208 00da 03       		.uleb128 0x3
+ 1209 00db 0E       		.uleb128 0xe
+ 1210 00dc 3A       		.uleb128 0x3a
+ 1211 00dd 0B       		.uleb128 0xb
+ 1212 00de 3B       		.uleb128 0x3b
+ 1213 00df 0B       		.uleb128 0xb
+ 1214 00e0 49       		.uleb128 0x49
+ 1215 00e1 13       		.uleb128 0x13
+ 1216 00e2 3F       		.uleb128 0x3f
+ 1217 00e3 19       		.uleb128 0x19
+ 1218 00e4 02       		.uleb128 0x2
+ 1219 00e5 18       		.uleb128 0x18
+ 1220 00e6 00       		.byte	0
+ 1221 00e7 00       		.byte	0
+ 1222 00e8 00       		.byte	0
+ 1223              		.section	.debug_aranges,"",%progbits
+ 1224 0000 84000000 		.4byte	0x84
+ 1225 0004 0200     		.2byte	0x2
+ 1226 0006 00000000 		.4byte	.Ldebug_info0
+ 1227 000a 04       		.byte	0x4
+ 1228 000b 00       		.byte	0
+ 1229 000c 0000     		.2byte	0
+ 1230 000e 0000     		.2byte	0
+ 1231 0010 00000000 		.4byte	.LFB0
+ 1232 0014 E8000000 		.4byte	.LFE0-.LFB0
+ 1233 0018 00000000 		.4byte	.LFB1
+ 1234 001c 48000000 		.4byte	.LFE1-.LFB1
+ 1235 0020 00000000 		.4byte	.LFB2
+ 1236 0024 20000000 		.4byte	.LFE2-.LFB2
+ 1237 0028 00000000 		.4byte	.LFB3
+ 1238 002c 48000000 		.4byte	.LFE3-.LFB3
+ 1239 0030 00000000 		.4byte	.LFB4
+ 1240 0034 20000000 		.4byte	.LFE4-.LFB4
+ 1241 0038 00000000 		.4byte	.LFB5
+ 1242 003c 14000000 		.4byte	.LFE5-.LFB5
+ARM GAS  C:\Users\jthem\AppData\Local\Temp\ccW790zp.s 			page 32
+
+
+ 1243 0040 00000000 		.4byte	.LFB6
+ 1244 0044 18000000 		.4byte	.LFE6-.LFB6
+ 1245 0048 00000000 		.4byte	.LFB7
+ 1246 004c 18000000 		.4byte	.LFE7-.LFB7
+ 1247 0050 00000000 		.4byte	.LFB8
+ 1248 0054 20000000 		.4byte	.LFE8-.LFB8
+ 1249 0058 00000000 		.4byte	.LFB9
+ 1250 005c 18000000 		.4byte	.LFE9-.LFB9
+ 1251 0060 00000000 		.4byte	.LFB10
+ 1252 0064 24000000 		.4byte	.LFE10-.LFB10
+ 1253 0068 00000000 		.4byte	.LFB11
+ 1254 006c 18000000 		.4byte	.LFE11-.LFB11
+ 1255 0070 00000000 		.4byte	.LFB12
+ 1256 0074 20000000 		.4byte	.LFE12-.LFB12
+ 1257 0078 00000000 		.4byte	.LFB13
+ 1258 007c 20000000 		.4byte	.LFE13-.LFB13
+ 1259 0080 00000000 		.4byte	0
+ 1260 0084 00000000 		.4byte	0
+ 1261              		.section	.debug_ranges,"",%progbits
+ 1262              	.Ldebug_ranges0:
+ 1263 0000 00000000 		.4byte	.LFB0
+ 1264 0004 E8000000 		.4byte	.LFE0
+ 1265 0008 00000000 		.4byte	.LFB1
+ 1266 000c 48000000 		.4byte	.LFE1
+ 1267 0010 00000000 		.4byte	.LFB2
+ 1268 0014 20000000 		.4byte	.LFE2
+ 1269 0018 00000000 		.4byte	.LFB3
+ 1270 001c 48000000 		.4byte	.LFE3
+ 1271 0020 00000000 		.4byte	.LFB4
+ 1272 0024 20000000 		.4byte	.LFE4
+ 1273 0028 00000000 		.4byte	.LFB5
+ 1274 002c 14000000 		.4byte	.LFE5
+ 1275 0030 00000000 		.4byte	.LFB6
+ 1276 0034 18000000 		.4byte	.LFE6
+ 1277 0038 00000000 		.4byte	.LFB7
+ 1278 003c 18000000 		.4byte	.LFE7
+ 1279 0040 00000000 		.4byte	.LFB8
+ 1280 0044 20000000 		.4byte	.LFE8
+ 1281 0048 00000000 		.4byte	.LFB9
+ 1282 004c 18000000 		.4byte	.LFE9
+ 1283 0050 00000000 		.4byte	.LFB10
+ 1284 0054 24000000 		.4byte	.LFE10
+ 1285 0058 00000000 		.4byte	.LFB11
+ 1286 005c 18000000 		.4byte	.LFE11
+ 1287 0060 00000000 		.4byte	.LFB12
+ 1288 0064 20000000 		.4byte	.LFE12
+ 1289 0068 00000000 		.4byte	.LFB13
+ 1290 006c 20000000 		.4byte	.LFE13
+ 1291 0070 00000000 		.4byte	0
+ 1292 0074 00000000 		.4byte	0
+ 1293              		.section	.debug_line,"",%progbits
+ 1294              	.Ldebug_line0:
+ 1295 0000 65010000 		.section	.debug_str,"MS",%progbits,1
+ 1295      02004900 
+ 1295      00000201 
+ 1295      FB0E0D00 
+ 1295      01010101 
+ARM GAS  C:\Users\jthem\AppData\Local\Temp\ccW790zp.s 			page 33
+
+
+ 1296              	.LASF15:
+ 1297 0000 72656731 		.ascii	"reg16\000"
+ 1297      3600
+ 1298              	.LASF22:
+ 1299 0006 57617665 		.ascii	"Wave_Timer_ReadStatusRegister\000"
+ 1299      5F54696D 
+ 1299      65725F52 
+ 1299      65616453 
+ 1299      74617475 
+ 1300              	.LASF30:
+ 1301 0024 70657269 		.ascii	"period\000"
+ 1301      6F6400
+ 1302              	.LASF3:
+ 1303 002b 73686F72 		.ascii	"short unsigned int\000"
+ 1303      7420756E 
+ 1303      7369676E 
+ 1303      65642069 
+ 1303      6E7400
+ 1304              	.LASF20:
+ 1305 003e 57617665 		.ascii	"Wave_Timer_Stop\000"
+ 1305      5F54696D 
+ 1305      65725F53 
+ 1305      746F7000 
+ 1306              	.LASF39:
+ 1307 004e 57617665 		.ascii	"Wave_Timer_initVar\000"
+ 1307      5F54696D 
+ 1307      65725F69 
+ 1307      6E697456 
+ 1307      617200
+ 1308              	.LASF11:
+ 1309 0061 666C6F61 		.ascii	"float\000"
+ 1309      7400
+ 1310              	.LASF28:
+ 1311 0067 57617665 		.ascii	"Wave_Timer_ReadPeriod\000"
+ 1311      5F54696D 
+ 1311      65725F52 
+ 1311      65616450 
+ 1311      6572696F 
+ 1312              	.LASF1:
+ 1313 007d 756E7369 		.ascii	"unsigned char\000"
+ 1313      676E6564 
+ 1313      20636861 
+ 1313      7200
+ 1314              	.LASF29:
+ 1315 008b 57617665 		.ascii	"Wave_Timer_WritePeriod\000"
+ 1315      5F54696D 
+ 1315      65725F57 
+ 1315      72697465 
+ 1315      50657269 
+ 1316              	.LASF14:
+ 1317 00a2 72656738 		.ascii	"reg8\000"
+ 1317      00
+ 1318              	.LASF5:
+ 1319 00a7 6C6F6E67 		.ascii	"long unsigned int\000"
+ 1319      20756E73 
+ 1319      69676E65 
+ 1319      6420696E 
+ARM GAS  C:\Users\jthem\AppData\Local\Temp\ccW790zp.s 			page 34
+
+
+ 1319      7400
+ 1320              	.LASF9:
+ 1321 00b9 75696E74 		.ascii	"uint8\000"
+ 1321      3800
+ 1322              	.LASF27:
+ 1323 00bf 636F6E74 		.ascii	"control\000"
+ 1323      726F6C00 
+ 1324              	.LASF25:
+ 1325 00c7 57617665 		.ascii	"Wave_Timer_WriteControlRegister\000"
+ 1325      5F54696D 
+ 1325      65725F57 
+ 1325      72697465 
+ 1325      436F6E74 
+ 1326              	.LASF32:
+ 1327 00e7 57617665 		.ascii	"Wave_Timer_WriteCounter\000"
+ 1327      5F54696D 
+ 1327      65725F57 
+ 1327      72697465 
+ 1327      436F756E 
+ 1328              	.LASF35:
+ 1329 00ff 474E5520 		.ascii	"GNU C 4.9.3 20150303 (release) [ARM/embedded-4_9-br"
+ 1329      4320342E 
+ 1329      392E3320 
+ 1329      32303135 
+ 1329      30333033 
+ 1330 0132 616E6368 		.ascii	"anch revision 221220] -mcpu=cortex-m3 -mthumb -g -O"
+ 1330      20726576 
+ 1330      6973696F 
+ 1330      6E203232 
+ 1330      31323230 
+ 1331 0165 30202D66 		.ascii	"0 -ffunction-sections -ffat-lto-objects\000"
+ 1331      66756E63 
+ 1331      74696F6E 
+ 1331      2D736563 
+ 1331      74696F6E 
+ 1332              	.LASF12:
+ 1333 018d 646F7562 		.ascii	"double\000"
+ 1333      6C6500
+ 1334              	.LASF21:
+ 1335 0194 57617665 		.ascii	"Wave_Timer_SoftwareCapture\000"
+ 1335      5F54696D 
+ 1335      65725F53 
+ 1335      6F667477 
+ 1335      61726543 
+ 1336              	.LASF31:
+ 1337 01af 57617665 		.ascii	"Wave_Timer_ReadCapture\000"
+ 1337      5F54696D 
+ 1337      65725F52 
+ 1337      65616443 
+ 1337      61707475 
+ 1338              	.LASF37:
+ 1339 01c6 433A5C55 		.ascii	"C:\\Users\\jthem\\Documents\\PSoC Creator\\PWMExamp"
+ 1339      73657273 
+ 1339      5C6A7468 
+ 1339      656D5C44 
+ 1339      6F63756D 
+ 1340 01f4 6C653031 		.ascii	"le01\\EasyBoard.cydsn\000"
+ARM GAS  C:\Users\jthem\AppData\Local\Temp\ccW790zp.s 			page 35
+
+
+ 1340      5C456173 
+ 1340      79426F61 
+ 1340      72642E63 
+ 1340      7964736E 
+ 1341              	.LASF10:
+ 1342 0209 75696E74 		.ascii	"uint16\000"
+ 1342      313600
+ 1343              	.LASF8:
+ 1344 0210 756E7369 		.ascii	"unsigned int\000"
+ 1344      676E6564 
+ 1344      20696E74 
+ 1344      00
+ 1345              	.LASF7:
+ 1346 021d 6C6F6E67 		.ascii	"long long unsigned int\000"
+ 1346      206C6F6E 
+ 1346      6720756E 
+ 1346      7369676E 
+ 1346      65642069 
+ 1347              	.LASF33:
+ 1348 0234 636F756E 		.ascii	"counter\000"
+ 1348      74657200 
+ 1349              	.LASF38:
+ 1350 023c 70657269 		.ascii	"period_temp\000"
+ 1350      6F645F74 
+ 1350      656D7000 
+ 1351              	.LASF34:
+ 1352 0248 57617665 		.ascii	"Wave_Timer_ReadCounter\000"
+ 1352      5F54696D 
+ 1352      65725F52 
+ 1352      65616443 
+ 1352      6F756E74 
+ 1353              	.LASF16:
+ 1354 025f 73697A65 		.ascii	"sizetype\000"
+ 1354      74797065 
+ 1354      00
+ 1355              	.LASF6:
+ 1356 0268 6C6F6E67 		.ascii	"long long int\000"
+ 1356      206C6F6E 
+ 1356      6720696E 
+ 1356      7400
+ 1357              	.LASF26:
+ 1358 0276 696E7465 		.ascii	"interruptMode\000"
+ 1358      72727570 
+ 1358      744D6F64 
+ 1358      6500
+ 1359              	.LASF24:
+ 1360 0284 57617665 		.ascii	"Wave_Timer_SetInterruptMode\000"
+ 1360      5F54696D 
+ 1360      65725F53 
+ 1360      6574496E 
+ 1360      74657272 
+ 1361              	.LASF2:
+ 1362 02a0 73686F72 		.ascii	"short int\000"
+ 1362      7420696E 
+ 1362      7400
+ 1363              	.LASF18:
+ 1364 02aa 57617665 		.ascii	"Wave_Timer_Enable\000"
+ARM GAS  C:\Users\jthem\AppData\Local\Temp\ccW790zp.s 			page 36
+
+
+ 1364      5F54696D 
+ 1364      65725F45 
+ 1364      6E61626C 
+ 1364      6500
+ 1365              	.LASF17:
+ 1366 02bc 57617665 		.ascii	"Wave_Timer_Init\000"
+ 1366      5F54696D 
+ 1366      65725F49 
+ 1366      6E697400 
+ 1367              	.LASF23:
+ 1368 02cc 57617665 		.ascii	"Wave_Timer_ReadControlRegister\000"
+ 1368      5F54696D 
+ 1368      65725F52 
+ 1368      65616443 
+ 1368      6F6E7472 
+ 1369              	.LASF4:
+ 1370 02eb 6C6F6E67 		.ascii	"long int\000"
+ 1370      20696E74 
+ 1370      00
+ 1371              	.LASF13:
+ 1372 02f4 63686172 		.ascii	"char\000"
+ 1372      00
+ 1373              	.LASF0:
+ 1374 02f9 7369676E 		.ascii	"signed char\000"
+ 1374      65642063 
+ 1374      68617200 
+ 1375              	.LASF36:
+ 1376 0305 2E5C4765 		.ascii	".\\Generated_Source\\PSoC5\\Wave_Timer.c\000"
+ 1376      6E657261 
+ 1376      7465645F 
+ 1376      536F7572 
+ 1376      63655C50 
+ 1377              	.LASF19:
+ 1378 032b 57617665 		.ascii	"Wave_Timer_Start\000"
+ 1378      5F54696D 
+ 1378      65725F53 
+ 1378      74617274 
+ 1378      00
+ 1379              		.ident	"GCC: (GNU Tools for ARM Embedded Processors) 4.9.3 20150303 (release) [ARM/embedded-4_9-br

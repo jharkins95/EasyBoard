@@ -1,0 +1,4985 @@
+ARM GAS  C:\Users\jthem\AppData\Local\Temp\ccflPXLw.s 			page 1
+
+
+   1              		.syntax unified
+   2              		.cpu cortex-m3
+   3              		.fpu softvfp
+   4              		.eabi_attribute 20, 1
+   5              		.eabi_attribute 21, 1
+   6              		.eabi_attribute 23, 3
+   7              		.eabi_attribute 24, 1
+   8              		.eabi_attribute 25, 1
+   9              		.eabi_attribute 26, 1
+  10              		.eabi_attribute 30, 6
+  11              		.eabi_attribute 34, 1
+  12              		.eabi_attribute 18, 4
+  13              		.thumb
+  14              		.file	"main.c"
+  15              		.text
+  16              	.Ltext0:
+  17              		.cfi_sections	.debug_frame
+  18              		.global _printf_float
+  19              		.thumb
+  20              		.section	.text.SPI_FNG0_WriteData,"ax",%progbits
+  21              		.align	2
+  22              		.global	SPI_FNG0_WriteData
+  23              		.thumb
+  24              		.thumb_func
+  25              		.type	SPI_FNG0_WriteData, %function
+  26              	SPI_FNG0_WriteData:
+  27              	.LFB63:
+  28              		.file 1 ".\\main.c"
+   1:.\main.c      **** /*******************************************************************************
+   2:.\main.c      **** * File Name: main.c
+   3:.\main.c      **** * Hardware Dependency:
+   4:.\main.c      **** *  CY8C55 Family Processor
+   5:.\main.c      **** *
+   6:.\main.c      **** ********************************************************************************
+   7:.\main.c      **** * Copyright 2012, Cypress Semiconductor Corporation. All rights reserved.
+   8:.\main.c      **** * This software is owned by Cypress Semiconductor Corporation and is protected
+   9:.\main.c      **** * by and subject to worldwide patent and copyright laws and treaties.
+  10:.\main.c      **** * Therefore, you may use this software only as provided in the license agreement
+  11:.\main.c      **** * accompanying the software package from which you obtained this software.
+  12:.\main.c      **** * CYPRESS AND ITS SUPPLIERS MAKE NO WARRANTY OF ANY KIND, EXPRESS OR IMPLIED,
+  13:.\main.c      **** * WITH REGARD TO THIS SOFTWARE, INCLUDING, BUT NOT LIMITED TO, NONINFRINGEMENT,
+  14:.\main.c      **** * IMPLIED WARRANTIES OF MERCHANTABILITY AND FITNESS FOR A PARTICULAR PURPOSE.
+  15:.\main.c      **** *******************************************************************************/
+  16:.\main.c      **** 
+  17:.\main.c      **** #include <device.h>
+  18:.\main.c      **** #include <stdio.h>
+  19:.\main.c      **** #include <stdlib.h>
+  20:.\main.c      **** #include "FunctionGenerator.h"
+  21:.\main.c      **** #include "Serial.h"
+  22:.\main.c      **** #include "StringHelpers.h"
+  23:.\main.c      **** 
+  24:.\main.c      **** #if defined (__GNUC__)
+  25:.\main.c      ****     /* Add an explicit reference to the floating point printf library */
+  26:.\main.c      ****     /* to allow the usage of floating point conversion specifiers. */
+  27:.\main.c      ****     /* This is not linked in by default with the newlib-nano library. */
+  28:.\main.c      ****     asm (".global _printf_float");
+  29:.\main.c      **** #endif
+ARM GAS  C:\Users\jthem\AppData\Local\Temp\ccflPXLw.s 			page 2
+
+
+  30:.\main.c      **** 
+  31:.\main.c      **** /*
+  32:.\main.c      **** void MCP41010_Write(uint8 value, uint8 fnGenerator) 
+  33:.\main.c      **** {
+  34:.\main.c      ****     if (fnGenerator == 0) {
+  35:.\main.c      ****         SPI_FNG0_WriteTxData(0b00010001); // This tells the chip to set the pot
+  36:.\main.c      ****         SPI_FNG0_WriteTxData(value);      // This tells it the pot position
+  37:.\main.c      ****     } else if (fnGenerator == 1) {
+  38:.\main.c      ****         SPI_FNG1_WriteTxData(0b00010001);
+  39:.\main.c      ****         SPI_FNG1_WriteTxData(value);
+  40:.\main.c      ****     }
+  41:.\main.c      **** }
+  42:.\main.c      **** */
+  43:.\main.c      **** 
+  44:.\main.c      **** 
+  45:.\main.c      **** void SPI_FNG0_WriteData(uint8 val) {
+  29              		.loc 1 45 0
+  30              		.cfi_startproc
+  31              		@ args = 0, pretend = 0, frame = 8
+  32              		@ frame_needed = 1, uses_anonymous_args = 0
+  33 0000 80B5     		push	{r7, lr}
+  34              		.cfi_def_cfa_offset 8
+  35              		.cfi_offset 7, -8
+  36              		.cfi_offset 14, -4
+  37 0002 82B0     		sub	sp, sp, #8
+  38              		.cfi_def_cfa_offset 16
+  39 0004 00AF     		add	r7, sp, #0
+  40              		.cfi_def_cfa_register 7
+  41 0006 0346     		mov	r3, r0
+  42 0008 FB71     		strb	r3, [r7, #7]
+  46:.\main.c      ****     SPI_FNG0_WriteTxData(0b00010001); // tells the POT we want to change its resistance
+  43              		.loc 1 46 0
+  44 000a 1120     		movs	r0, #17
+  45 000c FFF7FEFF 		bl	SPI_FNG0_WriteTxData
+  47:.\main.c      ****     SPI_FNG0_WriteTxData(val);        // sets the new resistance
+  46              		.loc 1 47 0
+  47 0010 FB79     		ldrb	r3, [r7, #7]	@ zero_extendqisi2
+  48 0012 1846     		mov	r0, r3
+  49 0014 FFF7FEFF 		bl	SPI_FNG0_WriteTxData
+  48:.\main.c      **** }
+  50              		.loc 1 48 0
+  51 0018 0837     		adds	r7, r7, #8
+  52              		.cfi_def_cfa_offset 8
+  53 001a BD46     		mov	sp, r7
+  54              		.cfi_def_cfa_register 13
+  55              		@ sp needed
+  56 001c 80BD     		pop	{r7, pc}
+  57              		.cfi_endproc
+  58              	.LFE63:
+  59              		.size	SPI_FNG0_WriteData, .-SPI_FNG0_WriteData
+  60              		.comm	scope0State,4,4
+  61              		.global	__aeabi_i2f
+  62 001e 00BF     		.section	.text.find_freq,"ax",%progbits
+  63              		.align	2
+  64              		.global	find_freq
+  65              		.thumb
+  66              		.thumb_func
+ARM GAS  C:\Users\jthem\AppData\Local\Temp\ccflPXLw.s 			page 3
+
+
+  67              		.type	find_freq, %function
+  68              	find_freq:
+  69              	.LFB64:
+  49:.\main.c      **** 
+  50:.\main.c      **** volatile int scope0State; // reading/writing state for Scope 0
+  51:.\main.c      **** 
+  52:.\main.c      **** float find_freq(char *array, int numSamples)
+  53:.\main.c      **** {
+  70              		.loc 1 53 0
+  71              		.cfi_startproc
+  72              		@ args = 0, pretend = 0, frame = 72
+  73              		@ frame_needed = 1, uses_anonymous_args = 0
+  74 0000 80B5     		push	{r7, lr}
+  75              		.cfi_def_cfa_offset 8
+  76              		.cfi_offset 7, -8
+  77              		.cfi_offset 14, -4
+  78 0002 92B0     		sub	sp, sp, #72
+  79              		.cfi_def_cfa_offset 80
+  80 0004 00AF     		add	r7, sp, #0
+  81              		.cfi_def_cfa_register 7
+  82 0006 7860     		str	r0, [r7, #4]
+  83 0008 3960     		str	r1, [r7]
+  54:.\main.c      ****     int i = 0;
+  84              		.loc 1 54 0
+  85 000a 0023     		movs	r3, #0
+  86 000c 7B64     		str	r3, [r7, #68]
+  55:.\main.c      ****     int max1 = 0;
+  87              		.loc 1 55 0
+  88 000e 0023     		movs	r3, #0
+  89 0010 3B64     		str	r3, [r7, #64]
+  56:.\main.c      ****     int max2 = 0;
+  90              		.loc 1 56 0
+  91 0012 0023     		movs	r3, #0
+  92 0014 3B62     		str	r3, [r7, #32]
+  57:.\main.c      ****     int max1_index = 0;
+  93              		.loc 1 57 0
+  94 0016 0023     		movs	r3, #0
+  95 0018 FB63     		str	r3, [r7, #60]
+  58:.\main.c      ****     int max2_index = 0;
+  96              		.loc 1 58 0
+  97 001a 0023     		movs	r3, #0
+  98 001c FB61     		str	r3, [r7, #28]
+  59:.\main.c      ****     int min1 = 0;
+  99              		.loc 1 59 0
+ 100 001e 0023     		movs	r3, #0
+ 101 0020 BB63     		str	r3, [r7, #56]
+  60:.\main.c      ****     int min2 = 0;
+ 102              		.loc 1 60 0
+ 103 0022 0023     		movs	r3, #0
+ 104 0024 7B63     		str	r3, [r7, #52]
+  61:.\main.c      ****     int min1_index = 0;
+ 105              		.loc 1 61 0
+ 106 0026 0023     		movs	r3, #0
+ 107 0028 3B63     		str	r3, [r7, #48]
+  62:.\main.c      ****     int min2_index = 0;
+ 108              		.loc 1 62 0
+ 109 002a 0023     		movs	r3, #0
+ARM GAS  C:\Users\jthem\AppData\Local\Temp\ccflPXLw.s 			page 4
+
+
+ 110 002c FB62     		str	r3, [r7, #44]
+  63:.\main.c      ****     int foundperiod = 0;
+ 111              		.loc 1 63 0
+ 112 002e 0023     		movs	r3, #0
+ 113 0030 BB62     		str	r3, [r7, #40]
+  64:.\main.c      ****     int samples = 0;
+ 114              		.loc 1 64 0
+ 115 0032 0023     		movs	r3, #0
+ 116 0034 7B62     		str	r3, [r7, #36]
+  65:.\main.c      **** 
+  66:.\main.c      ****     while(foundperiod == 0)
+ 117              		.loc 1 66 0
+ 118 0036 51E0     		b	.L3
+ 119              	.L10:
+ 120              	.LBB2:
+  67:.\main.c      ****     {
+  68:.\main.c      ****         uint16_t current_element = array[i];
+ 121              		.loc 1 68 0
+ 122 0038 7B6C     		ldr	r3, [r7, #68]
+ 123 003a 7A68     		ldr	r2, [r7, #4]
+ 124 003c 1344     		add	r3, r3, r2
+ 125 003e 1B78     		ldrb	r3, [r3]	@ zero_extendqisi2
+ 126 0040 7B83     		strh	r3, [r7, #26]	@ movhi
+  69:.\main.c      ****         uint16_t next = array[i+1];
+ 127              		.loc 1 69 0
+ 128 0042 7B6C     		ldr	r3, [r7, #68]
+ 129 0044 0133     		adds	r3, r3, #1
+ 130 0046 7A68     		ldr	r2, [r7, #4]
+ 131 0048 1344     		add	r3, r3, r2
+ 132 004a 1B78     		ldrb	r3, [r3]	@ zero_extendqisi2
+ 133 004c 3B83     		strh	r3, [r7, #24]	@ movhi
+  70:.\main.c      ****         if (current_element < next && min1 == 0)
+ 134              		.loc 1 70 0
+ 135 004e 7A8B     		ldrh	r2, [r7, #26]
+ 136 0050 3B8B     		ldrh	r3, [r7, #24]
+ 137 0052 9A42     		cmp	r2, r3
+ 138 0054 06D2     		bcs	.L4
+ 139              		.loc 1 70 0 is_stmt 0 discriminator 1
+ 140 0056 BB6B     		ldr	r3, [r7, #56]
+ 141 0058 002B     		cmp	r3, #0
+ 142 005a 03D1     		bne	.L4
+  71:.\main.c      ****         {
+  72:.\main.c      ****             min1 = 1;
+ 143              		.loc 1 72 0 is_stmt 1
+ 144 005c 0123     		movs	r3, #1
+ 145 005e BB63     		str	r3, [r7, #56]
+  73:.\main.c      ****             min1_index = i;
+ 146              		.loc 1 73 0
+ 147 0060 7B6C     		ldr	r3, [r7, #68]
+ 148 0062 3B63     		str	r3, [r7, #48]
+ 149              	.L4:
+  74:.\main.c      ****             }
+  75:.\main.c      ****         if (current_element > next && max1 == 0)
+ 150              		.loc 1 75 0
+ 151 0064 7A8B     		ldrh	r2, [r7, #26]
+ 152 0066 3B8B     		ldrh	r3, [r7, #24]
+ 153 0068 9A42     		cmp	r2, r3
+ARM GAS  C:\Users\jthem\AppData\Local\Temp\ccflPXLw.s 			page 5
+
+
+ 154 006a 06D9     		bls	.L5
+ 155              		.loc 1 75 0 is_stmt 0 discriminator 1
+ 156 006c 3B6C     		ldr	r3, [r7, #64]
+ 157 006e 002B     		cmp	r3, #0
+ 158 0070 03D1     		bne	.L5
+  76:.\main.c      ****         {
+  77:.\main.c      ****             max1 = 1;
+ 159              		.loc 1 77 0 is_stmt 1
+ 160 0072 0123     		movs	r3, #1
+ 161 0074 3B64     		str	r3, [r7, #64]
+  78:.\main.c      ****             max1_index = i;
+ 162              		.loc 1 78 0
+ 163 0076 7B6C     		ldr	r3, [r7, #68]
+ 164 0078 FB63     		str	r3, [r7, #60]
+ 165              	.L5:
+  79:.\main.c      ****         }
+  80:.\main.c      ****         if (current_element < next && min1 == 1)
+ 166              		.loc 1 80 0
+ 167 007a 7A8B     		ldrh	r2, [r7, #26]
+ 168 007c 3B8B     		ldrh	r3, [r7, #24]
+ 169 007e 9A42     		cmp	r2, r3
+ 170 0080 06D2     		bcs	.L6
+ 171              		.loc 1 80 0 is_stmt 0 discriminator 1
+ 172 0082 BB6B     		ldr	r3, [r7, #56]
+ 173 0084 012B     		cmp	r3, #1
+ 174 0086 03D1     		bne	.L6
+  81:.\main.c      ****         {
+  82:.\main.c      ****             min2 = 1;
+ 175              		.loc 1 82 0 is_stmt 1
+ 176 0088 0123     		movs	r3, #1
+ 177 008a 7B63     		str	r3, [r7, #52]
+  83:.\main.c      ****             min2_index = i;
+ 178              		.loc 1 83 0
+ 179 008c 7B6C     		ldr	r3, [r7, #68]
+ 180 008e FB62     		str	r3, [r7, #44]
+ 181              	.L6:
+  84:.\main.c      **** 
+  85:.\main.c      ****         }
+  86:.\main.c      ****         if (current_element > next && max1 == 1)
+ 182              		.loc 1 86 0
+ 183 0090 7A8B     		ldrh	r2, [r7, #26]
+ 184 0092 3B8B     		ldrh	r3, [r7, #24]
+ 185 0094 9A42     		cmp	r2, r3
+ 186 0096 06D9     		bls	.L7
+ 187              		.loc 1 86 0 is_stmt 0 discriminator 1
+ 188 0098 3B6C     		ldr	r3, [r7, #64]
+ 189 009a 012B     		cmp	r3, #1
+ 190 009c 03D1     		bne	.L7
+  87:.\main.c      ****         {
+  88:.\main.c      ****             max1 = 1;
+ 191              		.loc 1 88 0 is_stmt 1
+ 192 009e 0123     		movs	r3, #1
+ 193 00a0 3B64     		str	r3, [r7, #64]
+  89:.\main.c      ****             max1_index = i;
+ 194              		.loc 1 89 0
+ 195 00a2 7B6C     		ldr	r3, [r7, #68]
+ 196 00a4 FB63     		str	r3, [r7, #60]
+ARM GAS  C:\Users\jthem\AppData\Local\Temp\ccflPXLw.s 			page 6
+
+
+ 197              	.L7:
+  90:.\main.c      ****         }
+  91:.\main.c      ****         i++;
+ 198              		.loc 1 91 0
+ 199 00a6 7B6C     		ldr	r3, [r7, #68]
+ 200 00a8 0133     		adds	r3, r3, #1
+ 201 00aa 7B64     		str	r3, [r7, #68]
+  92:.\main.c      ****         if ((max1 == max2 && max2 == min1 && min1 == 1) ||
+ 202              		.loc 1 92 0
+ 203 00ac 3A6C     		ldr	r2, [r7, #64]
+ 204 00ae 3B6A     		ldr	r3, [r7, #32]
+ 205 00b0 9A42     		cmp	r2, r3
+ 206 00b2 06D1     		bne	.L8
+ 207              		.loc 1 92 0 is_stmt 0 discriminator 1
+ 208 00b4 3A6A     		ldr	r2, [r7, #32]
+ 209 00b6 BB6B     		ldr	r3, [r7, #56]
+ 210 00b8 9A42     		cmp	r2, r3
+ 211 00ba 02D1     		bne	.L8
+ 212              		.loc 1 92 0 discriminator 3
+ 213 00bc BB6B     		ldr	r3, [r7, #56]
+ 214 00be 012B     		cmp	r3, #1
+ 215 00c0 0AD0     		beq	.L9
+ 216              	.L8:
+ 217              		.loc 1 92 0 discriminator 5
+ 218 00c2 BA6B     		ldr	r2, [r7, #56]
+ 219 00c4 3B6C     		ldr	r3, [r7, #64]
+ 220 00c6 9A42     		cmp	r2, r3
+ 221 00c8 08D1     		bne	.L3
+  93:.\main.c      ****             (min1 == max1 && max1 == min2 && min2 == 1))
+ 222              		.loc 1 93 0 is_stmt 1
+ 223 00ca 3A6C     		ldr	r2, [r7, #64]
+ 224 00cc 7B6B     		ldr	r3, [r7, #52]
+ 225 00ce 9A42     		cmp	r2, r3
+ 226 00d0 04D1     		bne	.L3
+ 227              		.loc 1 93 0 is_stmt 0 discriminator 1
+ 228 00d2 7B6B     		ldr	r3, [r7, #52]
+ 229 00d4 012B     		cmp	r3, #1
+ 230 00d6 01D1     		bne	.L3
+ 231              	.L9:
+  94:.\main.c      ****         {
+  95:.\main.c      ****             foundperiod = 1;
+ 232              		.loc 1 95 0 is_stmt 1
+ 233 00d8 0123     		movs	r3, #1
+ 234 00da BB62     		str	r3, [r7, #40]
+ 235              	.L3:
+ 236              	.LBE2:
+  66:.\main.c      ****     {
+ 237              		.loc 1 66 0
+ 238 00dc BB6A     		ldr	r3, [r7, #40]
+ 239 00de 002B     		cmp	r3, #0
+ 240 00e0 AAD0     		beq	.L10
+  96:.\main.c      ****         }
+  97:.\main.c      ****     }
+  98:.\main.c      ****     if (max1 == max2 == min1 == 1)
+ 241              		.loc 1 98 0
+ 242 00e2 3A6C     		ldr	r2, [r7, #64]
+ 243 00e4 3B6A     		ldr	r3, [r7, #32]
+ARM GAS  C:\Users\jthem\AppData\Local\Temp\ccflPXLw.s 			page 7
+
+
+ 244 00e6 9A42     		cmp	r2, r3
+ 245 00e8 0CBF     		ite	eq
+ 246 00ea 0123     		moveq	r3, #1
+ 247 00ec 0023     		movne	r3, #0
+ 248 00ee DBB2     		uxtb	r3, r3
+ 249 00f0 1A46     		mov	r2, r3
+ 250 00f2 BB6B     		ldr	r3, [r7, #56]
+ 251 00f4 9A42     		cmp	r2, r3
+ 252 00f6 04D1     		bne	.L11
+  99:.\main.c      ****     {
+ 100:.\main.c      ****         samples = max2_index - max1_index;
+ 253              		.loc 1 100 0
+ 254 00f8 FA69     		ldr	r2, [r7, #28]
+ 255 00fa FB6B     		ldr	r3, [r7, #60]
+ 256 00fc D31A     		subs	r3, r2, r3
+ 257 00fe 7B62     		str	r3, [r7, #36]
+ 258 0100 0EE0     		b	.L12
+ 259              	.L11:
+ 101:.\main.c      **** 
+ 102:.\main.c      ****     }
+ 103:.\main.c      ****     else if (min1 == max1 == min2 == 1)
+ 260              		.loc 1 103 0
+ 261 0102 BA6B     		ldr	r2, [r7, #56]
+ 262 0104 3B6C     		ldr	r3, [r7, #64]
+ 263 0106 9A42     		cmp	r2, r3
+ 264 0108 0CBF     		ite	eq
+ 265 010a 0123     		moveq	r3, #1
+ 266 010c 0023     		movne	r3, #0
+ 267 010e DBB2     		uxtb	r3, r3
+ 268 0110 1A46     		mov	r2, r3
+ 269 0112 7B6B     		ldr	r3, [r7, #52]
+ 270 0114 9A42     		cmp	r2, r3
+ 271 0116 03D1     		bne	.L12
+ 104:.\main.c      ****     {
+ 105:.\main.c      ****         samples = min2_index - min1_index;
+ 272              		.loc 1 105 0
+ 273 0118 FA6A     		ldr	r2, [r7, #44]
+ 274 011a 3B6B     		ldr	r3, [r7, #48]
+ 275 011c D31A     		subs	r3, r2, r3
+ 276 011e 7B62     		str	r3, [r7, #36]
+ 277              	.L12:
+ 106:.\main.c      ****     }
+ 107:.\main.c      **** 
+ 108:.\main.c      ****     //Irrelevant part
+ 109:.\main.c      ****     uint16_t n = 55000;
+ 278              		.loc 1 109 0
+ 279 0120 4DF2D863 		movw	r3, #55000
+ 280 0124 FB82     		strh	r3, [r7, #22]	@ movhi
+ 110:.\main.c      ****     int cycles = 1;
+ 281              		.loc 1 110 0
+ 282 0126 0123     		movs	r3, #1
+ 283 0128 3B61     		str	r3, [r7, #16]
+ 111:.\main.c      ****     float frequency = 1 / (samples*(n/cycles));
+ 284              		.loc 1 111 0
+ 285 012a FA8A     		ldrh	r2, [r7, #22]
+ 286 012c 3B69     		ldr	r3, [r7, #16]
+ 287 012e 92FBF3F3 		sdiv	r3, r2, r3
+ARM GAS  C:\Users\jthem\AppData\Local\Temp\ccflPXLw.s 			page 8
+
+
+ 288 0132 7A6A     		ldr	r2, [r7, #36]
+ 289 0134 02FB03F3 		mul	r3, r2, r3
+ 290 0138 0122     		movs	r2, #1
+ 291 013a 92FBF3F3 		sdiv	r3, r2, r3
+ 292 013e 1846     		mov	r0, r3
+ 293 0140 FFF7FEFF 		bl	__aeabi_i2f
+ 294 0144 0346     		mov	r3, r0
+ 295 0146 FB60     		str	r3, [r7, #12]	@ float
+ 112:.\main.c      ****     return frequency;
+ 296              		.loc 1 112 0
+ 297 0148 FB68     		ldr	r3, [r7, #12]	@ float
+ 113:.\main.c      **** }
+ 298              		.loc 1 113 0
+ 299 014a 1846     		mov	r0, r3
+ 300 014c 4837     		adds	r7, r7, #72
+ 301              		.cfi_def_cfa_offset 8
+ 302 014e BD46     		mov	sp, r7
+ 303              		.cfi_def_cfa_register 13
+ 304              		@ sp needed
+ 305 0150 80BD     		pop	{r7, pc}
+ 306              		.cfi_endproc
+ 307              	.LFE64:
+ 308              		.size	find_freq, .-find_freq
+ 309 0152 00BF     		.section	.text.PSOC5_Init,"ax",%progbits
+ 310              		.align	2
+ 311              		.global	PSOC5_Init
+ 312              		.thumb
+ 313              		.thumb_func
+ 314              		.type	PSOC5_Init, %function
+ 315              	PSOC5_Init:
+ 316              	.LFB65:
+ 114:.\main.c      **** 
+ 115:.\main.c      **** 
+ 116:.\main.c      **** /*******************************************************************************
+ 117:.\main.c      **** * Function Name: Get_And_Handle_Command
+ 118:.\main.c      **** ********************************************************************************
+ 119:.\main.c      **** *
+ 120:.\main.c      **** * Summary
+ 121:.\main.c      **** *  Processes commands sent by UART (including those from a PuTTy connection).
+ 122:.\main.c      **** *
+ 123:.\main.c      **** * Parameters:
+ 124:.\main.c      **** *  None.
+ 125:.\main.c      **** *
+ 126:.\main.c      **** * Return:
+ 127:.\main.c      **** *  None.
+ 128:.\main.c      **** *
+ 129:.\main.c      **** *******************************************************************************/
+ 130:.\main.c      **** /*
+ 131:.\main.c      **** void Get_And_Handle_Command()
+ 132:.\main.c      **** {
+ 133:.\main.c      ****     char usbRx[USBUART_BUFFER_SIZE], usbTx[USBUART_BUFFER_SIZE];   
+ 134:.\main.c      ****     int numArgs;
+ 135:.\main.c      ****     int desiredFreq, newFreq, fnGenerator;
+ 136:.\main.c      ****     char mode[USBUART_BUFFER_SIZE] = {0};
+ 137:.\main.c      ****     
+ 138:.\main.c      ****     Serial_GetString(usbRx);
+ 139:.\main.c      ****     TrimString(usbRx);
+ARM GAS  C:\Users\jthem\AppData\Local\Temp\ccflPXLw.s 			page 9
+
+
+ 140:.\main.c      ****     numArgs = sscanf(usbRx, "%d %s %d", &fnGenerator, mode, &desiredFreq);
+ 141:.\main.c      ****     if (numArgs == 3) {
+ 142:.\main.c      ****         if (!strcmp(mode, "square")) { 
+ 143:.\main.c      ****             newFreq = ChangeFrequency(desiredFreq, SQUARE, fnGenerator);
+ 144:.\main.c      ****             sprintf(usbTx, "fn = %d, mode = %s, newFreq = %d\r\n", fnGenerator, mode, newFreq);
+ 145:.\main.c      ****         } else if (!strcmp(mode, "sine")) { 
+ 146:.\main.c      ****             newFreq = ChangeFrequency(desiredFreq, SINE, fnGenerator);
+ 147:.\main.c      ****             sprintf(usbTx, "fn = %d, mode = %s, newFreq = %d\r\n", fnGenerator, mode, newFreq);
+ 148:.\main.c      ****         } else if (!strcmp(mode, "triangle")) { 
+ 149:.\main.c      ****             newFreq = ChangeFrequency(desiredFreq, TRIANGLE, fnGenerator);
+ 150:.\main.c      ****             sprintf(usbTx, "fn = %d, mode = %s, newFreq = %d\r\n", fnGenerator, mode, newFreq);
+ 151:.\main.c      ****         } else if (!strcmp(mode, "sawtooth")) { 
+ 152:.\main.c      ****             newFreq = ChangeFrequency(desiredFreq, SAWTOOTH, fnGenerator);
+ 153:.\main.c      ****             sprintf(usbTx, "fn = %d, mode = %s, newFreq = %d\r\n", fnGenerator, mode, newFreq);
+ 154:.\main.c      ****         } else if (!strcmp(mode, "dc")) { 
+ 155:.\main.c      ****             newFreq = ChangeFrequency(desiredFreq, DC, fnGenerator);
+ 156:.\main.c      ****             sprintf(usbTx, "fn = %d, mode = %s, newFreq = %d\r\n", fnGenerator, mode, newFreq);
+ 157:.\main.c      ****         } else {
+ 158:.\main.c      ****             sprintf(usbTx, "Invalid mode: %s\r\n", mode);
+ 159:.\main.c      ****         }
+ 160:.\main.c      ****  
+ 161:.\main.c      ****         
+ 162:.\main.c      ****     } else if (numArgs == 2) {
+ 163:.\main.c      ****         if (!strcmp(mode, "off")) {
+ 164:.\main.c      ****             if (fnGenerator == 0) {
+ 165:.\main.c      ****                 StopWaveDac(WAVEDAC_LOW_0);
+ 166:.\main.c      ****             } else if (fnGenerator == 1) {
+ 167:.\main.c      ****                 StopWaveDac(WAVEDAC_LOW_1);   
+ 168:.\main.c      ****             }
+ 169:.\main.c      ****             sprintf(usbTx, "Stopped WaveDAC %d\r\n", fnGenerator);
+ 170:.\main.c      ****         } else {
+ 171:.\main.c      ****             sprintf(usbTx, "Invalid mode: %s\r\n", mode);
+ 172:.\main.c      ****         }
+ 173:.\main.c      ****     } else {
+ 174:.\main.c      ****         sprintf(usbTx, "Invalid command: %s\r\n", usbRx);
+ 175:.\main.c      ****     }
+ 176:.\main.c      ****     Serial_PutString(usbTx);
+ 177:.\main.c      **** }
+ 178:.\main.c      **** 
+ 179:.\main.c      **** */
+ 180:.\main.c      **** 
+ 181:.\main.c      **** /*******************************************************************************
+ 182:.\main.c      **** * Function Name: PSOC5_Init
+ 183:.\main.c      **** ********************************************************************************
+ 184:.\main.c      **** *
+ 185:.\main.c      **** * Summary
+ 186:.\main.c      **** *  Initializes all the components used in the PSOC5 (WaveDACs, character LCD, 
+ 187:.\main.c      **** *  ADCs, and SPI interfaces).
+ 188:.\main.c      **** *
+ 189:.\main.c      **** * Parameters:
+ 190:.\main.c      **** *  None.
+ 191:.\main.c      **** *
+ 192:.\main.c      **** * Return:
+ 193:.\main.c      **** *  None.
+ 194:.\main.c      **** *
+ 195:.\main.c      **** *******************************************************************************/
+ 196:.\main.c      **** 
+ARM GAS  C:\Users\jthem\AppData\Local\Temp\ccflPXLw.s 			page 10
+
+
+ 197:.\main.c      **** void PSOC5_Init()
+ 198:.\main.c      **** {
+ 317              		.loc 1 198 0
+ 318              		.cfi_startproc
+ 319              		@ args = 0, pretend = 0, frame = 0
+ 320              		@ frame_needed = 1, uses_anonymous_args = 0
+ 321 0000 80B5     		push	{r7, lr}
+ 322              		.cfi_def_cfa_offset 8
+ 323              		.cfi_offset 7, -8
+ 324              		.cfi_offset 14, -4
+ 325 0002 00AF     		add	r7, sp, #0
+ 326              		.cfi_def_cfa_register 7
+ 199:.\main.c      ****     LCD_Start();
+ 327              		.loc 1 199 0
+ 328 0004 FFF7FEFF 		bl	LCD_Start
+ 200:.\main.c      ****     
+ 201:.\main.c      ****     WaveDAC_0_Clock_Start();
+ 329              		.loc 1 201 0
+ 330 0008 FFF7FEFF 		bl	WaveDAC_0_Clock_Start
+ 202:.\main.c      ****     WaveDAC_1_Clock_Start();
+ 331              		.loc 1 202 0
+ 332 000c FFF7FEFF 		bl	WaveDAC_1_Clock_Start
+ 203:.\main.c      ****     
+ 204:.\main.c      ****     // Needed for WaveDACs to operate concurrently
+ 205:.\main.c      ****     // I think this might be a bug with PSoC
+ 206:.\main.c      ****     WaveDAC_0_Start();
+ 333              		.loc 1 206 0
+ 334 0010 FFF7FEFF 		bl	WaveDAC_0_Start
+ 207:.\main.c      ****     WaveDAC_1_Start(); 
+ 335              		.loc 1 207 0
+ 336 0014 FFF7FEFF 		bl	WaveDAC_1_Start
+ 208:.\main.c      ****     WaveDAC_0_Stop();
+ 337              		.loc 1 208 0
+ 338 0018 FFF7FEFF 		bl	WaveDAC_0_Stop
+ 209:.\main.c      ****     WaveDAC_1_Stop();
+ 339              		.loc 1 209 0
+ 340 001c FFF7FEFF 		bl	WaveDAC_1_Stop
+ 210:.\main.c      ****     
+ 211:.\main.c      ****     WaveDAC_0_Mux_Start();
+ 341              		.loc 1 211 0
+ 342 0020 FFF7FEFF 		bl	WaveDAC_0_Mux_Start
+ 212:.\main.c      ****     WaveDAC_1_Mux_Start();
+ 343              		.loc 1 212 0
+ 344 0024 FFF7FEFF 		bl	WaveDAC_1_Mux_Start
+ 213:.\main.c      **** 
+ 214:.\main.c      ****     USBUART_Start(USBFS_DEVICE, USBUART_5V_OPERATION);
+ 345              		.loc 1 214 0
+ 346 0028 0020     		movs	r0, #0
+ 347 002a 0121     		movs	r1, #1
+ 348 002c FFF7FEFF 		bl	USBUART_Start
+ 215:.\main.c      ****     USBUART_CDC_Init();
+ 349              		.loc 1 215 0
+ 350 0030 FFF7FEFF 		bl	USBUART_CDC_Init
+ 216:.\main.c      ****     
+ 217:.\main.c      ****     SPIS_Start();
+ 351              		.loc 1 217 0
+ 352 0034 FFF7FEFF 		bl	SPIS_Start
+ARM GAS  C:\Users\jthem\AppData\Local\Temp\ccflPXLw.s 			page 11
+
+
+ 218:.\main.c      ****     
+ 219:.\main.c      ****     CyGlobalIntEnable;   
+ 353              		.loc 1 219 0
+ 354              	@ 219 ".\main.c" 1
+ 355 0038 62B6     		CPSIE   i
+ 356              	@ 0 "" 2
+ 220:.\main.c      **** }
+ 357              		.loc 1 220 0
+ 358              		.thumb
+ 359 003a 80BD     		pop	{r7, pc}
+ 360              		.cfi_endproc
+ 361              	.LFE65:
+ 362              		.size	PSOC5_Init, .-PSOC5_Init
+ 363              		.section	.text.SetDigitalPot,"ax",%progbits
+ 364              		.align	2
+ 365              		.global	SetDigitalPot
+ 366              		.thumb
+ 367              		.thumb_func
+ 368              		.type	SetDigitalPot, %function
+ 369              	SetDigitalPot:
+ 370              	.LFB66:
+ 221:.\main.c      **** 
+ 222:.\main.c      **** typedef enum {
+ 223:.\main.c      ****     ALERT,             // A, off(0)/on(1), device ID, function
+ 224:.\main.c      ****     FNG_SHAPE,         // set FNG shape
+ 225:.\main.c      ****     FNG_VOLTAGE,       // set FNG voltage
+ 226:.\main.c      ****     FNG_FREQUENCY,     // set FNG frequency
+ 227:.\main.c      ****     FNG_PIN,           // set new FNG pin
+ 228:.\main.c      ****     OSC_PIN,
+ 229:.\main.c      ****     COMMIT_CHANGES,
+ 230:.\main.c      ****     WAIT_FINISH,        // wait for command to complete (0xF000);
+ 231:.\main.c      ****     INVALID_COMMAND,
+ 232:.\main.c      **** } SlaveCommand;
+ 233:.\main.c      **** 
+ 234:.\main.c      **** typedef struct {
+ 235:.\main.c      ****     uint8 id;
+ 236:.\main.c      ****     uint8 running;
+ 237:.\main.c      ****     uint8 valueChanged;
+ 238:.\main.c      ****     
+ 239:.\main.c      ****     uint16 freq;
+ 240:.\main.c      ****     uint8 voltage;
+ 241:.\main.c      ****     FngShape shape;
+ 242:.\main.c      ****     uint8 channel;
+ 243:.\main.c      **** } FunctionGenerator;
+ 244:.\main.c      **** 
+ 245:.\main.c      **** typedef struct {
+ 246:.\main.c      ****     uint8 id;
+ 247:.\main.c      ****     uint8 running;
+ 248:.\main.c      ****     uint8 channel;
+ 249:.\main.c      ****     uint8 valueChanged;
+ 250:.\main.c      **** } Oscilloscope;
+ 251:.\main.c      **** 
+ 252:.\main.c      **** typedef struct {
+ 253:.\main.c      ****     FunctionGenerator fng0;
+ 254:.\main.c      ****     FunctionGenerator fng1;
+ 255:.\main.c      ****     Oscilloscope osc0;
+ 256:.\main.c      ****     Oscilloscope osc1;
+ARM GAS  C:\Users\jthem\AppData\Local\Temp\ccflPXLw.s 			page 12
+
+
+ 257:.\main.c      **** } SlaveState;
+ 258:.\main.c      **** 
+ 259:.\main.c      **** void SetDigitalPot(uint8 value, uint8 fngId) {
+ 371              		.loc 1 259 0
+ 372              		.cfi_startproc
+ 373              		@ args = 0, pretend = 0, frame = 8
+ 374              		@ frame_needed = 1, uses_anonymous_args = 0
+ 375              		@ link register save eliminated.
+ 376 0000 80B4     		push	{r7}
+ 377              		.cfi_def_cfa_offset 4
+ 378              		.cfi_offset 7, -4
+ 379 0002 83B0     		sub	sp, sp, #12
+ 380              		.cfi_def_cfa_offset 16
+ 381 0004 00AF     		add	r7, sp, #0
+ 382              		.cfi_def_cfa_register 7
+ 383 0006 0346     		mov	r3, r0
+ 384 0008 0A46     		mov	r2, r1
+ 385 000a FB71     		strb	r3, [r7, #7]
+ 386 000c 1346     		mov	r3, r2
+ 387 000e BB71     		strb	r3, [r7, #6]
+ 260:.\main.c      ****     //MCP41010_Write(value, fngId);
+ 261:.\main.c      **** }
+ 388              		.loc 1 261 0
+ 389 0010 0C37     		adds	r7, r7, #12
+ 390              		.cfi_def_cfa_offset 4
+ 391 0012 BD46     		mov	sp, r7
+ 392              		.cfi_def_cfa_register 13
+ 393              		@ sp needed
+ 394 0014 5DF8047B 		ldr	r7, [sp], #4
+ 395              		.cfi_restore 7
+ 396              		.cfi_def_cfa_offset 0
+ 397 0018 7047     		bx	lr
+ 398              		.cfi_endproc
+ 399              	.LFE66:
+ 400              		.size	SetDigitalPot, .-SetDigitalPot
+ 401 001a 00BF     		.section	.text.setInvalidCommand,"ax",%progbits
+ 402              		.align	2
+ 403              		.global	setInvalidCommand
+ 404              		.thumb
+ 405              		.thumb_func
+ 406              		.type	setInvalidCommand, %function
+ 407              	setInvalidCommand:
+ 408              	.LFB67:
+ 262:.\main.c      **** 
+ 263:.\main.c      **** 
+ 264:.\main.c      **** void setInvalidCommand(SlaveState *state) {
+ 409              		.loc 1 264 0
+ 410              		.cfi_startproc
+ 411              		@ args = 0, pretend = 0, frame = 8
+ 412              		@ frame_needed = 1, uses_anonymous_args = 0
+ 413              		@ link register save eliminated.
+ 414 0000 80B4     		push	{r7}
+ 415              		.cfi_def_cfa_offset 4
+ 416              		.cfi_offset 7, -4
+ 417 0002 83B0     		sub	sp, sp, #12
+ 418              		.cfi_def_cfa_offset 16
+ 419 0004 00AF     		add	r7, sp, #0
+ARM GAS  C:\Users\jthem\AppData\Local\Temp\ccflPXLw.s 			page 13
+
+
+ 420              		.cfi_def_cfa_register 7
+ 421 0006 7860     		str	r0, [r7, #4]
+ 265:.\main.c      ****     state->fng0.valueChanged = 0;
+ 422              		.loc 1 265 0
+ 423 0008 7B68     		ldr	r3, [r7, #4]
+ 424 000a 0022     		movs	r2, #0
+ 425 000c 9A70     		strb	r2, [r3, #2]
+ 266:.\main.c      ****     state->fng1.valueChanged = 0;
+ 426              		.loc 1 266 0
+ 427 000e 7B68     		ldr	r3, [r7, #4]
+ 428 0010 0022     		movs	r2, #0
+ 429 0012 1A73     		strb	r2, [r3, #12]
+ 267:.\main.c      ****     state->osc0.valueChanged = 0;
+ 430              		.loc 1 267 0
+ 431 0014 7B68     		ldr	r3, [r7, #4]
+ 432 0016 0022     		movs	r2, #0
+ 433 0018 DA75     		strb	r2, [r3, #23]
+ 268:.\main.c      ****     state->osc1.valueChanged = 0;
+ 434              		.loc 1 268 0
+ 435 001a 7B68     		ldr	r3, [r7, #4]
+ 436 001c 0022     		movs	r2, #0
+ 437 001e DA76     		strb	r2, [r3, #27]
+ 269:.\main.c      **** }
+ 438              		.loc 1 269 0
+ 439 0020 0C37     		adds	r7, r7, #12
+ 440              		.cfi_def_cfa_offset 4
+ 441 0022 BD46     		mov	sp, r7
+ 442              		.cfi_def_cfa_register 13
+ 443              		@ sp needed
+ 444 0024 5DF8047B 		ldr	r7, [sp], #4
+ 445              		.cfi_restore 7
+ 446              		.cfi_def_cfa_offset 0
+ 447 0028 7047     		bx	lr
+ 448              		.cfi_endproc
+ 449              	.LFE67:
+ 450              		.size	setInvalidCommand, .-setInvalidCommand
+ 451 002a 00BF     		.section	.text.initializeFng,"ax",%progbits
+ 452              		.align	2
+ 453              		.global	initializeFng
+ 454              		.thumb
+ 455              		.thumb_func
+ 456              		.type	initializeFng, %function
+ 457              	initializeFng:
+ 458              	.LFB68:
+ 270:.\main.c      **** 
+ 271:.\main.c      **** void initializeFng(int id, FunctionGenerator *fng) {
+ 459              		.loc 1 271 0
+ 460              		.cfi_startproc
+ 461              		@ args = 0, pretend = 0, frame = 8
+ 462              		@ frame_needed = 1, uses_anonymous_args = 0
+ 463              		@ link register save eliminated.
+ 464 0000 80B4     		push	{r7}
+ 465              		.cfi_def_cfa_offset 4
+ 466              		.cfi_offset 7, -4
+ 467 0002 83B0     		sub	sp, sp, #12
+ 468              		.cfi_def_cfa_offset 16
+ 469 0004 00AF     		add	r7, sp, #0
+ARM GAS  C:\Users\jthem\AppData\Local\Temp\ccflPXLw.s 			page 14
+
+
+ 470              		.cfi_def_cfa_register 7
+ 471 0006 7860     		str	r0, [r7, #4]
+ 472 0008 3960     		str	r1, [r7]
+ 272:.\main.c      ****     fng->id = id;
+ 473              		.loc 1 272 0
+ 474 000a 7B68     		ldr	r3, [r7, #4]
+ 475 000c DAB2     		uxtb	r2, r3
+ 476 000e 3B68     		ldr	r3, [r7]
+ 477 0010 1A70     		strb	r2, [r3]
+ 273:.\main.c      ****     fng->running = 0;
+ 478              		.loc 1 273 0
+ 479 0012 3B68     		ldr	r3, [r7]
+ 480 0014 0022     		movs	r2, #0
+ 481 0016 5A70     		strb	r2, [r3, #1]
+ 274:.\main.c      ****     fng->valueChanged = 0;
+ 482              		.loc 1 274 0
+ 483 0018 3B68     		ldr	r3, [r7]
+ 484 001a 0022     		movs	r2, #0
+ 485 001c 9A70     		strb	r2, [r3, #2]
+ 275:.\main.c      ****     
+ 276:.\main.c      ****     fng->freq = 1000;
+ 486              		.loc 1 276 0
+ 487 001e 3B68     		ldr	r3, [r7]
+ 488 0020 4FF47A72 		mov	r2, #1000
+ 489 0024 9A80     		strh	r2, [r3, #4]	@ movhi
+ 277:.\main.c      ****     fng->voltage = 100;
+ 490              		.loc 1 277 0
+ 491 0026 3B68     		ldr	r3, [r7]
+ 492 0028 6422     		movs	r2, #100
+ 493 002a 9A71     		strb	r2, [r3, #6]
+ 278:.\main.c      ****     fng->shape = SQUARE;
+ 494              		.loc 1 278 0
+ 495 002c 3B68     		ldr	r3, [r7]
+ 496 002e 0022     		movs	r2, #0
+ 497 0030 DA71     		strb	r2, [r3, #7]
+ 279:.\main.c      ****     fng->channel = 0;
+ 498              		.loc 1 279 0
+ 499 0032 3B68     		ldr	r3, [r7]
+ 500 0034 0022     		movs	r2, #0
+ 501 0036 1A72     		strb	r2, [r3, #8]
+ 280:.\main.c      **** }
+ 502              		.loc 1 280 0
+ 503 0038 0C37     		adds	r7, r7, #12
+ 504              		.cfi_def_cfa_offset 4
+ 505 003a BD46     		mov	sp, r7
+ 506              		.cfi_def_cfa_register 13
+ 507              		@ sp needed
+ 508 003c 5DF8047B 		ldr	r7, [sp], #4
+ 509              		.cfi_restore 7
+ 510              		.cfi_def_cfa_offset 0
+ 511 0040 7047     		bx	lr
+ 512              		.cfi_endproc
+ 513              	.LFE68:
+ 514              		.size	initializeFng, .-initializeFng
+ 515 0042 00BF     		.section	.text.initializeScope,"ax",%progbits
+ 516              		.align	2
+ 517              		.global	initializeScope
+ARM GAS  C:\Users\jthem\AppData\Local\Temp\ccflPXLw.s 			page 15
+
+
+ 518              		.thumb
+ 519              		.thumb_func
+ 520              		.type	initializeScope, %function
+ 521              	initializeScope:
+ 522              	.LFB69:
+ 281:.\main.c      **** 
+ 282:.\main.c      **** void initializeScope(int id, Oscilloscope *scope) {
+ 523              		.loc 1 282 0
+ 524              		.cfi_startproc
+ 525              		@ args = 0, pretend = 0, frame = 8
+ 526              		@ frame_needed = 1, uses_anonymous_args = 0
+ 527              		@ link register save eliminated.
+ 528 0000 80B4     		push	{r7}
+ 529              		.cfi_def_cfa_offset 4
+ 530              		.cfi_offset 7, -4
+ 531 0002 83B0     		sub	sp, sp, #12
+ 532              		.cfi_def_cfa_offset 16
+ 533 0004 00AF     		add	r7, sp, #0
+ 534              		.cfi_def_cfa_register 7
+ 535 0006 7860     		str	r0, [r7, #4]
+ 536 0008 3960     		str	r1, [r7]
+ 283:.\main.c      ****     scope->id = id;
+ 537              		.loc 1 283 0
+ 538 000a 7B68     		ldr	r3, [r7, #4]
+ 539 000c DAB2     		uxtb	r2, r3
+ 540 000e 3B68     		ldr	r3, [r7]
+ 541 0010 1A70     		strb	r2, [r3]
+ 284:.\main.c      ****     scope->running = 0;
+ 542              		.loc 1 284 0
+ 543 0012 3B68     		ldr	r3, [r7]
+ 544 0014 0022     		movs	r2, #0
+ 545 0016 5A70     		strb	r2, [r3, #1]
+ 285:.\main.c      ****     scope->channel = 0;
+ 546              		.loc 1 285 0
+ 547 0018 3B68     		ldr	r3, [r7]
+ 548 001a 0022     		movs	r2, #0
+ 549 001c 9A70     		strb	r2, [r3, #2]
+ 286:.\main.c      ****     scope->valueChanged = 0;
+ 550              		.loc 1 286 0
+ 551 001e 3B68     		ldr	r3, [r7]
+ 552 0020 0022     		movs	r2, #0
+ 553 0022 DA70     		strb	r2, [r3, #3]
+ 287:.\main.c      **** }
+ 554              		.loc 1 287 0
+ 555 0024 0C37     		adds	r7, r7, #12
+ 556              		.cfi_def_cfa_offset 4
+ 557 0026 BD46     		mov	sp, r7
+ 558              		.cfi_def_cfa_register 13
+ 559              		@ sp needed
+ 560 0028 5DF8047B 		ldr	r7, [sp], #4
+ 561              		.cfi_restore 7
+ 562              		.cfi_def_cfa_offset 0
+ 563 002c 7047     		bx	lr
+ 564              		.cfi_endproc
+ 565              	.LFE69:
+ 566              		.size	initializeScope, .-initializeScope
+ 567 002e 00BF     		.section	.text.initializeState,"ax",%progbits
+ARM GAS  C:\Users\jthem\AppData\Local\Temp\ccflPXLw.s 			page 16
+
+
+ 568              		.align	2
+ 569              		.global	initializeState
+ 570              		.thumb
+ 571              		.thumb_func
+ 572              		.type	initializeState, %function
+ 573              	initializeState:
+ 574              	.LFB70:
+ 288:.\main.c      **** 
+ 289:.\main.c      **** void initializeState(SlaveState *state) {
+ 575              		.loc 1 289 0
+ 576              		.cfi_startproc
+ 577              		@ args = 0, pretend = 0, frame = 8
+ 578              		@ frame_needed = 1, uses_anonymous_args = 0
+ 579 0000 80B5     		push	{r7, lr}
+ 580              		.cfi_def_cfa_offset 8
+ 581              		.cfi_offset 7, -8
+ 582              		.cfi_offset 14, -4
+ 583 0002 82B0     		sub	sp, sp, #8
+ 584              		.cfi_def_cfa_offset 16
+ 585 0004 00AF     		add	r7, sp, #0
+ 586              		.cfi_def_cfa_register 7
+ 587 0006 7860     		str	r0, [r7, #4]
+ 290:.\main.c      ****     initializeFng(0, &state->fng0);
+ 588              		.loc 1 290 0
+ 589 0008 7B68     		ldr	r3, [r7, #4]
+ 590 000a 0020     		movs	r0, #0
+ 591 000c 1946     		mov	r1, r3
+ 592 000e FFF7FEFF 		bl	initializeFng
+ 291:.\main.c      ****     initializeFng(1, &state->fng1);
+ 593              		.loc 1 291 0
+ 594 0012 7B68     		ldr	r3, [r7, #4]
+ 595 0014 0A33     		adds	r3, r3, #10
+ 596 0016 0120     		movs	r0, #1
+ 597 0018 1946     		mov	r1, r3
+ 598 001a FFF7FEFF 		bl	initializeFng
+ 292:.\main.c      ****     initializeScope(0, &state->osc0);
+ 599              		.loc 1 292 0
+ 600 001e 7B68     		ldr	r3, [r7, #4]
+ 601 0020 1433     		adds	r3, r3, #20
+ 602 0022 0020     		movs	r0, #0
+ 603 0024 1946     		mov	r1, r3
+ 604 0026 FFF7FEFF 		bl	initializeScope
+ 293:.\main.c      ****     initializeScope(1, &state->osc1);
+ 605              		.loc 1 293 0
+ 606 002a 7B68     		ldr	r3, [r7, #4]
+ 607 002c 1833     		adds	r3, r3, #24
+ 608 002e 0120     		movs	r0, #1
+ 609 0030 1946     		mov	r1, r3
+ 610 0032 FFF7FEFF 		bl	initializeScope
+ 294:.\main.c      **** }
+ 611              		.loc 1 294 0
+ 612 0036 0837     		adds	r7, r7, #8
+ 613              		.cfi_def_cfa_offset 8
+ 614 0038 BD46     		mov	sp, r7
+ 615              		.cfi_def_cfa_register 13
+ 616              		@ sp needed
+ 617 003a 80BD     		pop	{r7, pc}
+ARM GAS  C:\Users\jthem\AppData\Local\Temp\ccflPXLw.s 			page 17
+
+
+ 618              		.cfi_endproc
+ 619              	.LFE70:
+ 620              		.size	initializeState, .-initializeState
+ 621              		.section	.text.getFngCommand,"ax",%progbits
+ 622              		.align	2
+ 623              		.global	getFngCommand
+ 624              		.thumb
+ 625              		.thumb_func
+ 626              		.type	getFngCommand, %function
+ 627              	getFngCommand:
+ 628              	.LFB71:
+ 295:.\main.c      **** 
+ 296:.\main.c      **** SlaveCommand getFngCommand(uint16 dataFromMaster) {
+ 629              		.loc 1 296 0
+ 630              		.cfi_startproc
+ 631              		@ args = 0, pretend = 0, frame = 16
+ 632              		@ frame_needed = 1, uses_anonymous_args = 0
+ 633              		@ link register save eliminated.
+ 634 0000 80B4     		push	{r7}
+ 635              		.cfi_def_cfa_offset 4
+ 636              		.cfi_offset 7, -4
+ 637 0002 85B0     		sub	sp, sp, #20
+ 638              		.cfi_def_cfa_offset 24
+ 639 0004 00AF     		add	r7, sp, #0
+ 640              		.cfi_def_cfa_register 7
+ 641 0006 0346     		mov	r3, r0
+ 642 0008 FB80     		strh	r3, [r7, #6]	@ movhi
+ 297:.\main.c      ****     uint8 command = dataFromMaster & 0x000F;
+ 643              		.loc 1 297 0
+ 644 000a FB88     		ldrh	r3, [r7, #6]	@ movhi
+ 645 000c DBB2     		uxtb	r3, r3
+ 646 000e 03F00F03 		and	r3, r3, #15
+ 647 0012 FB73     		strb	r3, [r7, #15]
+ 298:.\main.c      ****     switch (command) {
+ 648              		.loc 1 298 0
+ 649 0014 FB7B     		ldrb	r3, [r7, #15]	@ zero_extendqisi2
+ 650 0016 0A3B     		subs	r3, r3, #10
+ 651 0018 032B     		cmp	r3, #3
+ 652 001a 13D8     		bhi	.L21
+ 653 001c 01A2     		adr	r2, .L23
+ 654 001e 52F823F0 		ldr	pc, [r2, r3, lsl #2]
+ 655 0022 00BF     		.p2align 2
+ 656              	.L23:
+ 657 0024 35000000 		.word	.L22+1
+ 658 0028 39000000 		.word	.L24+1
+ 659 002c 3D000000 		.word	.L25+1
+ 660 0030 41000000 		.word	.L26+1
+ 661              		.p2align 1
+ 662              	.L22:
+ 299:.\main.c      ****         case 0x000A: // pin
+ 300:.\main.c      ****             return FNG_PIN;
+ 663              		.loc 1 300 0
+ 664 0034 0423     		movs	r3, #4
+ 665 0036 06E0     		b	.L27
+ 666              	.L24:
+ 301:.\main.c      ****         case 0x000B: // voltage
+ 302:.\main.c      ****             return FNG_VOLTAGE;
+ARM GAS  C:\Users\jthem\AppData\Local\Temp\ccflPXLw.s 			page 18
+
+
+ 667              		.loc 1 302 0
+ 668 0038 0223     		movs	r3, #2
+ 669 003a 04E0     		b	.L27
+ 670              	.L25:
+ 303:.\main.c      ****         case 0x000C: // frequency
+ 304:.\main.c      ****             return FNG_FREQUENCY;
+ 671              		.loc 1 304 0
+ 672 003c 0323     		movs	r3, #3
+ 673 003e 02E0     		b	.L27
+ 674              	.L26:
+ 305:.\main.c      ****         case 0x000D: // shape
+ 306:.\main.c      ****             return FNG_SHAPE;
+ 675              		.loc 1 306 0
+ 676 0040 0123     		movs	r3, #1
+ 677 0042 00E0     		b	.L27
+ 678              	.L21:
+ 307:.\main.c      ****         default: // invalid command
+ 308:.\main.c      ****             return INVALID_COMMAND;
+ 679              		.loc 1 308 0
+ 680 0044 0823     		movs	r3, #8
+ 681              	.L27:
+ 309:.\main.c      ****     }
+ 310:.\main.c      **** }
+ 682              		.loc 1 310 0
+ 683 0046 1846     		mov	r0, r3
+ 684 0048 1437     		adds	r7, r7, #20
+ 685              		.cfi_def_cfa_offset 4
+ 686 004a BD46     		mov	sp, r7
+ 687              		.cfi_def_cfa_register 13
+ 688              		@ sp needed
+ 689 004c 5DF8047B 		ldr	r7, [sp], #4
+ 690              		.cfi_restore 7
+ 691              		.cfi_def_cfa_offset 0
+ 692 0050 7047     		bx	lr
+ 693              		.cfi_endproc
+ 694              	.LFE71:
+ 695              		.size	getFngCommand, .-getFngCommand
+ 696 0052 00BF     		.section	.text.getFng,"ax",%progbits
+ 697              		.align	2
+ 698              		.global	getFng
+ 699              		.thumb
+ 700              		.thumb_func
+ 701              		.type	getFng, %function
+ 702              	getFng:
+ 703              	.LFB72:
+ 311:.\main.c      **** 
+ 312:.\main.c      **** FunctionGenerator *getFng(uint8 id, SlaveState *state) {
+ 704              		.loc 1 312 0
+ 705              		.cfi_startproc
+ 706              		@ args = 0, pretend = 0, frame = 8
+ 707              		@ frame_needed = 1, uses_anonymous_args = 0
+ 708              		@ link register save eliminated.
+ 709 0000 80B4     		push	{r7}
+ 710              		.cfi_def_cfa_offset 4
+ 711              		.cfi_offset 7, -4
+ 712 0002 83B0     		sub	sp, sp, #12
+ 713              		.cfi_def_cfa_offset 16
+ARM GAS  C:\Users\jthem\AppData\Local\Temp\ccflPXLw.s 			page 19
+
+
+ 714 0004 00AF     		add	r7, sp, #0
+ 715              		.cfi_def_cfa_register 7
+ 716 0006 0346     		mov	r3, r0
+ 717 0008 3960     		str	r1, [r7]
+ 718 000a FB71     		strb	r3, [r7, #7]
+ 313:.\main.c      ****     switch (id) {
+ 719              		.loc 1 313 0
+ 720 000c FB79     		ldrb	r3, [r7, #7]	@ zero_extendqisi2
+ 721 000e 002B     		cmp	r3, #0
+ 722 0010 02D0     		beq	.L30
+ 723 0012 012B     		cmp	r3, #1
+ 724 0014 02D0     		beq	.L31
+ 725 0016 04E0     		b	.L33
+ 726              	.L30:
+ 314:.\main.c      ****         case 0: return &state->fng0;
+ 727              		.loc 1 314 0
+ 728 0018 3B68     		ldr	r3, [r7]
+ 729 001a 03E0     		b	.L32
+ 730              	.L31:
+ 315:.\main.c      ****         case 1: return &state->fng1;
+ 731              		.loc 1 315 0
+ 732 001c 3B68     		ldr	r3, [r7]
+ 733 001e 0A33     		adds	r3, r3, #10
+ 734 0020 00E0     		b	.L32
+ 735              	.L33:
+ 316:.\main.c      ****         default: return NULL;
+ 736              		.loc 1 316 0
+ 737 0022 0023     		movs	r3, #0
+ 738              	.L32:
+ 317:.\main.c      ****     }
+ 318:.\main.c      **** }
+ 739              		.loc 1 318 0
+ 740 0024 1846     		mov	r0, r3
+ 741 0026 0C37     		adds	r7, r7, #12
+ 742              		.cfi_def_cfa_offset 4
+ 743 0028 BD46     		mov	sp, r7
+ 744              		.cfi_def_cfa_register 13
+ 745              		@ sp needed
+ 746 002a 5DF8047B 		ldr	r7, [sp], #4
+ 747              		.cfi_restore 7
+ 748              		.cfi_def_cfa_offset 0
+ 749 002e 7047     		bx	lr
+ 750              		.cfi_endproc
+ 751              	.LFE72:
+ 752              		.size	getFng, .-getFng
+ 753              		.section	.text.getOsc,"ax",%progbits
+ 754              		.align	2
+ 755              		.global	getOsc
+ 756              		.thumb
+ 757              		.thumb_func
+ 758              		.type	getOsc, %function
+ 759              	getOsc:
+ 760              	.LFB73:
+ 319:.\main.c      **** 
+ 320:.\main.c      **** Oscilloscope *getOsc(uint8 id, SlaveState *state) {
+ 761              		.loc 1 320 0
+ 762              		.cfi_startproc
+ARM GAS  C:\Users\jthem\AppData\Local\Temp\ccflPXLw.s 			page 20
+
+
+ 763              		@ args = 0, pretend = 0, frame = 8
+ 764              		@ frame_needed = 1, uses_anonymous_args = 0
+ 765              		@ link register save eliminated.
+ 766 0000 80B4     		push	{r7}
+ 767              		.cfi_def_cfa_offset 4
+ 768              		.cfi_offset 7, -4
+ 769 0002 83B0     		sub	sp, sp, #12
+ 770              		.cfi_def_cfa_offset 16
+ 771 0004 00AF     		add	r7, sp, #0
+ 772              		.cfi_def_cfa_register 7
+ 773 0006 0346     		mov	r3, r0
+ 774 0008 3960     		str	r1, [r7]
+ 775 000a FB71     		strb	r3, [r7, #7]
+ 321:.\main.c      ****     switch (id) {
+ 776              		.loc 1 321 0
+ 777 000c FB79     		ldrb	r3, [r7, #7]	@ zero_extendqisi2
+ 778 000e 022B     		cmp	r3, #2
+ 779 0010 02D0     		beq	.L36
+ 780 0012 032B     		cmp	r3, #3
+ 781 0014 03D0     		beq	.L37
+ 782 0016 05E0     		b	.L39
+ 783              	.L36:
+ 322:.\main.c      ****         case 2: return &state->osc0;
+ 784              		.loc 1 322 0
+ 785 0018 3B68     		ldr	r3, [r7]
+ 786 001a 1433     		adds	r3, r3, #20
+ 787 001c 03E0     		b	.L38
+ 788              	.L37:
+ 323:.\main.c      ****         case 3: return &state->osc1;
+ 789              		.loc 1 323 0
+ 790 001e 3B68     		ldr	r3, [r7]
+ 791 0020 1833     		adds	r3, r3, #24
+ 792 0022 00E0     		b	.L38
+ 793              	.L39:
+ 324:.\main.c      ****         default: return NULL;
+ 794              		.loc 1 324 0
+ 795 0024 0023     		movs	r3, #0
+ 796              	.L38:
+ 325:.\main.c      ****     }
+ 326:.\main.c      **** }
+ 797              		.loc 1 326 0
+ 798 0026 1846     		mov	r0, r3
+ 799 0028 0C37     		adds	r7, r7, #12
+ 800              		.cfi_def_cfa_offset 4
+ 801 002a BD46     		mov	sp, r7
+ 802              		.cfi_def_cfa_register 13
+ 803              		@ sp needed
+ 804 002c 5DF8047B 		ldr	r7, [sp], #4
+ 805              		.cfi_restore 7
+ 806              		.cfi_def_cfa_offset 0
+ 807 0030 7047     		bx	lr
+ 808              		.cfi_endproc
+ 809              	.LFE73:
+ 810              		.size	getOsc, .-getOsc
+ 811 0032 00BF     		.section	.text.disableFng,"ax",%progbits
+ 812              		.align	2
+ 813              		.global	disableFng
+ARM GAS  C:\Users\jthem\AppData\Local\Temp\ccflPXLw.s 			page 21
+
+
+ 814              		.thumb
+ 815              		.thumb_func
+ 816              		.type	disableFng, %function
+ 817              	disableFng:
+ 818              	.LFB74:
+ 327:.\main.c      **** 
+ 328:.\main.c      **** void disableFng(FunctionGenerator *fng) {
+ 819              		.loc 1 328 0
+ 820              		.cfi_startproc
+ 821              		@ args = 0, pretend = 0, frame = 8
+ 822              		@ frame_needed = 1, uses_anonymous_args = 0
+ 823 0000 80B5     		push	{r7, lr}
+ 824              		.cfi_def_cfa_offset 8
+ 825              		.cfi_offset 7, -8
+ 826              		.cfi_offset 14, -4
+ 827 0002 82B0     		sub	sp, sp, #8
+ 828              		.cfi_def_cfa_offset 16
+ 829 0004 00AF     		add	r7, sp, #0
+ 830              		.cfi_def_cfa_register 7
+ 831 0006 7860     		str	r0, [r7, #4]
+ 329:.\main.c      ****     if (fng == NULL) return;
+ 832              		.loc 1 329 0
+ 833 0008 7B68     		ldr	r3, [r7, #4]
+ 834 000a 002B     		cmp	r3, #0
+ 835 000c 00D1     		bne	.L41
+ 836 000e 07E0     		b	.L40
+ 837              	.L41:
+ 330:.\main.c      ****     fng->running = 0;
+ 838              		.loc 1 330 0
+ 839 0010 7B68     		ldr	r3, [r7, #4]
+ 840 0012 0022     		movs	r2, #0
+ 841 0014 5A70     		strb	r2, [r3, #1]
+ 331:.\main.c      ****     StopWaveDac(fng->id);
+ 842              		.loc 1 331 0
+ 843 0016 7B68     		ldr	r3, [r7, #4]
+ 844 0018 1B78     		ldrb	r3, [r3]	@ zero_extendqisi2
+ 845 001a 1846     		mov	r0, r3
+ 846 001c FFF7FEFF 		bl	StopWaveDac
+ 847              	.L40:
+ 332:.\main.c      **** }
+ 848              		.loc 1 332 0
+ 849 0020 0837     		adds	r7, r7, #8
+ 850              		.cfi_def_cfa_offset 8
+ 851 0022 BD46     		mov	sp, r7
+ 852              		.cfi_def_cfa_register 13
+ 853              		@ sp needed
+ 854 0024 80BD     		pop	{r7, pc}
+ 855              		.cfi_endproc
+ 856              	.LFE74:
+ 857              		.size	disableFng, .-disableFng
+ 858 0026 00BF     		.section	.text.setFngFreq,"ax",%progbits
+ 859              		.align	2
+ 860              		.global	setFngFreq
+ 861              		.thumb
+ 862              		.thumb_func
+ 863              		.type	setFngFreq, %function
+ 864              	setFngFreq:
+ARM GAS  C:\Users\jthem\AppData\Local\Temp\ccflPXLw.s 			page 22
+
+
+ 865              	.LFB75:
+ 333:.\main.c      **** 
+ 334:.\main.c      **** void setFngFreq(int newFreq, FunctionGenerator *fng) {
+ 866              		.loc 1 334 0
+ 867              		.cfi_startproc
+ 868              		@ args = 0, pretend = 0, frame = 8
+ 869              		@ frame_needed = 1, uses_anonymous_args = 0
+ 870 0000 80B5     		push	{r7, lr}
+ 871              		.cfi_def_cfa_offset 8
+ 872              		.cfi_offset 7, -8
+ 873              		.cfi_offset 14, -4
+ 874 0002 82B0     		sub	sp, sp, #8
+ 875              		.cfi_def_cfa_offset 16
+ 876 0004 00AF     		add	r7, sp, #0
+ 877              		.cfi_def_cfa_register 7
+ 878 0006 7860     		str	r0, [r7, #4]
+ 879 0008 3960     		str	r1, [r7]
+ 335:.\main.c      ****     if (fng == NULL) return;
+ 880              		.loc 1 335 0
+ 881 000a 3B68     		ldr	r3, [r7]
+ 882 000c 002B     		cmp	r3, #0
+ 883 000e 00D1     		bne	.L44
+ 884 0010 0DE0     		b	.L43
+ 885              	.L44:
+ 336:.\main.c      ****     fng->freq = newFreq;
+ 886              		.loc 1 336 0
+ 887 0012 7B68     		ldr	r3, [r7, #4]
+ 888 0014 9AB2     		uxth	r2, r3
+ 889 0016 3B68     		ldr	r3, [r7]
+ 890 0018 9A80     		strh	r2, [r3, #4]	@ movhi
+ 337:.\main.c      ****     ChangeFrequency(newFreq, fng->shape, fng->voltage, fng->id);
+ 891              		.loc 1 337 0
+ 892 001a 3B68     		ldr	r3, [r7]
+ 893 001c DB79     		ldrb	r3, [r3, #7]	@ zero_extendqisi2
+ 894 001e 1946     		mov	r1, r3
+ 895 0020 3B68     		ldr	r3, [r7]
+ 896 0022 9A79     		ldrb	r2, [r3, #6]	@ zero_extendqisi2
+ 897 0024 3B68     		ldr	r3, [r7]
+ 898 0026 1B78     		ldrb	r3, [r3]	@ zero_extendqisi2
+ 899 0028 7868     		ldr	r0, [r7, #4]
+ 900 002a FFF7FEFF 		bl	ChangeFrequency
+ 901              	.L43:
+ 338:.\main.c      **** }
+ 902              		.loc 1 338 0
+ 903 002e 0837     		adds	r7, r7, #8
+ 904              		.cfi_def_cfa_offset 8
+ 905 0030 BD46     		mov	sp, r7
+ 906              		.cfi_def_cfa_register 13
+ 907              		@ sp needed
+ 908 0032 80BD     		pop	{r7, pc}
+ 909              		.cfi_endproc
+ 910              	.LFE75:
+ 911              		.size	setFngFreq, .-setFngFreq
+ 912              		.section	.text.setFngShape,"ax",%progbits
+ 913              		.align	2
+ 914              		.global	setFngShape
+ 915              		.thumb
+ARM GAS  C:\Users\jthem\AppData\Local\Temp\ccflPXLw.s 			page 23
+
+
+ 916              		.thumb_func
+ 917              		.type	setFngShape, %function
+ 918              	setFngShape:
+ 919              	.LFB76:
+ 339:.\main.c      **** 
+ 340:.\main.c      **** void setFngShape(FngShape newShape, FunctionGenerator *fng) {
+ 920              		.loc 1 340 0
+ 921              		.cfi_startproc
+ 922              		@ args = 0, pretend = 0, frame = 8
+ 923              		@ frame_needed = 1, uses_anonymous_args = 0
+ 924 0000 80B5     		push	{r7, lr}
+ 925              		.cfi_def_cfa_offset 8
+ 926              		.cfi_offset 7, -8
+ 927              		.cfi_offset 14, -4
+ 928 0002 82B0     		sub	sp, sp, #8
+ 929              		.cfi_def_cfa_offset 16
+ 930 0004 00AF     		add	r7, sp, #0
+ 931              		.cfi_def_cfa_register 7
+ 932 0006 0346     		mov	r3, r0
+ 933 0008 3960     		str	r1, [r7]
+ 934 000a FB71     		strb	r3, [r7, #7]
+ 341:.\main.c      ****     if (fng == NULL) return;
+ 935              		.loc 1 341 0
+ 936 000c 3B68     		ldr	r3, [r7]
+ 937 000e 002B     		cmp	r3, #0
+ 938 0010 00D1     		bne	.L47
+ 939 0012 0CE0     		b	.L46
+ 940              	.L47:
+ 342:.\main.c      ****     fng->shape = newShape;
+ 941              		.loc 1 342 0
+ 942 0014 3B68     		ldr	r3, [r7]
+ 943 0016 FA79     		ldrb	r2, [r7, #7]
+ 944 0018 DA71     		strb	r2, [r3, #7]
+ 343:.\main.c      ****     ChangeFrequency(fng->freq, newShape, fng->voltage, fng->id);
+ 945              		.loc 1 343 0
+ 946 001a 3B68     		ldr	r3, [r7]
+ 947 001c 9B88     		ldrh	r3, [r3, #4]
+ 948 001e 1846     		mov	r0, r3
+ 949 0020 F979     		ldrb	r1, [r7, #7]	@ zero_extendqisi2
+ 950 0022 3B68     		ldr	r3, [r7]
+ 951 0024 9A79     		ldrb	r2, [r3, #6]	@ zero_extendqisi2
+ 952 0026 3B68     		ldr	r3, [r7]
+ 953 0028 1B78     		ldrb	r3, [r3]	@ zero_extendqisi2
+ 954 002a FFF7FEFF 		bl	ChangeFrequency
+ 955              	.L46:
+ 344:.\main.c      **** }
+ 956              		.loc 1 344 0
+ 957 002e 0837     		adds	r7, r7, #8
+ 958              		.cfi_def_cfa_offset 8
+ 959 0030 BD46     		mov	sp, r7
+ 960              		.cfi_def_cfa_register 13
+ 961              		@ sp needed
+ 962 0032 80BD     		pop	{r7, pc}
+ 963              		.cfi_endproc
+ 964              	.LFE76:
+ 965              		.size	setFngShape, .-setFngShape
+ 966              		.section	.text.setFngVoltage,"ax",%progbits
+ARM GAS  C:\Users\jthem\AppData\Local\Temp\ccflPXLw.s 			page 24
+
+
+ 967              		.align	2
+ 968              		.global	setFngVoltage
+ 969              		.thumb
+ 970              		.thumb_func
+ 971              		.type	setFngVoltage, %function
+ 972              	setFngVoltage:
+ 973              	.LFB77:
+ 345:.\main.c      **** 
+ 346:.\main.c      **** void setFngVoltage(uint8 newVoltage, FunctionGenerator *fng) {
+ 974              		.loc 1 346 0
+ 975              		.cfi_startproc
+ 976              		@ args = 0, pretend = 0, frame = 8
+ 977              		@ frame_needed = 1, uses_anonymous_args = 0
+ 978 0000 90B5     		push	{r4, r7, lr}
+ 979              		.cfi_def_cfa_offset 12
+ 980              		.cfi_offset 4, -12
+ 981              		.cfi_offset 7, -8
+ 982              		.cfi_offset 14, -4
+ 983 0002 83B0     		sub	sp, sp, #12
+ 984              		.cfi_def_cfa_offset 24
+ 985 0004 00AF     		add	r7, sp, #0
+ 986              		.cfi_def_cfa_register 7
+ 987 0006 0346     		mov	r3, r0
+ 988 0008 3960     		str	r1, [r7]
+ 989 000a FB71     		strb	r3, [r7, #7]
+ 347:.\main.c      ****     if (fng == NULL) return;
+ 990              		.loc 1 347 0
+ 991 000c 3B68     		ldr	r3, [r7]
+ 992 000e 002B     		cmp	r3, #0
+ 993 0010 00D1     		bne	.L50
+ 994 0012 16E0     		b	.L49
+ 995              	.L50:
+ 348:.\main.c      ****     if (newVoltage > 100) return;
+ 996              		.loc 1 348 0
+ 997 0014 FB79     		ldrb	r3, [r7, #7]	@ zero_extendqisi2
+ 998 0016 642B     		cmp	r3, #100
+ 999 0018 00D9     		bls	.L52
+ 1000              		.loc 1 348 0 is_stmt 0 discriminator 2
+ 1001 001a 12E0     		b	.L49
+ 1002              	.L52:
+ 349:.\main.c      ****     fng->voltage = newVoltage;
+ 1003              		.loc 1 349 0 is_stmt 1
+ 1004 001c 3B68     		ldr	r3, [r7]
+ 1005 001e FA79     		ldrb	r2, [r7, #7]
+ 1006 0020 9A71     		strb	r2, [r3, #6]
+ 350:.\main.c      ****     ChangeFrequency(fng->freq, fng->shape, newVoltage, fng->id);
+ 1007              		.loc 1 350 0
+ 1008 0022 3B68     		ldr	r3, [r7]
+ 1009 0024 9B88     		ldrh	r3, [r3, #4]
+ 1010 0026 1946     		mov	r1, r3
+ 1011 0028 3B68     		ldr	r3, [r7]
+ 1012 002a DB79     		ldrb	r3, [r3, #7]	@ zero_extendqisi2
+ 1013 002c 1A46     		mov	r2, r3
+ 1014 002e 3B68     		ldr	r3, [r7]
+ 1015 0030 1B78     		ldrb	r3, [r3]	@ zero_extendqisi2
+ 1016 0032 1C46     		mov	r4, r3
+ 1017 0034 FB79     		ldrb	r3, [r7, #7]	@ zero_extendqisi2
+ARM GAS  C:\Users\jthem\AppData\Local\Temp\ccflPXLw.s 			page 25
+
+
+ 1018 0036 0846     		mov	r0, r1
+ 1019 0038 1146     		mov	r1, r2
+ 1020 003a 1A46     		mov	r2, r3
+ 1021 003c 2346     		mov	r3, r4
+ 1022 003e FFF7FEFF 		bl	ChangeFrequency
+ 1023              	.L49:
+ 351:.\main.c      **** }
+ 1024              		.loc 1 351 0
+ 1025 0042 0C37     		adds	r7, r7, #12
+ 1026              		.cfi_def_cfa_offset 12
+ 1027 0044 BD46     		mov	sp, r7
+ 1028              		.cfi_def_cfa_register 13
+ 1029              		@ sp needed
+ 1030 0046 90BD     		pop	{r4, r7, pc}
+ 1031              		.cfi_endproc
+ 1032              	.LFE77:
+ 1033              		.size	setFngVoltage, .-setFngVoltage
+ 1034              		.section	.text.setFngChannel,"ax",%progbits
+ 1035              		.align	2
+ 1036              		.global	setFngChannel
+ 1037              		.thumb
+ 1038              		.thumb_func
+ 1039              		.type	setFngChannel, %function
+ 1040              	setFngChannel:
+ 1041              	.LFB78:
+ 352:.\main.c      **** 
+ 353:.\main.c      **** void setFngChannel(uint8 newChannel, FunctionGenerator *fng) {
+ 1042              		.loc 1 353 0
+ 1043              		.cfi_startproc
+ 1044              		@ args = 0, pretend = 0, frame = 8
+ 1045              		@ frame_needed = 1, uses_anonymous_args = 0
+ 1046 0000 80B5     		push	{r7, lr}
+ 1047              		.cfi_def_cfa_offset 8
+ 1048              		.cfi_offset 7, -8
+ 1049              		.cfi_offset 14, -4
+ 1050 0002 82B0     		sub	sp, sp, #8
+ 1051              		.cfi_def_cfa_offset 16
+ 1052 0004 00AF     		add	r7, sp, #0
+ 1053              		.cfi_def_cfa_register 7
+ 1054 0006 0346     		mov	r3, r0
+ 1055 0008 3960     		str	r1, [r7]
+ 1056 000a FB71     		strb	r3, [r7, #7]
+ 354:.\main.c      ****     if (fng == NULL) return;
+ 1057              		.loc 1 354 0
+ 1058 000c 3B68     		ldr	r3, [r7]
+ 1059 000e 002B     		cmp	r3, #0
+ 1060 0010 00D1     		bne	.L54
+ 1061 0012 17E0     		b	.L53
+ 1062              	.L54:
+ 355:.\main.c      ****     if (newChannel >= 32) return;
+ 1063              		.loc 1 355 0
+ 1064 0014 FB79     		ldrb	r3, [r7, #7]	@ zero_extendqisi2
+ 1065 0016 1F2B     		cmp	r3, #31
+ 1066 0018 00D9     		bls	.L56
+ 1067              		.loc 1 355 0 is_stmt 0 discriminator 2
+ 1068 001a 13E0     		b	.L53
+ 1069              	.L56:
+ARM GAS  C:\Users\jthem\AppData\Local\Temp\ccflPXLw.s 			page 26
+
+
+ 356:.\main.c      ****     fng->channel = newChannel;
+ 1070              		.loc 1 356 0 is_stmt 1
+ 1071 001c 3B68     		ldr	r3, [r7]
+ 1072 001e FA79     		ldrb	r2, [r7, #7]
+ 1073 0020 1A72     		strb	r2, [r3, #8]
+ 357:.\main.c      ****     if (fng->id == 0) {
+ 1074              		.loc 1 357 0
+ 1075 0022 3B68     		ldr	r3, [r7]
+ 1076 0024 1B78     		ldrb	r3, [r3]	@ zero_extendqisi2
+ 1077 0026 002B     		cmp	r3, #0
+ 1078 0028 04D1     		bne	.L57
+ 358:.\main.c      ****         WaveDAC_0_Mux_FastSelect(newChannel);
+ 1079              		.loc 1 358 0
+ 1080 002a FB79     		ldrb	r3, [r7, #7]	@ zero_extendqisi2
+ 1081 002c 1846     		mov	r0, r3
+ 1082 002e FFF7FEFF 		bl	WaveDAC_0_Mux_FastSelect
+ 1083 0032 07E0     		b	.L53
+ 1084              	.L57:
+ 359:.\main.c      ****     } else if (fng->id == 1) {
+ 1085              		.loc 1 359 0
+ 1086 0034 3B68     		ldr	r3, [r7]
+ 1087 0036 1B78     		ldrb	r3, [r3]	@ zero_extendqisi2
+ 1088 0038 012B     		cmp	r3, #1
+ 1089 003a 03D1     		bne	.L53
+ 360:.\main.c      ****         WaveDAC_1_Mux_FastSelect(newChannel);
+ 1090              		.loc 1 360 0
+ 1091 003c FB79     		ldrb	r3, [r7, #7]	@ zero_extendqisi2
+ 1092 003e 1846     		mov	r0, r3
+ 1093 0040 FFF7FEFF 		bl	WaveDAC_1_Mux_FastSelect
+ 1094              	.L53:
+ 361:.\main.c      ****     }
+ 362:.\main.c      ****     
+ 363:.\main.c      **** }
+ 1095              		.loc 1 363 0
+ 1096 0044 0837     		adds	r7, r7, #8
+ 1097              		.cfi_def_cfa_offset 8
+ 1098 0046 BD46     		mov	sp, r7
+ 1099              		.cfi_def_cfa_register 13
+ 1100              		@ sp needed
+ 1101 0048 80BD     		pop	{r7, pc}
+ 1102              		.cfi_endproc
+ 1103              	.LFE78:
+ 1104              		.size	setFngChannel, .-setFngChannel
+ 1105 004a 00BF     		.section	.rodata
+ 1106              		.align	2
+ 1107              	.LC0:
+ 1108 0000 4D6F6465 		.ascii	"Mode: \000"
+ 1108      3A2000
+ 1109 0007 00       		.align	2
+ 1110              	.LC1:
+ 1111 0008 416D706C 		.ascii	"Ampl: \000"
+ 1111      3A2000
+ 1112 000f 00       		.align	2
+ 1113              	.LC2:
+ 1114 0010 25732C20 		.ascii	"%s, %d\000"
+ 1114      256400
+ 1115 0017 00       		.align	2
+ARM GAS  C:\Users\jthem\AppData\Local\Temp\ccflPXLw.s 			page 27
+
+
+ 1116              	.LC3:
+ 1117 0018 53717561 		.ascii	"Square\000"
+ 1117      726500
+ 1118 001f 00       		.align	2
+ 1119              	.LC4:
+ 1120 0020 53696E65 		.ascii	"Sine\000"
+ 1120      00
+ 1121 0025 000000   		.align	2
+ 1122              	.LC5:
+ 1123 0028 54726961 		.ascii	"Triangle\000"
+ 1123      6E676C65 
+ 1123      00
+ 1124 0031 000000   		.align	2
+ 1125              	.LC6:
+ 1126 0034 53617774 		.ascii	"Sawtooth\000"
+ 1126      6F6F7468 
+ 1126      00
+ 1127 003d 000000   		.align	2
+ 1128              	.LC7:
+ 1129 0040 444300   		.ascii	"DC\000"
+ 1130 0043 00       		.align	2
+ 1131              	.LC8:
+ 1132 0044 256400   		.ascii	"%d\000"
+ 1133 0047 00       		.section	.text.main,"ax",%progbits
+ 1134              		.align	2
+ 1135              		.global	main
+ 1136              		.thumb
+ 1137              		.thumb_func
+ 1138              		.type	main, %function
+ 1139              	main:
+ 1140              	.LFB79:
+ 364:.\main.c      **** 
+ 365:.\main.c      **** /*******************************************************************************
+ 366:.\main.c      **** * Function Name: main
+ 367:.\main.c      **** ********************************************************************************
+ 368:.\main.c      **** *
+ 369:.\main.c      **** * Parameters:
+ 370:.\main.c      **** *  None.
+ 371:.\main.c      **** *
+ 372:.\main.c      **** * Return:
+ 373:.\main.c      **** *  None.
+ 374:.\main.c      **** *
+ 375:.\main.c      **** *******************************************************************************/
+ 376:.\main.c      **** int main()
+ 377:.\main.c      **** {
+ 1141              		.loc 1 377 0
+ 1142              		.cfi_startproc
+ 1143              		@ args = 0, pretend = 0, frame = 2512
+ 1144              		@ frame_needed = 1, uses_anonymous_args = 0
+ 1145 0000 90B5     		push	{r4, r7, lr}
+ 1146              		.cfi_def_cfa_offset 12
+ 1147              		.cfi_offset 4, -12
+ 1148              		.cfi_offset 7, -8
+ 1149              		.cfi_offset 14, -4
+ 1150 0002 ADF6D41D 		subw	sp, sp, #2516
+ 1151              		.cfi_def_cfa_offset 2528
+ 1152 0006 00AF     		add	r7, sp, #0
+ARM GAS  C:\Users\jthem\AppData\Local\Temp\ccflPXLw.s 			page 28
+
+
+ 1153              		.cfi_def_cfa_register 7
+ 378:.\main.c      ****     SlaveState state;
+ 379:.\main.c      ****     SlaveCommand currentCommand;
+ 380:.\main.c      ****     
+ 381:.\main.c      ****     uint16 newFreq, newVoltage, newShape, newPin, newFngOrScopeId, 
+ 382:.\main.c      ****       newFngOrScopeOn, newFngCommand, newOscCommand;
+ 383:.\main.c      ****     uint16 dataFromMaster;
+ 384:.\main.c      ****     uint8 wasDataReceived;
+ 385:.\main.c      ****     
+ 386:.\main.c      ****     char scope0RawBuffer[1200] = {0};
+ 1154              		.loc 1 386 0
+ 1155 0008 07F2D443 		addw	r3, r7, #1236
+ 1156 000c 1A46     		mov	r2, r3
+ 1157 000e 4FF49663 		mov	r3, #1200
+ 1158 0012 1046     		mov	r0, r2
+ 1159 0014 0021     		movs	r1, #0
+ 1160 0016 1A46     		mov	r2, r3
+ 1161 0018 FFF7FEFF 		bl	memset
+ 387:.\main.c      ****     char scope0SerialBuffer[1200] = {0};
+ 1162              		.loc 1 387 0
+ 1163 001c 07F12403 		add	r3, r7, #36
+ 1164 0020 1A46     		mov	r2, r3
+ 1165 0022 4FF49663 		mov	r3, #1200
+ 1166 0026 1046     		mov	r0, r2
+ 1167 0028 0021     		movs	r1, #0
+ 1168 002a 1A46     		mov	r2, r3
+ 1169 002c FFF7FEFF 		bl	memset
+ 388:.\main.c      ****     int scope0RawBufferPtr = 0, scope0RawBufferStartPtr = 0;
+ 1170              		.loc 1 388 0
+ 1171 0030 0023     		movs	r3, #0
+ 1172 0032 C7F8B439 		str	r3, [r7, #2484]
+ 1173 0036 0023     		movs	r3, #0
+ 1174 0038 C7F8B039 		str	r3, [r7, #2480]
+ 389:.\main.c      ****     PSOC5_Init();
+ 1175              		.loc 1 389 0
+ 1176 003c FFF7FEFF 		bl	PSOC5_Init
+ 390:.\main.c      ****     
+ 391:.\main.c      ****     FunctionGenerator *currentFng;
+ 392:.\main.c      ****     Oscilloscope *currentOsc;
+ 393:.\main.c      ****     
+ 394:.\main.c      ****     initializeState(&state);
+ 1177              		.loc 1 394 0
+ 1178 0040 07F68413 		addw	r3, r7, #2436
+ 1179 0044 1846     		mov	r0, r3
+ 1180 0046 FFF7FEFF 		bl	initializeState
+ 395:.\main.c      ****     newFreq = 0;
+ 1181              		.loc 1 395 0
+ 1182 004a 0023     		movs	r3, #0
+ 1183 004c A7F8CC39 		strh	r3, [r7, #2508]	@ movhi
+ 396:.\main.c      ****     newVoltage = 0;
+ 1184              		.loc 1 396 0
+ 1185 0050 0023     		movs	r3, #0
+ 1186 0052 A7F8CA39 		strh	r3, [r7, #2506]	@ movhi
+ 397:.\main.c      ****     newShape = SQUARE;
+ 1187              		.loc 1 397 0
+ 1188 0056 0023     		movs	r3, #0
+ 1189 0058 A7F8C839 		strh	r3, [r7, #2504]	@ movhi
+ARM GAS  C:\Users\jthem\AppData\Local\Temp\ccflPXLw.s 			page 29
+
+
+ 398:.\main.c      ****     newPin = 0;
+ 1190              		.loc 1 398 0
+ 1191 005c 0023     		movs	r3, #0
+ 1192 005e A7F8C639 		strh	r3, [r7, #2502]	@ movhi
+ 399:.\main.c      ****     newFngOrScopeId = 0;
+ 1193              		.loc 1 399 0
+ 1194 0062 0023     		movs	r3, #0
+ 1195 0064 A7F8AE39 		strh	r3, [r7, #2478]	@ movhi
+ 400:.\main.c      ****     newFngOrScopeOn = 0;
+ 1196              		.loc 1 400 0
+ 1197 0068 0023     		movs	r3, #0
+ 1198 006a A7F8AC39 		strh	r3, [r7, #2476]	@ movhi
+ 401:.\main.c      ****     newFngCommand = 0;
+ 1199              		.loc 1 401 0
+ 1200 006e 0023     		movs	r3, #0
+ 1201 0070 A7F8AA39 		strh	r3, [r7, #2474]	@ movhi
+ 402:.\main.c      ****     newOscCommand = 0;
+ 1202              		.loc 1 402 0
+ 1203 0074 0023     		movs	r3, #0
+ 1204 0076 A7F8A839 		strh	r3, [r7, #2472]	@ movhi
+ 403:.\main.c      ****     
+ 404:.\main.c      ****     uint8 freqChanged = 0;
+ 1205              		.loc 1 404 0
+ 1206 007a 0023     		movs	r3, #0
+ 1207 007c 87F8BB39 		strb	r3, [r7, #2491]
+ 405:.\main.c      ****     uint8 shapeChanged = 0;
+ 1208              		.loc 1 405 0
+ 1209 0080 0023     		movs	r3, #0
+ 1210 0082 87F8BA39 		strb	r3, [r7, #2490]
+ 406:.\main.c      ****     uint8 voltageChanged = 0;
+ 1211              		.loc 1 406 0
+ 1212 0086 0023     		movs	r3, #0
+ 1213 0088 87F8B939 		strb	r3, [r7, #2489]
+ 407:.\main.c      ****     uint8 pinChanged = 0;
+ 1214              		.loc 1 407 0
+ 1215 008c 0023     		movs	r3, #0
+ 1216 008e 87F8B839 		strb	r3, [r7, #2488]
+ 408:.\main.c      ****     
+ 409:.\main.c      ****     currentFng = NULL;
+ 1217              		.loc 1 409 0
+ 1218 0092 0023     		movs	r3, #0
+ 1219 0094 C7F8BC39 		str	r3, [r7, #2492]
+ 410:.\main.c      ****     currentOsc = NULL;
+ 1220              		.loc 1 410 0
+ 1221 0098 0023     		movs	r3, #0
+ 1222 009a C7F8A439 		str	r3, [r7, #2468]
+ 411:.\main.c      ****     
+ 412:.\main.c      ****     currentCommand = ALERT;
+ 1223              		.loc 1 412 0
+ 1224 009e 0023     		movs	r3, #0
+ 1225 00a0 87F8CF39 		strb	r3, [r7, #2511]
+ 413:.\main.c      ****     wasDataReceived = 0;
+ 1226              		.loc 1 413 0
+ 1227 00a4 0023     		movs	r3, #0
+ 1228 00a6 87F8C339 		strb	r3, [r7, #2499]
+ 414:.\main.c      ****     
+ 415:.\main.c      ****     uint8 channel = 0;
+ARM GAS  C:\Users\jthem\AppData\Local\Temp\ccflPXLw.s 			page 30
+
+
+ 1229              		.loc 1 415 0
+ 1230 00aa 0023     		movs	r3, #0
+ 1231 00ac 87F8A339 		strb	r3, [r7, #2467]
+ 416:.\main.c      ****     uint8 channelInc = 0;
+ 1232              		.loc 1 416 0
+ 1233 00b0 0023     		movs	r3, #0
+ 1234 00b2 87F8A239 		strb	r3, [r7, #2466]
+ 417:.\main.c      ****     
+ 418:.\main.c      ****     
+ 419:.\main.c      ****     /*
+ 420:.\main.c      ****     setFngFreq(853, &state.fng0);
+ 421:.\main.c      ****     setFngFreq(960, &state.fng1);
+ 422:.\main.c      ****     
+ 423:.\main.c      ****     setFngShape(SINE, &state.fng0);
+ 424:.\main.c      ****     setFngShape(SINE, &state.fng1);
+ 425:.\main.c      ****     
+ 426:.\main.c      ****     setFngVoltage(100, &state.fng0);
+ 427:.\main.c      ****     setFngVoltage(100, &state.fng1);
+ 428:.\main.c      ****     */
+ 429:.\main.c      ****     
+ 430:.\main.c      ****     setFngChannel(0, &state.fng0);
+ 1235              		.loc 1 430 0
+ 1236 00b6 07F68413 		addw	r3, r7, #2436
+ 1237 00ba 0020     		movs	r0, #0
+ 1238 00bc 1946     		mov	r1, r3
+ 1239 00be FFF7FEFF 		bl	setFngChannel
+ 431:.\main.c      ****     setFngChannel(1, &state.fng1);
+ 1240              		.loc 1 431 0
+ 1241 00c2 07F68413 		addw	r3, r7, #2436
+ 1242 00c6 0A33     		adds	r3, r3, #10
+ 1243 00c8 0120     		movs	r0, #1
+ 1244 00ca 1946     		mov	r1, r3
+ 1245 00cc FFF7FEFF 		bl	setFngChannel
+ 432:.\main.c      ****     
+ 433:.\main.c      ****     disableFng(&state.fng0);
+ 1246              		.loc 1 433 0
+ 1247 00d0 07F68413 		addw	r3, r7, #2436
+ 1248 00d4 1846     		mov	r0, r3
+ 1249 00d6 FFF7FEFF 		bl	disableFng
+ 434:.\main.c      ****     disableFng(&state.fng1);
+ 1250              		.loc 1 434 0
+ 1251 00da 07F68413 		addw	r3, r7, #2436
+ 1252 00de 0A33     		adds	r3, r3, #10
+ 1253 00e0 1846     		mov	r0, r3
+ 1254 00e2 FFF7FEFF 		bl	disableFng
+ 1255              	.L102:
+ 435:.\main.c      ****     
+ 436:.\main.c      **** 
+ 437:.\main.c      ****     while (1) {        
+ 438:.\main.c      ****         if (SPIS_ReadRxStatus()) {
+ 1256              		.loc 1 438 0
+ 1257 00e6 FFF7FEFF 		bl	SPIS_ReadRxStatus
+ 1258 00ea 0346     		mov	r3, r0
+ 1259 00ec 002B     		cmp	r3, #0
+ 1260 00ee 17D0     		beq	.L59
+ 1261              	.LBB3:
+ 439:.\main.c      ****             uint16 newData = SPIS_ReadRxData();
+ARM GAS  C:\Users\jthem\AppData\Local\Temp\ccflPXLw.s 			page 31
+
+
+ 1262              		.loc 1 439 0
+ 1263 00f0 FFF7FEFF 		bl	SPIS_ReadRxData
+ 1264 00f4 0346     		mov	r3, r0
+ 1265 00f6 A7F8A039 		strh	r3, [r7, #2464]	@ movhi
+ 440:.\main.c      ****             if (newData != dataFromMaster) {
+ 1266              		.loc 1 440 0
+ 1267 00fa B7F8A029 		ldrh	r2, [r7, #2464]
+ 1268 00fe B7F8C439 		ldrh	r3, [r7, #2500]
+ 1269 0102 9A42     		cmp	r2, r3
+ 1270 0104 07D0     		beq	.L60
+ 441:.\main.c      ****                 dataFromMaster = newData;
+ 1271              		.loc 1 441 0
+ 1272 0106 B7F8A039 		ldrh	r3, [r7, #2464]	@ movhi
+ 1273 010a A7F8C439 		strh	r3, [r7, #2500]	@ movhi
+ 442:.\main.c      ****                 wasDataReceived = 1;
+ 1274              		.loc 1 442 0
+ 1275 010e 0123     		movs	r3, #1
+ 1276 0110 87F8C339 		strb	r3, [r7, #2499]
+ 1277 0114 02E0     		b	.L61
+ 1278              	.L60:
+ 443:.\main.c      ****             } else {
+ 444:.\main.c      ****                 wasDataReceived = 0;   
+ 1279              		.loc 1 444 0
+ 1280 0116 0023     		movs	r3, #0
+ 1281 0118 87F8C339 		strb	r3, [r7, #2499]
+ 1282              	.L61:
+ 445:.\main.c      ****             }
+ 446:.\main.c      ****             SPIS_ClearRxBuffer();
+ 1283              		.loc 1 446 0
+ 1284 011c FFF7FEFF 		bl	SPIS_ClearRxBuffer
+ 1285              	.L59:
+ 1286              	.LBE3:
+ 447:.\main.c      ****         }
+ 448:.\main.c      ****         
+ 449:.\main.c      ****         LED_0_Write(wasDataReceived);
+ 1287              		.loc 1 449 0
+ 1288 0120 97F8C339 		ldrb	r3, [r7, #2499]	@ zero_extendqisi2
+ 1289 0124 1846     		mov	r0, r3
+ 1290 0126 FFF7FEFF 		bl	LED_0_Write
+ 450:.\main.c      ****         
+ 451:.\main.c      ****         LCD_Position(0, 0);
+ 1291              		.loc 1 451 0
+ 1292 012a 0020     		movs	r0, #0
+ 1293 012c 0021     		movs	r1, #0
+ 1294 012e FFF7FEFF 		bl	LCD_Position
+ 452:.\main.c      ****         LCD_PrintString("Mode: ");
+ 1295              		.loc 1 452 0
+ 1296 0132 B448     		ldr	r0, .L104
+ 1297 0134 FFF7FEFF 		bl	LCD_PrintString
+ 453:.\main.c      ****         LCD_Position(1, 0);
+ 1298              		.loc 1 453 0
+ 1299 0138 0120     		movs	r0, #1
+ 1300 013a 0021     		movs	r1, #0
+ 1301 013c FFF7FEFF 		bl	LCD_Position
+ 454:.\main.c      ****         LCD_PrintString("Ampl: ");
+ 1302              		.loc 1 454 0
+ 1303 0140 B148     		ldr	r0, .L104+4
+ARM GAS  C:\Users\jthem\AppData\Local\Temp\ccflPXLw.s 			page 32
+
+
+ 1304 0142 FFF7FEFF 		bl	LCD_PrintString
+ 455:.\main.c      ****         
+ 456:.\main.c      ****         switch (currentCommand) {
+ 1305              		.loc 1 456 0
+ 1306 0146 97F8CF39 		ldrb	r3, [r7, #2511]	@ zero_extendqisi2
+ 1307 014a 082B     		cmp	r3, #8
+ 1308 014c 00F2DB81 		bhi	.L62
+ 1309 0150 01A2     		adr	r2, .L64
+ 1310 0152 52F823F0 		ldr	pc, [r2, r3, lsl #2]
+ 1311 0156 00BF     		.p2align 2
+ 1312              	.L64:
+ 1313 0158 7D010000 		.word	.L63+1
+ 1314 015c 53020000 		.word	.L65+1
+ 1315 0160 87020000 		.word	.L66+1
+ 1316 0164 B9020000 		.word	.L67+1
+ 1317 0168 21020000 		.word	.L68+1
+ 1318 016c F5020000 		.word	.L69+1
+ 1319 0170 21030000 		.word	.L70+1
+ 1320 0174 FD020000 		.word	.L71+1
+ 1321 0178 AD040000 		.word	.L72+1
+ 1322              		.p2align 1
+ 1323              	.L63:
+ 457:.\main.c      ****             case ALERT:
+ 458:.\main.c      ****                 if (wasDataReceived && (dataFromMaster >> 12) == 0x000A) { 
+ 1324              		.loc 1 458 0
+ 1325 017c 97F8C339 		ldrb	r3, [r7, #2499]	@ zero_extendqisi2
+ 1326 0180 002B     		cmp	r3, #0
+ 1327 0182 4CD0     		beq	.L73
+ 1328              		.loc 1 458 0 is_stmt 0 discriminator 1
+ 1329 0184 B7F8C439 		ldrh	r3, [r7, #2500]
+ 1330 0188 1B0B     		lsrs	r3, r3, #12
+ 1331 018a 9BB2     		uxth	r3, r3
+ 1332 018c 0A2B     		cmp	r3, #10
+ 1333 018e 46D1     		bne	.L73
+ 459:.\main.c      ****                     newFngOrScopeId = (dataFromMaster & 0x00F0) >> 4;
+ 1334              		.loc 1 459 0 is_stmt 1
+ 1335 0190 B7F8C439 		ldrh	r3, [r7, #2500]
+ 1336 0194 03F0F003 		and	r3, r3, #240
+ 1337 0198 1B11     		asrs	r3, r3, #4
+ 1338 019a A7F8AE39 		strh	r3, [r7, #2478]	@ movhi
+ 460:.\main.c      ****                     newFngOrScopeOn = (dataFromMaster & 0x0F00) >> 8;
+ 1339              		.loc 1 460 0
+ 1340 019e B7F8C439 		ldrh	r3, [r7, #2500]
+ 1341 01a2 03F47063 		and	r3, r3, #3840
+ 1342 01a6 1B12     		asrs	r3, r3, #8
+ 1343 01a8 A7F8AC39 		strh	r3, [r7, #2476]	@ movhi
+ 461:.\main.c      ****                     
+ 462:.\main.c      ****                     if (newFngOrScopeId == 0 || newFngOrScopeId == 1) {
+ 1344              		.loc 1 462 0
+ 1345 01ac B7F8AE39 		ldrh	r3, [r7, #2478]
+ 1346 01b0 002B     		cmp	r3, #0
+ 1347 01b2 03D0     		beq	.L74
+ 1348              		.loc 1 462 0 is_stmt 0 discriminator 1
+ 1349 01b4 B7F8AE39 		ldrh	r3, [r7, #2478]
+ 1350 01b8 012B     		cmp	r3, #1
+ 1351 01ba 0FD1     		bne	.L75
+ 1352              	.L74:
+ARM GAS  C:\Users\jthem\AppData\Local\Temp\ccflPXLw.s 			page 33
+
+
+ 463:.\main.c      ****                         currentFng = getFng(newFngOrScopeId, &state);
+ 1353              		.loc 1 463 0 is_stmt 1
+ 1354 01bc B7F8AE39 		ldrh	r3, [r7, #2478]	@ movhi
+ 1355 01c0 DAB2     		uxtb	r2, r3
+ 1356 01c2 07F68413 		addw	r3, r7, #2436
+ 1357 01c6 1046     		mov	r0, r2
+ 1358 01c8 1946     		mov	r1, r3
+ 1359 01ca FFF7FEFF 		bl	getFng
+ 1360 01ce C7F8BC09 		str	r0, [r7, #2492]
+ 464:.\main.c      ****                     } else if (newFngOrScopeId == 2 || newFngOrScopeId == 3) {
+ 465:.\main.c      ****                         // TODO: implement oscope control
+ 466:.\main.c      ****                         currentCommand = INVALID_COMMAND;
+ 467:.\main.c      ****                         break;
+ 468:.\main.c      ****                     } else { // invalid fng/scope ID
+ 469:.\main.c      ****                         currentCommand = INVALID_COMMAND;
+ 470:.\main.c      ****                         break;
+ 471:.\main.c      ****                     }
+ 472:.\main.c      ****                     
+ 473:.\main.c      ****                     if (!newFngOrScopeOn) {
+ 1361              		.loc 1 473 0
+ 1362 01d2 B7F8AC39 		ldrh	r3, [r7, #2476]
+ 1363 01d6 002B     		cmp	r3, #0
+ 1364 01d8 10D0     		beq	.L76
+ 1365 01da 17E0     		b	.L103
+ 1366              	.L75:
+ 464:.\main.c      ****                     } else if (newFngOrScopeId == 2 || newFngOrScopeId == 3) {
+ 1367              		.loc 1 464 0
+ 1368 01dc B7F8AE39 		ldrh	r3, [r7, #2478]
+ 1369 01e0 022B     		cmp	r3, #2
+ 1370 01e2 03D0     		beq	.L78
+ 464:.\main.c      ****                     } else if (newFngOrScopeId == 2 || newFngOrScopeId == 3) {
+ 1371              		.loc 1 464 0 is_stmt 0 discriminator 1
+ 1372 01e4 B7F8AE39 		ldrh	r3, [r7, #2478]
+ 1373 01e8 032B     		cmp	r3, #3
+ 1374 01ea 03D1     		bne	.L79
+ 1375              	.L78:
+ 466:.\main.c      ****                         break;
+ 1376              		.loc 1 466 0 is_stmt 1
+ 1377 01ec 0823     		movs	r3, #8
+ 1378 01ee 87F8CF39 		strb	r3, [r7, #2511]
+ 467:.\main.c      ****                     } else { // invalid fng/scope ID
+ 1379              		.loc 1 467 0
+ 1380 01f2 88E1     		b	.L62
+ 1381              	.L79:
+ 469:.\main.c      ****                         break;
+ 1382              		.loc 1 469 0
+ 1383 01f4 0823     		movs	r3, #8
+ 1384 01f6 87F8CF39 		strb	r3, [r7, #2511]
+ 470:.\main.c      ****                     }
+ 1385              		.loc 1 470 0
+ 1386 01fa 84E1     		b	.L62
+ 1387              	.L76:
+ 474:.\main.c      ****                         disableFng(currentFng);
+ 1388              		.loc 1 474 0
+ 1389 01fc D7F8BC09 		ldr	r0, [r7, #2492]
+ 1390 0200 FFF7FEFF 		bl	disableFng
+ 475:.\main.c      ****                         currentCommand = WAIT_FINISH;
+ARM GAS  C:\Users\jthem\AppData\Local\Temp\ccflPXLw.s 			page 34
+
+
+ 1391              		.loc 1 475 0
+ 1392 0204 0723     		movs	r3, #7
+ 1393 0206 87F8CF39 		strb	r3, [r7, #2511]
+ 1394 020a 08E0     		b	.L73
+ 1395              	.L103:
+ 476:.\main.c      ****                     } else {
+ 477:.\main.c      ****                         currentCommand = getFngCommand(dataFromMaster);
+ 1396              		.loc 1 477 0
+ 1397 020c B7F8C439 		ldrh	r3, [r7, #2500]
+ 1398 0210 1846     		mov	r0, r3
+ 1399 0212 FFF7FEFF 		bl	getFngCommand
+ 1400 0216 0346     		mov	r3, r0
+ 1401 0218 87F8CF39 		strb	r3, [r7, #2511]
+ 478:.\main.c      ****                     }
+ 479:.\main.c      ****                 }
+ 480:.\main.c      ****                 break;
+ 1402              		.loc 1 480 0
+ 1403 021c 73E1     		b	.L62
+ 1404              	.L73:
+ 1405 021e 72E1     		b	.L62
+ 1406              	.L68:
+ 481:.\main.c      ****             case FNG_PIN:
+ 482:.\main.c      ****                 if (wasDataReceived) {
+ 1407              		.loc 1 482 0
+ 1408 0220 97F8C339 		ldrb	r3, [r7, #2499]	@ zero_extendqisi2
+ 1409 0224 002B     		cmp	r3, #0
+ 1410 0226 13D0     		beq	.L80
+ 483:.\main.c      ****                     newPin = (dataFromMaster & 0x00FF);
+ 1411              		.loc 1 483 0
+ 1412 0228 B7F8C439 		ldrh	r3, [r7, #2500]	@ movhi
+ 1413 022c DBB2     		uxtb	r3, r3
+ 1414 022e A7F8C639 		strh	r3, [r7, #2502]	@ movhi
+ 484:.\main.c      ****                     if (newPin >= 32) {
+ 1415              		.loc 1 484 0
+ 1416 0232 B7F8C639 		ldrh	r3, [r7, #2502]
+ 1417 0236 1F2B     		cmp	r3, #31
+ 1418 0238 03D9     		bls	.L81
+ 485:.\main.c      ****                         currentCommand = INVALID_COMMAND;
+ 1419              		.loc 1 485 0
+ 1420 023a 0823     		movs	r3, #8
+ 1421 023c 87F8CF39 		strb	r3, [r7, #2511]
+ 1422 0240 06E0     		b	.L80
+ 1423              	.L81:
+ 486:.\main.c      ****                     } else {
+ 487:.\main.c      ****                         currentCommand = WAIT_FINISH;
+ 1424              		.loc 1 487 0
+ 1425 0242 0723     		movs	r3, #7
+ 1426 0244 87F8CF39 		strb	r3, [r7, #2511]
+ 488:.\main.c      ****                         pinChanged = 1;
+ 1427              		.loc 1 488 0
+ 1428 0248 0123     		movs	r3, #1
+ 1429 024a 87F8B839 		strb	r3, [r7, #2488]
+ 489:.\main.c      ****                     }
+ 490:.\main.c      ****                 }
+ 491:.\main.c      ****                 break;
+ 1430              		.loc 1 491 0
+ 1431 024e 5AE1     		b	.L62
+ARM GAS  C:\Users\jthem\AppData\Local\Temp\ccflPXLw.s 			page 35
+
+
+ 1432              	.L80:
+ 1433 0250 59E1     		b	.L62
+ 1434              	.L65:
+ 492:.\main.c      ****             case FNG_SHAPE:
+ 493:.\main.c      ****                 if (wasDataReceived) {
+ 1435              		.loc 1 493 0
+ 1436 0252 97F8C339 		ldrb	r3, [r7, #2499]	@ zero_extendqisi2
+ 1437 0256 002B     		cmp	r3, #0
+ 1438 0258 14D0     		beq	.L82
+ 494:.\main.c      ****                     newShape = (dataFromMaster & 0x000F);
+ 1439              		.loc 1 494 0
+ 1440 025a B7F8C439 		ldrh	r3, [r7, #2500]	@ movhi
+ 1441 025e 03F00F03 		and	r3, r3, #15
+ 1442 0262 A7F8C839 		strh	r3, [r7, #2504]	@ movhi
+ 495:.\main.c      ****                     if (newShape >= 5) {
+ 1443              		.loc 1 495 0
+ 1444 0266 B7F8C839 		ldrh	r3, [r7, #2504]
+ 1445 026a 042B     		cmp	r3, #4
+ 1446 026c 03D9     		bls	.L83
+ 496:.\main.c      ****                         currentCommand = INVALID_COMMAND;
+ 1447              		.loc 1 496 0
+ 1448 026e 0823     		movs	r3, #8
+ 1449 0270 87F8CF39 		strb	r3, [r7, #2511]
+ 1450 0274 06E0     		b	.L82
+ 1451              	.L83:
+ 497:.\main.c      ****                     } else {
+ 498:.\main.c      ****                         
+ 499:.\main.c      ****                         currentCommand = WAIT_FINISH;  
+ 1452              		.loc 1 499 0
+ 1453 0276 0723     		movs	r3, #7
+ 1454 0278 87F8CF39 		strb	r3, [r7, #2511]
+ 500:.\main.c      ****                         shapeChanged = 1;
+ 1455              		.loc 1 500 0
+ 1456 027c 0123     		movs	r3, #1
+ 1457 027e 87F8BA39 		strb	r3, [r7, #2490]
+ 501:.\main.c      ****                     }
+ 502:.\main.c      ****                 }
+ 503:.\main.c      ****                 break;
+ 1458              		.loc 1 503 0
+ 1459 0282 40E1     		b	.L62
+ 1460              	.L82:
+ 1461 0284 3FE1     		b	.L62
+ 1462              	.L66:
+ 504:.\main.c      ****             case FNG_VOLTAGE:
+ 505:.\main.c      ****                 if (wasDataReceived) {
+ 1463              		.loc 1 505 0
+ 1464 0286 97F8C339 		ldrb	r3, [r7, #2499]	@ zero_extendqisi2
+ 1465 028a 002B     		cmp	r3, #0
+ 1466 028c 13D0     		beq	.L84
+ 506:.\main.c      ****                     newVoltage = (dataFromMaster & 0x00FF);
+ 1467              		.loc 1 506 0
+ 1468 028e B7F8C439 		ldrh	r3, [r7, #2500]	@ movhi
+ 1469 0292 DBB2     		uxtb	r3, r3
+ 1470 0294 A7F8CA39 		strh	r3, [r7, #2506]	@ movhi
+ 507:.\main.c      ****                     if (newVoltage > 100) {
+ 1471              		.loc 1 507 0
+ 1472 0298 B7F8CA39 		ldrh	r3, [r7, #2506]
+ARM GAS  C:\Users\jthem\AppData\Local\Temp\ccflPXLw.s 			page 36
+
+
+ 1473 029c 642B     		cmp	r3, #100
+ 1474 029e 03D9     		bls	.L85
+ 508:.\main.c      ****                         currentCommand = INVALID_COMMAND;   
+ 1475              		.loc 1 508 0
+ 1476 02a0 0823     		movs	r3, #8
+ 1477 02a2 87F8CF39 		strb	r3, [r7, #2511]
+ 1478 02a6 06E0     		b	.L84
+ 1479              	.L85:
+ 509:.\main.c      ****                     } else {
+ 510:.\main.c      ****                         currentCommand = WAIT_FINISH;
+ 1480              		.loc 1 510 0
+ 1481 02a8 0723     		movs	r3, #7
+ 1482 02aa 87F8CF39 		strb	r3, [r7, #2511]
+ 511:.\main.c      ****                         voltageChanged = 1;
+ 1483              		.loc 1 511 0
+ 1484 02ae 0123     		movs	r3, #1
+ 1485 02b0 87F8B939 		strb	r3, [r7, #2489]
+ 512:.\main.c      ****                     }
+ 513:.\main.c      ****                 }
+ 514:.\main.c      ****                 break;
+ 1486              		.loc 1 514 0
+ 1487 02b4 27E1     		b	.L62
+ 1488              	.L84:
+ 1489 02b6 26E1     		b	.L62
+ 1490              	.L67:
+ 515:.\main.c      ****             case FNG_FREQUENCY:
+ 516:.\main.c      ****                 if (wasDataReceived) {
+ 1491              		.loc 1 516 0
+ 1492 02b8 97F8C339 		ldrb	r3, [r7, #2499]	@ zero_extendqisi2
+ 1493 02bc 002B     		cmp	r3, #0
+ 1494 02be 18D0     		beq	.L86
+ 517:.\main.c      ****                     newFreq = dataFromMaster;
+ 1495              		.loc 1 517 0
+ 1496 02c0 B7F8C439 		ldrh	r3, [r7, #2500]	@ movhi
+ 1497 02c4 A7F8CC39 		strh	r3, [r7, #2508]	@ movhi
+ 518:.\main.c      ****                     if (newFreq > 50000 || newFreq < 50) {
+ 1498              		.loc 1 518 0
+ 1499 02c8 B7F8CC39 		ldrh	r3, [r7, #2508]
+ 1500 02cc 4CF25032 		movw	r2, #50000
+ 1501 02d0 9342     		cmp	r3, r2
+ 1502 02d2 03D8     		bhi	.L87
+ 1503              		.loc 1 518 0 is_stmt 0 discriminator 1
+ 1504 02d4 B7F8CC39 		ldrh	r3, [r7, #2508]
+ 1505 02d8 312B     		cmp	r3, #49
+ 1506 02da 03D8     		bhi	.L88
+ 1507              	.L87:
+ 519:.\main.c      ****                         currentCommand = INVALID_COMMAND;
+ 1508              		.loc 1 519 0 is_stmt 1
+ 1509 02dc 0823     		movs	r3, #8
+ 1510 02de 87F8CF39 		strb	r3, [r7, #2511]
+ 1511 02e2 06E0     		b	.L86
+ 1512              	.L88:
+ 520:.\main.c      ****                     } else {
+ 521:.\main.c      ****                         currentCommand = WAIT_FINISH;   
+ 1513              		.loc 1 521 0
+ 1514 02e4 0723     		movs	r3, #7
+ 1515 02e6 87F8CF39 		strb	r3, [r7, #2511]
+ARM GAS  C:\Users\jthem\AppData\Local\Temp\ccflPXLw.s 			page 37
+
+
+ 522:.\main.c      ****                         freqChanged = 1;
+ 1516              		.loc 1 522 0
+ 1517 02ea 0123     		movs	r3, #1
+ 1518 02ec 87F8BB39 		strb	r3, [r7, #2491]
+ 523:.\main.c      ****                     }
+ 524:.\main.c      ****                 }
+ 525:.\main.c      ****                 break;
+ 1519              		.loc 1 525 0
+ 1520 02f0 09E1     		b	.L62
+ 1521              	.L86:
+ 1522 02f2 08E1     		b	.L62
+ 1523              	.L69:
+ 526:.\main.c      ****             case OSC_PIN:
+ 527:.\main.c      ****                 // TODO: implement oscilloscope pin selection
+ 528:.\main.c      ****                 currentCommand = INVALID_COMMAND;
+ 1524              		.loc 1 528 0
+ 1525 02f4 0823     		movs	r3, #8
+ 1526 02f6 87F8CF39 		strb	r3, [r7, #2511]
+ 529:.\main.c      ****                 break;
+ 1527              		.loc 1 529 0
+ 1528 02fa 04E1     		b	.L62
+ 1529              	.L71:
+ 530:.\main.c      ****             case WAIT_FINISH:
+ 531:.\main.c      ****                 if (wasDataReceived) {
+ 1530              		.loc 1 531 0
+ 1531 02fc 97F8C339 		ldrb	r3, [r7, #2499]	@ zero_extendqisi2
+ 1532 0300 002B     		cmp	r3, #0
+ 1533 0302 0CD0     		beq	.L89
+ 532:.\main.c      ****                     if (dataFromMaster == 0xF000) {
+ 1534              		.loc 1 532 0
+ 1535 0304 B7F8C439 		ldrh	r3, [r7, #2500]
+ 1536 0308 B3F5704F 		cmp	r3, #61440
+ 1537 030c 03D1     		bne	.L90
+ 533:.\main.c      ****                         currentCommand = COMMIT_CHANGES;
+ 1538              		.loc 1 533 0
+ 1539 030e 0623     		movs	r3, #6
+ 1540 0310 87F8CF39 		strb	r3, [r7, #2511]
+ 1541 0314 03E0     		b	.L89
+ 1542              	.L90:
+ 534:.\main.c      ****                     } else {
+ 535:.\main.c      ****                         currentCommand = INVALID_COMMAND;   
+ 1543              		.loc 1 535 0
+ 1544 0316 0823     		movs	r3, #8
+ 1545 0318 87F8CF39 		strb	r3, [r7, #2511]
+ 536:.\main.c      ****                     }
+ 537:.\main.c      ****                 }
+ 538:.\main.c      ****                 break;
+ 1546              		.loc 1 538 0
+ 1547 031c F3E0     		b	.L62
+ 1548              	.L89:
+ 1549 031e F2E0     		b	.L62
+ 1550              	.L70:
+ 539:.\main.c      ****             case COMMIT_CHANGES:
+ 540:.\main.c      ****                 
+ 541:.\main.c      ****                 LCD_ClearDisplay();
+ 1551              		.loc 1 541 0
+ 1552 0320 0120     		movs	r0, #1
+ARM GAS  C:\Users\jthem\AppData\Local\Temp\ccflPXLw.s 			page 38
+
+
+ 1553 0322 FFF7FEFF 		bl	LCD_WriteControl
+ 542:.\main.c      ****                 LCD_Position(0, 0);
+ 1554              		.loc 1 542 0
+ 1555 0326 0020     		movs	r0, #0
+ 1556 0328 0021     		movs	r1, #0
+ 1557 032a FFF7FEFF 		bl	LCD_Position
+ 543:.\main.c      ****                 LCD_PrintString("Mode: ");
+ 1558              		.loc 1 543 0
+ 1559 032e 3548     		ldr	r0, .L104
+ 1560 0330 FFF7FEFF 		bl	LCD_PrintString
+ 544:.\main.c      ****                 LCD_Position(1, 0);
+ 1561              		.loc 1 544 0
+ 1562 0334 0120     		movs	r0, #1
+ 1563 0336 0021     		movs	r1, #0
+ 1564 0338 FFF7FEFF 		bl	LCD_Position
+ 545:.\main.c      ****                 LCD_PrintString("Ampl: ");
+ 1565              		.loc 1 545 0
+ 1566 033c 3248     		ldr	r0, .L104+4
+ 1567 033e FFF7FEFF 		bl	LCD_PrintString
+ 546:.\main.c      ****                 
+ 547:.\main.c      ****                 if (freqChanged) setFngFreq(newFreq, currentFng);
+ 1568              		.loc 1 547 0
+ 1569 0342 97F8BB39 		ldrb	r3, [r7, #2491]	@ zero_extendqisi2
+ 1570 0346 002B     		cmp	r3, #0
+ 1571 0348 06D0     		beq	.L91
+ 1572              		.loc 1 547 0 is_stmt 0 discriminator 1
+ 1573 034a B7F8CC39 		ldrh	r3, [r7, #2508]
+ 1574 034e 1846     		mov	r0, r3
+ 1575 0350 D7F8BC19 		ldr	r1, [r7, #2492]
+ 1576 0354 FFF7FEFF 		bl	setFngFreq
+ 1577              	.L91:
+ 548:.\main.c      ****                 if (shapeChanged) 
+ 1578              		.loc 1 548 0 is_stmt 1
+ 1579 0358 97F8BA39 		ldrb	r3, [r7, #2490]	@ zero_extendqisi2
+ 1580 035c 002B     		cmp	r3, #0
+ 1581 035e 71D0     		beq	.L92
+ 1582              	.LBB4:
+ 549:.\main.c      ****                 {
+ 550:.\main.c      ****                     char lcdBuffer[16];
+ 551:.\main.c      ****                     setFngShape(newShape, currentFng);
+ 1583              		.loc 1 551 0
+ 1584 0360 B7F8C839 		ldrh	r3, [r7, #2504]	@ movhi
+ 1585 0364 DBB2     		uxtb	r3, r3
+ 1586 0366 1846     		mov	r0, r3
+ 1587 0368 D7F8BC19 		ldr	r1, [r7, #2492]
+ 1588 036c FFF7FEFF 		bl	setFngShape
+ 552:.\main.c      ****                     LCD_Position(0, 6);
+ 1589              		.loc 1 552 0
+ 1590 0370 0020     		movs	r0, #0
+ 1591 0372 0621     		movs	r1, #6
+ 1592 0374 FFF7FEFF 		bl	LCD_Position
+ 553:.\main.c      ****                     switch (newShape) {
+ 1593              		.loc 1 553 0
+ 1594 0378 B7F8C839 		ldrh	r3, [r7, #2504]
+ 1595 037c 042B     		cmp	r3, #4
+ 1596 037e 5CD8     		bhi	.L93
+ 1597 0380 01A2     		adr	r2, .L95
+ARM GAS  C:\Users\jthem\AppData\Local\Temp\ccflPXLw.s 			page 39
+
+
+ 1598 0382 52F823F0 		ldr	pc, [r2, r3, lsl #2]
+ 1599 0386 00BF     		.p2align 2
+ 1600              	.L95:
+ 1601 0388 9D030000 		.word	.L94+1
+ 1602 038c B7030000 		.word	.L96+1
+ 1603 0390 D1030000 		.word	.L97+1
+ 1604 0394 EB030000 		.word	.L98+1
+ 1605 0398 21040000 		.word	.L99+1
+ 1606              		.p2align 1
+ 1607              	.L94:
+ 554:.\main.c      ****                     case SQUARE:
+ 555:.\main.c      ****                         sprintf(lcdBuffer, "%s, %d", "Square", currentFng->id);
+ 1608              		.loc 1 555 0
+ 1609 039c D7F8BC39 		ldr	r3, [r7, #2492]
+ 1610 03a0 1B78     		ldrb	r3, [r3]	@ zero_extendqisi2
+ 1611 03a2 1C46     		mov	r4, r3
+ 1612 03a4 07F11403 		add	r3, r7, #20
+ 1613 03a8 1846     		mov	r0, r3
+ 1614 03aa 1849     		ldr	r1, .L104+8
+ 1615 03ac 184A     		ldr	r2, .L104+12
+ 1616 03ae 2346     		mov	r3, r4
+ 1617 03b0 FFF7FEFF 		bl	sprintf
+ 556:.\main.c      ****                         break;
+ 1618              		.loc 1 556 0
+ 1619 03b4 41E0     		b	.L93
+ 1620              	.L96:
+ 557:.\main.c      ****                     case SINE:
+ 558:.\main.c      ****                         sprintf(lcdBuffer, "%s, %d", "Sine", currentFng->id);
+ 1621              		.loc 1 558 0
+ 1622 03b6 D7F8BC39 		ldr	r3, [r7, #2492]
+ 1623 03ba 1B78     		ldrb	r3, [r3]	@ zero_extendqisi2
+ 1624 03bc 1C46     		mov	r4, r3
+ 1625 03be 07F11403 		add	r3, r7, #20
+ 1626 03c2 1846     		mov	r0, r3
+ 1627 03c4 1149     		ldr	r1, .L104+8
+ 1628 03c6 134A     		ldr	r2, .L104+16
+ 1629 03c8 2346     		mov	r3, r4
+ 1630 03ca FFF7FEFF 		bl	sprintf
+ 559:.\main.c      ****                         break;
+ 1631              		.loc 1 559 0
+ 1632 03ce 34E0     		b	.L93
+ 1633              	.L97:
+ 560:.\main.c      ****                     case TRIANGLE:
+ 561:.\main.c      ****                         sprintf(lcdBuffer, "%s, %d", "Triangle", currentFng->id);
+ 1634              		.loc 1 561 0
+ 1635 03d0 D7F8BC39 		ldr	r3, [r7, #2492]
+ 1636 03d4 1B78     		ldrb	r3, [r3]	@ zero_extendqisi2
+ 1637 03d6 1C46     		mov	r4, r3
+ 1638 03d8 07F11403 		add	r3, r7, #20
+ 1639 03dc 1846     		mov	r0, r3
+ 1640 03de 0B49     		ldr	r1, .L104+8
+ 1641 03e0 0D4A     		ldr	r2, .L104+20
+ 1642 03e2 2346     		mov	r3, r4
+ 1643 03e4 FFF7FEFF 		bl	sprintf
+ 562:.\main.c      ****                         break;
+ 1644              		.loc 1 562 0
+ 1645 03e8 27E0     		b	.L93
+ARM GAS  C:\Users\jthem\AppData\Local\Temp\ccflPXLw.s 			page 40
+
+
+ 1646              	.L98:
+ 563:.\main.c      ****                     case SAWTOOTH:
+ 564:.\main.c      ****                         sprintf(lcdBuffer, "%s, %d", "Sawtooth", currentFng->id);
+ 1647              		.loc 1 564 0
+ 1648 03ea D7F8BC39 		ldr	r3, [r7, #2492]
+ 1649 03ee 1B78     		ldrb	r3, [r3]	@ zero_extendqisi2
+ 1650 03f0 1C46     		mov	r4, r3
+ 1651 03f2 07F11403 		add	r3, r7, #20
+ 1652 03f6 1846     		mov	r0, r3
+ 1653 03f8 0449     		ldr	r1, .L104+8
+ 1654 03fa 084A     		ldr	r2, .L104+24
+ 1655 03fc 2346     		mov	r3, r4
+ 1656 03fe FFF7FEFF 		bl	sprintf
+ 565:.\main.c      ****                         break;
+ 1657              		.loc 1 565 0
+ 1658 0402 1AE0     		b	.L93
+ 1659              	.L105:
+ 1660              		.align	2
+ 1661              	.L104:
+ 1662 0404 00000000 		.word	.LC0
+ 1663 0408 08000000 		.word	.LC1
+ 1664 040c 10000000 		.word	.LC2
+ 1665 0410 18000000 		.word	.LC3
+ 1666 0414 20000000 		.word	.LC4
+ 1667 0418 28000000 		.word	.LC5
+ 1668 041c 34000000 		.word	.LC6
+ 1669              	.L99:
+ 566:.\main.c      ****                     case DC:
+ 567:.\main.c      ****                         sprintf(lcdBuffer, "%s, %d", "DC", currentFng->id);
+ 1670              		.loc 1 567 0
+ 1671 0420 D7F8BC39 		ldr	r3, [r7, #2492]
+ 1672 0424 1B78     		ldrb	r3, [r3]	@ zero_extendqisi2
+ 1673 0426 1C46     		mov	r4, r3
+ 1674 0428 07F11403 		add	r3, r7, #20
+ 1675 042c 1846     		mov	r0, r3
+ 1676 042e 3849     		ldr	r1, .L106
+ 1677 0430 384A     		ldr	r2, .L106+4
+ 1678 0432 2346     		mov	r3, r4
+ 1679 0434 FFF7FEFF 		bl	sprintf
+ 568:.\main.c      ****                         break;
+ 1680              		.loc 1 568 0
+ 1681 0438 00BF     		nop
+ 1682              	.L93:
+ 569:.\main.c      ****                     }
+ 570:.\main.c      ****                     
+ 571:.\main.c      ****                     LCD_PrintString(lcdBuffer);
+ 1683              		.loc 1 571 0
+ 1684 043a 07F11403 		add	r3, r7, #20
+ 1685 043e 1846     		mov	r0, r3
+ 1686 0440 FFF7FEFF 		bl	LCD_PrintString
+ 1687              	.L92:
+ 1688              	.LBE4:
+ 572:.\main.c      ****                 }
+ 573:.\main.c      ****                 if (voltageChanged) {
+ 1689              		.loc 1 573 0
+ 1690 0444 97F8B939 		ldrb	r3, [r7, #2489]	@ zero_extendqisi2
+ 1691 0448 002B     		cmp	r3, #0
+ARM GAS  C:\Users\jthem\AppData\Local\Temp\ccflPXLw.s 			page 41
+
+
+ 1692 044a 13D0     		beq	.L100
+ 1693              	.LBB5:
+ 574:.\main.c      ****                     char lcdBuffer[16];
+ 575:.\main.c      ****                     setFngVoltage(newVoltage, currentFng);
+ 1694              		.loc 1 575 0
+ 1695 044c B7F8CA39 		ldrh	r3, [r7, #2506]	@ movhi
+ 1696 0450 DBB2     		uxtb	r3, r3
+ 1697 0452 1846     		mov	r0, r3
+ 1698 0454 D7F8BC19 		ldr	r1, [r7, #2492]
+ 1699 0458 FFF7FEFF 		bl	setFngVoltage
+ 576:.\main.c      ****                     
+ 577:.\main.c      ****                     sprintf(lcdBuffer, "%d", newVoltage);
+ 1700              		.loc 1 577 0
+ 1701 045c B7F8CA39 		ldrh	r3, [r7, #2506]
+ 1702 0460 3A1D     		adds	r2, r7, #4
+ 1703 0462 1046     		mov	r0, r2
+ 1704 0464 2C49     		ldr	r1, .L106+8
+ 1705 0466 1A46     		mov	r2, r3
+ 1706 0468 FFF7FEFF 		bl	sprintf
+ 578:.\main.c      ****                     LCD_PrintString(lcdBuffer);
+ 1707              		.loc 1 578 0
+ 1708 046c 3B1D     		adds	r3, r7, #4
+ 1709 046e 1846     		mov	r0, r3
+ 1710 0470 FFF7FEFF 		bl	LCD_PrintString
+ 1711              	.L100:
+ 1712              	.LBE5:
+ 579:.\main.c      ****                     
+ 580:.\main.c      ****                 }
+ 581:.\main.c      ****                 if (pinChanged) setFngChannel(newPin, currentFng);
+ 1713              		.loc 1 581 0
+ 1714 0474 97F8B839 		ldrb	r3, [r7, #2488]	@ zero_extendqisi2
+ 1715 0478 002B     		cmp	r3, #0
+ 1716 047a 07D0     		beq	.L101
+ 1717              		.loc 1 581 0 is_stmt 0 discriminator 1
+ 1718 047c B7F8C639 		ldrh	r3, [r7, #2502]	@ movhi
+ 1719 0480 DBB2     		uxtb	r3, r3
+ 1720 0482 1846     		mov	r0, r3
+ 1721 0484 D7F8BC19 		ldr	r1, [r7, #2492]
+ 1722 0488 FFF7FEFF 		bl	setFngChannel
+ 1723              	.L101:
+ 582:.\main.c      ****                 currentCommand = ALERT;
+ 1724              		.loc 1 582 0 is_stmt 1
+ 1725 048c 0023     		movs	r3, #0
+ 1726 048e 87F8CF39 		strb	r3, [r7, #2511]
+ 583:.\main.c      ****                 
+ 584:.\main.c      ****                 freqChanged = 0;
+ 1727              		.loc 1 584 0
+ 1728 0492 0023     		movs	r3, #0
+ 1729 0494 87F8BB39 		strb	r3, [r7, #2491]
+ 585:.\main.c      ****                 shapeChanged = 0;
+ 1730              		.loc 1 585 0
+ 1731 0498 0023     		movs	r3, #0
+ 1732 049a 87F8BA39 		strb	r3, [r7, #2490]
+ 586:.\main.c      ****                 voltageChanged = 0;
+ 1733              		.loc 1 586 0
+ 1734 049e 0023     		movs	r3, #0
+ 1735 04a0 87F8B939 		strb	r3, [r7, #2489]
+ARM GAS  C:\Users\jthem\AppData\Local\Temp\ccflPXLw.s 			page 42
+
+
+ 587:.\main.c      ****                 pinChanged = 0;
+ 1736              		.loc 1 587 0
+ 1737 04a4 0023     		movs	r3, #0
+ 1738 04a6 87F8B839 		strb	r3, [r7, #2488]
+ 588:.\main.c      **** 
+ 589:.\main.c      ****                 break;
+ 1739              		.loc 1 589 0
+ 1740 04aa 2CE0     		b	.L62
+ 1741              	.L72:
+ 590:.\main.c      ****             case INVALID_COMMAND:
+ 591:.\main.c      ****                 newFreq = 0;
+ 1742              		.loc 1 591 0
+ 1743 04ac 0023     		movs	r3, #0
+ 1744 04ae A7F8CC39 		strh	r3, [r7, #2508]	@ movhi
+ 592:.\main.c      ****                 newVoltage = 0;
+ 1745              		.loc 1 592 0
+ 1746 04b2 0023     		movs	r3, #0
+ 1747 04b4 A7F8CA39 		strh	r3, [r7, #2506]	@ movhi
+ 593:.\main.c      ****                 newShape = SQUARE;
+ 1748              		.loc 1 593 0
+ 1749 04b8 0023     		movs	r3, #0
+ 1750 04ba A7F8C839 		strh	r3, [r7, #2504]	@ movhi
+ 594:.\main.c      ****                 newPin = 0;
+ 1751              		.loc 1 594 0
+ 1752 04be 0023     		movs	r3, #0
+ 1753 04c0 A7F8C639 		strh	r3, [r7, #2502]	@ movhi
+ 595:.\main.c      ****                 newFngOrScopeId = 0;
+ 1754              		.loc 1 595 0
+ 1755 04c4 0023     		movs	r3, #0
+ 1756 04c6 A7F8AE39 		strh	r3, [r7, #2478]	@ movhi
+ 596:.\main.c      ****                 newFngOrScopeOn = 0;
+ 1757              		.loc 1 596 0
+ 1758 04ca 0023     		movs	r3, #0
+ 1759 04cc A7F8AC39 		strh	r3, [r7, #2476]	@ movhi
+ 597:.\main.c      ****                 newFngCommand = 0;
+ 1760              		.loc 1 597 0
+ 1761 04d0 0023     		movs	r3, #0
+ 1762 04d2 A7F8AA39 		strh	r3, [r7, #2474]	@ movhi
+ 598:.\main.c      ****                 newOscCommand = 0;
+ 1763              		.loc 1 598 0
+ 1764 04d6 0023     		movs	r3, #0
+ 1765 04d8 A7F8A839 		strh	r3, [r7, #2472]	@ movhi
+ 599:.\main.c      ****                 
+ 600:.\main.c      ****                 currentFng = NULL;
+ 1766              		.loc 1 600 0
+ 1767 04dc 0023     		movs	r3, #0
+ 1768 04de C7F8BC39 		str	r3, [r7, #2492]
+ 601:.\main.c      ****                 currentOsc = NULL;
+ 1769              		.loc 1 601 0
+ 1770 04e2 0023     		movs	r3, #0
+ 1771 04e4 C7F8A439 		str	r3, [r7, #2468]
+ 602:.\main.c      ****                 
+ 603:.\main.c      ****                 LED_1_Write(!LED_1_Read());
+ 1772              		.loc 1 603 0
+ 1773 04e8 FFF7FEFF 		bl	LED_1_Read
+ 1774 04ec 0346     		mov	r3, r0
+ 1775 04ee 002B     		cmp	r3, #0
+ARM GAS  C:\Users\jthem\AppData\Local\Temp\ccflPXLw.s 			page 43
+
+
+ 1776 04f0 0CBF     		ite	eq
+ 1777 04f2 0123     		moveq	r3, #1
+ 1778 04f4 0023     		movne	r3, #0
+ 1779 04f6 DBB2     		uxtb	r3, r3
+ 1780 04f8 1846     		mov	r0, r3
+ 1781 04fa FFF7FEFF 		bl	LED_1_Write
+ 604:.\main.c      ****                 currentCommand = ALERT;
+ 1782              		.loc 1 604 0
+ 1783 04fe 0023     		movs	r3, #0
+ 1784 0500 87F8CF39 		strb	r3, [r7, #2511]
+ 605:.\main.c      ****                 break;
+ 1785              		.loc 1 605 0
+ 1786 0504 00BF     		nop
+ 1787              	.L62:
+ 606:.\main.c      ****         }
+ 607:.\main.c      ****         
+ 608:.\main.c      ****         wasDataReceived = 0;
+ 1788              		.loc 1 608 0
+ 1789 0506 0023     		movs	r3, #0
+ 1790 0508 87F8C339 		strb	r3, [r7, #2499]
+ 609:.\main.c      ****         
+ 610:.\main.c      ****         
+ 611:.\main.c      ****         
+ 612:.\main.c      ****         /*
+ 613:.\main.c      ****         // SCOPE DATA
+ 614:.\main.c      ****         // COMMENT THIS OUT
+ 615:.\main.c      **** 
+ 616:.\main.c      **** 
+ 617:.\main.c      ****         LCD_Position(0, 0);
+ 618:.\main.c      ****         LCD_PrintString("scope0State: ");
+ 619:.\main.c      ****         LCD_Position(0, 13);
+ 620:.\main.c      ****         LCD_PrintNumber(scope0State);
+ 621:.\main.c      ****         
+ 622:.\main.c      ****         LCD_Position(1, 0);
+ 623:.\main.c      ****         LCD_PrintString("Vwiper: ");
+ 624:.\main.c      ****         LCD_Position(1, 8);
+ 625:.\main.c      ****         //LCD_PrintNumber(scope0State);
+ 626:.\main.c      ****         
+ 627:.\main.c      ****          
+ 628:.\main.c      ****         switch (scope0State) {
+ 629:.\main.c      ****         case 0: break;
+ 630:.\main.c      ****         case 1:
+ 631:.\main.c      ****             scope0RawBufferStartPtr = scope0RawBufferPtr++;
+ 632:.\main.c      ****             scope0State = 2;
+ 633:.\main.c      ****             break;
+ 634:.\main.c      ****         case 2:
+ 635:.\main.c      ****             // start over again if we're going to overflow the buffer
+ 636:.\main.c      ****             if (scope0RawBufferPtr == scope0RawBufferStartPtr) {
+ 637:.\main.c      ****                 scope0State = 0;
+ 638:.\main.c      ****             } else {
+ 639:.\main.c      ****                 if (Scope0_ADC_IsEndConversion(Scope0_ADC_RETURN_STATUS)) {
+ 640:.\main.c      ****                     scope0RawBuffer[scope0RawBufferPtr] = Scope0_ADC_GetResult8();
+ 641:.\main.c      ****                     scope0RawBufferPtr++;
+ 642:.\main.c      ****                     if (scope0RawBufferPtr == 1200) {
+ 643:.\main.c      ****                         scope0RawBufferPtr = 0;   
+ 644:.\main.c      ****                     }
+ 645:.\main.c      ****                 }
+ARM GAS  C:\Users\jthem\AppData\Local\Temp\ccflPXLw.s 			page 44
+
+
+ 646:.\main.c      ****             }
+ 647:.\main.c      ****             break;
+ 648:.\main.c      ****         case 3: {
+ 649:.\main.c      ****             ISR_Scope0_Comp_Disable();
+ 650:.\main.c      ****             int i;
+ 651:.\main.c      ****             int bufSize;
+ 652:.\main.c      ****             if (scope0RawBufferPtr < scope0RawBufferStartPtr) {
+ 653:.\main.c      ****                 bufSize = 1200 - (scope0RawBufferStartPtr -
+ 654:.\main.c      ****                                     scope0RawBufferPtr);
+ 655:.\main.c      ****             } else {
+ 656:.\main.c      ****                 bufSize = scope0RawBufferPtr - scope0RawBufferStartPtr;   
+ 657:.\main.c      ****             }
+ 658:.\main.c      ****             
+ 659:.\main.c      ****             scope0RawBufferPtr = scope0RawBufferStartPtr;
+ 660:.\main.c      ****             for (i = 0; i < bufSize; i++) {
+ 661:.\main.c      ****                 scope0SerialBuffer[i] = scope0RawBuffer[scope0RawBufferPtr];
+ 662:.\main.c      ****                 scope0RawBufferPtr++;
+ 663:.\main.c      ****                 if (scope0RawBufferPtr == 1200) {
+ 664:.\main.c      ****                     scope0RawBufferPtr = 0;   
+ 665:.\main.c      ****                 }
+ 666:.\main.c      ****             }
+ 667:.\main.c      ****             
+ 668:.\main.c      ****             scope0SerialBuffer[bufSize] = '\0';
+ 669:.\main.c      ****             if (USBUART_GetConfiguration()) {
+ 670:.\main.c      ****                 if (USBUART_CDCIsReady()) {
+ 671:.\main.c      ****                     char txBuf[50];
+ 672:.\main.c      ****                     sprintf(txBuf, "%d\r\n", bufSize);
+ 673:.\main.c      ****                     Serial_PutString(txBuf);
+ 674:.\main.c      ****                     
+ 675:.\main.c      ****                     Serial_PutString("Sending some ADC data...\r\n");
+ 676:.\main.c      ****                     USBUART_PutData((uint8*)scope0SerialBuffer, bufSize);
+ 677:.\main.c      ****                     Serial_PutString("Finished sending ADC data.\r\n\r\n");
+ 678:.\main.c      ****                     
+ 679:.\main.c      ****                 }
+ 680:.\main.c      ****             }
+ 681:.\main.c      ****             scope0State = 0;
+ 682:.\main.c      ****             ISR_Scope0_Comp_Enable();
+ 683:.\main.c      ****         }
+ 684:.\main.c      ****         }   
+ 685:.\main.c      ****         
+ 686:.\main.c      ****         */
+ 687:.\main.c      ****         
+ 688:.\main.c      ****     }
+ 1791              		.loc 1 688 0
+ 1792 050c EBE5     		b	.L102
+ 1793              	.L107:
+ 1794 050e 00BF     		.align	2
+ 1795              	.L106:
+ 1796 0510 10000000 		.word	.LC2
+ 1797 0514 40000000 		.word	.LC7
+ 1798 0518 44000000 		.word	.LC8
+ 1799              		.cfi_endproc
+ 1800              	.LFE79:
+ 1801              		.size	main, .-main
+ 1802              		.text
+ 1803              	.Letext0:
+ 1804              		.file 2 "c:\\program files (x86)\\cypress\\psoc creator\\3.3\\psoc creator\\import\\gnu\\arm\\4.9.
+ARM GAS  C:\Users\jthem\AppData\Local\Temp\ccflPXLw.s 			page 45
+
+
+ 1805              		.file 3 "c:\\program files (x86)\\cypress\\psoc creator\\3.3\\psoc creator\\import\\gnu\\arm\\4.9.
+ 1806              		.file 4 "Generated_Source\\PSoC5/cytypes.h"
+ 1807              		.file 5 ".\\FunctionGenerator.h"
+ 1808              		.file 6 "Generated_Source\\PSoC5/core_cm3.h"
+ 1809              		.section	.debug_info,"",%progbits
+ 1810              	.Ldebug_info0:
+ 1811 0000 5B080000 		.4byte	0x85b
+ 1812 0004 0400     		.2byte	0x4
+ 1813 0006 00000000 		.4byte	.Ldebug_abbrev0
+ 1814 000a 04       		.byte	0x4
+ 1815 000b 01       		.uleb128 0x1
+ 1816 000c BE010000 		.4byte	.LASF111
+ 1817 0010 01       		.byte	0x1
+ 1818 0011 21010000 		.4byte	.LASF112
+ 1819 0015 ED030000 		.4byte	.LASF113
+ 1820 0019 00000000 		.4byte	.Ldebug_ranges0+0
+ 1821 001d 00000000 		.4byte	0
+ 1822 0021 00000000 		.4byte	.Ldebug_line0
+ 1823 0025 02       		.uleb128 0x2
+ 1824 0026 01       		.byte	0x1
+ 1825 0027 06       		.byte	0x6
+ 1826 0028 13030000 		.4byte	.LASF0
+ 1827 002c 02       		.uleb128 0x2
+ 1828 002d 01       		.byte	0x1
+ 1829 002e 08       		.byte	0x8
+ 1830 002f BF020000 		.4byte	.LASF1
+ 1831 0033 02       		.uleb128 0x2
+ 1832 0034 02       		.byte	0x2
+ 1833 0035 05       		.byte	0x5
+ 1834 0036 50000000 		.4byte	.LASF2
+ 1835 003a 03       		.uleb128 0x3
+ 1836 003b D7000000 		.4byte	.LASF4
+ 1837 003f 02       		.byte	0x2
+ 1838 0040 2B       		.byte	0x2b
+ 1839 0041 45000000 		.4byte	0x45
+ 1840 0045 02       		.uleb128 0x2
+ 1841 0046 02       		.byte	0x2
+ 1842 0047 07       		.byte	0x7
+ 1843 0048 A0030000 		.4byte	.LASF3
+ 1844 004c 03       		.uleb128 0x3
+ 1845 004d D1040000 		.4byte	.LASF5
+ 1846 0051 02       		.byte	0x2
+ 1847 0052 3F       		.byte	0x3f
+ 1848 0053 57000000 		.4byte	0x57
+ 1849 0057 02       		.uleb128 0x2
+ 1850 0058 04       		.byte	0x4
+ 1851 0059 05       		.byte	0x5
+ 1852 005a DF030000 		.4byte	.LASF6
+ 1853 005e 02       		.uleb128 0x2
+ 1854 005f 04       		.byte	0x4
+ 1855 0060 07       		.byte	0x7
+ 1856 0061 81040000 		.4byte	.LASF7
+ 1857 0065 02       		.uleb128 0x2
+ 1858 0066 08       		.byte	0x8
+ 1859 0067 05       		.byte	0x5
+ 1860 0068 AD000000 		.4byte	.LASF8
+ 1861 006c 02       		.uleb128 0x2
+ARM GAS  C:\Users\jthem\AppData\Local\Temp\ccflPXLw.s 			page 46
+
+
+ 1862 006d 08       		.byte	0x8
+ 1863 006e 07       		.byte	0x7
+ 1864 006f 1F030000 		.4byte	.LASF9
+ 1865 0073 04       		.uleb128 0x4
+ 1866 0074 04       		.byte	0x4
+ 1867 0075 05       		.byte	0x5
+ 1868 0076 696E7400 		.ascii	"int\000"
+ 1869 007a 02       		.uleb128 0x2
+ 1870 007b 04       		.byte	0x4
+ 1871 007c 07       		.byte	0x7
+ 1872 007d 6C030000 		.4byte	.LASF10
+ 1873 0081 03       		.uleb128 0x3
+ 1874 0082 D6030000 		.4byte	.LASF11
+ 1875 0086 03       		.byte	0x3
+ 1876 0087 21       		.byte	0x21
+ 1877 0088 3A000000 		.4byte	0x3a
+ 1878 008c 03       		.uleb128 0x3
+ 1879 008d 34040000 		.4byte	.LASF12
+ 1880 0091 03       		.byte	0x3
+ 1881 0092 2C       		.byte	0x2c
+ 1882 0093 4C000000 		.4byte	0x4c
+ 1883 0097 05       		.uleb128 0x5
+ 1884 0098 2F010000 		.4byte	.LASF13
+ 1885 009c 04       		.byte	0x4
+ 1886 009d 3801     		.2byte	0x138
+ 1887 009f 2C000000 		.4byte	0x2c
+ 1888 00a3 05       		.uleb128 0x5
+ 1889 00a4 70040000 		.4byte	.LASF14
+ 1890 00a8 04       		.byte	0x4
+ 1891 00a9 3901     		.2byte	0x139
+ 1892 00ab 45000000 		.4byte	0x45
+ 1893 00af 02       		.uleb128 0x2
+ 1894 00b0 04       		.byte	0x4
+ 1895 00b1 04       		.byte	0x4
+ 1896 00b2 84010000 		.4byte	.LASF15
+ 1897 00b6 02       		.uleb128 0x2
+ 1898 00b7 08       		.byte	0x8
+ 1899 00b8 04       		.byte	0x4
+ 1900 00b9 AA020000 		.4byte	.LASF16
+ 1901 00bd 02       		.uleb128 0x2
+ 1902 00be 01       		.byte	0x1
+ 1903 00bf 08       		.byte	0x8
+ 1904 00c0 AB010000 		.4byte	.LASF17
+ 1905 00c4 02       		.uleb128 0x2
+ 1906 00c5 04       		.byte	0x4
+ 1907 00c6 07       		.byte	0x7
+ 1908 00c7 18050000 		.4byte	.LASF18
+ 1909 00cb 06       		.uleb128 0x6
+ 1910 00cc 04       		.byte	0x4
+ 1911 00cd BD000000 		.4byte	0xbd
+ 1912 00d1 07       		.uleb128 0x7
+ 1913 00d2 01       		.byte	0x1
+ 1914 00d3 05       		.byte	0x5
+ 1915 00d4 11       		.byte	0x11
+ 1916 00d5 F7000000 		.4byte	0xf7
+ 1917 00d9 08       		.uleb128 0x8
+ 1918 00da BD040000 		.4byte	.LASF19
+ARM GAS  C:\Users\jthem\AppData\Local\Temp\ccflPXLw.s 			page 47
+
+
+ 1919 00de 00       		.sleb128 0
+ 1920 00df 08       		.uleb128 0x8
+ 1921 00e0 2A010000 		.4byte	.LASF20
+ 1922 00e4 01       		.sleb128 1
+ 1923 00e5 08       		.uleb128 0x8
+ 1924 00e6 2B050000 		.4byte	.LASF21
+ 1925 00ea 02       		.sleb128 2
+ 1926 00eb 08       		.uleb128 0x8
+ 1927 00ec F5000000 		.4byte	.LASF22
+ 1928 00f0 03       		.sleb128 3
+ 1929 00f1 09       		.uleb128 0x9
+ 1930 00f2 444300   		.ascii	"DC\000"
+ 1931 00f5 04       		.sleb128 4
+ 1932 00f6 00       		.byte	0
+ 1933 00f7 03       		.uleb128 0x3
+ 1934 00f8 5B010000 		.4byte	.LASF23
+ 1935 00fc 05       		.byte	0x5
+ 1936 00fd 17       		.byte	0x17
+ 1937 00fe D1000000 		.4byte	0xd1
+ 1938 0102 07       		.uleb128 0x7
+ 1939 0103 01       		.byte	0x1
+ 1940 0104 01       		.byte	0x1
+ 1941 0105 DE       		.byte	0xde
+ 1942 0106 41010000 		.4byte	0x141
+ 1943 010a 08       		.uleb128 0x8
+ 1944 010b B1040000 		.4byte	.LASF24
+ 1945 010f 00       		.sleb128 0
+ 1946 0110 08       		.uleb128 0x8
+ 1947 0111 3C040000 		.4byte	.LASF25
+ 1948 0115 01       		.sleb128 1
+ 1949 0116 08       		.uleb128 0x8
+ 1950 0117 BB000000 		.4byte	.LASF26
+ 1951 011b 02       		.sleb128 2
+ 1952 011c 08       		.uleb128 0x8
+ 1953 011d 78050000 		.4byte	.LASF27
+ 1954 0121 03       		.sleb128 3
+ 1955 0122 08       		.uleb128 0x8
+ 1956 0123 79030000 		.4byte	.LASF28
+ 1957 0127 04       		.sleb128 4
+ 1958 0128 08       		.uleb128 0x8
+ 1959 0129 96050000 		.4byte	.LASF29
+ 1960 012d 05       		.sleb128 5
+ 1961 012e 08       		.uleb128 0x8
+ 1962 012f F4020000 		.4byte	.LASF30
+ 1963 0133 06       		.sleb128 6
+ 1964 0134 08       		.uleb128 0x8
+ 1965 0135 59040000 		.4byte	.LASF31
+ 1966 0139 07       		.sleb128 7
+ 1967 013a 08       		.uleb128 0x8
+ 1968 013b B3030000 		.4byte	.LASF32
+ 1969 013f 08       		.sleb128 8
+ 1970 0140 00       		.byte	0
+ 1971 0141 03       		.uleb128 0x3
+ 1972 0142 09010000 		.4byte	.LASF33
+ 1973 0146 01       		.byte	0x1
+ 1974 0147 E8       		.byte	0xe8
+ 1975 0148 02010000 		.4byte	0x102
+ARM GAS  C:\Users\jthem\AppData\Local\Temp\ccflPXLw.s 			page 48
+
+
+ 1976 014c 0A       		.uleb128 0xa
+ 1977 014d 0A       		.byte	0xa
+ 1978 014e 01       		.byte	0x1
+ 1979 014f EA       		.byte	0xea
+ 1980 0150 A8010000 		.4byte	0x1a8
+ 1981 0154 0B       		.uleb128 0xb
+ 1982 0155 696400   		.ascii	"id\000"
+ 1983 0158 01       		.byte	0x1
+ 1984 0159 EB       		.byte	0xeb
+ 1985 015a 97000000 		.4byte	0x97
+ 1986 015e 00       		.byte	0
+ 1987 015f 0C       		.uleb128 0xc
+ 1988 0160 48010000 		.4byte	.LASF34
+ 1989 0164 01       		.byte	0x1
+ 1990 0165 EC       		.byte	0xec
+ 1991 0166 97000000 		.4byte	0x97
+ 1992 016a 01       		.byte	0x1
+ 1993 016b 0C       		.uleb128 0xc
+ 1994 016c 9E010000 		.4byte	.LASF35
+ 1995 0170 01       		.byte	0x1
+ 1996 0171 ED       		.byte	0xed
+ 1997 0172 97000000 		.4byte	0x97
+ 1998 0176 02       		.byte	0x2
+ 1999 0177 0C       		.uleb128 0xc
+ 2000 0178 29000000 		.4byte	.LASF36
+ 2001 017c 01       		.byte	0x1
+ 2002 017d EF       		.byte	0xef
+ 2003 017e A3000000 		.4byte	0xa3
+ 2004 0182 04       		.byte	0x4
+ 2005 0183 0C       		.uleb128 0xc
+ 2006 0184 4C020000 		.4byte	.LASF37
+ 2007 0188 01       		.byte	0x1
+ 2008 0189 F0       		.byte	0xf0
+ 2009 018a 97000000 		.4byte	0x97
+ 2010 018e 06       		.byte	0x6
+ 2011 018f 0C       		.uleb128 0xc
+ 2012 0190 44050000 		.4byte	.LASF38
+ 2013 0194 01       		.byte	0x1
+ 2014 0195 F1       		.byte	0xf1
+ 2015 0196 F7000000 		.4byte	0xf7
+ 2016 019a 07       		.byte	0x7
+ 2017 019b 0C       		.uleb128 0xc
+ 2018 019c 46040000 		.4byte	.LASF39
+ 2019 01a0 01       		.byte	0x1
+ 2020 01a1 F2       		.byte	0xf2
+ 2021 01a2 97000000 		.4byte	0x97
+ 2022 01a6 08       		.byte	0x8
+ 2023 01a7 00       		.byte	0
+ 2024 01a8 03       		.uleb128 0x3
+ 2025 01a9 66020000 		.4byte	.LASF40
+ 2026 01ad 01       		.byte	0x1
+ 2027 01ae F3       		.byte	0xf3
+ 2028 01af 4C010000 		.4byte	0x14c
+ 2029 01b3 0A       		.uleb128 0xa
+ 2030 01b4 04       		.byte	0x4
+ 2031 01b5 01       		.byte	0x1
+ 2032 01b6 F5       		.byte	0xf5
+ARM GAS  C:\Users\jthem\AppData\Local\Temp\ccflPXLw.s 			page 49
+
+
+ 2033 01b7 EB010000 		.4byte	0x1eb
+ 2034 01bb 0B       		.uleb128 0xb
+ 2035 01bc 696400   		.ascii	"id\000"
+ 2036 01bf 01       		.byte	0x1
+ 2037 01c0 F6       		.byte	0xf6
+ 2038 01c1 97000000 		.4byte	0x97
+ 2039 01c5 00       		.byte	0
+ 2040 01c6 0C       		.uleb128 0xc
+ 2041 01c7 48010000 		.4byte	.LASF34
+ 2042 01cb 01       		.byte	0x1
+ 2043 01cc F7       		.byte	0xf7
+ 2044 01cd 97000000 		.4byte	0x97
+ 2045 01d1 01       		.byte	0x1
+ 2046 01d2 0C       		.uleb128 0xc
+ 2047 01d3 46040000 		.4byte	.LASF39
+ 2048 01d7 01       		.byte	0x1
+ 2049 01d8 F8       		.byte	0xf8
+ 2050 01d9 97000000 		.4byte	0x97
+ 2051 01dd 02       		.byte	0x2
+ 2052 01de 0C       		.uleb128 0xc
+ 2053 01df 9E010000 		.4byte	.LASF35
+ 2054 01e3 01       		.byte	0x1
+ 2055 01e4 F9       		.byte	0xf9
+ 2056 01e5 97000000 		.4byte	0x97
+ 2057 01e9 03       		.byte	0x3
+ 2058 01ea 00       		.byte	0
+ 2059 01eb 03       		.uleb128 0x3
+ 2060 01ec C4040000 		.4byte	.LASF41
+ 2061 01f0 01       		.byte	0x1
+ 2062 01f1 FA       		.byte	0xfa
+ 2063 01f2 B3010000 		.4byte	0x1b3
+ 2064 01f6 0A       		.uleb128 0xa
+ 2065 01f7 1C       		.byte	0x1c
+ 2066 01f8 01       		.byte	0x1
+ 2067 01f9 FC       		.byte	0xfc
+ 2068 01fa 30020000 		.4byte	0x230
+ 2069 01fe 0C       		.uleb128 0xc
+ 2070 01ff DB040000 		.4byte	.LASF42
+ 2071 0203 01       		.byte	0x1
+ 2072 0204 FD       		.byte	0xfd
+ 2073 0205 A8010000 		.4byte	0x1a8
+ 2074 0209 00       		.byte	0
+ 2075 020a 0C       		.uleb128 0xc
+ 2076 020b 91050000 		.4byte	.LASF43
+ 2077 020f 01       		.byte	0x1
+ 2078 0210 FE       		.byte	0xfe
+ 2079 0211 A8010000 		.4byte	0x1a8
+ 2080 0215 0A       		.byte	0xa
+ 2081 0216 0C       		.uleb128 0xc
+ 2082 0217 77040000 		.4byte	.LASF44
+ 2083 021b 01       		.byte	0x1
+ 2084 021c FF       		.byte	0xff
+ 2085 021d EB010000 		.4byte	0x1eb
+ 2086 0221 14       		.byte	0x14
+ 2087 0222 0D       		.uleb128 0xd
+ 2088 0223 7C040000 		.4byte	.LASF45
+ 2089 0227 01       		.byte	0x1
+ARM GAS  C:\Users\jthem\AppData\Local\Temp\ccflPXLw.s 			page 50
+
+
+ 2090 0228 0001     		.2byte	0x100
+ 2091 022a EB010000 		.4byte	0x1eb
+ 2092 022e 18       		.byte	0x18
+ 2093 022f 00       		.byte	0
+ 2094 0230 05       		.uleb128 0x5
+ 2095 0231 83020000 		.4byte	.LASF46
+ 2096 0235 01       		.byte	0x1
+ 2097 0236 0101     		.2byte	0x101
+ 2098 0238 F6010000 		.4byte	0x1f6
+ 2099 023c 0E       		.uleb128 0xe
+ 2100 023d E2000000 		.4byte	.LASF63
+ 2101 0241 01       		.byte	0x1
+ 2102 0242 2D       		.byte	0x2d
+ 2103 0243 00000000 		.4byte	.LFB63
+ 2104 0247 1E000000 		.4byte	.LFE63-.LFB63
+ 2105 024b 01       		.uleb128 0x1
+ 2106 024c 9C       		.byte	0x9c
+ 2107 024d 6D020000 		.4byte	0x26d
+ 2108 0251 0F       		.uleb128 0xf
+ 2109 0252 76616C00 		.ascii	"val\000"
+ 2110 0256 01       		.byte	0x1
+ 2111 0257 2D       		.byte	0x2d
+ 2112 0258 97000000 		.4byte	0x97
+ 2113 025c 02       		.uleb128 0x2
+ 2114 025d 91       		.byte	0x91
+ 2115 025e 77       		.sleb128 -9
+ 2116 025f 10       		.uleb128 0x10
+ 2117 0260 57050000 		.4byte	.LASF114
+ 2118 0264 01       		.byte	0x1
+ 2119 0265 2E       		.byte	0x2e
+ 2120 0266 73000000 		.4byte	0x73
+ 2121 026a 11       		.uleb128 0x11
+ 2122 026b 00       		.byte	0
+ 2123 026c 00       		.byte	0
+ 2124 026d 12       		.uleb128 0x12
+ 2125 026e 94010000 		.4byte	.LASF73
+ 2126 0272 01       		.byte	0x1
+ 2127 0273 34       		.byte	0x34
+ 2128 0274 AF000000 		.4byte	0xaf
+ 2129 0278 00000000 		.4byte	.LFB64
+ 2130 027c 52010000 		.4byte	.LFE64-.LFB64
+ 2131 0280 01       		.uleb128 0x1
+ 2132 0281 9C       		.byte	0x9c
+ 2133 0282 8C030000 		.4byte	0x38c
+ 2134 0286 13       		.uleb128 0x13
+ 2135 0287 B7040000 		.4byte	.LASF47
+ 2136 028b 01       		.byte	0x1
+ 2137 028c 34       		.byte	0x34
+ 2138 028d CB000000 		.4byte	0xcb
+ 2139 0291 03       		.uleb128 0x3
+ 2140 0292 91       		.byte	0x91
+ 2141 0293 B47F     		.sleb128 -76
+ 2142 0295 13       		.uleb128 0x13
+ 2143 0296 70000000 		.4byte	.LASF48
+ 2144 029a 01       		.byte	0x1
+ 2145 029b 34       		.byte	0x34
+ 2146 029c 73000000 		.4byte	0x73
+ARM GAS  C:\Users\jthem\AppData\Local\Temp\ccflPXLw.s 			page 51
+
+
+ 2147 02a0 03       		.uleb128 0x3
+ 2148 02a1 91       		.byte	0x91
+ 2149 02a2 B07F     		.sleb128 -80
+ 2150 02a4 14       		.uleb128 0x14
+ 2151 02a5 6900     		.ascii	"i\000"
+ 2152 02a7 01       		.byte	0x1
+ 2153 02a8 36       		.byte	0x36
+ 2154 02a9 73000000 		.4byte	0x73
+ 2155 02ad 02       		.uleb128 0x2
+ 2156 02ae 91       		.byte	0x91
+ 2157 02af 74       		.sleb128 -12
+ 2158 02b0 15       		.uleb128 0x15
+ 2159 02b1 52050000 		.4byte	.LASF49
+ 2160 02b5 01       		.byte	0x1
+ 2161 02b6 37       		.byte	0x37
+ 2162 02b7 73000000 		.4byte	0x73
+ 2163 02bb 02       		.uleb128 0x2
+ 2164 02bc 91       		.byte	0x91
+ 2165 02bd 70       		.sleb128 -16
+ 2166 02be 15       		.uleb128 0x15
+ 2167 02bf 04010000 		.4byte	.LASF50
+ 2168 02c3 01       		.byte	0x1
+ 2169 02c4 38       		.byte	0x38
+ 2170 02c5 73000000 		.4byte	0x73
+ 2171 02c9 02       		.uleb128 0x2
+ 2172 02ca 91       		.byte	0x91
+ 2173 02cb 50       		.sleb128 -48
+ 2174 02cc 15       		.uleb128 0x15
+ 2175 02cd 8F000000 		.4byte	.LASF51
+ 2176 02d1 01       		.byte	0x1
+ 2177 02d2 39       		.byte	0x39
+ 2178 02d3 73000000 		.4byte	0x73
+ 2179 02d7 02       		.uleb128 0x2
+ 2180 02d8 91       		.byte	0x91
+ 2181 02d9 6C       		.sleb128 -20
+ 2182 02da 15       		.uleb128 0x15
+ 2183 02db 78020000 		.4byte	.LASF52
+ 2184 02df 01       		.byte	0x1
+ 2185 02e0 3A       		.byte	0x3a
+ 2186 02e1 73000000 		.4byte	0x73
+ 2187 02e5 02       		.uleb128 0x2
+ 2188 02e6 91       		.byte	0x91
+ 2189 02e7 4C       		.sleb128 -52
+ 2190 02e8 15       		.uleb128 0x15
+ 2191 02e9 8A010000 		.4byte	.LASF53
+ 2192 02ed 01       		.byte	0x1
+ 2193 02ee 3B       		.byte	0x3b
+ 2194 02ef 73000000 		.4byte	0x73
+ 2195 02f3 02       		.uleb128 0x2
+ 2196 02f4 91       		.byte	0x91
+ 2197 02f5 68       		.sleb128 -24
+ 2198 02f6 15       		.uleb128 0x15
+ 2199 02f7 8F010000 		.4byte	.LASF54
+ 2200 02fb 01       		.byte	0x1
+ 2201 02fc 3C       		.byte	0x3c
+ 2202 02fd 73000000 		.4byte	0x73
+ 2203 0301 02       		.uleb128 0x2
+ARM GAS  C:\Users\jthem\AppData\Local\Temp\ccflPXLw.s 			page 52
+
+
+ 2204 0302 91       		.byte	0x91
+ 2205 0303 64       		.sleb128 -28
+ 2206 0304 15       		.uleb128 0x15
+ 2207 0305 16010000 		.4byte	.LASF55
+ 2208 0309 01       		.byte	0x1
+ 2209 030a 3D       		.byte	0x3d
+ 2210 030b 73000000 		.4byte	0x73
+ 2211 030f 02       		.uleb128 0x2
+ 2212 0310 91       		.byte	0x91
+ 2213 0311 60       		.sleb128 -32
+ 2214 0312 15       		.uleb128 0x15
+ 2215 0313 A6040000 		.4byte	.LASF56
+ 2216 0317 01       		.byte	0x1
+ 2217 0318 3E       		.byte	0x3e
+ 2218 0319 73000000 		.4byte	0x73
+ 2219 031d 02       		.uleb128 0x2
+ 2220 031e 91       		.byte	0x91
+ 2221 031f 5C       		.sleb128 -36
+ 2222 0320 15       		.uleb128 0x15
+ 2223 0321 9A040000 		.4byte	.LASF57
+ 2224 0325 01       		.byte	0x1
+ 2225 0326 3F       		.byte	0x3f
+ 2226 0327 73000000 		.4byte	0x73
+ 2227 032b 02       		.uleb128 0x2
+ 2228 032c 91       		.byte	0x91
+ 2229 032d 58       		.sleb128 -40
+ 2230 032e 15       		.uleb128 0x15
+ 2231 032f 54020000 		.4byte	.LASF58
+ 2232 0333 01       		.byte	0x1
+ 2233 0334 40       		.byte	0x40
+ 2234 0335 73000000 		.4byte	0x73
+ 2235 0339 02       		.uleb128 0x2
+ 2236 033a 91       		.byte	0x91
+ 2237 033b 54       		.sleb128 -44
+ 2238 033c 14       		.uleb128 0x14
+ 2239 033d 6E00     		.ascii	"n\000"
+ 2240 033f 01       		.byte	0x1
+ 2241 0340 6D       		.byte	0x6d
+ 2242 0341 81000000 		.4byte	0x81
+ 2243 0345 02       		.uleb128 0x2
+ 2244 0346 91       		.byte	0x91
+ 2245 0347 46       		.sleb128 -58
+ 2246 0348 15       		.uleb128 0x15
+ 2247 0349 A6000000 		.4byte	.LASF59
+ 2248 034d 01       		.byte	0x1
+ 2249 034e 6E       		.byte	0x6e
+ 2250 034f 73000000 		.4byte	0x73
+ 2251 0353 02       		.uleb128 0x2
+ 2252 0354 91       		.byte	0x91
+ 2253 0355 40       		.sleb128 -64
+ 2254 0356 15       		.uleb128 0x15
+ 2255 0357 21050000 		.4byte	.LASF60
+ 2256 035b 01       		.byte	0x1
+ 2257 035c 6F       		.byte	0x6f
+ 2258 035d AF000000 		.4byte	0xaf
+ 2259 0361 03       		.uleb128 0x3
+ 2260 0362 91       		.byte	0x91
+ARM GAS  C:\Users\jthem\AppData\Local\Temp\ccflPXLw.s 			page 53
+
+
+ 2261 0363 BC7F     		.sleb128 -68
+ 2262 0365 16       		.uleb128 0x16
+ 2263 0366 38000000 		.4byte	.LBB2
+ 2264 036a A4000000 		.4byte	.LBE2-.LBB2
+ 2265 036e 15       		.uleb128 0x15
+ 2266 036f 34050000 		.4byte	.LASF61
+ 2267 0373 01       		.byte	0x1
+ 2268 0374 44       		.byte	0x44
+ 2269 0375 81000000 		.4byte	0x81
+ 2270 0379 02       		.uleb128 0x2
+ 2271 037a 91       		.byte	0x91
+ 2272 037b 4A       		.sleb128 -54
+ 2273 037c 15       		.uleb128 0x15
+ 2274 037d A6050000 		.4byte	.LASF62
+ 2275 0381 01       		.byte	0x1
+ 2276 0382 45       		.byte	0x45
+ 2277 0383 81000000 		.4byte	0x81
+ 2278 0387 02       		.uleb128 0x2
+ 2279 0388 91       		.byte	0x91
+ 2280 0389 48       		.sleb128 -56
+ 2281 038a 00       		.byte	0
+ 2282 038b 00       		.byte	0
+ 2283 038c 17       		.uleb128 0x17
+ 2284 038d DC020000 		.4byte	.LASF115
+ 2285 0391 01       		.byte	0x1
+ 2286 0392 C5       		.byte	0xc5
+ 2287 0393 00000000 		.4byte	.LFB65
+ 2288 0397 3C000000 		.4byte	.LFE65-.LFB65
+ 2289 039b 01       		.uleb128 0x1
+ 2290 039c 9C       		.byte	0x9c
+ 2291 039d 18       		.uleb128 0x18
+ 2292 039e 62000000 		.4byte	.LASF64
+ 2293 03a2 01       		.byte	0x1
+ 2294 03a3 0301     		.2byte	0x103
+ 2295 03a5 00000000 		.4byte	.LFB66
+ 2296 03a9 1A000000 		.4byte	.LFE66-.LFB66
+ 2297 03ad 01       		.uleb128 0x1
+ 2298 03ae 9C       		.byte	0x9c
+ 2299 03af D2030000 		.4byte	0x3d2
+ 2300 03b3 19       		.uleb128 0x19
+ 2301 03b4 FE000000 		.4byte	.LASF65
+ 2302 03b8 01       		.byte	0x1
+ 2303 03b9 0301     		.2byte	0x103
+ 2304 03bb 97000000 		.4byte	0x97
+ 2305 03bf 02       		.uleb128 0x2
+ 2306 03c0 91       		.byte	0x91
+ 2307 03c1 77       		.sleb128 -9
+ 2308 03c2 19       		.uleb128 0x19
+ 2309 03c3 64010000 		.4byte	.LASF66
+ 2310 03c7 01       		.byte	0x1
+ 2311 03c8 0301     		.2byte	0x103
+ 2312 03ca 97000000 		.4byte	0x97
+ 2313 03ce 02       		.uleb128 0x2
+ 2314 03cf 91       		.byte	0x91
+ 2315 03d0 76       		.sleb128 -10
+ 2316 03d1 00       		.byte	0
+ 2317 03d2 18       		.uleb128 0x18
+ARM GAS  C:\Users\jthem\AppData\Local\Temp\ccflPXLw.s 			page 54
+
+
+ 2318 03d3 EB040000 		.4byte	.LASF67
+ 2319 03d7 01       		.byte	0x1
+ 2320 03d8 0801     		.2byte	0x108
+ 2321 03da 00000000 		.4byte	.LFB67
+ 2322 03de 2A000000 		.4byte	.LFE67-.LFB67
+ 2323 03e2 01       		.uleb128 0x1
+ 2324 03e3 9C       		.byte	0x9c
+ 2325 03e4 F8030000 		.4byte	0x3f8
+ 2326 03e8 19       		.uleb128 0x19
+ 2327 03e9 4A000000 		.4byte	.LASF68
+ 2328 03ed 01       		.byte	0x1
+ 2329 03ee 0801     		.2byte	0x108
+ 2330 03f0 F8030000 		.4byte	0x3f8
+ 2331 03f4 02       		.uleb128 0x2
+ 2332 03f5 91       		.byte	0x91
+ 2333 03f6 74       		.sleb128 -12
+ 2334 03f7 00       		.byte	0
+ 2335 03f8 06       		.uleb128 0x6
+ 2336 03f9 04       		.byte	0x4
+ 2337 03fa 30020000 		.4byte	0x230
+ 2338 03fe 18       		.uleb128 0x18
+ 2339 03ff B1020000 		.4byte	.LASF69
+ 2340 0403 01       		.byte	0x1
+ 2341 0404 0F01     		.2byte	0x10f
+ 2342 0406 00000000 		.4byte	.LFB68
+ 2343 040a 42000000 		.4byte	.LFE68-.LFB68
+ 2344 040e 01       		.uleb128 0x1
+ 2345 040f 9C       		.byte	0x9c
+ 2346 0410 32040000 		.4byte	0x432
+ 2347 0414 1A       		.uleb128 0x1a
+ 2348 0415 696400   		.ascii	"id\000"
+ 2349 0418 01       		.byte	0x1
+ 2350 0419 0F01     		.2byte	0x10f
+ 2351 041b 73000000 		.4byte	0x73
+ 2352 041f 02       		.uleb128 0x2
+ 2353 0420 91       		.byte	0x91
+ 2354 0421 74       		.sleb128 -12
+ 2355 0422 1A       		.uleb128 0x1a
+ 2356 0423 666E6700 		.ascii	"fng\000"
+ 2357 0427 01       		.byte	0x1
+ 2358 0428 0F01     		.2byte	0x10f
+ 2359 042a 32040000 		.4byte	0x432
+ 2360 042e 02       		.uleb128 0x2
+ 2361 042f 91       		.byte	0x91
+ 2362 0430 70       		.sleb128 -16
+ 2363 0431 00       		.byte	0
+ 2364 0432 06       		.uleb128 0x6
+ 2365 0433 04       		.byte	0x4
+ 2366 0434 A8010000 		.4byte	0x1a8
+ 2367 0438 18       		.uleb128 0x18
+ 2368 0439 03030000 		.4byte	.LASF70
+ 2369 043d 01       		.byte	0x1
+ 2370 043e 1A01     		.2byte	0x11a
+ 2371 0440 00000000 		.4byte	.LFB69
+ 2372 0444 2E000000 		.4byte	.LFE69-.LFB69
+ 2373 0448 01       		.uleb128 0x1
+ 2374 0449 9C       		.byte	0x9c
+ARM GAS  C:\Users\jthem\AppData\Local\Temp\ccflPXLw.s 			page 55
+
+
+ 2375 044a 6C040000 		.4byte	0x46c
+ 2376 044e 1A       		.uleb128 0x1a
+ 2377 044f 696400   		.ascii	"id\000"
+ 2378 0452 01       		.byte	0x1
+ 2379 0453 1A01     		.2byte	0x11a
+ 2380 0455 73000000 		.4byte	0x73
+ 2381 0459 02       		.uleb128 0x2
+ 2382 045a 91       		.byte	0x91
+ 2383 045b 74       		.sleb128 -12
+ 2384 045c 19       		.uleb128 0x19
+ 2385 045d AB050000 		.4byte	.LASF71
+ 2386 0461 01       		.byte	0x1
+ 2387 0462 1A01     		.2byte	0x11a
+ 2388 0464 6C040000 		.4byte	0x46c
+ 2389 0468 02       		.uleb128 0x2
+ 2390 0469 91       		.byte	0x91
+ 2391 046a 70       		.sleb128 -16
+ 2392 046b 00       		.byte	0
+ 2393 046c 06       		.uleb128 0x6
+ 2394 046d 04       		.byte	0x4
+ 2395 046e EB010000 		.4byte	0x1eb
+ 2396 0472 1B       		.uleb128 0x1b
+ 2397 0473 90030000 		.4byte	.LASF72
+ 2398 0477 01       		.byte	0x1
+ 2399 0478 2101     		.2byte	0x121
+ 2400 047a 00000000 		.4byte	.LFB70
+ 2401 047e 3C000000 		.4byte	.LFE70-.LFB70
+ 2402 0482 01       		.uleb128 0x1
+ 2403 0483 9C       		.byte	0x9c
+ 2404 0484 98040000 		.4byte	0x498
+ 2405 0488 19       		.uleb128 0x19
+ 2406 0489 4A000000 		.4byte	.LASF68
+ 2407 048d 01       		.byte	0x1
+ 2408 048e 2101     		.2byte	0x121
+ 2409 0490 F8030000 		.4byte	0x3f8
+ 2410 0494 02       		.uleb128 0x2
+ 2411 0495 91       		.byte	0x91
+ 2412 0496 74       		.sleb128 -12
+ 2413 0497 00       		.byte	0
+ 2414 0498 1C       		.uleb128 0x1c
+ 2415 0499 9C020000 		.4byte	.LASF74
+ 2416 049d 01       		.byte	0x1
+ 2417 049e 2801     		.2byte	0x128
+ 2418 04a0 41010000 		.4byte	0x141
+ 2419 04a4 00000000 		.4byte	.LFB71
+ 2420 04a8 52000000 		.4byte	.LFE71-.LFB71
+ 2421 04ac 01       		.uleb128 0x1
+ 2422 04ad 9C       		.byte	0x9c
+ 2423 04ae D1040000 		.4byte	0x4d1
+ 2424 04b2 19       		.uleb128 0x19
+ 2425 04b3 75010000 		.4byte	.LASF75
+ 2426 04b7 01       		.byte	0x1
+ 2427 04b8 2801     		.2byte	0x128
+ 2428 04ba A3000000 		.4byte	0xa3
+ 2429 04be 02       		.uleb128 0x2
+ 2430 04bf 91       		.byte	0x91
+ 2431 04c0 6E       		.sleb128 -18
+ARM GAS  C:\Users\jthem\AppData\Local\Temp\ccflPXLw.s 			page 56
+
+
+ 2432 04c1 1D       		.uleb128 0x1d
+ 2433 04c2 9E050000 		.4byte	.LASF76
+ 2434 04c6 01       		.byte	0x1
+ 2435 04c7 2901     		.2byte	0x129
+ 2436 04c9 97000000 		.4byte	0x97
+ 2437 04cd 02       		.uleb128 0x2
+ 2438 04ce 91       		.byte	0x91
+ 2439 04cf 77       		.sleb128 -9
+ 2440 04d0 00       		.byte	0
+ 2441 04d1 1C       		.uleb128 0x1c
+ 2442 04d2 93040000 		.4byte	.LASF77
+ 2443 04d6 01       		.byte	0x1
+ 2444 04d7 3801     		.2byte	0x138
+ 2445 04d9 32040000 		.4byte	0x432
+ 2446 04dd 00000000 		.4byte	.LFB72
+ 2447 04e1 30000000 		.4byte	.LFE72-.LFB72
+ 2448 04e5 01       		.uleb128 0x1
+ 2449 04e6 9C       		.byte	0x9c
+ 2450 04e7 09050000 		.4byte	0x509
+ 2451 04eb 1A       		.uleb128 0x1a
+ 2452 04ec 696400   		.ascii	"id\000"
+ 2453 04ef 01       		.byte	0x1
+ 2454 04f0 3801     		.2byte	0x138
+ 2455 04f2 97000000 		.4byte	0x97
+ 2456 04f6 02       		.uleb128 0x2
+ 2457 04f7 91       		.byte	0x91
+ 2458 04f8 77       		.sleb128 -9
+ 2459 04f9 19       		.uleb128 0x19
+ 2460 04fa 4A000000 		.4byte	.LASF68
+ 2461 04fe 01       		.byte	0x1
+ 2462 04ff 3801     		.2byte	0x138
+ 2463 0501 F8030000 		.4byte	0x3f8
+ 2464 0505 02       		.uleb128 0x2
+ 2465 0506 91       		.byte	0x91
+ 2466 0507 70       		.sleb128 -16
+ 2467 0508 00       		.byte	0
+ 2468 0509 1C       		.uleb128 0x1c
+ 2469 050a 22000000 		.4byte	.LASF78
+ 2470 050e 01       		.byte	0x1
+ 2471 050f 4001     		.2byte	0x140
+ 2472 0511 6C040000 		.4byte	0x46c
+ 2473 0515 00000000 		.4byte	.LFB73
+ 2474 0519 32000000 		.4byte	.LFE73-.LFB73
+ 2475 051d 01       		.uleb128 0x1
+ 2476 051e 9C       		.byte	0x9c
+ 2477 051f 41050000 		.4byte	0x541
+ 2478 0523 1A       		.uleb128 0x1a
+ 2479 0524 696400   		.ascii	"id\000"
+ 2480 0527 01       		.byte	0x1
+ 2481 0528 4001     		.2byte	0x140
+ 2482 052a 97000000 		.4byte	0x97
+ 2483 052e 02       		.uleb128 0x2
+ 2484 052f 91       		.byte	0x91
+ 2485 0530 77       		.sleb128 -9
+ 2486 0531 19       		.uleb128 0x19
+ 2487 0532 4A000000 		.4byte	.LASF68
+ 2488 0536 01       		.byte	0x1
+ARM GAS  C:\Users\jthem\AppData\Local\Temp\ccflPXLw.s 			page 57
+
+
+ 2489 0537 4001     		.2byte	0x140
+ 2490 0539 F8030000 		.4byte	0x3f8
+ 2491 053d 02       		.uleb128 0x2
+ 2492 053e 91       		.byte	0x91
+ 2493 053f 70       		.sleb128 -16
+ 2494 0540 00       		.byte	0
+ 2495 0541 1B       		.uleb128 0x1b
+ 2496 0542 0D050000 		.4byte	.LASF79
+ 2497 0546 01       		.byte	0x1
+ 2498 0547 4801     		.2byte	0x148
+ 2499 0549 00000000 		.4byte	.LFB74
+ 2500 054d 26000000 		.4byte	.LFE74-.LFB74
+ 2501 0551 01       		.uleb128 0x1
+ 2502 0552 9C       		.byte	0x9c
+ 2503 0553 67050000 		.4byte	0x567
+ 2504 0557 1A       		.uleb128 0x1a
+ 2505 0558 666E6700 		.ascii	"fng\000"
+ 2506 055c 01       		.byte	0x1
+ 2507 055d 4801     		.2byte	0x148
+ 2508 055f 32040000 		.4byte	0x432
+ 2509 0563 02       		.uleb128 0x2
+ 2510 0564 91       		.byte	0x91
+ 2511 0565 74       		.sleb128 -12
+ 2512 0566 00       		.byte	0
+ 2513 0567 1B       		.uleb128 0x1b
+ 2514 0568 6A010000 		.4byte	.LASF80
+ 2515 056c 01       		.byte	0x1
+ 2516 056d 4E01     		.2byte	0x14e
+ 2517 056f 00000000 		.4byte	.LFB75
+ 2518 0573 34000000 		.4byte	.LFE75-.LFB75
+ 2519 0577 01       		.uleb128 0x1
+ 2520 0578 9C       		.byte	0x9c
+ 2521 0579 9C050000 		.4byte	0x59c
+ 2522 057d 19       		.uleb128 0x19
+ 2523 057e 5A000000 		.4byte	.LASF81
+ 2524 0582 01       		.byte	0x1
+ 2525 0583 4E01     		.2byte	0x14e
+ 2526 0585 73000000 		.4byte	0x73
+ 2527 0589 02       		.uleb128 0x2
+ 2528 058a 91       		.byte	0x91
+ 2529 058b 74       		.sleb128 -12
+ 2530 058c 1A       		.uleb128 0x1a
+ 2531 058d 666E6700 		.ascii	"fng\000"
+ 2532 0591 01       		.byte	0x1
+ 2533 0592 4E01     		.2byte	0x14e
+ 2534 0594 32040000 		.4byte	0x432
+ 2535 0598 02       		.uleb128 0x2
+ 2536 0599 91       		.byte	0x91
+ 2537 059a 70       		.sleb128 -16
+ 2538 059b 00       		.byte	0
+ 2539 059c 1B       		.uleb128 0x1b
+ 2540 059d 6C050000 		.4byte	.LASF82
+ 2541 05a1 01       		.byte	0x1
+ 2542 05a2 5401     		.2byte	0x154
+ 2543 05a4 00000000 		.4byte	.LFB76
+ 2544 05a8 34000000 		.4byte	.LFE76-.LFB76
+ 2545 05ac 01       		.uleb128 0x1
+ARM GAS  C:\Users\jthem\AppData\Local\Temp\ccflPXLw.s 			page 58
+
+
+ 2546 05ad 9C       		.byte	0x9c
+ 2547 05ae D1050000 		.4byte	0x5d1
+ 2548 05b2 19       		.uleb128 0x19
+ 2549 05b3 86000000 		.4byte	.LASF83
+ 2550 05b7 01       		.byte	0x1
+ 2551 05b8 5401     		.2byte	0x154
+ 2552 05ba F7000000 		.4byte	0xf7
+ 2553 05be 02       		.uleb128 0x2
+ 2554 05bf 91       		.byte	0x91
+ 2555 05c0 77       		.sleb128 -9
+ 2556 05c1 1A       		.uleb128 0x1a
+ 2557 05c2 666E6700 		.ascii	"fng\000"
+ 2558 05c6 01       		.byte	0x1
+ 2559 05c7 5401     		.2byte	0x154
+ 2560 05c9 32040000 		.4byte	0x432
+ 2561 05cd 02       		.uleb128 0x2
+ 2562 05ce 91       		.byte	0x91
+ 2563 05cf 70       		.sleb128 -16
+ 2564 05d0 00       		.byte	0
+ 2565 05d1 1B       		.uleb128 0x1b
+ 2566 05d2 5E030000 		.4byte	.LASF84
+ 2567 05d6 01       		.byte	0x1
+ 2568 05d7 5A01     		.2byte	0x15a
+ 2569 05d9 00000000 		.4byte	.LFB77
+ 2570 05dd 48000000 		.4byte	.LFE77-.LFB77
+ 2571 05e1 01       		.uleb128 0x1
+ 2572 05e2 9C       		.byte	0x9c
+ 2573 05e3 06060000 		.4byte	0x606
+ 2574 05e7 19       		.uleb128 0x19
+ 2575 05e8 86050000 		.4byte	.LASF85
+ 2576 05ec 01       		.byte	0x1
+ 2577 05ed 5A01     		.2byte	0x15a
+ 2578 05ef 97000000 		.4byte	0x97
+ 2579 05f3 02       		.uleb128 0x2
+ 2580 05f4 91       		.byte	0x91
+ 2581 05f5 6F       		.sleb128 -17
+ 2582 05f6 1A       		.uleb128 0x1a
+ 2583 05f7 666E6700 		.ascii	"fng\000"
+ 2584 05fb 01       		.byte	0x1
+ 2585 05fc 5A01     		.2byte	0x15a
+ 2586 05fe 32040000 		.4byte	0x432
+ 2587 0602 02       		.uleb128 0x2
+ 2588 0603 91       		.byte	0x91
+ 2589 0604 68       		.sleb128 -24
+ 2590 0605 00       		.byte	0
+ 2591 0606 1B       		.uleb128 0x1b
+ 2592 0607 B0010000 		.4byte	.LASF86
+ 2593 060b 01       		.byte	0x1
+ 2594 060c 6101     		.2byte	0x161
+ 2595 060e 00000000 		.4byte	.LFB78
+ 2596 0612 4A000000 		.4byte	.LFE78-.LFB78
+ 2597 0616 01       		.uleb128 0x1
+ 2598 0617 9C       		.byte	0x9c
+ 2599 0618 3B060000 		.4byte	0x63b
+ 2600 061c 19       		.uleb128 0x19
+ 2601 061d 50010000 		.4byte	.LASF87
+ 2602 0621 01       		.byte	0x1
+ARM GAS  C:\Users\jthem\AppData\Local\Temp\ccflPXLw.s 			page 59
+
+
+ 2603 0622 6101     		.2byte	0x161
+ 2604 0624 97000000 		.4byte	0x97
+ 2605 0628 02       		.uleb128 0x2
+ 2606 0629 91       		.byte	0x91
+ 2607 062a 77       		.sleb128 -9
+ 2608 062b 1A       		.uleb128 0x1a
+ 2609 062c 666E6700 		.ascii	"fng\000"
+ 2610 0630 01       		.byte	0x1
+ 2611 0631 6101     		.2byte	0x161
+ 2612 0633 32040000 		.4byte	0x432
+ 2613 0637 02       		.uleb128 0x2
+ 2614 0638 91       		.byte	0x91
+ 2615 0639 70       		.sleb128 -16
+ 2616 063a 00       		.byte	0
+ 2617 063b 1E       		.uleb128 0x1e
+ 2618 063c E8030000 		.4byte	.LASF88
+ 2619 0640 01       		.byte	0x1
+ 2620 0641 7801     		.2byte	0x178
+ 2621 0643 73000000 		.4byte	0x73
+ 2622 0647 00000000 		.4byte	.LFB79
+ 2623 064b 1C050000 		.4byte	.LFE79-.LFB79
+ 2624 064f 01       		.uleb128 0x1
+ 2625 0650 9C       		.byte	0x9c
+ 2626 0651 16080000 		.4byte	0x816
+ 2627 0655 1D       		.uleb128 0x1d
+ 2628 0656 4A000000 		.4byte	.LASF68
+ 2629 065a 01       		.byte	0x1
+ 2630 065b 7A01     		.2byte	0x17a
+ 2631 065d 30020000 		.4byte	0x230
+ 2632 0661 03       		.uleb128 0x3
+ 2633 0662 91       		.byte	0x91
+ 2634 0663 A47F     		.sleb128 -92
+ 2635 0665 1D       		.uleb128 0x1d
+ 2636 0666 81030000 		.4byte	.LASF89
+ 2637 066a 01       		.byte	0x1
+ 2638 066b 7B01     		.2byte	0x17b
+ 2639 066d 41010000 		.4byte	0x141
+ 2640 0671 02       		.uleb128 0x2
+ 2641 0672 91       		.byte	0x91
+ 2642 0673 6F       		.sleb128 -17
+ 2643 0674 1D       		.uleb128 0x1d
+ 2644 0675 5A000000 		.4byte	.LASF81
+ 2645 0679 01       		.byte	0x1
+ 2646 067a 7D01     		.2byte	0x17d
+ 2647 067c A3000000 		.4byte	0xa3
+ 2648 0680 02       		.uleb128 0x2
+ 2649 0681 91       		.byte	0x91
+ 2650 0682 6C       		.sleb128 -20
+ 2651 0683 1D       		.uleb128 0x1d
+ 2652 0684 86050000 		.4byte	.LASF85
+ 2653 0688 01       		.byte	0x1
+ 2654 0689 7D01     		.2byte	0x17d
+ 2655 068b A3000000 		.4byte	0xa3
+ 2656 068f 02       		.uleb128 0x2
+ 2657 0690 91       		.byte	0x91
+ 2658 0691 6A       		.sleb128 -22
+ 2659 0692 1D       		.uleb128 0x1d
+ARM GAS  C:\Users\jthem\AppData\Local\Temp\ccflPXLw.s 			page 60
+
+
+ 2660 0693 86000000 		.4byte	.LASF83
+ 2661 0697 01       		.byte	0x1
+ 2662 0698 7D01     		.2byte	0x17d
+ 2663 069a A3000000 		.4byte	0xa3
+ 2664 069e 02       		.uleb128 0x2
+ 2665 069f 91       		.byte	0x91
+ 2666 06a0 68       		.sleb128 -24
+ 2667 06a1 1D       		.uleb128 0x1d
+ 2668 06a2 1B000000 		.4byte	.LASF90
+ 2669 06a6 01       		.byte	0x1
+ 2670 06a7 7D01     		.2byte	0x17d
+ 2671 06a9 A3000000 		.4byte	0xa3
+ 2672 06ad 02       		.uleb128 0x2
+ 2673 06ae 91       		.byte	0x91
+ 2674 06af 66       		.sleb128 -26
+ 2675 06b0 1D       		.uleb128 0x1d
+ 2676 06b1 36030000 		.4byte	.LASF91
+ 2677 06b5 01       		.byte	0x1
+ 2678 06b6 7D01     		.2byte	0x17d
+ 2679 06b8 A3000000 		.4byte	0xa3
+ 2680 06bc 02       		.uleb128 0x2
+ 2681 06bd 91       		.byte	0x91
+ 2682 06be 4E       		.sleb128 -50
+ 2683 06bf 1D       		.uleb128 0x1d
+ 2684 06c0 C7000000 		.4byte	.LASF92
+ 2685 06c4 01       		.byte	0x1
+ 2686 06c5 7E01     		.2byte	0x17e
+ 2687 06c7 A3000000 		.4byte	0xa3
+ 2688 06cb 02       		.uleb128 0x2
+ 2689 06cc 91       		.byte	0x91
+ 2690 06cd 4C       		.sleb128 -52
+ 2691 06ce 1D       		.uleb128 0x1d
+ 2692 06cf 00000000 		.4byte	.LASF93
+ 2693 06d3 01       		.byte	0x1
+ 2694 06d4 7E01     		.2byte	0x17e
+ 2695 06d6 A3000000 		.4byte	0xa3
+ 2696 06da 02       		.uleb128 0x2
+ 2697 06db 91       		.byte	0x91
+ 2698 06dc 4A       		.sleb128 -54
+ 2699 06dd 1D       		.uleb128 0x1d
+ 2700 06de 8E020000 		.4byte	.LASF94
+ 2701 06e2 01       		.byte	0x1
+ 2702 06e3 7E01     		.2byte	0x17e
+ 2703 06e5 A3000000 		.4byte	0xa3
+ 2704 06e9 02       		.uleb128 0x2
+ 2705 06ea 91       		.byte	0x91
+ 2706 06eb 48       		.sleb128 -56
+ 2707 06ec 1D       		.uleb128 0x1d
+ 2708 06ed 75010000 		.4byte	.LASF75
+ 2709 06f1 01       		.byte	0x1
+ 2710 06f2 7F01     		.2byte	0x17f
+ 2711 06f4 A3000000 		.4byte	0xa3
+ 2712 06f8 02       		.uleb128 0x2
+ 2713 06f9 91       		.byte	0x91
+ 2714 06fa 64       		.sleb128 -28
+ 2715 06fb 1D       		.uleb128 0x1d
+ 2716 06fc 3A000000 		.4byte	.LASF95
+ARM GAS  C:\Users\jthem\AppData\Local\Temp\ccflPXLw.s 			page 61
+
+
+ 2717 0700 01       		.byte	0x1
+ 2718 0701 8001     		.2byte	0x180
+ 2719 0703 97000000 		.4byte	0x97
+ 2720 0707 02       		.uleb128 0x2
+ 2721 0708 91       		.byte	0x91
+ 2722 0709 63       		.sleb128 -29
+ 2723 070a 1D       		.uleb128 0x1d
+ 2724 070b FD040000 		.4byte	.LASF96
+ 2725 070f 01       		.byte	0x1
+ 2726 0710 8201     		.2byte	0x182
+ 2727 0712 16080000 		.4byte	0x816
+ 2728 0716 03       		.uleb128 0x3
+ 2729 0717 91       		.byte	0x91
+ 2730 0718 F475     		.sleb128 -1292
+ 2731 071a 1D       		.uleb128 0x1d
+ 2732 071b 35010000 		.4byte	.LASF97
+ 2733 071f 01       		.byte	0x1
+ 2734 0720 8301     		.2byte	0x183
+ 2735 0722 16080000 		.4byte	0x816
+ 2736 0726 03       		.uleb128 0x3
+ 2737 0727 91       		.byte	0x91
+ 2738 0728 C46C     		.sleb128 -2492
+ 2739 072a 1D       		.uleb128 0x1d
+ 2740 072b C3030000 		.4byte	.LASF98
+ 2741 072f 01       		.byte	0x1
+ 2742 0730 8401     		.2byte	0x184
+ 2743 0732 73000000 		.4byte	0x73
+ 2744 0736 02       		.uleb128 0x2
+ 2745 0737 91       		.byte	0x91
+ 2746 0738 54       		.sleb128 -44
+ 2747 0739 1D       		.uleb128 0x1d
+ 2748 073a 46030000 		.4byte	.LASF99
+ 2749 073e 01       		.byte	0x1
+ 2750 073f 8401     		.2byte	0x184
+ 2751 0741 73000000 		.4byte	0x73
+ 2752 0745 02       		.uleb128 0x2
+ 2753 0746 91       		.byte	0x91
+ 2754 0747 50       		.sleb128 -48
+ 2755 0748 1D       		.uleb128 0x1d
+ 2756 0749 E0040000 		.4byte	.LASF100
+ 2757 074d 01       		.byte	0x1
+ 2758 074e 8701     		.2byte	0x187
+ 2759 0750 32040000 		.4byte	0x432
+ 2760 0754 02       		.uleb128 0x2
+ 2761 0755 91       		.byte	0x91
+ 2762 0756 5C       		.sleb128 -36
+ 2763 0757 1D       		.uleb128 0x1d
+ 2764 0758 7B000000 		.4byte	.LASF101
+ 2765 075c 01       		.byte	0x1
+ 2766 075d 8801     		.2byte	0x188
+ 2767 075f 6C040000 		.4byte	0x46c
+ 2768 0763 02       		.uleb128 0x2
+ 2769 0764 91       		.byte	0x91
+ 2770 0765 44       		.sleb128 -60
+ 2771 0766 1D       		.uleb128 0x1d
+ 2772 0767 9A000000 		.4byte	.LASF102
+ 2773 076b 01       		.byte	0x1
+ARM GAS  C:\Users\jthem\AppData\Local\Temp\ccflPXLw.s 			page 62
+
+
+ 2774 076c 9401     		.2byte	0x194
+ 2775 076e 97000000 		.4byte	0x97
+ 2776 0772 02       		.uleb128 0x2
+ 2777 0773 91       		.byte	0x91
+ 2778 0774 5B       		.sleb128 -37
+ 2779 0775 1D       		.uleb128 0x1d
+ 2780 0776 0E000000 		.4byte	.LASF103
+ 2781 077a 01       		.byte	0x1
+ 2782 077b 9501     		.2byte	0x195
+ 2783 077d 97000000 		.4byte	0x97
+ 2784 0781 02       		.uleb128 0x2
+ 2785 0782 91       		.byte	0x91
+ 2786 0783 5A       		.sleb128 -38
+ 2787 0784 1D       		.uleb128 0x1d
+ 2788 0785 CD020000 		.4byte	.LASF104
+ 2789 0789 01       		.byte	0x1
+ 2790 078a 9601     		.2byte	0x196
+ 2791 078c 97000000 		.4byte	0x97
+ 2792 0790 02       		.uleb128 0x2
+ 2793 0791 91       		.byte	0x91
+ 2794 0792 59       		.sleb128 -39
+ 2795 0793 1D       		.uleb128 0x1d
+ 2796 0794 65040000 		.4byte	.LASF105
+ 2797 0798 01       		.byte	0x1
+ 2798 0799 9701     		.2byte	0x197
+ 2799 079b 97000000 		.4byte	0x97
+ 2800 079f 02       		.uleb128 0x2
+ 2801 07a0 91       		.byte	0x91
+ 2802 07a1 58       		.sleb128 -40
+ 2803 07a2 1D       		.uleb128 0x1d
+ 2804 07a3 46040000 		.4byte	.LASF39
+ 2805 07a7 01       		.byte	0x1
+ 2806 07a8 9F01     		.2byte	0x19f
+ 2807 07aa 97000000 		.4byte	0x97
+ 2808 07ae 02       		.uleb128 0x2
+ 2809 07af 91       		.byte	0x91
+ 2810 07b0 43       		.sleb128 -61
+ 2811 07b1 1D       		.uleb128 0x1d
+ 2812 07b2 4E040000 		.4byte	.LASF106
+ 2813 07b6 01       		.byte	0x1
+ 2814 07b7 A001     		.2byte	0x1a0
+ 2815 07b9 97000000 		.4byte	0x97
+ 2816 07bd 02       		.uleb128 0x2
+ 2817 07be 91       		.byte	0x91
+ 2818 07bf 42       		.sleb128 -62
+ 2819 07c0 1F       		.uleb128 0x1f
+ 2820 07c1 F0000000 		.4byte	.LBB3
+ 2821 07c5 30000000 		.4byte	.LBE3-.LBB3
+ 2822 07c9 DD070000 		.4byte	0x7dd
+ 2823 07cd 1D       		.uleb128 0x1d
+ 2824 07ce 4A050000 		.4byte	.LASF107
+ 2825 07d2 01       		.byte	0x1
+ 2826 07d3 B701     		.2byte	0x1b7
+ 2827 07d5 A3000000 		.4byte	0xa3
+ 2828 07d9 02       		.uleb128 0x2
+ 2829 07da 91       		.byte	0x91
+ 2830 07db 40       		.sleb128 -64
+ARM GAS  C:\Users\jthem\AppData\Local\Temp\ccflPXLw.s 			page 63
+
+
+ 2831 07dc 00       		.byte	0
+ 2832 07dd 1F       		.uleb128 0x1f
+ 2833 07de 60030000 		.4byte	.LBB4
+ 2834 07e2 E4000000 		.4byte	.LBE4-.LBB4
+ 2835 07e6 FB070000 		.4byte	0x7fb
+ 2836 07ea 1D       		.uleb128 0x1d
+ 2837 07eb 5C020000 		.4byte	.LASF108
+ 2838 07ef 01       		.byte	0x1
+ 2839 07f0 2602     		.2byte	0x226
+ 2840 07f2 27080000 		.4byte	0x827
+ 2841 07f6 03       		.uleb128 0x3
+ 2842 07f7 91       		.byte	0x91
+ 2843 07f8 B46C     		.sleb128 -2508
+ 2844 07fa 00       		.byte	0
+ 2845 07fb 16       		.uleb128 0x16
+ 2846 07fc 4C040000 		.4byte	.LBB5
+ 2847 0800 28000000 		.4byte	.LBE5-.LBB5
+ 2848 0804 1D       		.uleb128 0x1d
+ 2849 0805 5C020000 		.4byte	.LASF108
+ 2850 0809 01       		.byte	0x1
+ 2851 080a 3E02     		.2byte	0x23e
+ 2852 080c 27080000 		.4byte	0x827
+ 2853 0810 03       		.uleb128 0x3
+ 2854 0811 91       		.byte	0x91
+ 2855 0812 A46C     		.sleb128 -2524
+ 2856 0814 00       		.byte	0
+ 2857 0815 00       		.byte	0
+ 2858 0816 20       		.uleb128 0x20
+ 2859 0817 BD000000 		.4byte	0xbd
+ 2860 081b 27080000 		.4byte	0x827
+ 2861 081f 21       		.uleb128 0x21
+ 2862 0820 C4000000 		.4byte	0xc4
+ 2863 0824 AF04     		.2byte	0x4af
+ 2864 0826 00       		.byte	0
+ 2865 0827 20       		.uleb128 0x20
+ 2866 0828 BD000000 		.4byte	0xbd
+ 2867 082c 37080000 		.4byte	0x837
+ 2868 0830 22       		.uleb128 0x22
+ 2869 0831 C4000000 		.4byte	0xc4
+ 2870 0835 0F       		.byte	0xf
+ 2871 0836 00       		.byte	0
+ 2872 0837 23       		.uleb128 0x23
+ 2873 0838 E7020000 		.4byte	.LASF109
+ 2874 083c 06       		.byte	0x6
+ 2875 083d 5506     		.2byte	0x655
+ 2876 083f 43080000 		.4byte	0x843
+ 2877 0843 24       		.uleb128 0x24
+ 2878 0844 8C000000 		.4byte	0x8c
+ 2879 0848 25       		.uleb128 0x25
+ 2880 0849 2E000000 		.4byte	.LASF110
+ 2881 084d 01       		.byte	0x1
+ 2882 084e 32       		.byte	0x32
+ 2883 084f 59080000 		.4byte	0x859
+ 2884 0853 05       		.uleb128 0x5
+ 2885 0854 03       		.byte	0x3
+ 2886 0855 00000000 		.4byte	scope0State
+ 2887 0859 24       		.uleb128 0x24
+ARM GAS  C:\Users\jthem\AppData\Local\Temp\ccflPXLw.s 			page 64
+
+
+ 2888 085a 73000000 		.4byte	0x73
+ 2889 085e 00       		.byte	0
+ 2890              		.section	.debug_abbrev,"",%progbits
+ 2891              	.Ldebug_abbrev0:
+ 2892 0000 01       		.uleb128 0x1
+ 2893 0001 11       		.uleb128 0x11
+ 2894 0002 01       		.byte	0x1
+ 2895 0003 25       		.uleb128 0x25
+ 2896 0004 0E       		.uleb128 0xe
+ 2897 0005 13       		.uleb128 0x13
+ 2898 0006 0B       		.uleb128 0xb
+ 2899 0007 03       		.uleb128 0x3
+ 2900 0008 0E       		.uleb128 0xe
+ 2901 0009 1B       		.uleb128 0x1b
+ 2902 000a 0E       		.uleb128 0xe
+ 2903 000b 55       		.uleb128 0x55
+ 2904 000c 17       		.uleb128 0x17
+ 2905 000d 11       		.uleb128 0x11
+ 2906 000e 01       		.uleb128 0x1
+ 2907 000f 10       		.uleb128 0x10
+ 2908 0010 17       		.uleb128 0x17
+ 2909 0011 00       		.byte	0
+ 2910 0012 00       		.byte	0
+ 2911 0013 02       		.uleb128 0x2
+ 2912 0014 24       		.uleb128 0x24
+ 2913 0015 00       		.byte	0
+ 2914 0016 0B       		.uleb128 0xb
+ 2915 0017 0B       		.uleb128 0xb
+ 2916 0018 3E       		.uleb128 0x3e
+ 2917 0019 0B       		.uleb128 0xb
+ 2918 001a 03       		.uleb128 0x3
+ 2919 001b 0E       		.uleb128 0xe
+ 2920 001c 00       		.byte	0
+ 2921 001d 00       		.byte	0
+ 2922 001e 03       		.uleb128 0x3
+ 2923 001f 16       		.uleb128 0x16
+ 2924 0020 00       		.byte	0
+ 2925 0021 03       		.uleb128 0x3
+ 2926 0022 0E       		.uleb128 0xe
+ 2927 0023 3A       		.uleb128 0x3a
+ 2928 0024 0B       		.uleb128 0xb
+ 2929 0025 3B       		.uleb128 0x3b
+ 2930 0026 0B       		.uleb128 0xb
+ 2931 0027 49       		.uleb128 0x49
+ 2932 0028 13       		.uleb128 0x13
+ 2933 0029 00       		.byte	0
+ 2934 002a 00       		.byte	0
+ 2935 002b 04       		.uleb128 0x4
+ 2936 002c 24       		.uleb128 0x24
+ 2937 002d 00       		.byte	0
+ 2938 002e 0B       		.uleb128 0xb
+ 2939 002f 0B       		.uleb128 0xb
+ 2940 0030 3E       		.uleb128 0x3e
+ 2941 0031 0B       		.uleb128 0xb
+ 2942 0032 03       		.uleb128 0x3
+ 2943 0033 08       		.uleb128 0x8
+ 2944 0034 00       		.byte	0
+ARM GAS  C:\Users\jthem\AppData\Local\Temp\ccflPXLw.s 			page 65
+
+
+ 2945 0035 00       		.byte	0
+ 2946 0036 05       		.uleb128 0x5
+ 2947 0037 16       		.uleb128 0x16
+ 2948 0038 00       		.byte	0
+ 2949 0039 03       		.uleb128 0x3
+ 2950 003a 0E       		.uleb128 0xe
+ 2951 003b 3A       		.uleb128 0x3a
+ 2952 003c 0B       		.uleb128 0xb
+ 2953 003d 3B       		.uleb128 0x3b
+ 2954 003e 05       		.uleb128 0x5
+ 2955 003f 49       		.uleb128 0x49
+ 2956 0040 13       		.uleb128 0x13
+ 2957 0041 00       		.byte	0
+ 2958 0042 00       		.byte	0
+ 2959 0043 06       		.uleb128 0x6
+ 2960 0044 0F       		.uleb128 0xf
+ 2961 0045 00       		.byte	0
+ 2962 0046 0B       		.uleb128 0xb
+ 2963 0047 0B       		.uleb128 0xb
+ 2964 0048 49       		.uleb128 0x49
+ 2965 0049 13       		.uleb128 0x13
+ 2966 004a 00       		.byte	0
+ 2967 004b 00       		.byte	0
+ 2968 004c 07       		.uleb128 0x7
+ 2969 004d 04       		.uleb128 0x4
+ 2970 004e 01       		.byte	0x1
+ 2971 004f 0B       		.uleb128 0xb
+ 2972 0050 0B       		.uleb128 0xb
+ 2973 0051 3A       		.uleb128 0x3a
+ 2974 0052 0B       		.uleb128 0xb
+ 2975 0053 3B       		.uleb128 0x3b
+ 2976 0054 0B       		.uleb128 0xb
+ 2977 0055 01       		.uleb128 0x1
+ 2978 0056 13       		.uleb128 0x13
+ 2979 0057 00       		.byte	0
+ 2980 0058 00       		.byte	0
+ 2981 0059 08       		.uleb128 0x8
+ 2982 005a 28       		.uleb128 0x28
+ 2983 005b 00       		.byte	0
+ 2984 005c 03       		.uleb128 0x3
+ 2985 005d 0E       		.uleb128 0xe
+ 2986 005e 1C       		.uleb128 0x1c
+ 2987 005f 0D       		.uleb128 0xd
+ 2988 0060 00       		.byte	0
+ 2989 0061 00       		.byte	0
+ 2990 0062 09       		.uleb128 0x9
+ 2991 0063 28       		.uleb128 0x28
+ 2992 0064 00       		.byte	0
+ 2993 0065 03       		.uleb128 0x3
+ 2994 0066 08       		.uleb128 0x8
+ 2995 0067 1C       		.uleb128 0x1c
+ 2996 0068 0D       		.uleb128 0xd
+ 2997 0069 00       		.byte	0
+ 2998 006a 00       		.byte	0
+ 2999 006b 0A       		.uleb128 0xa
+ 3000 006c 13       		.uleb128 0x13
+ 3001 006d 01       		.byte	0x1
+ARM GAS  C:\Users\jthem\AppData\Local\Temp\ccflPXLw.s 			page 66
+
+
+ 3002 006e 0B       		.uleb128 0xb
+ 3003 006f 0B       		.uleb128 0xb
+ 3004 0070 3A       		.uleb128 0x3a
+ 3005 0071 0B       		.uleb128 0xb
+ 3006 0072 3B       		.uleb128 0x3b
+ 3007 0073 0B       		.uleb128 0xb
+ 3008 0074 01       		.uleb128 0x1
+ 3009 0075 13       		.uleb128 0x13
+ 3010 0076 00       		.byte	0
+ 3011 0077 00       		.byte	0
+ 3012 0078 0B       		.uleb128 0xb
+ 3013 0079 0D       		.uleb128 0xd
+ 3014 007a 00       		.byte	0
+ 3015 007b 03       		.uleb128 0x3
+ 3016 007c 08       		.uleb128 0x8
+ 3017 007d 3A       		.uleb128 0x3a
+ 3018 007e 0B       		.uleb128 0xb
+ 3019 007f 3B       		.uleb128 0x3b
+ 3020 0080 0B       		.uleb128 0xb
+ 3021 0081 49       		.uleb128 0x49
+ 3022 0082 13       		.uleb128 0x13
+ 3023 0083 38       		.uleb128 0x38
+ 3024 0084 0B       		.uleb128 0xb
+ 3025 0085 00       		.byte	0
+ 3026 0086 00       		.byte	0
+ 3027 0087 0C       		.uleb128 0xc
+ 3028 0088 0D       		.uleb128 0xd
+ 3029 0089 00       		.byte	0
+ 3030 008a 03       		.uleb128 0x3
+ 3031 008b 0E       		.uleb128 0xe
+ 3032 008c 3A       		.uleb128 0x3a
+ 3033 008d 0B       		.uleb128 0xb
+ 3034 008e 3B       		.uleb128 0x3b
+ 3035 008f 0B       		.uleb128 0xb
+ 3036 0090 49       		.uleb128 0x49
+ 3037 0091 13       		.uleb128 0x13
+ 3038 0092 38       		.uleb128 0x38
+ 3039 0093 0B       		.uleb128 0xb
+ 3040 0094 00       		.byte	0
+ 3041 0095 00       		.byte	0
+ 3042 0096 0D       		.uleb128 0xd
+ 3043 0097 0D       		.uleb128 0xd
+ 3044 0098 00       		.byte	0
+ 3045 0099 03       		.uleb128 0x3
+ 3046 009a 0E       		.uleb128 0xe
+ 3047 009b 3A       		.uleb128 0x3a
+ 3048 009c 0B       		.uleb128 0xb
+ 3049 009d 3B       		.uleb128 0x3b
+ 3050 009e 05       		.uleb128 0x5
+ 3051 009f 49       		.uleb128 0x49
+ 3052 00a0 13       		.uleb128 0x13
+ 3053 00a1 38       		.uleb128 0x38
+ 3054 00a2 0B       		.uleb128 0xb
+ 3055 00a3 00       		.byte	0
+ 3056 00a4 00       		.byte	0
+ 3057 00a5 0E       		.uleb128 0xe
+ 3058 00a6 2E       		.uleb128 0x2e
+ARM GAS  C:\Users\jthem\AppData\Local\Temp\ccflPXLw.s 			page 67
+
+
+ 3059 00a7 01       		.byte	0x1
+ 3060 00a8 3F       		.uleb128 0x3f
+ 3061 00a9 19       		.uleb128 0x19
+ 3062 00aa 03       		.uleb128 0x3
+ 3063 00ab 0E       		.uleb128 0xe
+ 3064 00ac 3A       		.uleb128 0x3a
+ 3065 00ad 0B       		.uleb128 0xb
+ 3066 00ae 3B       		.uleb128 0x3b
+ 3067 00af 0B       		.uleb128 0xb
+ 3068 00b0 27       		.uleb128 0x27
+ 3069 00b1 19       		.uleb128 0x19
+ 3070 00b2 11       		.uleb128 0x11
+ 3071 00b3 01       		.uleb128 0x1
+ 3072 00b4 12       		.uleb128 0x12
+ 3073 00b5 06       		.uleb128 0x6
+ 3074 00b6 40       		.uleb128 0x40
+ 3075 00b7 18       		.uleb128 0x18
+ 3076 00b8 9642     		.uleb128 0x2116
+ 3077 00ba 19       		.uleb128 0x19
+ 3078 00bb 01       		.uleb128 0x1
+ 3079 00bc 13       		.uleb128 0x13
+ 3080 00bd 00       		.byte	0
+ 3081 00be 00       		.byte	0
+ 3082 00bf 0F       		.uleb128 0xf
+ 3083 00c0 05       		.uleb128 0x5
+ 3084 00c1 00       		.byte	0
+ 3085 00c2 03       		.uleb128 0x3
+ 3086 00c3 08       		.uleb128 0x8
+ 3087 00c4 3A       		.uleb128 0x3a
+ 3088 00c5 0B       		.uleb128 0xb
+ 3089 00c6 3B       		.uleb128 0x3b
+ 3090 00c7 0B       		.uleb128 0xb
+ 3091 00c8 49       		.uleb128 0x49
+ 3092 00c9 13       		.uleb128 0x13
+ 3093 00ca 02       		.uleb128 0x2
+ 3094 00cb 18       		.uleb128 0x18
+ 3095 00cc 00       		.byte	0
+ 3096 00cd 00       		.byte	0
+ 3097 00ce 10       		.uleb128 0x10
+ 3098 00cf 2E       		.uleb128 0x2e
+ 3099 00d0 01       		.byte	0x1
+ 3100 00d1 3F       		.uleb128 0x3f
+ 3101 00d2 19       		.uleb128 0x19
+ 3102 00d3 03       		.uleb128 0x3
+ 3103 00d4 0E       		.uleb128 0xe
+ 3104 00d5 3A       		.uleb128 0x3a
+ 3105 00d6 0B       		.uleb128 0xb
+ 3106 00d7 3B       		.uleb128 0x3b
+ 3107 00d8 0B       		.uleb128 0xb
+ 3108 00d9 49       		.uleb128 0x49
+ 3109 00da 13       		.uleb128 0x13
+ 3110 00db 3C       		.uleb128 0x3c
+ 3111 00dc 19       		.uleb128 0x19
+ 3112 00dd 00       		.byte	0
+ 3113 00de 00       		.byte	0
+ 3114 00df 11       		.uleb128 0x11
+ 3115 00e0 18       		.uleb128 0x18
+ARM GAS  C:\Users\jthem\AppData\Local\Temp\ccflPXLw.s 			page 68
+
+
+ 3116 00e1 00       		.byte	0
+ 3117 00e2 00       		.byte	0
+ 3118 00e3 00       		.byte	0
+ 3119 00e4 12       		.uleb128 0x12
+ 3120 00e5 2E       		.uleb128 0x2e
+ 3121 00e6 01       		.byte	0x1
+ 3122 00e7 3F       		.uleb128 0x3f
+ 3123 00e8 19       		.uleb128 0x19
+ 3124 00e9 03       		.uleb128 0x3
+ 3125 00ea 0E       		.uleb128 0xe
+ 3126 00eb 3A       		.uleb128 0x3a
+ 3127 00ec 0B       		.uleb128 0xb
+ 3128 00ed 3B       		.uleb128 0x3b
+ 3129 00ee 0B       		.uleb128 0xb
+ 3130 00ef 27       		.uleb128 0x27
+ 3131 00f0 19       		.uleb128 0x19
+ 3132 00f1 49       		.uleb128 0x49
+ 3133 00f2 13       		.uleb128 0x13
+ 3134 00f3 11       		.uleb128 0x11
+ 3135 00f4 01       		.uleb128 0x1
+ 3136 00f5 12       		.uleb128 0x12
+ 3137 00f6 06       		.uleb128 0x6
+ 3138 00f7 40       		.uleb128 0x40
+ 3139 00f8 18       		.uleb128 0x18
+ 3140 00f9 9642     		.uleb128 0x2116
+ 3141 00fb 19       		.uleb128 0x19
+ 3142 00fc 01       		.uleb128 0x1
+ 3143 00fd 13       		.uleb128 0x13
+ 3144 00fe 00       		.byte	0
+ 3145 00ff 00       		.byte	0
+ 3146 0100 13       		.uleb128 0x13
+ 3147 0101 05       		.uleb128 0x5
+ 3148 0102 00       		.byte	0
+ 3149 0103 03       		.uleb128 0x3
+ 3150 0104 0E       		.uleb128 0xe
+ 3151 0105 3A       		.uleb128 0x3a
+ 3152 0106 0B       		.uleb128 0xb
+ 3153 0107 3B       		.uleb128 0x3b
+ 3154 0108 0B       		.uleb128 0xb
+ 3155 0109 49       		.uleb128 0x49
+ 3156 010a 13       		.uleb128 0x13
+ 3157 010b 02       		.uleb128 0x2
+ 3158 010c 18       		.uleb128 0x18
+ 3159 010d 00       		.byte	0
+ 3160 010e 00       		.byte	0
+ 3161 010f 14       		.uleb128 0x14
+ 3162 0110 34       		.uleb128 0x34
+ 3163 0111 00       		.byte	0
+ 3164 0112 03       		.uleb128 0x3
+ 3165 0113 08       		.uleb128 0x8
+ 3166 0114 3A       		.uleb128 0x3a
+ 3167 0115 0B       		.uleb128 0xb
+ 3168 0116 3B       		.uleb128 0x3b
+ 3169 0117 0B       		.uleb128 0xb
+ 3170 0118 49       		.uleb128 0x49
+ 3171 0119 13       		.uleb128 0x13
+ 3172 011a 02       		.uleb128 0x2
+ARM GAS  C:\Users\jthem\AppData\Local\Temp\ccflPXLw.s 			page 69
+
+
+ 3173 011b 18       		.uleb128 0x18
+ 3174 011c 00       		.byte	0
+ 3175 011d 00       		.byte	0
+ 3176 011e 15       		.uleb128 0x15
+ 3177 011f 34       		.uleb128 0x34
+ 3178 0120 00       		.byte	0
+ 3179 0121 03       		.uleb128 0x3
+ 3180 0122 0E       		.uleb128 0xe
+ 3181 0123 3A       		.uleb128 0x3a
+ 3182 0124 0B       		.uleb128 0xb
+ 3183 0125 3B       		.uleb128 0x3b
+ 3184 0126 0B       		.uleb128 0xb
+ 3185 0127 49       		.uleb128 0x49
+ 3186 0128 13       		.uleb128 0x13
+ 3187 0129 02       		.uleb128 0x2
+ 3188 012a 18       		.uleb128 0x18
+ 3189 012b 00       		.byte	0
+ 3190 012c 00       		.byte	0
+ 3191 012d 16       		.uleb128 0x16
+ 3192 012e 0B       		.uleb128 0xb
+ 3193 012f 01       		.byte	0x1
+ 3194 0130 11       		.uleb128 0x11
+ 3195 0131 01       		.uleb128 0x1
+ 3196 0132 12       		.uleb128 0x12
+ 3197 0133 06       		.uleb128 0x6
+ 3198 0134 00       		.byte	0
+ 3199 0135 00       		.byte	0
+ 3200 0136 17       		.uleb128 0x17
+ 3201 0137 2E       		.uleb128 0x2e
+ 3202 0138 00       		.byte	0
+ 3203 0139 3F       		.uleb128 0x3f
+ 3204 013a 19       		.uleb128 0x19
+ 3205 013b 03       		.uleb128 0x3
+ 3206 013c 0E       		.uleb128 0xe
+ 3207 013d 3A       		.uleb128 0x3a
+ 3208 013e 0B       		.uleb128 0xb
+ 3209 013f 3B       		.uleb128 0x3b
+ 3210 0140 0B       		.uleb128 0xb
+ 3211 0141 11       		.uleb128 0x11
+ 3212 0142 01       		.uleb128 0x1
+ 3213 0143 12       		.uleb128 0x12
+ 3214 0144 06       		.uleb128 0x6
+ 3215 0145 40       		.uleb128 0x40
+ 3216 0146 18       		.uleb128 0x18
+ 3217 0147 9642     		.uleb128 0x2116
+ 3218 0149 19       		.uleb128 0x19
+ 3219 014a 00       		.byte	0
+ 3220 014b 00       		.byte	0
+ 3221 014c 18       		.uleb128 0x18
+ 3222 014d 2E       		.uleb128 0x2e
+ 3223 014e 01       		.byte	0x1
+ 3224 014f 3F       		.uleb128 0x3f
+ 3225 0150 19       		.uleb128 0x19
+ 3226 0151 03       		.uleb128 0x3
+ 3227 0152 0E       		.uleb128 0xe
+ 3228 0153 3A       		.uleb128 0x3a
+ 3229 0154 0B       		.uleb128 0xb
+ARM GAS  C:\Users\jthem\AppData\Local\Temp\ccflPXLw.s 			page 70
+
+
+ 3230 0155 3B       		.uleb128 0x3b
+ 3231 0156 05       		.uleb128 0x5
+ 3232 0157 27       		.uleb128 0x27
+ 3233 0158 19       		.uleb128 0x19
+ 3234 0159 11       		.uleb128 0x11
+ 3235 015a 01       		.uleb128 0x1
+ 3236 015b 12       		.uleb128 0x12
+ 3237 015c 06       		.uleb128 0x6
+ 3238 015d 40       		.uleb128 0x40
+ 3239 015e 18       		.uleb128 0x18
+ 3240 015f 9742     		.uleb128 0x2117
+ 3241 0161 19       		.uleb128 0x19
+ 3242 0162 01       		.uleb128 0x1
+ 3243 0163 13       		.uleb128 0x13
+ 3244 0164 00       		.byte	0
+ 3245 0165 00       		.byte	0
+ 3246 0166 19       		.uleb128 0x19
+ 3247 0167 05       		.uleb128 0x5
+ 3248 0168 00       		.byte	0
+ 3249 0169 03       		.uleb128 0x3
+ 3250 016a 0E       		.uleb128 0xe
+ 3251 016b 3A       		.uleb128 0x3a
+ 3252 016c 0B       		.uleb128 0xb
+ 3253 016d 3B       		.uleb128 0x3b
+ 3254 016e 05       		.uleb128 0x5
+ 3255 016f 49       		.uleb128 0x49
+ 3256 0170 13       		.uleb128 0x13
+ 3257 0171 02       		.uleb128 0x2
+ 3258 0172 18       		.uleb128 0x18
+ 3259 0173 00       		.byte	0
+ 3260 0174 00       		.byte	0
+ 3261 0175 1A       		.uleb128 0x1a
+ 3262 0176 05       		.uleb128 0x5
+ 3263 0177 00       		.byte	0
+ 3264 0178 03       		.uleb128 0x3
+ 3265 0179 08       		.uleb128 0x8
+ 3266 017a 3A       		.uleb128 0x3a
+ 3267 017b 0B       		.uleb128 0xb
+ 3268 017c 3B       		.uleb128 0x3b
+ 3269 017d 05       		.uleb128 0x5
+ 3270 017e 49       		.uleb128 0x49
+ 3271 017f 13       		.uleb128 0x13
+ 3272 0180 02       		.uleb128 0x2
+ 3273 0181 18       		.uleb128 0x18
+ 3274 0182 00       		.byte	0
+ 3275 0183 00       		.byte	0
+ 3276 0184 1B       		.uleb128 0x1b
+ 3277 0185 2E       		.uleb128 0x2e
+ 3278 0186 01       		.byte	0x1
+ 3279 0187 3F       		.uleb128 0x3f
+ 3280 0188 19       		.uleb128 0x19
+ 3281 0189 03       		.uleb128 0x3
+ 3282 018a 0E       		.uleb128 0xe
+ 3283 018b 3A       		.uleb128 0x3a
+ 3284 018c 0B       		.uleb128 0xb
+ 3285 018d 3B       		.uleb128 0x3b
+ 3286 018e 05       		.uleb128 0x5
+ARM GAS  C:\Users\jthem\AppData\Local\Temp\ccflPXLw.s 			page 71
+
+
+ 3287 018f 27       		.uleb128 0x27
+ 3288 0190 19       		.uleb128 0x19
+ 3289 0191 11       		.uleb128 0x11
+ 3290 0192 01       		.uleb128 0x1
+ 3291 0193 12       		.uleb128 0x12
+ 3292 0194 06       		.uleb128 0x6
+ 3293 0195 40       		.uleb128 0x40
+ 3294 0196 18       		.uleb128 0x18
+ 3295 0197 9642     		.uleb128 0x2116
+ 3296 0199 19       		.uleb128 0x19
+ 3297 019a 01       		.uleb128 0x1
+ 3298 019b 13       		.uleb128 0x13
+ 3299 019c 00       		.byte	0
+ 3300 019d 00       		.byte	0
+ 3301 019e 1C       		.uleb128 0x1c
+ 3302 019f 2E       		.uleb128 0x2e
+ 3303 01a0 01       		.byte	0x1
+ 3304 01a1 3F       		.uleb128 0x3f
+ 3305 01a2 19       		.uleb128 0x19
+ 3306 01a3 03       		.uleb128 0x3
+ 3307 01a4 0E       		.uleb128 0xe
+ 3308 01a5 3A       		.uleb128 0x3a
+ 3309 01a6 0B       		.uleb128 0xb
+ 3310 01a7 3B       		.uleb128 0x3b
+ 3311 01a8 05       		.uleb128 0x5
+ 3312 01a9 27       		.uleb128 0x27
+ 3313 01aa 19       		.uleb128 0x19
+ 3314 01ab 49       		.uleb128 0x49
+ 3315 01ac 13       		.uleb128 0x13
+ 3316 01ad 11       		.uleb128 0x11
+ 3317 01ae 01       		.uleb128 0x1
+ 3318 01af 12       		.uleb128 0x12
+ 3319 01b0 06       		.uleb128 0x6
+ 3320 01b1 40       		.uleb128 0x40
+ 3321 01b2 18       		.uleb128 0x18
+ 3322 01b3 9742     		.uleb128 0x2117
+ 3323 01b5 19       		.uleb128 0x19
+ 3324 01b6 01       		.uleb128 0x1
+ 3325 01b7 13       		.uleb128 0x13
+ 3326 01b8 00       		.byte	0
+ 3327 01b9 00       		.byte	0
+ 3328 01ba 1D       		.uleb128 0x1d
+ 3329 01bb 34       		.uleb128 0x34
+ 3330 01bc 00       		.byte	0
+ 3331 01bd 03       		.uleb128 0x3
+ 3332 01be 0E       		.uleb128 0xe
+ 3333 01bf 3A       		.uleb128 0x3a
+ 3334 01c0 0B       		.uleb128 0xb
+ 3335 01c1 3B       		.uleb128 0x3b
+ 3336 01c2 05       		.uleb128 0x5
+ 3337 01c3 49       		.uleb128 0x49
+ 3338 01c4 13       		.uleb128 0x13
+ 3339 01c5 02       		.uleb128 0x2
+ 3340 01c6 18       		.uleb128 0x18
+ 3341 01c7 00       		.byte	0
+ 3342 01c8 00       		.byte	0
+ 3343 01c9 1E       		.uleb128 0x1e
+ARM GAS  C:\Users\jthem\AppData\Local\Temp\ccflPXLw.s 			page 72
+
+
+ 3344 01ca 2E       		.uleb128 0x2e
+ 3345 01cb 01       		.byte	0x1
+ 3346 01cc 3F       		.uleb128 0x3f
+ 3347 01cd 19       		.uleb128 0x19
+ 3348 01ce 03       		.uleb128 0x3
+ 3349 01cf 0E       		.uleb128 0xe
+ 3350 01d0 3A       		.uleb128 0x3a
+ 3351 01d1 0B       		.uleb128 0xb
+ 3352 01d2 3B       		.uleb128 0x3b
+ 3353 01d3 05       		.uleb128 0x5
+ 3354 01d4 49       		.uleb128 0x49
+ 3355 01d5 13       		.uleb128 0x13
+ 3356 01d6 11       		.uleb128 0x11
+ 3357 01d7 01       		.uleb128 0x1
+ 3358 01d8 12       		.uleb128 0x12
+ 3359 01d9 06       		.uleb128 0x6
+ 3360 01da 40       		.uleb128 0x40
+ 3361 01db 18       		.uleb128 0x18
+ 3362 01dc 9642     		.uleb128 0x2116
+ 3363 01de 19       		.uleb128 0x19
+ 3364 01df 01       		.uleb128 0x1
+ 3365 01e0 13       		.uleb128 0x13
+ 3366 01e1 00       		.byte	0
+ 3367 01e2 00       		.byte	0
+ 3368 01e3 1F       		.uleb128 0x1f
+ 3369 01e4 0B       		.uleb128 0xb
+ 3370 01e5 01       		.byte	0x1
+ 3371 01e6 11       		.uleb128 0x11
+ 3372 01e7 01       		.uleb128 0x1
+ 3373 01e8 12       		.uleb128 0x12
+ 3374 01e9 06       		.uleb128 0x6
+ 3375 01ea 01       		.uleb128 0x1
+ 3376 01eb 13       		.uleb128 0x13
+ 3377 01ec 00       		.byte	0
+ 3378 01ed 00       		.byte	0
+ 3379 01ee 20       		.uleb128 0x20
+ 3380 01ef 01       		.uleb128 0x1
+ 3381 01f0 01       		.byte	0x1
+ 3382 01f1 49       		.uleb128 0x49
+ 3383 01f2 13       		.uleb128 0x13
+ 3384 01f3 01       		.uleb128 0x1
+ 3385 01f4 13       		.uleb128 0x13
+ 3386 01f5 00       		.byte	0
+ 3387 01f6 00       		.byte	0
+ 3388 01f7 21       		.uleb128 0x21
+ 3389 01f8 21       		.uleb128 0x21
+ 3390 01f9 00       		.byte	0
+ 3391 01fa 49       		.uleb128 0x49
+ 3392 01fb 13       		.uleb128 0x13
+ 3393 01fc 2F       		.uleb128 0x2f
+ 3394 01fd 05       		.uleb128 0x5
+ 3395 01fe 00       		.byte	0
+ 3396 01ff 00       		.byte	0
+ 3397 0200 22       		.uleb128 0x22
+ 3398 0201 21       		.uleb128 0x21
+ 3399 0202 00       		.byte	0
+ 3400 0203 49       		.uleb128 0x49
+ARM GAS  C:\Users\jthem\AppData\Local\Temp\ccflPXLw.s 			page 73
+
+
+ 3401 0204 13       		.uleb128 0x13
+ 3402 0205 2F       		.uleb128 0x2f
+ 3403 0206 0B       		.uleb128 0xb
+ 3404 0207 00       		.byte	0
+ 3405 0208 00       		.byte	0
+ 3406 0209 23       		.uleb128 0x23
+ 3407 020a 34       		.uleb128 0x34
+ 3408 020b 00       		.byte	0
+ 3409 020c 03       		.uleb128 0x3
+ 3410 020d 0E       		.uleb128 0xe
+ 3411 020e 3A       		.uleb128 0x3a
+ 3412 020f 0B       		.uleb128 0xb
+ 3413 0210 3B       		.uleb128 0x3b
+ 3414 0211 05       		.uleb128 0x5
+ 3415 0212 49       		.uleb128 0x49
+ 3416 0213 13       		.uleb128 0x13
+ 3417 0214 3F       		.uleb128 0x3f
+ 3418 0215 19       		.uleb128 0x19
+ 3419 0216 3C       		.uleb128 0x3c
+ 3420 0217 19       		.uleb128 0x19
+ 3421 0218 00       		.byte	0
+ 3422 0219 00       		.byte	0
+ 3423 021a 24       		.uleb128 0x24
+ 3424 021b 35       		.uleb128 0x35
+ 3425 021c 00       		.byte	0
+ 3426 021d 49       		.uleb128 0x49
+ 3427 021e 13       		.uleb128 0x13
+ 3428 021f 00       		.byte	0
+ 3429 0220 00       		.byte	0
+ 3430 0221 25       		.uleb128 0x25
+ 3431 0222 34       		.uleb128 0x34
+ 3432 0223 00       		.byte	0
+ 3433 0224 03       		.uleb128 0x3
+ 3434 0225 0E       		.uleb128 0xe
+ 3435 0226 3A       		.uleb128 0x3a
+ 3436 0227 0B       		.uleb128 0xb
+ 3437 0228 3B       		.uleb128 0x3b
+ 3438 0229 0B       		.uleb128 0xb
+ 3439 022a 49       		.uleb128 0x49
+ 3440 022b 13       		.uleb128 0x13
+ 3441 022c 3F       		.uleb128 0x3f
+ 3442 022d 19       		.uleb128 0x19
+ 3443 022e 02       		.uleb128 0x2
+ 3444 022f 18       		.uleb128 0x18
+ 3445 0230 00       		.byte	0
+ 3446 0231 00       		.byte	0
+ 3447 0232 00       		.byte	0
+ 3448              		.section	.debug_aranges,"",%progbits
+ 3449 0000 9C000000 		.4byte	0x9c
+ 3450 0004 0200     		.2byte	0x2
+ 3451 0006 00000000 		.4byte	.Ldebug_info0
+ 3452 000a 04       		.byte	0x4
+ 3453 000b 00       		.byte	0
+ 3454 000c 0000     		.2byte	0
+ 3455 000e 0000     		.2byte	0
+ 3456 0010 00000000 		.4byte	.LFB63
+ 3457 0014 1E000000 		.4byte	.LFE63-.LFB63
+ARM GAS  C:\Users\jthem\AppData\Local\Temp\ccflPXLw.s 			page 74
+
+
+ 3458 0018 00000000 		.4byte	.LFB64
+ 3459 001c 52010000 		.4byte	.LFE64-.LFB64
+ 3460 0020 00000000 		.4byte	.LFB65
+ 3461 0024 3C000000 		.4byte	.LFE65-.LFB65
+ 3462 0028 00000000 		.4byte	.LFB66
+ 3463 002c 1A000000 		.4byte	.LFE66-.LFB66
+ 3464 0030 00000000 		.4byte	.LFB67
+ 3465 0034 2A000000 		.4byte	.LFE67-.LFB67
+ 3466 0038 00000000 		.4byte	.LFB68
+ 3467 003c 42000000 		.4byte	.LFE68-.LFB68
+ 3468 0040 00000000 		.4byte	.LFB69
+ 3469 0044 2E000000 		.4byte	.LFE69-.LFB69
+ 3470 0048 00000000 		.4byte	.LFB70
+ 3471 004c 3C000000 		.4byte	.LFE70-.LFB70
+ 3472 0050 00000000 		.4byte	.LFB71
+ 3473 0054 52000000 		.4byte	.LFE71-.LFB71
+ 3474 0058 00000000 		.4byte	.LFB72
+ 3475 005c 30000000 		.4byte	.LFE72-.LFB72
+ 3476 0060 00000000 		.4byte	.LFB73
+ 3477 0064 32000000 		.4byte	.LFE73-.LFB73
+ 3478 0068 00000000 		.4byte	.LFB74
+ 3479 006c 26000000 		.4byte	.LFE74-.LFB74
+ 3480 0070 00000000 		.4byte	.LFB75
+ 3481 0074 34000000 		.4byte	.LFE75-.LFB75
+ 3482 0078 00000000 		.4byte	.LFB76
+ 3483 007c 34000000 		.4byte	.LFE76-.LFB76
+ 3484 0080 00000000 		.4byte	.LFB77
+ 3485 0084 48000000 		.4byte	.LFE77-.LFB77
+ 3486 0088 00000000 		.4byte	.LFB78
+ 3487 008c 4A000000 		.4byte	.LFE78-.LFB78
+ 3488 0090 00000000 		.4byte	.LFB79
+ 3489 0094 1C050000 		.4byte	.LFE79-.LFB79
+ 3490 0098 00000000 		.4byte	0
+ 3491 009c 00000000 		.4byte	0
+ 3492              		.section	.debug_ranges,"",%progbits
+ 3493              	.Ldebug_ranges0:
+ 3494 0000 00000000 		.4byte	.LFB63
+ 3495 0004 1E000000 		.4byte	.LFE63
+ 3496 0008 00000000 		.4byte	.LFB64
+ 3497 000c 52010000 		.4byte	.LFE64
+ 3498 0010 00000000 		.4byte	.LFB65
+ 3499 0014 3C000000 		.4byte	.LFE65
+ 3500 0018 00000000 		.4byte	.LFB66
+ 3501 001c 1A000000 		.4byte	.LFE66
+ 3502 0020 00000000 		.4byte	.LFB67
+ 3503 0024 2A000000 		.4byte	.LFE67
+ 3504 0028 00000000 		.4byte	.LFB68
+ 3505 002c 42000000 		.4byte	.LFE68
+ 3506 0030 00000000 		.4byte	.LFB69
+ 3507 0034 2E000000 		.4byte	.LFE69
+ 3508 0038 00000000 		.4byte	.LFB70
+ 3509 003c 3C000000 		.4byte	.LFE70
+ 3510 0040 00000000 		.4byte	.LFB71
+ 3511 0044 52000000 		.4byte	.LFE71
+ 3512 0048 00000000 		.4byte	.LFB72
+ 3513 004c 30000000 		.4byte	.LFE72
+ 3514 0050 00000000 		.4byte	.LFB73
+ARM GAS  C:\Users\jthem\AppData\Local\Temp\ccflPXLw.s 			page 75
+
+
+ 3515 0054 32000000 		.4byte	.LFE73
+ 3516 0058 00000000 		.4byte	.LFB74
+ 3517 005c 26000000 		.4byte	.LFE74
+ 3518 0060 00000000 		.4byte	.LFB75
+ 3519 0064 34000000 		.4byte	.LFE75
+ 3520 0068 00000000 		.4byte	.LFB76
+ 3521 006c 34000000 		.4byte	.LFE76
+ 3522 0070 00000000 		.4byte	.LFB77
+ 3523 0074 48000000 		.4byte	.LFE77
+ 3524 0078 00000000 		.4byte	.LFB78
+ 3525 007c 4A000000 		.4byte	.LFE78
+ 3526 0080 00000000 		.4byte	.LFB79
+ 3527 0084 1C050000 		.4byte	.LFE79
+ 3528 0088 00000000 		.4byte	0
+ 3529 008c 00000000 		.4byte	0
+ 3530              		.section	.debug_line,"",%progbits
+ 3531              	.Ldebug_line0:
+ 3532 0000 F8030000 		.section	.debug_str,"MS",%progbits,1
+ 3532      02006201 
+ 3532      00000201 
+ 3532      FB0E0D00 
+ 3532      01010101 
+ 3533              	.LASF93:
+ 3534 0000 6E657746 		.ascii	"newFngCommand\000"
+ 3534      6E67436F 
+ 3534      6D6D616E 
+ 3534      6400
+ 3535              	.LASF103:
+ 3536 000e 73686170 		.ascii	"shapeChanged\000"
+ 3536      65436861 
+ 3536      6E676564 
+ 3536      00
+ 3537              	.LASF90:
+ 3538 001b 6E657750 		.ascii	"newPin\000"
+ 3538      696E00
+ 3539              	.LASF78:
+ 3540 0022 6765744F 		.ascii	"getOsc\000"
+ 3540      736300
+ 3541              	.LASF36:
+ 3542 0029 66726571 		.ascii	"freq\000"
+ 3542      00
+ 3543              	.LASF110:
+ 3544 002e 73636F70 		.ascii	"scope0State\000"
+ 3544      65305374 
+ 3544      61746500 
+ 3545              	.LASF95:
+ 3546 003a 77617344 		.ascii	"wasDataReceived\000"
+ 3546      61746152 
+ 3546      65636569 
+ 3546      76656400 
+ 3547              	.LASF68:
+ 3548 004a 73746174 		.ascii	"state\000"
+ 3548      6500
+ 3549              	.LASF2:
+ 3550 0050 73686F72 		.ascii	"short int\000"
+ 3550      7420696E 
+ 3550      7400
+ARM GAS  C:\Users\jthem\AppData\Local\Temp\ccflPXLw.s 			page 76
+
+
+ 3551              	.LASF81:
+ 3552 005a 6E657746 		.ascii	"newFreq\000"
+ 3552      72657100 
+ 3553              	.LASF64:
+ 3554 0062 53657444 		.ascii	"SetDigitalPot\000"
+ 3554      69676974 
+ 3554      616C506F 
+ 3554      7400
+ 3555              	.LASF48:
+ 3556 0070 6E756D53 		.ascii	"numSamples\000"
+ 3556      616D706C 
+ 3556      657300
+ 3557              	.LASF101:
+ 3558 007b 63757272 		.ascii	"currentOsc\000"
+ 3558      656E744F 
+ 3558      736300
+ 3559              	.LASF83:
+ 3560 0086 6E657753 		.ascii	"newShape\000"
+ 3560      68617065 
+ 3560      00
+ 3561              	.LASF51:
+ 3562 008f 6D617831 		.ascii	"max1_index\000"
+ 3562      5F696E64 
+ 3562      657800
+ 3563              	.LASF102:
+ 3564 009a 66726571 		.ascii	"freqChanged\000"
+ 3564      4368616E 
+ 3564      67656400 
+ 3565              	.LASF59:
+ 3566 00a6 6379636C 		.ascii	"cycles\000"
+ 3566      657300
+ 3567              	.LASF8:
+ 3568 00ad 6C6F6E67 		.ascii	"long long int\000"
+ 3568      206C6F6E 
+ 3568      6720696E 
+ 3568      7400
+ 3569              	.LASF26:
+ 3570 00bb 464E475F 		.ascii	"FNG_VOLTAGE\000"
+ 3570      564F4C54 
+ 3570      41474500 
+ 3571              	.LASF92:
+ 3572 00c7 6E657746 		.ascii	"newFngOrScopeOn\000"
+ 3572      6E674F72 
+ 3572      53636F70 
+ 3572      654F6E00 
+ 3573              	.LASF4:
+ 3574 00d7 5F5F7569 		.ascii	"__uint16_t\000"
+ 3574      6E743136 
+ 3574      5F7400
+ 3575              	.LASF63:
+ 3576 00e2 5350495F 		.ascii	"SPI_FNG0_WriteData\000"
+ 3576      464E4730 
+ 3576      5F577269 
+ 3576      74654461 
+ 3576      746100
+ 3577              	.LASF22:
+ 3578 00f5 53415754 		.ascii	"SAWTOOTH\000"
+ARM GAS  C:\Users\jthem\AppData\Local\Temp\ccflPXLw.s 			page 77
+
+
+ 3578      4F4F5448 
+ 3578      00
+ 3579              	.LASF65:
+ 3580 00fe 76616C75 		.ascii	"value\000"
+ 3580      6500
+ 3581              	.LASF50:
+ 3582 0104 6D617832 		.ascii	"max2\000"
+ 3582      00
+ 3583              	.LASF33:
+ 3584 0109 536C6176 		.ascii	"SlaveCommand\000"
+ 3584      65436F6D 
+ 3584      6D616E64 
+ 3584      00
+ 3585              	.LASF55:
+ 3586 0116 6D696E31 		.ascii	"min1_index\000"
+ 3586      5F696E64 
+ 3586      657800
+ 3587              	.LASF112:
+ 3588 0121 2E5C6D61 		.ascii	".\\main.c\000"
+ 3588      696E2E63 
+ 3588      00
+ 3589              	.LASF20:
+ 3590 012a 53494E45 		.ascii	"SINE\000"
+ 3590      00
+ 3591              	.LASF13:
+ 3592 012f 75696E74 		.ascii	"uint8\000"
+ 3592      3800
+ 3593              	.LASF97:
+ 3594 0135 73636F70 		.ascii	"scope0SerialBuffer\000"
+ 3594      65305365 
+ 3594      7269616C 
+ 3594      42756666 
+ 3594      657200
+ 3595              	.LASF34:
+ 3596 0148 72756E6E 		.ascii	"running\000"
+ 3596      696E6700 
+ 3597              	.LASF87:
+ 3598 0150 6E657743 		.ascii	"newChannel\000"
+ 3598      68616E6E 
+ 3598      656C00
+ 3599              	.LASF23:
+ 3600 015b 466E6753 		.ascii	"FngShape\000"
+ 3600      68617065 
+ 3600      00
+ 3601              	.LASF66:
+ 3602 0164 666E6749 		.ascii	"fngId\000"
+ 3602      6400
+ 3603              	.LASF80:
+ 3604 016a 73657446 		.ascii	"setFngFreq\000"
+ 3604      6E674672 
+ 3604      657100
+ 3605              	.LASF75:
+ 3606 0175 64617461 		.ascii	"dataFromMaster\000"
+ 3606      46726F6D 
+ 3606      4D617374 
+ 3606      657200
+ 3607              	.LASF15:
+ARM GAS  C:\Users\jthem\AppData\Local\Temp\ccflPXLw.s 			page 78
+
+
+ 3608 0184 666C6F61 		.ascii	"float\000"
+ 3608      7400
+ 3609              	.LASF53:
+ 3610 018a 6D696E31 		.ascii	"min1\000"
+ 3610      00
+ 3611              	.LASF54:
+ 3612 018f 6D696E32 		.ascii	"min2\000"
+ 3612      00
+ 3613              	.LASF73:
+ 3614 0194 66696E64 		.ascii	"find_freq\000"
+ 3614      5F667265 
+ 3614      7100
+ 3615              	.LASF35:
+ 3616 019e 76616C75 		.ascii	"valueChanged\000"
+ 3616      65436861 
+ 3616      6E676564 
+ 3616      00
+ 3617              	.LASF17:
+ 3618 01ab 63686172 		.ascii	"char\000"
+ 3618      00
+ 3619              	.LASF86:
+ 3620 01b0 73657446 		.ascii	"setFngChannel\000"
+ 3620      6E674368 
+ 3620      616E6E65 
+ 3620      6C00
+ 3621              	.LASF111:
+ 3622 01be 474E5520 		.ascii	"GNU C 4.9.3 20150303 (release) [ARM/embedded-4_9-br"
+ 3622      4320342E 
+ 3622      392E3320 
+ 3622      32303135 
+ 3622      30333033 
+ 3623 01f1 616E6368 		.ascii	"anch revision 221220] -mcpu=cortex-m3 -mthumb -g -O"
+ 3623      20726576 
+ 3623      6973696F 
+ 3623      6E203232 
+ 3623      31323230 
+ 3624 0224 30202D66 		.ascii	"0 -ffunction-sections -ffat-lto-objects\000"
+ 3624      66756E63 
+ 3624      74696F6E 
+ 3624      2D736563 
+ 3624      74696F6E 
+ 3625              	.LASF37:
+ 3626 024c 766F6C74 		.ascii	"voltage\000"
+ 3626      61676500 
+ 3627              	.LASF58:
+ 3628 0254 73616D70 		.ascii	"samples\000"
+ 3628      6C657300 
+ 3629              	.LASF108:
+ 3630 025c 6C636442 		.ascii	"lcdBuffer\000"
+ 3630      75666665 
+ 3630      7200
+ 3631              	.LASF40:
+ 3632 0266 46756E63 		.ascii	"FunctionGenerator\000"
+ 3632      74696F6E 
+ 3632      47656E65 
+ 3632      7261746F 
+ 3632      7200
+ARM GAS  C:\Users\jthem\AppData\Local\Temp\ccflPXLw.s 			page 79
+
+
+ 3633              	.LASF52:
+ 3634 0278 6D617832 		.ascii	"max2_index\000"
+ 3634      5F696E64 
+ 3634      657800
+ 3635              	.LASF46:
+ 3636 0283 536C6176 		.ascii	"SlaveState\000"
+ 3636      65537461 
+ 3636      746500
+ 3637              	.LASF94:
+ 3638 028e 6E65774F 		.ascii	"newOscCommand\000"
+ 3638      7363436F 
+ 3638      6D6D616E 
+ 3638      6400
+ 3639              	.LASF74:
+ 3640 029c 67657446 		.ascii	"getFngCommand\000"
+ 3640      6E67436F 
+ 3640      6D6D616E 
+ 3640      6400
+ 3641              	.LASF16:
+ 3642 02aa 646F7562 		.ascii	"double\000"
+ 3642      6C6500
+ 3643              	.LASF69:
+ 3644 02b1 696E6974 		.ascii	"initializeFng\000"
+ 3644      69616C69 
+ 3644      7A65466E 
+ 3644      6700
+ 3645              	.LASF1:
+ 3646 02bf 756E7369 		.ascii	"unsigned char\000"
+ 3646      676E6564 
+ 3646      20636861 
+ 3646      7200
+ 3647              	.LASF104:
+ 3648 02cd 766F6C74 		.ascii	"voltageChanged\000"
+ 3648      61676543 
+ 3648      68616E67 
+ 3648      656400
+ 3649              	.LASF115:
+ 3650 02dc 50534F43 		.ascii	"PSOC5_Init\000"
+ 3650      355F496E 
+ 3650      697400
+ 3651              	.LASF109:
+ 3652 02e7 49544D5F 		.ascii	"ITM_RxBuffer\000"
+ 3652      52784275 
+ 3652      66666572 
+ 3652      00
+ 3653              	.LASF30:
+ 3654 02f4 434F4D4D 		.ascii	"COMMIT_CHANGES\000"
+ 3654      49545F43 
+ 3654      48414E47 
+ 3654      455300
+ 3655              	.LASF70:
+ 3656 0303 696E6974 		.ascii	"initializeScope\000"
+ 3656      69616C69 
+ 3656      7A655363 
+ 3656      6F706500 
+ 3657              	.LASF0:
+ 3658 0313 7369676E 		.ascii	"signed char\000"
+ARM GAS  C:\Users\jthem\AppData\Local\Temp\ccflPXLw.s 			page 80
+
+
+ 3658      65642063 
+ 3658      68617200 
+ 3659              	.LASF9:
+ 3660 031f 6C6F6E67 		.ascii	"long long unsigned int\000"
+ 3660      206C6F6E 
+ 3660      6720756E 
+ 3660      7369676E 
+ 3660      65642069 
+ 3661              	.LASF91:
+ 3662 0336 6E657746 		.ascii	"newFngOrScopeId\000"
+ 3662      6E674F72 
+ 3662      53636F70 
+ 3662      65496400 
+ 3663              	.LASF99:
+ 3664 0346 73636F70 		.ascii	"scope0RawBufferStartPtr\000"
+ 3664      65305261 
+ 3664      77427566 
+ 3664      66657253 
+ 3664      74617274 
+ 3665              	.LASF84:
+ 3666 035e 73657446 		.ascii	"setFngVoltage\000"
+ 3666      6E67566F 
+ 3666      6C746167 
+ 3666      6500
+ 3667              	.LASF10:
+ 3668 036c 756E7369 		.ascii	"unsigned int\000"
+ 3668      676E6564 
+ 3668      20696E74 
+ 3668      00
+ 3669              	.LASF28:
+ 3670 0379 464E475F 		.ascii	"FNG_PIN\000"
+ 3670      50494E00 
+ 3671              	.LASF89:
+ 3672 0381 63757272 		.ascii	"currentCommand\000"
+ 3672      656E7443 
+ 3672      6F6D6D61 
+ 3672      6E6400
+ 3673              	.LASF72:
+ 3674 0390 696E6974 		.ascii	"initializeState\000"
+ 3674      69616C69 
+ 3674      7A655374 
+ 3674      61746500 
+ 3675              	.LASF3:
+ 3676 03a0 73686F72 		.ascii	"short unsigned int\000"
+ 3676      7420756E 
+ 3676      7369676E 
+ 3676      65642069 
+ 3676      6E7400
+ 3677              	.LASF32:
+ 3678 03b3 494E5641 		.ascii	"INVALID_COMMAND\000"
+ 3678      4C49445F 
+ 3678      434F4D4D 
+ 3678      414E4400 
+ 3679              	.LASF98:
+ 3680 03c3 73636F70 		.ascii	"scope0RawBufferPtr\000"
+ 3680      65305261 
+ 3680      77427566 
+ARM GAS  C:\Users\jthem\AppData\Local\Temp\ccflPXLw.s 			page 81
+
+
+ 3680      66657250 
+ 3680      747200
+ 3681              	.LASF11:
+ 3682 03d6 75696E74 		.ascii	"uint16_t\000"
+ 3682      31365F74 
+ 3682      00
+ 3683              	.LASF6:
+ 3684 03df 6C6F6E67 		.ascii	"long int\000"
+ 3684      20696E74 
+ 3684      00
+ 3685              	.LASF88:
+ 3686 03e8 6D61696E 		.ascii	"main\000"
+ 3686      00
+ 3687              	.LASF113:
+ 3688 03ed 433A5C55 		.ascii	"C:\\Users\\jthem\\Documents\\PSoC Creator\\PWMExamp"
+ 3688      73657273 
+ 3688      5C6A7468 
+ 3688      656D5C44 
+ 3688      6F63756D 
+ 3689 041b 6C653031 		.ascii	"le01\\EasyBoard_5LP.cydsn\000"
+ 3689      5C456173 
+ 3689      79426F61 
+ 3689      72645F35 
+ 3689      4C502E63 
+ 3690              	.LASF12:
+ 3691 0434 696E7433 		.ascii	"int32_t\000"
+ 3691      325F7400 
+ 3692              	.LASF25:
+ 3693 043c 464E475F 		.ascii	"FNG_SHAPE\000"
+ 3693      53484150 
+ 3693      4500
+ 3694              	.LASF39:
+ 3695 0446 6368616E 		.ascii	"channel\000"
+ 3695      6E656C00 
+ 3696              	.LASF106:
+ 3697 044e 6368616E 		.ascii	"channelInc\000"
+ 3697      6E656C49 
+ 3697      6E6300
+ 3698              	.LASF31:
+ 3699 0459 57414954 		.ascii	"WAIT_FINISH\000"
+ 3699      5F46494E 
+ 3699      49534800 
+ 3700              	.LASF105:
+ 3701 0465 70696E43 		.ascii	"pinChanged\000"
+ 3701      68616E67 
+ 3701      656400
+ 3702              	.LASF14:
+ 3703 0470 75696E74 		.ascii	"uint16\000"
+ 3703      313600
+ 3704              	.LASF44:
+ 3705 0477 6F736330 		.ascii	"osc0\000"
+ 3705      00
+ 3706              	.LASF45:
+ 3707 047c 6F736331 		.ascii	"osc1\000"
+ 3707      00
+ 3708              	.LASF7:
+ 3709 0481 6C6F6E67 		.ascii	"long unsigned int\000"
+ARM GAS  C:\Users\jthem\AppData\Local\Temp\ccflPXLw.s 			page 82
+
+
+ 3709      20756E73 
+ 3709      69676E65 
+ 3709      6420696E 
+ 3709      7400
+ 3710              	.LASF77:
+ 3711 0493 67657446 		.ascii	"getFng\000"
+ 3711      6E6700
+ 3712              	.LASF57:
+ 3713 049a 666F756E 		.ascii	"foundperiod\000"
+ 3713      64706572 
+ 3713      696F6400 
+ 3714              	.LASF56:
+ 3715 04a6 6D696E32 		.ascii	"min2_index\000"
+ 3715      5F696E64 
+ 3715      657800
+ 3716              	.LASF24:
+ 3717 04b1 414C4552 		.ascii	"ALERT\000"
+ 3717      5400
+ 3718              	.LASF47:
+ 3719 04b7 61727261 		.ascii	"array\000"
+ 3719      7900
+ 3720              	.LASF19:
+ 3721 04bd 53515541 		.ascii	"SQUARE\000"
+ 3721      524500
+ 3722              	.LASF41:
+ 3723 04c4 4F736369 		.ascii	"Oscilloscope\000"
+ 3723      6C6C6F73 
+ 3723      636F7065 
+ 3723      00
+ 3724              	.LASF5:
+ 3725 04d1 5F5F696E 		.ascii	"__int32_t\000"
+ 3725      7433325F 
+ 3725      7400
+ 3726              	.LASF42:
+ 3727 04db 666E6730 		.ascii	"fng0\000"
+ 3727      00
+ 3728              	.LASF100:
+ 3729 04e0 63757272 		.ascii	"currentFng\000"
+ 3729      656E7446 
+ 3729      6E6700
+ 3730              	.LASF67:
+ 3731 04eb 73657449 		.ascii	"setInvalidCommand\000"
+ 3731      6E76616C 
+ 3731      6964436F 
+ 3731      6D6D616E 
+ 3731      6400
+ 3732              	.LASF96:
+ 3733 04fd 73636F70 		.ascii	"scope0RawBuffer\000"
+ 3733      65305261 
+ 3733      77427566 
+ 3733      66657200 
+ 3734              	.LASF79:
+ 3735 050d 64697361 		.ascii	"disableFng\000"
+ 3735      626C6546 
+ 3735      6E6700
+ 3736              	.LASF18:
+ 3737 0518 73697A65 		.ascii	"sizetype\000"
+ARM GAS  C:\Users\jthem\AppData\Local\Temp\ccflPXLw.s 			page 83
+
+
+ 3737      74797065 
+ 3737      00
+ 3738              	.LASF60:
+ 3739 0521 66726571 		.ascii	"frequency\000"
+ 3739      75656E63 
+ 3739      7900
+ 3740              	.LASF21:
+ 3741 052b 54524941 		.ascii	"TRIANGLE\000"
+ 3741      4E474C45 
+ 3741      00
+ 3742              	.LASF61:
+ 3743 0534 63757272 		.ascii	"current_element\000"
+ 3743      656E745F 
+ 3743      656C656D 
+ 3743      656E7400 
+ 3744              	.LASF38:
+ 3745 0544 73686170 		.ascii	"shape\000"
+ 3745      6500
+ 3746              	.LASF107:
+ 3747 054a 6E657744 		.ascii	"newData\000"
+ 3747      61746100 
+ 3748              	.LASF49:
+ 3749 0552 6D617831 		.ascii	"max1\000"
+ 3749      00
+ 3750              	.LASF114:
+ 3751 0557 5350495F 		.ascii	"SPI_FNG0_WriteTxData\000"
+ 3751      464E4730 
+ 3751      5F577269 
+ 3751      74655478 
+ 3751      44617461 
+ 3752              	.LASF82:
+ 3753 056c 73657446 		.ascii	"setFngShape\000"
+ 3753      6E675368 
+ 3753      61706500 
+ 3754              	.LASF27:
+ 3755 0578 464E475F 		.ascii	"FNG_FREQUENCY\000"
+ 3755      46524551 
+ 3755      55454E43 
+ 3755      5900
+ 3756              	.LASF85:
+ 3757 0586 6E657756 		.ascii	"newVoltage\000"
+ 3757      6F6C7461 
+ 3757      676500
+ 3758              	.LASF43:
+ 3759 0591 666E6731 		.ascii	"fng1\000"
+ 3759      00
+ 3760              	.LASF29:
+ 3761 0596 4F53435F 		.ascii	"OSC_PIN\000"
+ 3761      50494E00 
+ 3762              	.LASF76:
+ 3763 059e 636F6D6D 		.ascii	"command\000"
+ 3763      616E6400 
+ 3764              	.LASF62:
+ 3765 05a6 6E657874 		.ascii	"next\000"
+ 3765      00
+ 3766              	.LASF71:
+ 3767 05ab 73636F70 		.ascii	"scope\000"
+ARM GAS  C:\Users\jthem\AppData\Local\Temp\ccflPXLw.s 			page 84
+
+
+ 3767      6500
+ 3768              		.ident	"GCC: (GNU Tools for ARM Embedded Processors) 4.9.3 20150303 (release) [ARM/embedded-4_9-br

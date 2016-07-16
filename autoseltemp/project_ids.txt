@@ -1,0 +1,10 @@
+C:\Users\jthem\Documents\PSoC Creator\PWMExample01\EasyBoard.cydsn\EasyBoard.cyprj|78a72225-a8de-4447-902f-dd428179804e
+C:\Program Files (x86)\Cypress\PSoC Creator\3.3\PSoC Creator\psoc\content\default\CyAnnotationLibrary\CyAnnotationLibrary.cylib\CyAnnotationLibrary.cyprj|379957e9-5bd9-4734-b416-7c75882335d0
+C:\Program Files (x86)\Cypress\PSoC Creator\3.3\PSoC Creator\psoc\content\default\CyReferenceLibrary\CyReferenceLibrary.cylib\CyReferenceLibrary.cyprj|b4accbc8-4b91-4530-9185-7d34a9bf1af5
+C:\Program Files (x86)\Cypress\PSoC Creator\3.3\PSoC Creator\psoc\content\cycomponentlibraryupdates\CyComponentLibraryUpdates.cylib\CyComponentLibraryUpdates.cyprj|334efad0-01ac-4e63-882d-6f339e1be4fb
+C:\Program Files (x86)\Cypress\PSoC Creator\3.3\PSoC Creator\psoc\content\cycomponentlibrary\CyComponentLibrary.cylib\CyComponentLibrary.cyprj|ab819b6c-e571-4ca1-a8c7-144c42025c98
+C:\Program Files (x86)\Cypress\PSoC Creator\3.3\PSoC Creator\psoc\content\cyprimitives\CyPrimitives.cylib\CyPrimitives.cyprj|546d59e4-34fd-40ed-a2b5-ebc56d7b36d2
+C:\Users\jthem\Documents\PSoC Creator\PWMExample01\SPI_Design01.cydsn\SPI_Design01.cyprj|8941715e-179b-4316-a74b-6403400a7045
+C:\Users\jthem\Documents\PSoC Creator\PWMExample01\ADC_SingleEndedMode02.cydsn\ADC_SingleEndedMode02.cyprj|3c34027c-f841-49e8-80df-0f6953cc9cd7
+C:\Users\jthem\Documents\PSoC Creator\PWMExample01\SPIS_Example02.cydsn\SPIS_Example02.cyprj|36765c12-587b-4328-b2ce-5d17637a31a5
+C:\Users\jthem\Documents\PSoC Creator\PWMExample01\SPIM_Example06.cydsn\SPIM_Example06.cyprj|3ddee0d9-1094-4e85-bfcf-a602a215e6eb
